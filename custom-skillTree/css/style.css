@@ -1,7 +1,14 @@
 .dragPlace, .tool, .skillblock, .drawblock {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .dragPlace, .tool {
@@ -9,13 +16,16 @@
   height: 104px;
   border-radius: 52px;
   margin-bottom: 2em;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   position: relative;
 }
 
 .ui-dialog, .ui-dialog-buttonpane {
   background-color: #ffe6ff;
 }
+
 .ui-dialog button:active, .ui-dialog-buttonpane button:active {
   background-color: #ededed;
 }
@@ -32,6 +42,7 @@ fieldset {
   padding: 0;
   border: 0;
 }
+
 fieldset input {
   margin-top: 0.3em;
   margin-bottom: 0.8em;
@@ -51,14 +62,18 @@ fieldset input {
   margin-top: 0;
   padding: .3em 1em;
 }
+
 .ui-dialog .ui-dialog-buttonpane button:nth-child(1) {
   background-color: #d2f1d0;
 }
+
 .ui-dialog .ui-dialog-buttonpane button:nth-child(1):hover {
   background-color: #b4e8b1;
 }
 
 body {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   position: relative;
   font-family: "Yuanti TC",sans-serif,'FontAwesome';
@@ -76,7 +91,7 @@ h2 {
 }
 
 .wrap {
-  height: 1780px;
+  height: 300vh;
   width: 80vw;
   margin-left: 20vw;
 }
@@ -95,11 +110,13 @@ h2 {
   background-color: #275596;
   border: 12px solid #5C5C5C;
 }
+
 .tool:hover {
   border: 12px solid #d9d9d9;
   cursor: pointer;
   background-color: #326cbe;
 }
+
 .tool img:hover {
   -webkit-transform: scale(1.2, 1.2);
           transform: scale(1.2, 1.2);
@@ -121,6 +138,7 @@ h2 {
 .arrow {
   margin-left: 4.5em;
 }
+
 .arrow:before {
   content: "\f178";
   position: absolute;
@@ -134,9 +152,34 @@ h2 {
   background-color: #17040F;
   position: absolute;
 }
+
 .skillblock #toolblock {
   margin-top: 1em;
   z-index: 100;
+}
+
+.skillblock #toolblock .tool:hover:before {
+  content: attr(data-tooltip);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.8);
+  color: black;
+  padding: .4em .6em;
+  font-size: 16px;
+  position: absolute;
+  left: 100%;
+  top: 80%;
+  margin-left: 14px;
+  white-space: pre;
+}
+
+.skillblock #toolblock .tool:hover:after {
+  content: "";
+  top: 85%;
+  right: -14%;
+  position: absolute;
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent rgba(255, 255, 255, 0.8) transparent transparent;
 }
 
 .show {
@@ -160,10 +203,12 @@ h2 {
   background-color: #0084e6;
   border-color: #99d4ff;
 }
+
 .toolActive:hover {
   background-color: #0093FF;
   border-color: white;
 }
+
 .toolActive:after {
   content: attr(name);
   font-size: 2.5em;
@@ -190,16 +235,19 @@ h2 {
     left: 0;
   }
 }
+
 @-webkit-keyframes show {
   100% {
     opacity: 1;
   }
 }
+
 @keyframes show {
   100% {
     opacity: 1;
   }
 }
+
 #menu {
   position: absolute;
   left: 0.3em;
@@ -214,7 +262,8 @@ h2 {
 
 .drawblock {
   position: relative;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   width: 100%;
   height: 100%;
   background-color: #2D0E2F;
@@ -230,18 +279,21 @@ footer {
   position: absolute;
   bottom: 0;
 }
+
 footer #carton {
   position: absolute;
   bottom: 40%;
   left: 3vw;
   width: 200px;
 }
+
 footer #rocket {
   width: 135px;
   position: absolute;
   right: 15vw;
   bottom: 12vh;
 }
+
 footer #btnGroup {
   position: absolute;
   left: 30%;
@@ -260,6 +312,7 @@ img {
   border-color: orange;
   color: white !important;
 }
+
 .warning:hover {
   background-color: #e69500 !important;
 }
@@ -269,6 +322,7 @@ img {
   border-color: #dc3545;
   color: white !important;
 }
+
 .danger:hover {
   background-color: #d32535 !important;
 }
@@ -278,6 +332,7 @@ img {
   border-color: #17a2b8;
   color: white !important;
 }
+
 .info:hover {
   background-color: #148ea1 !important;
 }
@@ -287,27 +342,40 @@ i {
 }
 
 .typeBlock {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 220px;
   width: 100%;
   border-radius: 1em;
 }
+
 .typeBlock .scroll {
   border-radius: 0 1em 1em 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   overflow-x: auto;
   height: 100%;
   width: 100%;
   padding: 0 1.5em;
 }
+
 .typeBlock:before {
   content: attr(name);
   color: #42272C;
   font-weight: bold;
   font-size: 3em;
   margin: 0 0.6em;
+  text-align: center;
+  width: 22vw;
+  overflow: hidden;
 }
 
 .small {
@@ -364,3 +432,4 @@ i {
 ::-webkit-scrollbar-corner {
   background-color: #FFB297;
 }
+/*# sourceMappingURL=style.css.map */
