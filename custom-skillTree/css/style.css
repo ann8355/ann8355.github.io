@@ -129,6 +129,7 @@ h2 {
 
 .skillblock {
   width: 20vw;
+  height: 100%;
   background-color: #17040F;
   position: absolute;
 }
