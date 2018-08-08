@@ -37,10 +37,6 @@ dialog = $( "#dialog-form" ).dialog({
          }else{
             obj.clone().attr("name",name).addClass("toolActive").addClass("arrow").addClass("move").appendTo('[name='+type+'scl]');
          }    
-         if($("#draw").find('.typeBlock').length >4){
-            var height = $(".wrap").height();
-            $(".wrap").css("height",height+250+"px");
-         }
          if($('[name='+type+'scl]').children().length == 1){
            $(".scroll").sortable({
               items: ".toolActive",//可排序（移動）的元素
@@ -83,22 +79,35 @@ $(document).on("click", "#clear", function() {
   $("#draw").html("");
   $("#title").val("");
   localStorage.clear(); 
-  $(".wrap").css("height","1550px");
+  // $(".wrap").css("height","1550px");
 });
 $(document).on("click", "#export", function() {//截圖
-  html2canvas(document.getElementById("drawArea"), {
-  onrendered: function(canvas) {
-    var image = canvas.toDataURL("image/png",1).replace("image/png", "image/octet-stream"); //結果會是被Base64編碼後的圖片，但是要觸發下載必須先把型態改成octet-stream(用來騙瀏覽器而已，它還是png格式)
-    // window.location.href = image;
-    var link = document.createElement('a');
+  var node = document.getElementById("drawArea");
+	domtoimage.toPng(node).then(function (dataUrl) {
+		var myNode = node;
+  	var image = new Image();
+      image.src = dataUrl;
+      var link = document.createElement('a');
     link.download = $("#drawArea input").val()+'.jpeg';
-    link.href = image;
+    link.href = dataUrl;
     link.click();
-  },
-    allowTaint: false,
-    logging: true,
-    useCORS: true
-});
+	   
+	}).catch(function (error) {
+		console.error('oops, something went wrong!', error);
+	});
+//   html2canvas(document.getElementById("drawArea"), {
+//   onrendered: function(canvas) {
+//     var image = canvas.toDataURL("image/png",1).replace("image/png", "image/octet-stream"); //結果會是被Base64編碼後的圖片，但是要觸發下載必須先把型態改成octet-stream(用來騙瀏覽器而已，它還是png格式)
+//     // window.location.href = image;
+//     var link = document.createElement('a');
+//     link.download = $("#drawArea input").val()+'.jpeg';
+//     link.href = image;
+//     link.click();
+//   },
+//     allowTaint: false,
+//     logging: true,
+//     useCORS: true
+// });
 });
 $('.scroll').sortable({
   items: ".arrow",//可排序（移動）的元素
