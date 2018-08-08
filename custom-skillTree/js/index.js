@@ -83,15 +83,18 @@ $(document).on("click", "#clear", function() {
 });
 $(document).on("click", "#export", function() {//截圖
   var node = document.getElementById("drawArea");
+  $("#draw").before("<h1>"+$("#drawArea input").val()+"</h1>");//解決截圖後字體縮小問題
+  $("#drawArea input").attr("type","hidden");
 	domtoimage.toPng(node).then(function (dataUrl) {
 		var myNode = node;
   	var image = new Image();
-      image.src = dataUrl;
-      var link = document.createElement('a');
+    image.src = dataUrl;
+    var link = document.createElement('a');
     link.download = $("#drawArea input").val()+'.jpeg';
     link.href = dataUrl;
     link.click();
-	   
+    $(".drawblock h1").remove();//解決截圖後字體縮小問題
+    $("#drawArea input").attr("type","text");
 	}).catch(function (error) {
 		console.error('oops, something went wrong!', error);
 	});
@@ -141,22 +144,6 @@ $(document).on("click", '#menu', function() {
   }
 });
 $( function() {
-  // var imgArray=["https://vignette.wikia.nocookie.net/battlefordreamislandfanfiction/images/6/6e/33._Trash_Can.png/revision/latest?cb=20160121032851","https://drive.google.com/uc?id=1dVKNEmGU1HDy7KqG_4bI4LhQhuQ6yMdw","https://drive.google.com/uc?id=1dOrOmjbyfIrnlrgkh3TZlW4Wd0nhSDli","https://drive.google.com/uc?id=1ast6QQqxwBULImcjYx7ygCt_4cFYchJp","https://drive.google.com/uc?id=1dkNFykuRMeOlAJCM1xtKCCVx2gCkMD0k"];
-  // for(var i=0;i<imgArray.length;i++){
-  //   var img = new Image();
-    // var canvas = document.createElement('canvas');
-    // var ctx = canvas.getContext('2d');
-    // img.crossOrigin = "Anonymous";
-    // img.onload = function(){
-    //     canvas.height = this.height;
-    //     canvas.width = this.width;
-    //     ctx.drawImage(this, 0, 0, img.width, img.height);   
-    //     var url = canvas.toDataURL('image/png',1).replace("image/png", "image/octet-stream"); // 可指定 jpeg 品質
-  //       $("#toolblock").append('<div name ="dragtool" class="tool"><img src='+imgArray[i]+' alt="tool" width="110" height="100"></div>');
-  //   };
-  //   img.src = imgArray[i];
-  // }
-  // $("#toolblock:nth-child(1)").attr("id","trash").attr("name","trash"); 
   data = localStorage.getItem("data");
   var title = localStorage.getItem("title");
   if(data != null){
