@@ -55,6 +55,9 @@ dialog = $( "#dialog-form" ).dialog({
               cancel: ".disable"
             });
          }
+        if($("#draw").find('.typeBlock').length >5){
+          $("#draw").css("height","");
+        }
          dialog.dialog( "close" );
         },
         Cancel: function() {
@@ -79,7 +82,7 @@ $(document).on("click", "#clear", function() {
   $("#draw").html("");
   $("#title").val("");
   localStorage.clear(); 
-  // $(".wrap").css("height","1550px");
+  $("#draw").css("height","900px");
 });
 $(document).on("click", "#export", function() {//截圖
   var node = document.getElementById("drawArea");

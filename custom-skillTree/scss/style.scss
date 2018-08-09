@@ -62,7 +62,7 @@ fieldset {
 body{
   display: flex;
   position: relative;
-  font-family: "Yuanti TC",sans-serif,'FontAwesome';
+  font-family: "Yuanti TC",sans-serif,'FontAwesome',Microsoft JhengHei;
   color: $primary-txt;
   overflow-x: hidden;
   background-color: $primary-color; 
@@ -121,13 +121,15 @@ h2{
     width: 100%; 
     text-align: center;
     font-size: 3rem;
-    font-family: "Yuanti TC",sans-serif,'FontAwesome';
     color: $primary-txt;
     font-weight: bold;
     margin: 0.6em auto;
     padding: 0 22px;
     box-sizing: border-box;
     text-overflow: ellipsis;//文字溢出時，顯示省略符號(...)
+}
+input{
+  font-family: "Yuanti TC",sans-serif,'FontAwesome',Microsoft JhengHei!important;
 }
 .arrow{
   margin-left: 40px;
