@@ -68,6 +68,9 @@ dialog = $( "#dialog-form" ).dialog({
         dialog.find( "form" )[0].reset();
       }
 });
+$(document).on("dragenter", '.scroll div:nth-child(1)', function() {//警告禁止移動第一個元素
+  alertify.error("Can't move the first element, if you haven't remove the remaining elements.");
+});
 $(document).on("click", '#toolblock [name ="dragtool"]', function() {
   dialog.data('obj', $(this)).dialog( "open" );
 });
