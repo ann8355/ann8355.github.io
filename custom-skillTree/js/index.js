@@ -1,4 +1,9 @@
 var data;
+var datalist=["Java","Css","Js","Python","Db"];
+var drawData;
+var drawTitle;
+var editData;
+var editTitle;
 
 function placeTool(){
   $(this).clone().appendTo("#draw");
@@ -21,6 +26,28 @@ $( "#trash" ).droppable({//移置垃圾桶刪除
     }
   }
 });
+function checkMove(obj){
+  if(obj.children().length == 1){
+    $(".scroll").sortable({
+       items: ".toolActive",//可排序（移動）的元素
+       cursor: "move",
+       start: function( event, ui ) {
+         ui.item.addClass("small");
+         $(".wrap").css("z-index","50");
+       },
+       stop: function( event, ui ) {
+         ui.item.removeClass("small");
+         $(".wrap").css("z-index","auto");
+       },
+       placeholder: "dragPlace"
+     });
+  }else{
+    obj.sortable({
+       items: ".arrow",//可排序（移動）的元素
+       cancel: ".disable"
+     });
+  }
+}
 dialog = $( "#dialog-form" ).dialog({
       autoOpen: false,
       height: 520,
@@ -31,30 +58,21 @@ dialog = $( "#dialog-form" ).dialog({
          var name = $(this).find('#name').val();
          var type = $(this).find('#type').val();
          var obj = $(this).data('obj');
-         if($("#draw").find('[name='+type+']').length == 0){
-            $("#draw").append('<div name='+type+' class="typeBlock draggable" style="background-color: #F8BCA7;"><div name='+type+'scl class="scroll" style="background-color: hsl('+Math.random()*361+',25%,80%) ;"></div></div>');  
-            obj.clone().attr("name",name).addClass("toolActive").addClass("disable").addClass("show").appendTo('[name='+type+'scl]');
+         var types = $("#typeList option").map(function () {
+          return this.value.toLowerCase();
+         });
+         if($.inArray( type.toLowerCase(), types) < 0){
+          $('#typeList').append("<option value="+type+">");
+         }
+         if($("#draw").find('[name='+type+'].typeBlock').length == 0){
+          $("#draw").append('<div name='+type+' class="typeBlock draggable" style="background-color: #F8BCA7;opacity: 1;">'
+            +'<div class="enemy"><div class="gamename">'+type+'</div><div class="game"></div><div class="life"></div></div>'
+            +'<div name='+type+'scl class="scroll" style="background-color: hsl('+Math.random()*361+',25%,80%) ;"></div></div>');  
+          obj.clone().attr("name",name).addClass("toolActive").addClass("disable").addClass("show").appendTo('[name='+type+'scl]');
          }else{
             obj.clone().attr("name",name).addClass("toolActive").addClass("arrow").addClass("move").appendTo('[name='+type+'scl]');
-         }    
-         if($('[name='+type+'scl]').children().length == 1){
-           $(".scroll").sortable({
-              items: ".toolActive",//可排序（移動）的元素
-              cursor: "move",
-              start: function( event, ui ) {
-                ui.item.addClass("small");
-              },
-              stop: function( event, ui ) {
-                ui.item.removeClass("small");
-              },
-              placeholder: "dragPlace"
-            });
-         }else{
-            $('[name='+type+'scl]').sortable({
-              items: ".arrow",//可排序（移動）的元素
-              cancel: ".disable"
-            });
-         }
+         }  
+         checkMove($('[name='+type+'scl]'));  
         if($("#draw").find('.typeBlock').length >5){
           $("#draw").css("height","");
         }
@@ -84,32 +102,37 @@ $(document).on("click", "#save", function() {
 $(document).on("click", "#clear", function() {
   $("#draw").html("");
   $("#title").val("");
-  localStorage.clear(); 
+  localStorage.removeItem("data");
+  localStorage.removeItem("title");
   $("#draw").css("height","900px");
 });
 $(document).on("click", "#export", function() {//截圖
+  $("#menu").click();
   var node = document.getElementById("drawArea");
-  $("#draw").before("<h1>"+$("#drawArea input").val()+"</h1>");//解決截圖後字體縮小問題
-  $("#drawArea input").attr("type","hidden");
-	domtoimage.toPng(node).then(function (dataUrl) {
-		var myNode = node;
-  	var image = new Image();
-    image.src = dataUrl;
-    var link = document.createElement('a');
-    link.download = $("#drawArea input").val()+'.jpeg';
-    link.href = dataUrl;
-    link.click();
-    $(".drawblock h1").remove();//解決截圖後字體縮小問題
-    $("#drawArea input").attr("type","text");
-	}).catch(function (error) {
-		console.error('oops, something went wrong!', error);
-	});
-//   html2canvas(document.getElementById("drawArea"), {
+  $("#help").before("<h1 class='titleName' style='display: inline-block;'>"+$("#title").val()+"</h1>");//解決截圖後字體縮小問題
+  $("#title").hide();
+	setTimeout(function(){
+    domtoimage.toPng(node).then(function (dataUrl) {
+      alertify.success("Downloading...");
+      var myNode = node;
+      var image = new Image();
+      image.src = dataUrl;
+      var link = document.createElement('a');
+      link.download = $("#title").val()+'.jpeg';
+      link.href = dataUrl;
+      link.click();
+      $("header h1").remove();//解決截圖後字體縮小問題
+      $("#title").show();
+    }).catch(function (error) {
+      console.error('oops, something went wrong!', error);
+    });
+  },300);
+//   html2canvas(document.getElementById("draw"), {
 //   onrendered: function(canvas) {
 //     var image = canvas.toDataURL("image/png",1).replace("image/png", "image/octet-stream"); //結果會是被Base64編碼後的圖片，但是要觸發下載必須先把型態改成octet-stream(用來騙瀏覽器而已，它還是png格式)
 //     // window.location.href = image;
 //     var link = document.createElement('a');
-//     link.download = $("#drawArea input").val()+'.jpeg';
+//     link.download = $("#title").val()+'.jpeg';
 //     link.href = image;
 //     link.click();
 //   },
@@ -135,6 +158,11 @@ $( '.draggabled' ).disableSelection();
 $( '.scroll' ).disableSelection();
 $(document).on("dblclick", ".toolActive img", function() {
   $(this).toggleClass("complete");
+  $(this).parent().append("<span class='done'>DONE</span>");
+});
+$(document).on("dblclick", ".toolActive span", function() {
+  $(this).parent().find("img").toggleClass("complete");
+  $(this).remove();
 });
 $(document).on("click", '#menu', function() {
   if($(".skillblock").css("display") == "none"){
@@ -149,7 +177,75 @@ $(document).on("click", '#menu', function() {
       },300);
   }
 });
+$(document).on("click", "#teachBlock a", function() {
+  var step = parseInt($(this).attr("name"));
+  var next = step+1;
+  if(next<6){
+    $("#teach").attr("data-step","Step "+next.toString()+" :");
+    $("#teachBlock span").css("opacity","0");
+    $('span[name='+next.toString()+']').css("opacity","1");
+    $("#teach").css({"top":"8%","bottom":"auto"});
+    if(next == 5){
+      $("#teach").css({"top":"auto","bottom":"19%"});
+      $(this).attr("href","#teach");
+      $(".typeBlock:nth-child(3)").removeClass("show");
+      $("footer").addClass("show").css("animation-delay","0ms");
+    }else if(next == 2){
+      $(".skillblock").removeClass("show");
+      $("#title").addClass("show").css("animation-delay","0ms");
+      $(".typeBlock:nth-child(3)").addClass("show").css("animation-delay","0ms");   
+    }else if(next == 3){
+      $("#title").removeClass("show");
+      $(".skillblock").addClass("show").css("animation-delay","0ms");
+      $(".skillblock .tool:nth-child(n+2)").css("opacity","0.2");
+    }else if(next == 4){
+      $(".skillblock .tool:nth-child(n+2)").css("opacity","1");
+      $(".skillblock").removeClass("show");
+      $('[name="OOCSS"] img').dblclick();
+
+      $(".game").attr("class","doneAll");
+      $(".life").remove();
+    }
+    $(this).attr("name",next.toString());
+  }else{
+    if($("#checkShow").prop("checked")){
+      localStorage.setItem("default",true);
+    }else{
+      localStorage.removeItem("default");
+    }
+    $("footer").removeClass("show");
+    $(this).attr("href","#");
+    $(this).parent().parent().hide();
+    $("#draw").html(editData);
+    $("#title").val(editTitle);
+    $(".skillblock,#menu,#help,#title,.typeBlock,footer").css("opacity","1");
+    $("#title").focus();//=autofocus
+  }
+});
+$("#help").click(function(){
+  editData = $("#draw").html();
+  editTitle = $("#title").val();
+  $("#clear").click();
+  $("#draw").html(drawData);
+  $("#title").val(drawTitle);
+  $(".skillblock,#menu,#help,#title,.typeBlock,footer").css("opacity","0.2");
+  $(".skillblock").addClass("show");
+  $('#teach').css("animation-delay","800ms").addClass("show").show();
+  $("#teachBlock a").attr("name","0").click();
+  for(var i=0;i<$(".typeBlock").length;i++){
+    checkMove($(".typeBlock").eq(i).find('.scroll'));  
+  }
+});
 $( function() {
+  drawTitle = "Ann's Front-End Road Map";
+  drawData = $("#draw").html();
+  $("#clear").click();
+  for (var i=0; i<datalist.length; i++) {
+    $('#typeList').append("<option value="+datalist[i]+">");
+  }
+  if(localStorage.getItem("default") == null){
+    $("#help").click();
+  }
   data = localStorage.getItem("data");
   var title = localStorage.getItem("title");
   if(data != null){

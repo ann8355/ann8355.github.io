@@ -24,60 +24,101 @@
         <div id="trash" class="tool" data-tooltip="delete">
           <img src="img/Trash_Can.png" alt="tool">
         </div>
-        <div name ="dragtool" class="tool" data-tooltip="build skill">
-          <img src="img/img_quill@2x.png" alt="tool">
-        </div>
-        <div name ="dragtool" class="tool" data-tooltip="build skill">
-          <img src="img/img_hat@2x.png" alt="tool">
-        </div>
-        <div name ="dragtool" class="tool" data-tooltip="build skill">
+        <div name ="dragtool" class="tool" data-tooltip="Choose a Weapon">
           <img src="img/img_blade-1@2x.png" alt="tool">
         </div>
-        <div name ="dragtool" class="tool" data-tooltip="build skill">
-          <img src="img/img_book@2x.png" alt="tool">
+        <div name ="dragtool" class="tool" data-tooltip="Choose a Weapon">
+          <img src="img/img_blade@2x.png" alt="tool">
+        </div>
+        <div name ="dragtool" class="tool" data-tooltip="Choose a Weapon">
+          <img src="img/img_sword@2x.png" alt="tool">
+        </div>
+        <div name ="dragtool" class="tool" data-tooltip="Choose a Weapon">
+          <img src="img/img_axe@2x.png" alt="tool">
         </div>
      </div>
   </div>
-<div class="wrap">
-   <div id="drawArea" class="drawblock">
-        <sapn id="menu">&#9776;</sapn>
-        <input id="title" value="Ann's Front-End Road Map" type="text">
-     <div id="draw">
-       <div name="Git" class="typeBlock draggable" style="background-color: #F8BCA7;"><div name="Gitscl" class="scroll ui-sortable" style="background-color: hsl(215.96714247910054,25%,80%) ;"><div name="GitHub" class="tool toolActive disable show complete ui-sortable-handle">
-          <img src="img/img_blade-1@2x.png" alt="tool" class="">
-        </div></div></div><div name="Html" class="typeBlock draggable" style="background-color: #F8BCA7;"><div name="Htmlscl" class="scroll ui-sortable" style="background-color: hsl(170.0439546512722,25%,80%) ;"><div name="RWD" class="tool toolActive disable show complete ui-sortable-handle">
-          <img src="img/img_book@2x.png" alt="tool" class="complete">
-        </div></div></div><div name="Css" class="typeBlock draggable" style="background-color: #F8BCA7;"><div name="Cssscl" class="scroll ui-sortable" style="background-color: hsl(108.54081847758951,25%,80%) ;"><div name="Scss" class="tool toolActive disable show ui-sortable-handle">
-          <img src="img/img_hat@2x.png" alt="tool" class="complete">
+<div id="drawArea" class="wrap">
+  <header>
+    <sapn id="menu">&#9776;</sapn>
+    <input id="title" type="text" autofocus="autofocus">
+    <a id="help" class="ui-button ui-widget ui-corner-all white" href="#"><i class="fa fa-question-circle"></i>Help</a>
+  </header>
+  <div id="draw">
+       <div name="Git" class="typeBlock draggable" style="background-color: #F8BCA7;">
+          <div class="enemy">
+              <div class="gamename">Git</div>
+              <div class="game"></div>
+              <div class="life"></div>
+           </div>
+         <div name="Gitscl" class="scroll ui-sortable" style="background-color: hsl(215.96714247910054,25%,80%) ;"><div name="GitHub" class="tool toolActive disable show ui-sortable-handle">
+          <img src="img/img_blade-1@2x.png" alt="tool" class="complete">
+          <span class='done'>DONE</span>
+        </div></div></div>
+            <div name="Html" class="typeBlock draggable" style="background-color: #F8BCA7;">
+                <div class="enemy">
+                    <div class="gamename">Html</div>
+                    <div class="game"></div>
+                    <div class="life"></div>
+                 </div>
+              <div name="Htmlscl" class="scroll ui-sortable" style="background-color: hsl(170.0439546512722,25%,80%) ;"><div name="RWD" class="tool toolActive disable show ui-sortable-handle">
+              <img src="img/img_axe@2x.png" alt="tool" class="complete">
+              <span class='done'>DONE</span>
+            </div></div></div>
+        <div name="Css" class="typeBlock draggable" style="background-color: #F8BCA7;">
+            <div class="enemy">
+                <div class="gamename">Css</div>
+                <div class="game"></div>
+                <div class="life"></div>
+             </div>
+          <div name="Cssscl" class="scroll ui-sortable" style="background-color: hsl(108.54081847758951,25%,80%) ;"><div name="Scss" class="tool toolActive disable show ui-sortable-handle">
+          <img src="img/img_sword@2x.png" alt="tool" class="complete">
+          <span class='done'>DONE</span>
         </div><div name="OOCSS" class="tool ui-sortable-handle toolActive arrow move" style="position: relative; left: 0px; top: 0px;">
-          <img src="img/img_hat@2x.png" alt="tool">
+          <img src="img/img_sword@2x.png" alt="tool">
         </div><div name="Boostrap4" class="tool ui-sortable-handle toolActive arrow move">
           <img src="img/img_blade-1@2x.png" alt="tool" class="complete">
+          <span class='done'>DONE</span>
         </div><div name="Animation" class="tool ui-sortable-handle toolActive arrow move">
-          <img src="img/img_quill@2x.png" alt="tool" class="complete">
+          <img src="img/img_blade@2x.png" alt="tool" class="complete">
+          <span class='done'>DONE</span>
         </div><div name="FlexBox" class="tool ui-sortable-handle toolActive arrow move">
-          <img src="img/img_quill@2x.png" alt="tool" class="complete">
+          <img src="img/img_axe@2x.png" alt="tool" class="complete">
+          <span class='done'>DONE</span>
         </div><div name="Grid" class="tool ui-sortable-handle toolActive arrow move">
           <img src="img/img_blade-1@2x.png" alt="tool" class="complete">
-        </div></div></div><div name="JavaScript" class="typeBlock draggable" style="background-color: #F8BCA7;"><div name="JavaScriptscl" class="scroll ui-sortable" style="background-color: hsl(286.1660492132358,25%,80%) ;"><div name="React" class="tool toolActive disable show ui-sortable-handle">
+          <span class='done'>DONE</span>
+        </div></div></div><div name="JavaScript" class="typeBlock draggable" style="background-color: #F8BCA7;">
+            <div class="enemy">
+                <div class="gamename">JavaScript</div>
+                <div class="game"></div>
+                <div class="life"></div>
+             </div>
+          <div name="JavaScriptscl" class="scroll ui-sortable" style="background-color: hsl(286.1660492132358,25%,80%) ;">
+            <div name="React" class="tool toolActive disable show ui-sortable-handle">
           <img src="img/img_blade-1@2x.png" alt="tool">
         </div><div name="Vue" class="tool ui-sortable-handle toolActive arrow move">
-          <img src="img/img_book@2x.png" alt="tool">
+          <img src="img/img_axe@2x.png" alt="tool">
         </div><div name="ES6" class="tool ui-sortable-handle toolActive arrow move">
-          <img src="img/img_hat@2x.png" alt="tool">
+          <img src="img/img_sword@2x.png" alt="tool">
         </div><div name="TypeScript" class="tool ui-sortable-handle toolActive arrow move">
-          <img src="img/img_hat@2x.png" alt="tool">
+          <img src="img/img_sword@2x.png" alt="tool">
         </div><div name="Babel" class="tool ui-sortable-handle toolActive arrow move">
-          <img src="img/img_quill@2x.png" alt="tool">
-        </div></div></div><div name="Manage" class="typeBlock draggable" style="background-color: #F8BCA7;"><div name="Managescl" class="scroll ui-sortable" style="background-color: hsl(157.6725893469454,25%,80%) ;"><div name="Npm" class="tool toolActive disable show ui-sortable-handle">
-          <img src="img/img_hat@2x.png" alt="tool">
+          <img src="img/img_blade@2x.png" alt="tool">
+        </div></div></div><div name="Manage" class="typeBlock draggable" style="background-color: #F8BCA7;">
+            <div class="enemy">
+                <div class="gamename">Manage</div>
+                <div class="game"></div>
+                <div class="life"></div>
+             </div>
+          <div name="Managescl" class="scroll ui-sortable" style="background-color: hsl(157.6725893469454,25%,80%) ;"><div name="Npm" class="tool toolActive disable show ui-sortable-handle">
+          <img src="img/img_sword@2x.png" alt="tool">
         </div><div name="Gulp" class="tool ui-sortable-handle toolActive arrow move">
-          <img src="img/img_quill@2x.png" alt="tool">
+          <img src="img/img_blade@2x.png" alt="tool">
         </div><div name="Webpack" class="tool ui-sortable-handle toolActive arrow move">
           <img src="img/img_blade-1@2x.png" alt="tool">
         </div></div></div>
-     </div>
-   </div>
+  </div>
 </div>
 <footer>
   <div id="btnGroup">
@@ -93,7 +134,8 @@
   <form>
     <fieldset>
       <label for="type">Type</label>
-      <input type="text" name="type" id="type" class="text ui-widget-content ui-corner-all">
+      <input list="typeList" autocomplete="off" name="type" id="type" class="text ui-widget-content ui-corner-all">
+        <datalist id="typeList"></datalist>
       <label for="name">Skill Name</label>
       <input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all">
       <label for="deadlines">Deadlines</label>
@@ -101,6 +143,24 @@
     </fieldset>
   </form>
 </div>
+<<<<<<< HEAD
+<div id="teach" data-step="Step 1 :">
+  <div id="teachCat"></div>
+  <div id="teachBlock">
+      <span name="1" style="opacity: 1;">Choose your weapon and click it to build your learning skill.</span>
+      <span name="2">Edit your headline. Next, you can exchange the same type's skill position or double-click character to edit it.</span>
+      <span name="3">If you want to delete the skill or type, just move the skill's icon or monster to the trash can.</span>
+      <span name="4">If you completed(double-click skill's icon) all skills, you can defeat the monster and get the treasure.</span>
+      <span name="5">"Export" button: export .jpeg image.<br>"Save" button: save all skill's position.<br>"Clear All" button: clear all skills.<br>
+        <div style="color: red;font-weight: bold;margin-top:8px;">Start to create your skill tree !</div>
+        <div style="color: grey;"><input id="checkShow" type="checkbox" style="margin-right: 8px;">Never show again</div>
+      </span>
+      <!-- Then the monster's health points are the number of completed skills. -->
+      <a name="1" class="ui-button ui-corner-all" href="#">OK</a>
+  </div>
+</div>
+=======
+>>>>>>> a3c696269bcd511de6ebed01b102f545d3e40be4
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js'></script>
