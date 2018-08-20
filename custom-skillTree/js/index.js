@@ -15,10 +15,27 @@ $( "#trash" ).droppable({//移置垃圾桶刪除
   },
   drop: function( event, ui ) {
     ui.draggable.fadeOut(function() {
-      ui.draggable.remove();
-      var denominator = ui.draggable.parent().parent().find('.scroll').children().length + 1;//分母
-      var molecular = ui.draggable.parent().parent().find(".complete").length;//分子
+      var denominator = ui.draggable.parent().children().length - 1;//分母
+      if(ui.draggable.find(".done").length == 1){
+        var molecular = ui.draggable.parent().parent().find(".complete").length - 1;//分子
+      }else{
+        var molecular = ui.draggable.parent().parent().find(".complete").length;//分子
+      }  
       ui.draggable.parent().parent().find(".life").attr("data-tooltip",molecular+'/'+denominator);
+      var percentage = 100-(parseInt(molecular)/parseInt(denominator)*100);
+      ui.draggable.parent().parent().find(".lifeVal").animate({
+        width: percentage.toString()+"%",
+      }, 500 );
+      if(parseInt(molecular) == parseInt(denominator)){//得到寶物
+        var obj = ui.draggable.parent().parent().find(".game");
+        obj.removeClass("upDown");
+        ui.draggable.parent().parent().find(".game,.life").addClass("resize");
+        setTimeout(function(){
+          obj.attr("class","doneAll");
+        },1500);
+      }
+      ui.draggable.remove();
+      
     });   
     if(ui.draggable.parent().find(".toolActive").length-1 == 0){
       ui.draggable.parent().parent().remove();
@@ -72,12 +89,20 @@ dialog = $( "#dialog-form" ).dialog({
          }
          if($("#draw").find('[name='+type+'].typeBlock').length == 0){
           $("#draw").append('<div name='+type+' class="typeBlock draggable" style="background-color: #F8BCA7;opacity: 1;">'
-            +'<div class="enemy"><div class="gamename">'+type+'</div><div class="game upDown"></div><div class="life lifeVal" data-tooltip='+molecular+'/'+denominator+'></div></div>'
+            +'<div class="enemy"><div class="gamename">'+type+'</div><div class="game upDown"></div><div class="life" data-tooltip='+molecular+'/'+denominator+'><span class="lifeVal"></span></div></div>'
             +'<div name='+type+'scl class="scroll" style="background-color: hsl('+Math.random()*361+',25%,80%) ;"></div></div>');  
           obj.clone().attr("name",name).attr("data-date",date).addClass("toolActive").addClass("disable").addClass("show").appendTo('[name='+type+'scl]');
          }else{
             $('[name='+type+'scl]').parent().find(".life").attr("data-tooltip",molecular+'/'+denominator);
             obj.clone().attr("name",name).attr("data-date",date).addClass("toolActive").addClass("arrow").addClass("move").appendTo('[name='+type+'scl]');
+            if(parseInt(molecular) != parseInt(denominator)){//復原成小精靈
+              var percentage = 100-(parseInt(molecular)/parseInt(denominator)*100);
+              $('[name='+type+'scl]').parent().find(".lifeVal").animate({
+                width: percentage.toString()+"%",
+              }, 500 );
+              $('[name='+type+'scl]').parent().find(".doneAll").attr("class","game").addClass("upDown");
+              $('[name='+type+'scl]').parent().find(".life").removeClass("resize");
+            }
          }  
          checkMove($('[name='+type+'scl]'));  
         if($("#draw").find('.typeBlock').length >5){
@@ -160,8 +185,8 @@ $('.scroll').sortable({
   },
   placeholder: "dragPlace"
 });
-$( '.draggabled').sortable();
-$( '.draggabled' ).disableSelection();
+$( '.draggabled,#draw').sortable();
+$( '.draggabled,#draw' ).disableSelection();
 $( '.scroll' ).disableSelection();
 $(document).on("dblclick", ".toolActive img", function() {
   var tooltip = $(this).parent().parent().parent().find(".life").attr("data-tooltip");
@@ -189,11 +214,15 @@ $(document).on("dblclick", ".toolActive span", function() {
   var molecular = tooltip.split("/")[0];//分子
   var percentage = 100-((parseInt(molecular)-1)/parseInt(denominator)*100);
   $(this).parent().find("img").toggleClass("complete");
-  $(this).remove();
   $(this).parent().parent().parent().find(".life").attr("data-tooltip",parseInt(molecular)-1+'/'+denominator);
   $(this).parent().parent().parent().find(".lifeVal").animate({
     width: percentage.toString()+"%",
   }, 500 );
+  if(parseInt(molecular)-1 != parseInt(denominator)){//復原成小精靈
+    $(this).parent().parent().parent().find(".doneAll").attr("class","game").addClass("upDown");
+    $(this).parent().parent().parent().find(".life").removeClass("resize");
+  }
+  $(this).remove();
 });
 $(document).on("click", '#menu', function() {
   if($(".skillblock").css("display") == "none"){
@@ -224,7 +253,7 @@ $(document).on("click", "#teachBlock a", function() {
     }else if(next == 2){
       $(".skillblock").removeClass("show");
       $("#title").addClass("show").css("animation-delay","0ms");
-      $(".typeBlock:nth-child(3)").addClass("show").css("animation-delay","0ms");   
+      $(".typeBlock:nth-child(3)").addClass("show").css("animation-delay","0ms"); 
     }else if(next == 3){
       $("#title").removeClass("show");
       $(".skillblock").addClass("show").css("animation-delay","0ms");
@@ -260,6 +289,7 @@ $("#help").click(function(){
   $(".skillblock,#menu,#help,#title,.typeBlock,footer").css("opacity","0.2");
   $(".skillblock").addClass("show");
   $('#teach').css("animation-delay","800ms").addClass("show").show();
+  $("#teachBlock span,#teachBlock,#teachCat").show();
   $("#teachBlock a").attr("name","0").click();
   for(var i=0;i<$(".typeBlock").length;i++){
     checkMove($(".typeBlock").eq(i).find('.scroll'));  
@@ -272,6 +302,7 @@ $( function() {
   for (var i=0; i<datalist.length; i++) {
     $('#typeList').append("<option value="+datalist[i]+">");
   }
+  $("#teachBlock span,#teachBlock,#teachCat").hide();
   if(localStorage.getItem("default") == null){
     $("#help").click();
   }

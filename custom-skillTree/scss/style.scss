@@ -412,7 +412,7 @@ i{
   &:hover:after{
     bottom: -5%;
     left: 11vw;
-    margin-left: 1px;
+    margin-left: 0.3%;
     @extend %triangle;
   }
 }
@@ -478,8 +478,7 @@ i{
   animation-delay: 800ms;
   animation-fill-mode: forwards;
 }
-.lifeVal:before{
-  content: '';
+.lifeVal{
   position: absolute;
   border-radius: 5px 5px 5px 5px;
   width: 100%;
@@ -493,15 +492,6 @@ i{
   border-radius: 12px;
   border: 2px outset #fff;
   position: relative;
-  z-index: 100;
-  // &::before{
-  //   content: '';
-  //   position: absolute;
-  //   border-radius: 5px 0px 0px 5px;
-  //   width: 30%;
-  //   height: 100%;
-  //   background-color:yellow;
-  // }
   &::after{
     content: attr(data-tooltip);
     font-size: 16px;
@@ -519,6 +509,10 @@ span.done{
   color: #ffffff;
   position: absolute;
   font-size: 24px;
+  height: 100%;
+  width: 100%;
+  @extend %center;
+  justify-content: center;
 }
 #trash{
   cursor:move;

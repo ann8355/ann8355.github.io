@@ -11,7 +11,7 @@
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
   <link rel="stylesheet" href="../plugin/alertify/css/alertify.core.css" />
   <link rel="stylesheet" href="../plugin/alertify/css/alertify.bootstrap.css" /> 
-  <link rel="stylesheet" href="../style/style.css">
+  <link rel="stylesheet" href="style/style.css">
 </head>
 
 <body>
@@ -47,7 +47,7 @@
           <div class="enemy">
               <div class="gamename">Git</div>
               <div class="game upDown"></div>
-              <div class="life lifeVal" data-tooltip="1/1"></div>
+              <div class="life" data-tooltip="1/1"><span class="lifeVal"></span></div>
            </div>
          <div name="Gitscl" class="scroll ui-sortable" style="background-color: hsl(215.96714247910054,25%,80%) ;"><div name="GitHub" class="tool toolActive disable show ui-sortable-handle">
           <img src="img/img_blade-1@2x.png" alt="tool" class="complete">
@@ -57,7 +57,7 @@
                 <div class="enemy">
                     <div class="gamename">Html</div>
                     <div class="game upDown"></div>
-                    <div class="life lifeVal" data-tooltip="1/1"></div>
+                    <div class="life" data-tooltip="1/1"><span class="lifeVal"></span></div>
                  </div>
               <div name="Htmlscl" class="scroll ui-sortable" style="background-color: hsl(170.0439546512722,25%,80%) ;"><div name="RWD" class="tool toolActive disable show ui-sortable-handle">
               <img src="img/img_axe@2x.png" alt="tool" class="complete">
@@ -67,7 +67,7 @@
             <div class="enemy">
                 <div class="gamename">Css</div>
                 <div class="game upDown"></div>
-                <div class="life lifeVal" data-tooltip="5/6"></div>
+                <div class="life" data-tooltip="5/6" data-life="80%"><span class="lifeVal"></span></div>
              </div>
           <div name="Cssscl" class="scroll ui-sortable" style="background-color: hsl(108.54081847758951,25%,80%) ;"><div name="Scss" class="tool toolActive disable show ui-sortable-handle">
           <img src="img/img_sword@2x.png" alt="tool" class="complete">
@@ -90,7 +90,7 @@
             <div class="enemy">
                 <div class="gamename">JavaScript</div>
                 <div class="game upDown"></div>
-                <div class="life lifeVal" data-tooltip="0/5"></div>
+                <div class="life" data-tooltip="0/5"><span class="lifeVal"></span></div>
              </div>
           <div name="JavaScriptscl" class="scroll ui-sortable" style="background-color: hsl(286.1660492132358,25%,80%) ;">
             <div name="React" class="tool toolActive disable show ui-sortable-handle">
@@ -107,7 +107,7 @@
             <div class="enemy">
                 <div class="gamename">Manage</div>
                 <div class="game upDown"></div>
-                <div class="life lifeVal" data-tooltip="0/3"></div>
+                <div class="life" data-tooltip="0/3"><span class="lifeVal"></span></div>
              </div>
           <div name="Managescl" class="scroll ui-sortable" style="background-color: hsl(157.6725893469454,25%,80%) ;"><div name="Npm" class="tool toolActive disable show ui-sortable-handle">
           <img src="img/img_sword@2x.png" alt="tool">
@@ -132,7 +132,7 @@
   <form>
     <fieldset>
       <label for="type">Type</label>
-      <input list="typeList" autocomplete="off" name="type" id="type" class="text ui-widget-content ui-corner-all">
+      <input list="typeList" autofocus="autofocus" autocomplete="off" name="type" id="type" class="text ui-widget-content ui-corner-all">
         <datalist id="typeList"></datalist>
       <label for="name">Skill Name</label>
       <input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all">
