@@ -192,19 +192,18 @@ $(document).on("dblclick", ".gamename", function() {
   var text = $(this).text();
   $(this).text("");
   $(this).append("<input type='text' style='width:100%;' data-val="+text+">");
+  $(this).find("input").focus();
 });
 $(document).on("keydown", ".gamename input", function(event) {
   if (event.keyCode == 13) {   //13為 enter 的鍵盤碼
     var text = $(this).attr("data-val");
     if($(this).val() == ""){
       $(this).parent().text(text);
-    }else{
-      console.log($(this).attr("class"));
-      console.log($(this).parent().attr("class"));
-      console.log($(this).parent().parent().attr("class"));
-      $(this).parent().text($(this).val());
+    }else{     
+      $(this).parent().parent().parent().parent().find(".typeBlock").attr("name",$(this).val());
+      $(this).parent().parent().parent().parent().find(".scroll").attr("name",$(this).val()+"scl");
+      $(this).parent().text($(this).val());    
     }
-
     $(this).remove();
   }
 });
