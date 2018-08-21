@@ -188,6 +188,26 @@ $('.scroll').sortable({
 $( '.draggabled,#draw').sortable();
 $( '.draggabled,#draw' ).disableSelection();
 $( '.scroll' ).disableSelection();
+$(document).on("dblclick", ".gamename", function() {
+  var text = $(this).text();
+  $(this).text("");
+  $(this).append("<input type='text' style='width:100%;' data-val="+text+">");
+});
+$(document).on("keydown", ".gamename input", function(event) {
+  if (event.keyCode == 13) {   //13為 enter 的鍵盤碼
+    var text = $(this).attr("data-val");
+    if($(this).val() == ""){
+      $(this).parent().text(text);
+    }else{
+      console.log($(this).attr("class"));
+      console.log($(this).parent().attr("class"));
+      console.log($(this).parent().parent().attr("class"));
+      $(this).parent().text($(this).val());
+    }
+
+    $(this).remove();
+  }
+});
 $(document).on("dblclick", ".toolActive img", function() {
   var tooltip = $(this).parent().parent().parent().find(".life").attr("data-tooltip");
   var denominator = tooltip.split("/")[1];//分母
