@@ -575,6 +575,7 @@ i {
 }
 
 .enemy .gamename {
+  cursor: auto;
   line-height: 28px;
 }
 

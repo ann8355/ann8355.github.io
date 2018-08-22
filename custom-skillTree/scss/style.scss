@@ -430,6 +430,7 @@ i{
     overflow: hidden;
     cursor: move;    
     .gamename{
+      cursor: auto;
       line-height: 28px;
       // overflow: hidden;
       // text-overflow: ellipsis;//文字溢出時，顯示省略符號(...)
