@@ -546,8 +546,7 @@ i {
 
 .typeBlock:hover:after {
   bottom: -5%;
-  left: 11vw;
-  margin-left: 0.3%;
+  left: 11.3vw;
 }
 
 .enemy {
