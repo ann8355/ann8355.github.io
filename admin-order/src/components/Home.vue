@@ -3,7 +3,8 @@
         <h4>OVERVIEW</h4>
         <div class="mt-4 row" style="height: 138px;">
             <div v-for="(item) in overviews" :key="item.id" class="bg-white h-100 rounded d-inline-flex justify-content-center align-items-center flex-column col">
-                <h6 >{{item.name}}</h6>
+                <h6><i v-bind:class="item.icon" class="mr-2
+                "></i>{{item.name}}</h6>
                 <h1 class="mt-1" v-bind:class="item.class">{{item.cost}}</h1>
             </div>
         </div>
@@ -17,12 +18,12 @@
             <div id="transcation" class="bg-white rounded mr-3 h-100 d-inline-flex py-4 flex-column col">
                 <h4 class="mb-4 ml-4">Transcation Website</h4>
                 <div v-for="(item) in transcates" :key="item.id" class="d-flex align-items-center border-bottom border-secondary pb-4 mb-4 mx-4 row">
-                    <i class="fa fa-facebook-official fa-3x col"></i>
+                    <i v-bind:class="item.icon" class="fa-3x col"></i>
                     <h6 name="website" class="text-secondary col text-center">{{item.website}}</h6>
                     <h5 class="col text-center">{{item.total}}</h5>
                     <h6 class="col text-right" v-bind:class="item.class">
-                        <v-icon class="mr-1" name="arrow-up" v-if="item.class == 'text-success'"/>
-                        <v-icon class="mr-1" name="arrow-down" v-else/>
+                        <i v-if="item.class == 'text-success'" class="fas fa-arrow-up mr-1"></i>
+                        <i class="fas fa-arrow-down mr-1" v-else></i>
                         {{item.percentage}}</h6>
                 </div>
             </div>
@@ -33,10 +34,10 @@
                     <div style="width:50%;" class="d-flex flex-column justify-content-center position-relative">
                         <h5>{{item.product}}</h5>
                         <div class="text-secondary">
-                            <v-icon class="mr-2" name="clock"/>{{item.time}}
+                            <i class="mr-2 far fa-clock"></i>{{item.time}}
                         </div>
                         <div class="text-secondary">
-                            <v-icon class="mr-3" name="female"/>{{item.name}}
+                            <i class="mr-3 fas fa-female"></i>{{item.name}}
                         </div>
                         <div class="position-absolute" style="bottom:0;right:0;">Total<h5 class="text-primary" style="margin:0;">{{item.price}}</h5></div>
                     </div>
@@ -48,27 +49,26 @@
 <script>
 export default {
   name: 'Home',
-  strict: true,
-  methods: {
-    
-  },
   data () {
     return {
       overviews: [
           {
               name: 'TOTAL_REVENUE',
               cost: '54,540',
-              class: 'text-success'
+              class: 'text-success',
+              icon: 'fas fa-hand-holding-usd'
           },
           {
               name: 'TOTAL_COST',
               cost: '12,660',
-              class: 'text-danger'
+              class: 'text-danger',
+              icon: 'fas fa-th-large'
           },
           {
               name: 'TOTAL_INCOME',
               cost: '41,880',
-              class: 'text-info'
+              class: 'text-info',
+              icon: 'fas fa-money-bill-alt'
           }
       ],
       transcates: [
@@ -76,25 +76,29 @@ export default {
               website: 'Facebook.com',
               total: '45,836',
               percentage: '20%',
-              class: 'text-success'
+              class: 'text-success',
+              icon: 'fab fa-facebook'
           },
           {
               website: 'Google.com',
               total: '23,582',
               percentage: '12%',
-              class: 'text-success'
+              class: 'text-success',
+              icon: 'fab fa-google'
           },
           {
               website: 'Amazon.com',
               total: '2,489',
               percentage: '15%',
-              class: 'text-danger'
+              class: 'text-danger',
+              icon: 'fab fa-amazon'
           },
           {
               website: 'Wordpress.com',
               total: '1,057',
               percentage: '30%',
-              class: 'text-danger'
+              class: 'text-danger',
+              icon: 'fab fa-wordpress'
           }
       ],
       orderList:[

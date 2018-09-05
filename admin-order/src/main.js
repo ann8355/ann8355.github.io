@@ -5,10 +5,17 @@ import Navbar from './components/Navbar'
 import router from './router'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.css'
-import 'vue-awesome/icons'
-import Icon from 'vue-awesome/components/Icon'
+import fontawesome from '@fortawesome/fontawesome'
+import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
+import solid from '@fortawesome/fontawesome-free-solid'
+import regular from '@fortawesome/fontawesome-free-regular'
+import brands from '@fortawesome/fontawesome-free-brands'
 
-Vue.component('v-icon', Icon)
+fontawesome.library.add(solid) // Use any icon from the Solid style
+fontawesome.library.add(regular)
+fontawesome.library.add(brands)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.use(require('vue-faker'))
 
 Vue.config.productionTip = false
@@ -16,7 +23,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   strict: true,
-  components: { Content, Navbar, Icon },
+  components: { Content, Navbar },
   template: `<div>
               <Navbar/>
               <Content/>
