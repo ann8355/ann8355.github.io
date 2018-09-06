@@ -1,7 +1,8 @@
 import Vue from 'vue'
-import axios from 'axios'
+// import axios from 'axios'
 import Content from './Content'
 import Navbar from './components/Navbar'
+import Modal from './components/Modal'
 import router from './router'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -21,26 +22,21 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   strict: true,
-  components: { Content, Navbar },
+  components: { Content, Navbar, Modal },
   template: `<div>
               <Navbar/>
               <Content/>
+              <Modal/>
             </div>`,
   data: {
-    contents: [],
-    display: ''
+    data: ''
   },
   // store,
   router: router,
-  methods: {
-    test () {
-      console.log('hi')
-    }
-  },
   mounted () {
-    axios.get('http://localhost:3000/comments').then((res) => {
-      this.contents = res.data
-      this.display = res.data[0].body
-    })
+    // axios.get('http://localhost:3000/comments').then((res) => {
+    //   this.contents = res.data
+    //   this.display = res.data[0].body
+    // })
   }
 })

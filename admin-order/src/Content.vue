@@ -12,7 +12,7 @@ export default {
 
 <style>
   body{
-    background-color: #F2F2F2;
+    background-color: #F2F2F2!important;
     font-size: 16px;
   }
   button{
