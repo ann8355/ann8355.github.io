@@ -43,7 +43,7 @@
                 </tbody>
             </table>
         </div>
-        <!-- Modal Create  -->
+       <!-- Modal Create  -->
 <div class="modal fade" id="CreateModal" role="dialog">
     <div class="modal-dialog" style="max-width: 90vw;">
         <div class="modal-content shadow">
@@ -51,7 +51,7 @@
                 <h4 class="modal-title">ADD NEW PRODUCT</h4>
                 <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
             </div>
-            <div class="modal-body d-flex  px-4">
+            <div class="modal-body d-flex pt-4 px-4">
                 <div class="col">
                   <div id="upload" class="d-flex flex-column justify-content-center align-items-center" style="height:115px;">
                     <i class="fa fa-cloud-upload fa-3x"></i>
@@ -61,13 +61,13 @@
                     <img height="126" class="col-4" src="https://images.unsplash.com/photo-1536007164800-b7f11331f35c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2fea553f92753fc4768ec28d8c619968&auto=format&fit=crop&w=1050&q=80" alt="img">
                   </div>
                 </div>
-                <div class="col">
+                <div id="productDetail" class="col">
                   <h6>Product Name</h6>
-                  <input type="text" class="form-control" id="productName" placeholder="Enter Name" required>
+                  <input type="text" class="form-control mb-2" id="productName" placeholder="Enter Name" required>
                   <h6>Product Discription</h6>
-                  <textarea class="form-control" id="proDiscript" rows="5" placeholder="Enter Discription" required></textarea>
+                  <textarea class="form-control mb-2" id="proDiscript" rows="5" placeholder="Enter Discription" required></textarea>
                   <h6>Price</h6>
-                  <div class="d-flex">
+                  <div id="priceDiv" class="d-flex mb-2">
                     <div class="input-group mr-3">
                       <div class="input-group-prepend">
                         <span class="input-group-text">Original</span>
@@ -132,10 +132,10 @@
                       <input type="text" class="form-control" id="">
                     </div>
                   </div>
-                  <button type="button" id="" class="btn btn-secondary btn-block" >ADD NEW SPECIFICATION<i class="fa fa-plus"></i></button>
+                  <button type="button" id="" class="btn btn-secondary btn-block mt-3" >ADD NEW SPECIFICATION<i class="fa fa-plus"></i></button>
               </div>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer pb-4" style="padding-right:39px;">
                 <button type="submit" id="commitBtn" class="btn btn-light">
                     SAVE DRAFT</button>
                 <button type="button" id="cancelBtn" class="btn btn-secondary" >PUBLISH</button>
