@@ -1,0 +1,240 @@
+[
+    {
+        "productName": "Hollow Out A Line Cami Dress",
+        "proDiscript": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione quia quam, eaque voluptatem totam ea.",
+        "original": 500,
+        "discounts": 400,
+        "imgSrc": ["https://gloimg.zafcdn.com/zaful/pdm-product-pic/Clothing/2018/01/17/thumb-img/1523319679046814549.jpg",
+        "https://gloimg.zafcdn.com/zaful/pdm-product-pic/Clothing/2018/01/17/thumb-img/1523319679524931729.jpg",
+        "https://gloimg.zafcdn.com/zaful/pdm-product-pic/Clothing/2018/01/17/thumb-img/1523319680573659114.jpg"],
+        "specificates": [
+            {
+                "sizeSelected": "M",
+                "color": "mint green",
+                "inventory": 795
+            },
+            {
+                "sizeSelected": "S",
+                "color": "tan",
+                "inventory": 382
+            },
+            {
+                "sizeSelected": "L",
+                "color": "tan",
+                "inventory": 199
+            }
+        ],
+        "status": [
+            "btn-success",
+            "Published",
+            "1"
+        ]
+    },
+    {
+        "productName": "Cami Button Up Casual Dress",
+        "proDiscript": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione quia quam, eaque voluptatem totam ea.",
+        "original": 173,
+        "discounts": 138,
+        "imgSrc": ["https://gloimg.zafcdn.com/zaful/pdm-product-pic/Clothing/2018/05/31/thumb-img/1529968219758591417.jpg",
+        "https://gloimg.zafcdn.com/zaful/pdm-product-pic/Clothing/2018/05/31/thumb-img/1529968220468081747.jpg",
+        "https://gloimg.zafcdn.com/zaful/pdm-product-pic/Clothing/2018/05/31/thumb-img/1529968219531345036.jpg"],
+        "specificates": [
+            {
+                "sizeSelected": "S",
+                "color": "grey",
+                "inventory": 705
+            },
+            {
+                "sizeSelected": "S",
+                "color": "orange",
+                "inventory": 843
+            },
+            {
+                "sizeSelected": "S",
+                "color": "black",
+                "inventory": 763
+            }
+        ],
+        "status": [
+            "btn-success",
+            "Published",
+            "1"
+        ]
+    },
+    {
+        "productName": "Color Block Hooded Jacket",
+        "proDiscript": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione quia quam, eaque voluptatem totam ea.",
+        "original": 586,
+        "discounts": 469,
+        "imgSrc": ["https://gloimg.zafcdn.com/zaful/pdm-product-pic/Clothing/2018/08/23/thumb-img/1535050444753965950.jpg",
+        "https://gloimg.zafcdn.com/zaful/pdm-product-pic/Clothing/2018/08/23/thumb-img/1535050444920630019.jpg"],
+        "specificates": [
+            {
+                "sizeSelected": "L",
+                "color": "gold",
+                "inventory": 924
+            },
+            {
+                "sizeSelected": "M",
+                "color": "purple",
+                "inventory": 75
+            },
+            {
+                "sizeSelected": "S",
+                "color": "tan",
+                "inventory": 171
+            }
+        ],
+        "status": [
+            "btn-success",
+            "Published",
+            "1"
+        ]
+    },
+    {
+        "productName": "Turtleneck Striped Sweater",
+        "proDiscript": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione quia quam, eaque voluptatem totam ea.",
+        "original": 255,
+        "discounts": 204,
+        "imgSrc": ["https://gloimg.zafcdn.com/zaful/pdm-product-pic/Clothing/2018/08/23thumb-img/1536081187113448206.jpg"],
+        "specificates": [
+            {
+                "sizeSelected": "S",
+                "color": "lavender",
+                "inventory": 476
+            },
+            {
+                "sizeSelected": "L",
+                "color": "silver",
+                "inventory": 286
+            },
+            {
+                "sizeSelected": "L",
+                "color": "grey",
+                "inventory": 476
+            }
+        ],
+        "status": [
+            "btn-secondary",
+            "Unpublished",
+            "2"
+        ]
+    },
+    {
+        "productName": "Drop Shoulder Fluffy Hoodie",
+        "proDiscript": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione quia quam, eaque voluptatem totam ea.",
+        "original": 956,
+        "discounts": 765,
+        "imgSrc": ["https://gloimg.zafcdn.com/zaful/pdm-product-pic/Clothing/2018/08/28thumb-img/1535475796432650470.jpg"],
+        "specificates": [
+            {
+                "sizeSelected": "L",
+                "color": "turquoise",
+                "inventory": 287
+            },
+            {
+                "sizeSelected": "L",
+                "color": "violet",
+                "inventory": 574
+            },
+            {
+                "sizeSelected": "M",
+                "color": "fuchsia",
+                "inventory": 220
+            }
+        ],
+        "status": [
+            "btn-success",
+            "Published",
+            "1"
+        ]
+    },
+    {
+        "productName": "Button Up Jean Suspender Skirt",
+        "proDiscript": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione quia quam, eaque voluptatem totam ea.",
+        "original": 421,
+        "discounts": 337,
+        "imgSrc": ["https://gloimg.zafcdn.com/zaful/pdm-product-pic/Clothing/2018/08/29thumb-img/1535570031591781086.jpg"],
+        "specificates": [
+            {
+                "sizeSelected": "S",
+                "color": "gold",
+                "inventory": 559
+            },
+            {
+                "sizeSelected": "M",
+                "color": "red",
+                "inventory": 894
+            },
+            {
+                "sizeSelected": "S",
+                "color": "azure",
+                "inventory": 805
+            }
+        ],
+        "status": [
+            "btn-secondary",
+            "Unpublished",
+            "2"
+        ]
+    },
+    {
+        "productName": "High Waist Belted Striped Pants",
+        "proDiscript": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione quia quam, eaque voluptatem totam ea.",
+        "original": 376,
+        "discounts": 301,
+        "imgSrc": ["https://gloimg.zafcdn.com/zaful/pdm-product-pic/Clothing/2018/08/30thumb-img/1535582250764076062.jpg"],
+        "specificates": [
+            {
+                "sizeSelected": "L",
+                "color": "pink",
+                "inventory": 155
+            },
+            {
+                "sizeSelected": "L",
+                "color": "tan",
+                "inventory": 578
+            },
+            {
+                "sizeSelected": "L",
+                "color": "tan",
+                "inventory": 77
+            }
+        ],
+        "status": [
+            "btn-success",
+            "Published",
+            "1"
+        ]
+    },
+    {
+        "productName": "Leaves Print Overlap Dress",
+        "proDiscript": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione quia quam, eaque voluptatem totam ea.",
+        "original": 882,
+        "discounts": 706,
+        "imgSrc": ["https://gloimg.zafcdn.com/zaful/pdm-product-pic/Clothing/2018/05/14/thumb-img/1526236106677131585.jpg",
+        "https://gloimg.zafcdn.com/zaful/pdm-product-pic/Clothing/2018/05/14/thumb-img/1526236106202026499.jpg"],
+        "specificates": [
+            {
+                "sizeSelected": "L",
+                "color": "white",
+                "inventory": 704
+            },
+            {
+                "sizeSelected": "M",
+                "color": "magenta",
+                "inventory": 533
+            },
+            {
+                "sizeSelected": "S",
+                "color": "orange",
+                "inventory": 155
+            }
+        ],
+        "status": [
+            "btn-secondary",
+            "Unpublished",
+            "2"
+        ]
+    }
+]

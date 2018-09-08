@@ -20,15 +20,23 @@
                 </thead>
                 <tbody>
                     <tr v-for="(item,index) in tableData" :key="item.id">
-                        <td scope="row"><input type="checkbox" v-bind:value="index" v-model="checked"></td>
+                        <td scope="row">
+                            <input type="checkbox" v-bind:value="index" v-model="checked">
+                            <span v-on:click="editModal(index)"><i class="fas fa-edit text-primary fa-lg ml-2" data-toggle="modal" data-target="#CreateModal" title="edit"></i></span>
+                        </td>
                         <td width="250">
-                            <div><img class="productImg" src="https://gloimg.zafcdn.com/zaful/pdm-product-pic/Clothing/2017/12/29/thumb-img/1515204260445565983.jpg" v-bind:alt="item.productName">{{item.productName}}</div>
+                            {{item.productName}}
+                            <div><img class="productImg mr-2" v-bind:src="item.imgSrc[0]" v-bind:alt="item.productName"></div>
                         </td>
                         <td>${{item.original}}</td>
-                        <td>${{item.discount}}</td>
-                        <td>{{item.size}}</td>
-                        <td>{{item.color}}</td>
-                        <td>{{item.inventory}}</td>
+                        <td>${{item.discounts}}</td>
+                        <td colspan="3" style="padding:0px;">
+                            <div class="d-flex" v-for="(item2) in item.specificates" :key="item2.id">
+                                <p class="col">{{item2.sizeSelected}}</p>
+                                <p class="col">{{item2.color}}</p>
+                                <p class="col">{{item2.inventory}}</p>
+                            </div>
+                        </td>
                         <td>
                             <div class="btn-group" role="group">
                                 <button name="status" type="button" v-bind:class="item.status[0]" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-bind:value="item.status[2]">
@@ -46,10 +54,10 @@
     </div>
 </template>
 <script>
-const sizeMap = new Map()
-    sizeMap.set(1, "S")
-    sizeMap.set(2, "M")
-    sizeMap.set(3, "L")
+// const sizeMap = new Map()
+//     sizeMap.set(1, "S")
+//     sizeMap.set(2, "M")
+//     sizeMap.set(3, "L")
 const btnMap = new Map()
     btnMap.set(1, ['btn-success', 'Published','1'])
     btnMap.set(2, ['btn-secondary','Unpublished','2'])
@@ -61,18 +69,17 @@ export default {
     tableData() {
         let dataArray = [];
         if(this.filterOption == '5'){
-            dataArray = this.contents
+            dataArray = this.$store.state.contents
         }else if(this.filterOption == '3' || this.filterOption == '4'){
             const status = btnMap.get(parseInt(this.filterOption)-2)
-            dataArray = this.contents.filter(function(item, index, array){
+            dataArray = this.$store.state.contents.filter(function(item, index, array){
                 return item.status == status   
             })
         }
         if(this.keyword != ''){
             const keyword = this.keyword
             dataArray = dataArray.filter(function(item, index, array){
-                return item.color.indexOf(keyword) > -1 || item.productName.indexOf(keyword) > -1 || item.inventory.toString().indexOf(keyword) > -1
-                || item.original.toString().indexOf(keyword) > -1 || item.discount.toString().indexOf(keyword) > -1 || item.size.indexOf(keyword) > -1
+                return item.productName.indexOf(keyword) > -1 || item.original.toString().indexOf(keyword) > -1 || item.discounts.toString().indexOf(keyword) > -1 
             })
         }
         return dataArray
@@ -93,35 +100,29 @@ export default {
        }else{
            this.filterOption = id
        }
+    },
+    editModal(index){
+        console.log(index)
+        let obj = this.tableData[index]
+        let dataObj = {
+            productName: obj.productName,
+            proDiscript: pbj.proDiscript,
+            original: obj.original,
+            discounts: obj.discounts,
+            imgSrc: obj.imgSrc,
+            specificates : obj.specificates,
+            status: obj.status
+        }
+        console.log(dataObj)
     }
   },
-  mounted() {
-    let datalist = [];
-    for(let i=0 ;i<20;i++){
-        let price = this.$faker().commerce.price();
-        let size = this.$faker().random.number({min:1, max:3});
-        let status = this.$faker().random.number({min:1, max:2});
-        let data = {
-            productName: this.$faker().commerce.product(),
-            original: parseInt(price),
-            discount: Math.round(parseInt(price)*0.8),
-            size: sizeMap.get(size),
-            color: this.$faker().commerce.color(),
-            inventory: parseInt(this.$faker().finance.amount()),
-            status: btnMap.get(status)
-        }
-        datalist.push(data)
-    }
-    // axios.get('http://localhost:3000/method').then((res) => {
-    //   this.contents = res.data
-    this.contents = datalist
-    // })
+  mounted () {
+    this.$store.dispatch('CONTENTS_READ')
   },
   data () {
     return {
       columns: ['','Product','Original','Discount','Size','Color','Inventory','Status'],
       dropdowns: ['Select All','Unselect All','Published','Unpublished','Show All'],
-      contents: [],
       filterOption: '5',
       checked: false,
       keyword: ''
@@ -133,7 +134,24 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .productImg{
+  height: 100px;
+  width: 100px;
+}
+.fa-edit{
+  cursor: pointer;
+}
+#productList td p{
+  border-bottom: 1px solid #dee2e6;
+  margin: 0;
+  padding: 0;
   height: 50px;
-  width: 50px;
+  line-height: 50px;
+}
+#productList td div:nth-child(3) p{
+  border-bottom: 1px solid transparent;
+}
+#productList thead th:nth-child(5),#productList th:nth-child(6),#productList th:nth-child(7){
+    width: 12%;
+    padding: 12px 0px;
 }
 </style>

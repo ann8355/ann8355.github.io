@@ -23,12 +23,16 @@
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col"></th>
-                        <th v-on:click="sort(index)" v-show="showColumn[index]" v-for="(item,index) in columns" :key="item.id" scope="col">{{item}}</th>
+                        <th v-on:click="sort(index)" v-show="showColumn[index]" v-for="(item,index) in columns" :key="item.id" scope="col">
+                            {{item}}<i v-if="index == 2" class="fas fa-sort ml-2 text-warning"></i>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="(item,index) in tableData" :key="item.id">
-                        <td scope="row"><input type="checkbox" v-bind:value="index" v-model="checked"></td>
+                        <td scope="row">
+                            <input type="checkbox" v-bind:value="index" v-model="checked">
+                        </td>
                         <td v-show="showColumn[0]">{{item.id}}</td>
                         <td v-show="showColumn[1]">{{item.name}}</td>
                         <td v-show="showColumn[2]">{{item.product}}</td>
@@ -161,7 +165,7 @@ export default {
   data () {
     return {
       dropdowns: ['Select All','Unselect All','Paid','Unpaid','Shipping','Done','Show All'],
-      columns: ['Order ID','Customer','Product List','Total','Add to Cart','Check-out','Address','Phone','Email','Status'],
+      columns: ['ID','Customer','Product List','Total','Add to Cart','Check-out','Address','Phone','Email','Status'],
       contents: [],
       filterOption: '7',
       checked: false,
@@ -180,5 +184,6 @@ export default {
     }
     #order th:nth-child(4){
         cursor: pointer;
+        width: 12%;
     }
 </style>
