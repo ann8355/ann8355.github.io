@@ -15,21 +15,21 @@
                   </div>
                   <input ref="files" @change="previewFiles" multiple class="d-none" type="file" accept="image/*">
                   <div id="uploadImg" class="d-flex flex-wrap mt-3">
-                    <img v-for="(item) in imgSrc" :key="item.id" height="126" class="col-4" v-bind:src="item" alt="img">
+                    <img v-for="(item) in contentObj.imgSrc" :key="item.id" height="126" class="col-4" v-bind:src="item" alt="img">
                   </div>
                 </div>
                 <div id="productDetail" class="col">
                   <h6>Product Name</h6>
-                  <input type="text" class="form-control mb-2" v-model="productName" placeholder="Enter Name" required>
+                  <input type="text" class="form-control mb-2" v-model="contentObj.productName" placeholder="Enter Name" required>
                   <h6>Product Discription</h6>
-                  <textarea class="form-control mb-2" v-model="proDiscript" rows="5" placeholder="Enter Discription" required></textarea>
+                  <textarea class="form-control mb-2" v-model="contentObj.proDiscript" rows="5" placeholder="Enter Discription" required></textarea>
                   <h6>Price</h6>
                   <div id="priceDiv" class="d-flex mb-2">
                     <div class="input-group mr-3">
                       <div class="input-group-prepend">
                         <span class="input-group-text">Original</span>
                       </div>
-                      <input type="number" class="form-control" required v-model.number="original">
+                      <input type="number" class="form-control" required v-model.number="contentObj.original">
                     </div>
                     <div class="input-group">
                       <div class="input-group-prepend">
@@ -39,7 +39,7 @@
                     </div>
                   </div>
                   <h6>Specification</h6>
-                  <div v-for="(item,index) in specificates" :key="item.id" name="specificate" class="d-flex my-2">
+                  <div v-for="(item,index) in contentObj.specificates" :key="item.id" name="specificate" class="d-flex my-2">
                     <span v-on:click="minusSpecificate(index)"><i class="fas fa-minus-circle mt-2 mr-1"></i></span>
                     <div class="input-group mr-2">
                       <div class="input-group-prepend">
@@ -75,24 +75,41 @@
 </div>
 </template>
 <script>
+import bus from '@/bus/bus.js'
+
 export default {
   name: 'Modal',
   strict: true,
-//   created () {
-//     this.$on('editModal', (data) => {
-//       // 這裡可以拿到從 A 過來的 data 資料
-//       console.log(data)
-//       // 可以把 data 指給自己
-//     })
-//   },
+  created () {
+    bus.$on('editModal', obj => {// 接收事件
+      // let dataObj = {
+      //       productName: obj.productName,
+      //       proDiscript: obj.proDiscript,
+      //       original: obj.original,
+      //       discounts: obj.discounts,
+      //       imgSrc: obj.imgSrc,
+      //       specificates : obj.specificates,
+      //       status: obj.status
+      //   }
+      this.contentObj.productName = obj.productName
+      this.contentObj.proDiscript = obj.proDiscript
+      this.contentObj.original = obj.original
+      // this.contentObj.discounts = obj.discounts
+      this.contentObj.imgSrc = obj.imgSrc
+      // this.contentObj.specificates =  obj.specificates
+      // this.contentObj.status = obj.status
+        console.log(this.contentObj)
+      
+    })
+  },
   computed: {
     discount: {
       get () {
-        this.discounts = Math.round(this.original*0.8)
-        return Math.round(this.original*0.8)
+        this.contentObj.discounts = Math.round(this.contentObj.original*0.8)
+        return Math.round(this.contentObj.original*0.8)
       },
       set (value) {
-        this.discounts = value
+        this.contentObj.discounts = value
       }
     }
   },
@@ -103,20 +120,20 @@ export default {
           color: '',
           inventory: null
       }
-      this.specificates.push(obj)
+      this.contentObj.specificates.push(obj)
     },
     minusSpecificate(index) {
-      this.specificates.splice(index, 1)
+      this.contentObj.specificates.splice(index, 1)
     },
     clear(){
-      this.productName = ''
-      this.proDiscript = ''
-      this.original = null
-      this.discounts = null
+      this.contentObj.productName = ''
+      this.contentObj.proDiscript = ''
+      this.contentObj.original = null
+      this.contentObj.discounts = null
       this.file = []
-      this.imgSrc = []
-      this.status = null
-      this.specificates = [
+      this.contentObj.imgSrc = []
+      this.contentObj.status = null
+      this.contentObj.specificates = [
         {
           sizeSelected: '',
           color: '',
@@ -133,19 +150,14 @@ export default {
       let id;
       if(name == 'saveDraft'){
         id = this.$refs.saveDraft
-        this.status = ['btn-secondary','Unpublished','2']
+        this.contentObj.status = ['btn-secondary','Unpublished','2']
       }else if(name == 'publish'){
         id = this.$refs.publish
-        this.status = ['btn-success', 'Published','1']
+        this.contentObj.status = ['btn-success', 'Published','1']
       }
       id.removeAttribute("data-dismiss")
       if (this.$refs.productForm.checkValidity()) {
-        console.log(this.productName)
-        console.log(this.proDiscript)
-        console.log(this.original)
-        console.log(this.discounts)
-        console.log(this.specificates)
-        console.log(this.status)
+        console.log(this.contentObj)
         console.log(this.file)
         id.setAttribute("data-dismiss", "modal")
         this.clear()
@@ -166,7 +178,7 @@ export default {
             imgArray.push(fileContent)
         }              
       })
-      this.imgSrc = imgArray
+      this.contentObj.imgSrc = imgArray
       this.$refs.files.value = ''
     }
   },
@@ -174,24 +186,44 @@ export default {
     return {
       file: [],
       size: ['','S','M','L'],
-      productName: '',
-      proDiscript: '',
-      original: null,
-      discounts: null,
-      imgSrc: [],
-      status: null,
-      specificates: [
-        {
-          sizeSelected: '',
-          color: '',
-          inventory: null
-        },
-        {
-          sizeSelected: '',
-          color: '',
-          inventory: null
-        }
-      ]
+      contentObj: {
+        productName: '',
+        proDiscript: '',
+        original: null,
+        discounts: null,
+        imgSrc: [],
+        specificates: [
+          {
+            sizeSelected: '',
+            color: '',
+            inventory: null
+          },
+          {
+            sizeSelected: '',
+            color: '',
+            inventory: null
+          }
+        ],
+        status: null
+      }
+      // productName: '',
+      // proDiscript: '',
+      // original: null,
+      // discounts: null,
+      // imgSrc: [],
+      // status: null,
+      // specificates: [
+      //   {
+      //     sizeSelected: '',
+      //     color: '',
+      //     inventory: null
+      //   },
+      //   {
+      //     sizeSelected: '',
+      //     color: '',
+      //     inventory: null
+      //   }
+      // ]
     }
   }
 }

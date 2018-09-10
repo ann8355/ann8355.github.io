@@ -54,6 +54,8 @@
     </div>
 </template>
 <script>
+import bus from '@/bus/bus.js'
+
 // const sizeMap = new Map()
 //     sizeMap.set(1, "S")
 //     sizeMap.set(2, "M")
@@ -102,18 +104,8 @@ export default {
        }
     },
     editModal(index){
-        console.log(index)
         let obj = this.tableData[index]
-        let dataObj = {
-            productName: obj.productName,
-            proDiscript: pbj.proDiscript,
-            original: obj.original,
-            discounts: obj.discounts,
-            imgSrc: obj.imgSrc,
-            specificates : obj.specificates,
-            status: obj.status
-        }
-        console.log(dataObj)
+        bus.$emit('editModal', obj)// 傳送事件（事件名稱,參數）
     }
   },
   mounted () {
