@@ -10,13 +10,14 @@ import fontawesome from '@fortawesome/fontawesome'
 import solid from '@fortawesome/fontawesome-free-solid'
 import regular from '@fortawesome/fontawesome-free-regular'
 import brands from '@fortawesome/fontawesome-free-brands'
+import VueBus from 'vue-bus'
 
 fontawesome.library.add(solid) // Use any icon from the Solid style
 fontawesome.library.add(regular)
 fontawesome.library.add(brands)
 
 Vue.use(require('vue-faker'))
-
+Vue.use(VueBus)
 Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({

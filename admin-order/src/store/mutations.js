@@ -6,6 +6,9 @@
 const mutations = {
   setContents (state, data) {
     state.contents = data
+  },
+  setObj (state, obj) {
+    state.obj = obj
   }
 // let datalist = [];
 // for(let i=0 ;i<8;i++){

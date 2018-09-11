@@ -75,31 +75,28 @@
 </div>
 </template>
 <script>
-import bus from '@/bus/bus.js'
-
 export default {
   name: 'Modal',
   strict: true,
   created () {
-    bus.$on('editModal', obj => {// 接收事件
-      // let dataObj = {
-      //       productName: obj.productName,
-      //       proDiscript: obj.proDiscript,
-      //       original: obj.original,
-      //       discounts: obj.discounts,
-      //       imgSrc: obj.imgSrc,
-      //       specificates : obj.specificates,
-      //       status: obj.status
-      //   }
-      this.contentObj.productName = obj.productName
-      this.contentObj.proDiscript = obj.proDiscript
-      this.contentObj.original = obj.original
-      // this.contentObj.discounts = obj.discounts
-      this.contentObj.imgSrc = obj.imgSrc
-      // this.contentObj.specificates =  obj.specificates
-      // this.contentObj.status = obj.status
-        console.log(this.contentObj)
-      
+    this.$bus.$on('editModal', obj => {// 接收事件
+      let array = []
+      array =  obj.specificates.slice(0, -1)// 複製元素到新的陣列
+      array =  array.map(function(item, index, array){
+        var obj = {}  
+        obj = JSON.parse(JSON.stringify(item)) 
+        return obj 
+      })
+      let element = {
+        productName: obj.productName,
+        proDiscript: obj.proDiscript,
+        original: obj.original,
+        discounts: obj.discounts,
+        imgSrc: obj.imgSrc,
+        specificates: array,
+        status: obj.status
+      }
+      this.$store.commit('setObj', element)
     })
   },
   computed: {
@@ -110,6 +107,21 @@ export default {
       },
       set (value) {
         this.contentObj.discounts = value
+      }
+    },
+    contentObj: {
+      get () {
+        this.content = JSON.parse(JSON.stringify(this.$store.state.obj))
+        return this.content
+      },
+      set (value) {
+        this.content.productName = value
+        this.content.proDiscript = value
+        this.content.original = value
+        // this.content.discounts = value
+        this.content.imgSrc = value
+        this.content.specificates =  value
+        // this.content.status = value
       }
     }
   },
@@ -150,14 +162,14 @@ export default {
       let id;
       if(name == 'saveDraft'){
         id = this.$refs.saveDraft
-        this.contentObj.status = ['btn-secondary','Unpublished','2']
+        this.content.status = ['btn-secondary','Unpublished','2']
       }else if(name == 'publish'){
         id = this.$refs.publish
-        this.contentObj.status = ['btn-success', 'Published','1']
+        this.content.status = ['btn-success', 'Published','1']
       }
       id.removeAttribute("data-dismiss")
       if (this.$refs.productForm.checkValidity()) {
-        console.log(this.contentObj)
+        console.log(this.content)
         console.log(this.file)
         id.setAttribute("data-dismiss", "modal")
         this.clear()
@@ -186,7 +198,7 @@ export default {
     return {
       file: [],
       size: ['','S','M','L'],
-      contentObj: {
+      content: {
         productName: '',
         proDiscript: '',
         original: null,
