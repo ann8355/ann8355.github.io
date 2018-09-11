@@ -15,21 +15,21 @@
                   </div>
                   <input ref="files" @change="previewFiles" multiple class="d-none" type="file" accept="image/*">
                   <div id="uploadImg" class="d-flex flex-wrap mt-3">
-                    <img v-for="(item) in contentObj.imgSrc" :key="item.id" height="126" class="col-4" v-bind:src="item" alt="img">
+                    <img v-for="(item) in content.imgSrc" :key="item.id" height="126" class="col-4" v-bind:src="item" alt="img">
                   </div>
                 </div>
                 <div id="productDetail" class="col">
                   <h6>Product Name</h6>
-                  <input type="text" class="form-control mb-2" v-model="contentObj.productName" placeholder="Enter Name" required>
+                  <input type="text" class="form-control mb-2" v-model="content.productName" placeholder="Enter Name" required>
                   <h6>Product Discription</h6>
-                  <textarea class="form-control mb-2" v-model="contentObj.proDiscript" rows="5" placeholder="Enter Discription" required></textarea>
+                  <textarea class="form-control mb-2" v-model="content.proDiscript" rows="5" placeholder="Enter Discription" required></textarea>
                   <h6>Price</h6>
                   <div id="priceDiv" class="d-flex mb-2">
                     <div class="input-group mr-3">
                       <div class="input-group-prepend">
                         <span class="input-group-text">Original</span>
                       </div>
-                      <input type="number" class="form-control" required v-model.number="contentObj.original">
+                      <input type="number" class="form-control" required v-model.number="content.original">
                     </div>
                     <div class="input-group">
                       <div class="input-group-prepend">
@@ -39,7 +39,7 @@
                     </div>
                   </div>
                   <h6>Specification</h6>
-                  <div v-for="(item,index) in contentObj.specificates" :key="item.id" name="specificate" class="d-flex my-2">
+                  <div v-for="(item,index) in content.specificates" :key="item.id" name="specificate" class="d-flex my-2">
                     <span v-on:click="minusSpecificate(index)"><i class="fas fa-minus-circle mt-2 mr-1"></i></span>
                     <div class="input-group mr-2">
                       <div class="input-group-prepend">
@@ -66,8 +66,8 @@
                 </div>
             </div>
             <div class="modal-footer pb-4" style="padding-right:39px;">
-                <button type="submit" ref="saveDraft" v-on:click="save('saveDraft')" class="btn btn-light">SAVE DRAFT</button>
-                <button type="submit" ref="publish" v-on:click="save('publish')" class="btn btn-secondary">PUBLISH</button>
+                <button type="submit" ref="saveDraft" v-on:click="save('saveDraft',JSON.stringify(content))" class="btn btn-light">SAVE DRAFT</button>
+                <button type="submit" ref="publish" v-on:click="save('publish',JSON.stringify(content))" class="btn btn-secondary">PUBLISH</button>
             </div>
           </form>
         </div>
@@ -81,7 +81,7 @@ export default {
   created () {
     this.$bus.$on('editModal', obj => {// 接收事件
       let array = []
-      array =  obj.specificates.slice(0, -1)// 複製元素到新的陣列
+      array =  obj.specificates.slice(0)// 複製元素到新的陣列
       array =  array.map(function(item, index, array){
         var obj = {}  
         obj = JSON.parse(JSON.stringify(item)) 
@@ -97,32 +97,35 @@ export default {
         status: obj.status
       }
       this.$store.commit('setObj', element)
+      this.content = JSON.parse(JSON.stringify(this.$store.state.obj))
     })
+    this.content = JSON.parse(JSON.stringify(this.$store.state.obj))
   },
   computed: {
     discount: {
       get () {
-        this.contentObj.discounts = Math.round(this.contentObj.original*0.8)
-        return Math.round(this.contentObj.original*0.8)
+        this.content.discounts = Math.round(this.content.original*0.8)
+        return Math.round(this.content.original*0.8)
       },
       set (value) {
-        this.contentObj.discounts = value
+        this.content.discounts = value
       }
     },
     contentObj: {
       get () {
-        this.content = JSON.parse(JSON.stringify(this.$store.state.obj))
+        // this.content = JSON.parse(JSON.stringify(this.$store.state.obj))
+        console.log(this.content)
         return this.content
-      },
-      set (value) {
-        this.content.productName = value
-        this.content.proDiscript = value
-        this.content.original = value
-        // this.content.discounts = value
-        this.content.imgSrc = value
-        this.content.specificates =  value
-        // this.content.status = value
       }
+      // set (value) {
+      //   this.content.productName = value
+      //   this.content.proDiscript = value
+      //   this.content.original = value
+      //   // this.content.discounts = value
+      //   this.content.imgSrc = value
+      //   this.content.specificates =  value
+      //   // this.content.status = value
+      // }
     }
   },
   methods: {
@@ -132,20 +135,20 @@ export default {
           color: '',
           inventory: null
       }
-      this.contentObj.specificates.push(obj)
+      this.content.specificates.push(obj)
     },
     minusSpecificate(index) {
-      this.contentObj.specificates.splice(index, 1)
+      this.content.specificates.splice(index, 1)
     },
     clear(){
-      this.contentObj.productName = ''
-      this.contentObj.proDiscript = ''
-      this.contentObj.original = null
-      this.contentObj.discounts = null
+      this.content.productName = ''
+      this.content.proDiscript = ''
+      this.content.original = null
+      this.content.discounts = null
       this.file = []
-      this.contentObj.imgSrc = []
-      this.contentObj.status = null
-      this.contentObj.specificates = [
+      this.content.imgSrc = []
+      this.content.status = null
+      this.content.specificates = [
         {
           sizeSelected: '',
           color: '',
@@ -158,18 +161,19 @@ export default {
         }
       ]
     },
-    save(name) {
+    save(name,contentObj) {// 為何無法直接得到this.content的值（但在tempelate可以得到content.屬性值或JSON.stringify(content)？
+      let content = JSON.parse(contentObj)
       let id;
       if(name == 'saveDraft'){
         id = this.$refs.saveDraft
-        this.content.status = ['btn-secondary','Unpublished','2']
+        content.status = ['btn-secondary','Unpublished','2']
       }else if(name == 'publish'){
         id = this.$refs.publish
-        this.content.status = ['btn-success', 'Published','1']
+        content.status = ['btn-success', 'Published','1']
       }
       id.removeAttribute("data-dismiss")
       if (this.$refs.productForm.checkValidity()) {
-        console.log(this.content)
+        console.log(content)
         console.log(this.file)
         id.setAttribute("data-dismiss", "modal")
         this.clear()
@@ -190,7 +194,7 @@ export default {
             imgArray.push(fileContent)
         }              
       })
-      this.contentObj.imgSrc = imgArray
+      this.content.imgSrc = imgArray
       this.$refs.files.value = ''
     }
   },
@@ -198,26 +202,7 @@ export default {
     return {
       file: [],
       size: ['','S','M','L'],
-      content: {
-        productName: '',
-        proDiscript: '',
-        original: null,
-        discounts: null,
-        imgSrc: [],
-        specificates: [
-          {
-            sizeSelected: '',
-            color: '',
-            inventory: null
-          },
-          {
-            sizeSelected: '',
-            color: '',
-            inventory: null
-          }
-        ],
-        status: null
-      }
+      content: null
       // productName: '',
       // proDiscript: '',
       // original: null,
