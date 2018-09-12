@@ -9,13 +9,23 @@
                 </div>
             </div>
             <input v-model="keyword" type="text" style="border-radius: 0.25rem;" placeholder="Enter Keyword">
-            <div class="btn-group" role="group" style="float:right;">
+            <div class="btn-group d-flex align-items-center" role="group" style="float:right;">
                 <button id="btnGroupDrop2" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="float:right;">EDIT SECTION</button>
                 <div id ="dropdown-menu2" class="dropdown-menu" aria-labelledby="btnGroupDrop2">
                     <div v-for="(item,index) in columns" :key="item.id" class="dropdown-item">
                         <input v-model="showColumn[index]" class="mr-2" type="checkbox" v-bind:value="index">{{item}}
                     </div>
                 </div>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="totalPage"><i class="fas fa-list-ul"></i></label>
+                    </div>
+                    <select v-model="totalPages" class="custom-select" id="totalPage">
+                        <option value="5" selected>5</option>
+                        <option value="10">10</option>
+                        <option value="">All</option>
+                    </select>
+                </div>   
             </div>
         </div>
         <div id="block" class="table-responsive" style="overflow:auto;">
@@ -56,6 +66,23 @@
                 </tbody>
             </table>
         </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <span class="page-link" aria-label="Previous" @click="prevPage">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </span>
+                </li>
+                <li class="page-item" v-for="(item,index) in pages" :key="item.id"><span class="page-link" @click="changePage(index+1)">{{index+1}}</span></li>
+                <li class="page-item">
+                    <span class="page-link" aria-label="Next" @click="nextPage">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </span>
+                </li>
+            </ul>
+        </nav>
     </div>
 </template>
 <script>
@@ -87,10 +114,30 @@ export default {
                 || item.phone.indexOf(keyword) > -1 || item.email.indexOf(keyword) > -1
             })
         }
+        if(this.totalPages != ""){
+            this.pages = Math.ceil(dataArray.length/this.totalPages)
+        }else{
+            this.pages = 1
+        }
         return dataArray
     }
   },
   methods: {
+    changePage(id){
+        this.thisPage = id
+    },
+    prevPage(){
+        let page = this.thisPage
+        if(page - 1 > 0){
+            this.thisPage = page - 1
+        }
+    },
+    nextPage(){
+        let page = this.thisPage
+        if(page + 1 <= this.pages){
+            this.thisPage = page + 1
+        }
+    },
     changeStatus(id,index){
         const btnArray = btnMap.get(id);
         let obj = this.contents[index]
@@ -171,7 +218,10 @@ export default {
       checked: false,
       keyword: '',
       showColumn: [true,true,true,true,true,true,true,true,true,true],
-      sortable: 'asc'
+      sortable: 'asc',
+      totalPages: '5',
+      thisPage: '1',
+      pages: ''
     }
   }
 }
@@ -185,5 +235,14 @@ export default {
     #order th:nth-child(4){
         cursor: pointer;
         width: 12%;
+    }
+    .page-link,.custom-select,.input-group-text {
+        background-color: #FDFDFE;
+        color: #000;
+        border: 1px solid #000;
+    }
+    .page-link:hover,.page-link:focus,.input-group-text{
+        background-color: #202529;
+        color: #fff;
     }
 </style>

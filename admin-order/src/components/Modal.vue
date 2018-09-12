@@ -20,7 +20,7 @@
                 </div>
                 <div id="productDetail" class="col">
                   <h6>Product Name</h6>
-                  <input type="text" class="form-control mb-2" v-model="content.productName" placeholder="Enter Name" required>
+                  <input v-bind:readonly="action == 'update'" type="text" class="form-control mb-2" v-model="content.productName" placeholder="Enter Name" required>
                   <h6>Product Discription</h6>
                   <textarea class="form-control mb-2" v-model="content.proDiscript" rows="5" placeholder="Enter Discription" required></textarea>
                   <h6>Price</h6>
@@ -98,6 +98,7 @@ export default {
       }
       this.$store.commit('setObj', element)
       this.content = JSON.parse(JSON.stringify(this.$store.state.obj))
+      this.action = 'update'
     })
     this.content = JSON.parse(JSON.stringify(this.$store.state.obj))
   },
@@ -110,22 +111,6 @@ export default {
       set (value) {
         this.content.discounts = value
       }
-    },
-    contentObj: {
-      get () {
-        // this.content = JSON.parse(JSON.stringify(this.$store.state.obj))
-        console.log(this.content)
-        return this.content
-      }
-      // set (value) {
-      //   this.content.productName = value
-      //   this.content.proDiscript = value
-      //   this.content.original = value
-      //   // this.content.discounts = value
-      //   this.content.imgSrc = value
-      //   this.content.specificates =  value
-      //   // this.content.status = value
-      // }
     }
   },
   methods: {
@@ -141,6 +126,7 @@ export default {
       this.content.specificates.splice(index, 1)
     },
     clear(){
+      this.action = ''
       this.content.productName = ''
       this.content.proDiscript = ''
       this.content.original = null
@@ -172,8 +158,27 @@ export default {
         content.status = ['btn-success', 'Published','1']
       }
       id.removeAttribute("data-dismiss")
+
+      let dataArray = []
+      dataArray = this.$store.state.contents.slice(0)// 複製元素到新的陣列
+      dataArray =  dataArray.map(function(item, index, array){
+        var obj = {}  
+        obj = JSON.parse(JSON.stringify(item)) 
+        return obj 
+      })
       if (this.$refs.productForm.checkValidity()) {
-        console.log(content)
+        if(this.action == 'update'){
+          dataArray.find(function(item, index, array){
+            if(item.productName == content.productName){
+              dataArray.splice(index, 1, content)
+            }
+          })
+          this.$store.dispatch('CONTENT_UPDATE',dataArray)//myJson的做法,參數傳全部資料的array,而不是更新的物件
+        }else{
+          dataArray.unshift(content) //為何新增時,畫面不會即時更新？
+          this.$store.dispatch('CONTENT_UPDATE',dataArray)//myJson的做法,參數傳全部資料的array,而不是更新的物件
+          // this.$store.dispatch('CONTENT_CREATE',content)
+        }
         console.log(this.file)
         id.setAttribute("data-dismiss", "modal")
         this.clear()
@@ -201,26 +206,9 @@ export default {
   data () {
     return {
       file: [],
+      action: '',
       size: ['','S','M','L'],
       content: null
-      // productName: '',
-      // proDiscript: '',
-      // original: null,
-      // discounts: null,
-      // imgSrc: [],
-      // status: null,
-      // specificates: [
-      //   {
-      //     sizeSelected: '',
-      //     color: '',
-      //     inventory: null
-      //   },
-      //   {
-      //     sizeSelected: '',
-      //     color: '',
-      //     inventory: null
-      //   }
-      // ]
     }
   }
 }

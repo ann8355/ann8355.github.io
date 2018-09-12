@@ -59,22 +59,21 @@
 //     sizeMap.set(2, "M")
 //     sizeMap.set(3, "L")
 const btnMap = new Map()
-    btnMap.set(1, ['btn-success', 'Published','1'])
-    btnMap.set(2, ['btn-secondary','Unpublished','2'])
+    btnMap.set(1,['btn-success', 'Published','1'])
+    btnMap.set(2,['btn-secondary','Unpublished','2'])
 
 export default {
   name: 'Product',
   strict: true,
   computed: {
     tableData() {
-        let dataArray = [];
-        if(this.filterOption == '5'){
-            dataArray = this.$store.state.contents
-        }else if(this.filterOption == '3' || this.filterOption == '4'){
+        let dataArray = this.$store.state.contents
+        if(this.filterOption == '3' || this.filterOption == '4'){
             const status = btnMap.get(parseInt(this.filterOption)-2)
-            dataArray = this.$store.state.contents.filter(function(item, index, array){
-                return item.status == status   
+            dataArray = dataArray.filter(function(item, index, array){
+                return JSON.stringify(item.status) == JSON.stringify(status) // 為何要轉成字串才相等？ 
             })
+             
         }
         if(this.keyword != ''){
             const keyword = this.keyword
@@ -88,9 +87,22 @@ export default {
   methods: {
     changeStatus(id,index){
         const btnArray = btnMap.get(id);
-        let obj = this.tableData[index]
+        let obj = JSON.parse(JSON.stringify(this.tableData[index]))
         obj.status = btnArray
-        this.tableData.splice(index, 1, obj)
+        let dataArray = []
+        dataArray = this.$store.state.contents.slice(0)// 複製元素到新的陣列
+        dataArray =  dataArray.map(function(item, index, array){
+            var obj = {}  
+            obj = JSON.parse(JSON.stringify(item)) 
+            return obj 
+        })
+        dataArray.find(function(item, index, array){
+            if(item.productName == obj.productName){
+              dataArray.splice(index, 1, obj)
+            }
+        })
+        this.$store.dispatch('CONTENT_UPDATE',dataArray)
+        // this.tableData.splice(index, 1, obj)
     },
     filterStatus(id){
        if(id == '1'){
@@ -108,6 +120,30 @@ export default {
   },
   mounted () {
     this.$store.dispatch('CONTENTS_READ')
+// let datalist = [];
+// for(let i=0 ;i<8;i++){
+//     let price = this.$faker().commerce.price();
+//     let status = this.$faker().random.number({min:1, max:2});
+//     let specificates = new Array(3)
+//     for(let j=0 ;j<specificates.length;j++){
+//         let size = this.$faker().random.number({min:1, max:3});
+//         specificates[j] = {
+//             sizeSelected: sizeMap.get(size),
+//             color: this.$faker().commerce.color(),
+//             inventory: parseInt(this.$faker().finance.amount())
+//         }
+//     }
+//     let data = {
+//         productName: this.$faker().commerce.product(),
+//         proDiscript: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione quia quam, eaque voluptatem totam ea.',
+//         original: parseInt(price),
+//         discounts: Math.round(parseInt(price)*0.8),
+//         imgSrc: [],
+//         specificates: specificates,
+//         status: btnMap.get(status)
+//     }
+//     datalist.push(data)
+// }
   },
   data () {
     return {
@@ -137,7 +173,7 @@ export default {
   height: 50px;
   line-height: 50px;
 }
-#productList td div:nth-child(3) p{
+#productList td div:last-child p{
   border-bottom: 1px solid transparent;
 }
 #productList thead th:nth-child(5),#productList th:nth-child(6),#productList th:nth-child(7){
