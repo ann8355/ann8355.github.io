@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="overflow-x:hidden;">
         <div class="mb-3 px-3">
             <input name="selectBox" type="checkbox" v-model="checked">
             <div class="btn-group" role="group">
@@ -23,7 +23,7 @@
                     <select v-model="totalPages" class="custom-select" id="totalPage">
                         <option value="5" selected>5</option>
                         <option value="10">10</option>
-                        <option value="">All</option>
+                        <option v-bind:value="contents.length">All</option>
                     </select>
                 </div>   
             </div>
@@ -39,7 +39,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(item,index) in tableData" :key="item.id">
+                    <tr v-for="(item,index) in pageData" :key="item.id">
                         <td scope="row">
                             <input type="checkbox" v-bind:value="index" v-model="checked">
                         </td>
@@ -52,7 +52,7 @@
                         <td v-show="showColumn[6]">{{item.address}}</td>
                         <td v-show="showColumn[7]">{{item.phone}}</td>
                         <td v-show="showColumn[8]">{{item.email}}</td>
-                        <td v-show="showColumn[9]">
+                        <td v-show="showColumn[9]" v-if="item.status.length != 0">
                             <div class="btn-group" role="group">
                                 <button name="status" type="button" v-bind:class="item.status[0]" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-bind:value="item.status[2]">
                                 {{item.status[1]}}
@@ -65,21 +65,22 @@
                     </tr>
                 </tbody>
             </table>
+            <div class="bg-white text-center" style="height: 50px;line-height:50px;" v-if="pageData.length == 0">No Results</div>
         </div>
         <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
+            <ul class="pagination justify-content-center mt-4">
                 <li class="page-item">
-                    <span class="page-link" aria-label="Previous" @click="prevPage">
+                    <a class="page-link" aria-label="Previous" @click="prevPage">
                         <span aria-hidden="true">&laquo;</span>
                         <span class="sr-only">Previous</span>
-                    </span>
+                    </a>
                 </li>
-                <li class="page-item" v-for="(item,index) in pages" :key="item.id"><span class="page-link" @click="changePage(index+1)">{{index+1}}</span></li>
+                <li class="page-item" v-for="(item,index) in pages" :key="item.id"><a v-bind:class="index == thisPage-1 ? 'active' : ''" class="page-link" @click="changePage(index+1)">{{index+1}}</a></li>
                 <li class="page-item">
-                    <span class="page-link" aria-label="Next" @click="nextPage">
+                    <a class="page-link" aria-label="Next" @click="nextPage">
                         <span aria-hidden="true">&raquo;</span>
                         <span class="sr-only">Next</span>
-                    </span>
+                    </a>
                 </li>
             </ul>
         </nav>
@@ -96,7 +97,24 @@ export default {
   name: 'Orders',
   strict: true,
   computed: {
-    tableData() {
+    pageData() {
+        let pageDatas = []
+        if(this.filterData.length == 0){
+            this.pages = 1
+        }else{
+            this.pages = Math.ceil(this.filterData.length/this.totalPages)
+            let start = (this.thisPage-1)*this.totalPages
+            let end = this.thisPage*this.totalPages
+            if(end > this.filterData.length){
+                end = this.filterData.length
+            }
+            for(let i=start; i<end; i++){
+                pageDatas.push(this.filterData[i])
+            }
+        }
+        return pageDatas
+    },
+    filterData() {
         let dataArray = [];
         if(this.filterOption == '7'){
             dataArray = this.contents
@@ -113,11 +131,6 @@ export default {
                 || item.addtime.indexOf(keyword) > -1 || item.checkout.indexOf(keyword) > -1 || item.address.indexOf(keyword) > -1
                 || item.phone.indexOf(keyword) > -1 || item.email.indexOf(keyword) > -1
             })
-        }
-        if(this.totalPages != ""){
-            this.pages = Math.ceil(dataArray.length/this.totalPages)
-        }else{
-            this.pages = 1
         }
         return dataArray
     }
@@ -208,6 +221,9 @@ export default {
     //   this.contents = res.data
     this.contents = datalist
     // })
+    let page = this.thisPage
+    // this.$router.push({ path: `/Orders/${this.thisPage}` })
+    this.$router.push({ name: "Orders", params: { id: this.thisPage } });
   },
   data () {
     return {
@@ -219,9 +235,9 @@ export default {
       keyword: '',
       showColumn: [true,true,true,true,true,true,true,true,true,true],
       sortable: 'asc',
-      totalPages: '5',
-      thisPage: '1',
-      pages: ''
+      totalPages: '5',// 每頁顯示筆數
+      thisPage: 1,// 目前所在頁數
+      pages: null// 總共頁數
     }
   }
 }
@@ -241,8 +257,12 @@ export default {
         color: #000;
         border: 1px solid #000;
     }
-    .page-link:hover,.page-link:focus,.input-group-text{
+    .page-link:hover,.page-link:focus,.input-group-text,.active
+    {
         background-color: #202529;
-        color: #fff;
+        color: #fff!important;
+    }
+    #order{
+        margin-bottom: 0;
     }
 </style>

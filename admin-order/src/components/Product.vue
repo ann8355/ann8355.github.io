@@ -23,6 +23,7 @@
                         <td scope="row">
                             <input type="checkbox" v-bind:value="index" v-model="checked">
                             <span v-on:click="editModal(index)"><i class="fas fa-edit text-primary fa-lg ml-2" data-toggle="modal" data-target="#CreateModal" title="edit"></i></span>
+                            <span><i class="fas fa-trash-alt text-danger fa-lg ml-2" title="delete"></i></span>
                         </td>
                         <td width="250">
                             {{item.productName}}
@@ -163,7 +164,7 @@ export default {
   height: 100px;
   width: 100px;
 }
-.fa-edit{
+.fa-edit,.fa-trash-alt{
   cursor: pointer;
 }
 #productList td p{

@@ -14,7 +14,7 @@ export default new Router({
       linkActiveClass: 'active',
       component: Home
     }, {
-      path: '/Orders',
+      path: '/Orders/:id',
       name: 'Orders',
       linkActiveClass: 'active',
       component: Orders
