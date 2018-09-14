@@ -65,7 +65,6 @@ const btnMap = new Map()
 
 export default {
   name: 'Product',
-  strict: true,
   computed: {
     tableData() {
         let dataArray = this.$store.state.contents

@@ -77,7 +77,6 @@
 <script>
 export default {
   name: 'Modal',
-  strict: true,
   created () {
     this.$bus.$on('editModal', obj => {// 接收事件
       let array = []

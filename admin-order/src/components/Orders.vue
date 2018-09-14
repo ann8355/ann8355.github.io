@@ -97,7 +97,6 @@ const btnMap = new Map()
 
 export default {
   name: 'Orders',
-  strict: true,
   computed: {
     pageData() {
         let pageDatas = []
