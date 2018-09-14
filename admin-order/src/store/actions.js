@@ -2,7 +2,7 @@ import axios from 'axios'
 import Vue from 'vue'
 
 Vue.prototype.$axios = axios // axios不能使用Vue.use(axios)
-Vue.config.productionTip = true// production,true=local
+Vue.config.productionTip = false// production,true=local
 Vue.prototype.$hostname = (Vue.config.productionTip) ? 'https://api.myjson.com/bins/owofc' : 'https://api.myjson.com/bins/ggjco'
 const PATH = Vue.prototype.$hostname
 

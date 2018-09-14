@@ -125,9 +125,9 @@ export default {
             totalCost += element.cost
             totalIncome += element.income
         });
-        overviewData.push(totalRevenue)
-        overviewData.push(totalCost)
-        overviewData.push(totalIncome)
+        overviewData.push(totalRevenue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+        overviewData.push(totalCost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+        overviewData.push(totalIncome.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
         return overviewData
     }
   },
