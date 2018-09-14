@@ -25,12 +25,13 @@ module.exports = {
   entry: {
     app: './src/main.js'
   },
-  plugins: [new webpack.ProvidePlugin({
-    jQuery: 'jquery',
-    $: 'jquery',  
-    jquery: 'jquery',
-    Popper: 'popper.js'
- })],
+  plugins: [
+    new webpack.ProvidePlugin({
+      jQuery: 'jquery',
+      $: 'jquery',
+      jquery: 'jquery',
+      Popper: 'popper.js'
+    })],
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
@@ -42,7 +43,7 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src'),
+      '@': resolve('src')
     }
   },
   module: {

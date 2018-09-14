@@ -1,4 +1,7 @@
 const mutations = {
+  setChart (state, data) {
+    state.chartData = data
+  },
   setContents (state, data) {
     state.contents = data
   },

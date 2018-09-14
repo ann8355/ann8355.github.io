@@ -30,7 +30,7 @@ export default {
         },
         {
           title: 'ORDERS',
-          path: '/Orders'
+          path: '/Orders/1'
         },
         {
           title: 'PRODUCT',

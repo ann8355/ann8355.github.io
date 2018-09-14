@@ -23,7 +23,7 @@
                         <td scope="row">
                             <input type="checkbox" v-bind:value="index" v-model="checked">
                             <span v-on:click="editModal(index)"><i class="fas fa-edit text-primary fa-lg ml-2" data-toggle="modal" data-target="#CreateModal" title="edit"></i></span>
-                            <span><i class="fas fa-trash-alt text-danger fa-lg ml-2" title="delete"></i></span>
+                            <span v-on:click="deleteItem(item.productName)"><i class="fas fa-trash-alt text-danger fa-lg ml-2" title="delete"></i></span>
                         </td>
                         <td width="250">
                             {{item.productName}}
@@ -86,6 +86,21 @@ export default {
     }
   },
   methods: {
+    deleteItem(name){
+        let dataArray = []
+        dataArray = this.$store.state.contents.slice(0)// 複製元素到新的陣列
+        dataArray =  dataArray.map(function(item, index, array){
+            var obj = {}  
+            obj = JSON.parse(JSON.stringify(item)) 
+            return obj 
+        })
+        dataArray.forEach(function(element,index){
+            if(element.productName == name){
+              dataArray.splice(index, 1)
+            }
+        })
+        this.$store.dispatch('CONTENT_DELETE',dataArray)
+    },
     changeStatus(id,index){
         const btnArray = btnMap.get(id);
         let obj = JSON.parse(JSON.stringify(this.tableData[index]))

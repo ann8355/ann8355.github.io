@@ -176,8 +176,7 @@ export default {
           this.$store.dispatch('CONTENT_UPDATE',dataArray)//myJson的做法,參數傳全部資料的array,而不是更新的物件
         }else{
           dataArray.unshift(content) //為何新增時,畫面不會即時更新？
-          this.$store.dispatch('CONTENT_UPDATE',dataArray)//myJson的做法,參數傳全部資料的array,而不是更新的物件
-          // this.$store.dispatch('CONTENT_CREATE',content)
+          this.$store.dispatch('CONTENT_CREATE',dataArray)//myJson的做法,參數傳全部資料的array,而不是更新的物件
         }
         console.log(this.file)
         id.setAttribute("data-dismiss", "modal")

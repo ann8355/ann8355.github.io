@@ -2,17 +2,15 @@
     <div id="home" class="none">
         <h4>OVERVIEW</h4>
         <div class="mt-4 row" style="height: 138px;">
-            <div v-for="(item) in overviews" :key="item.id" class="bg-white h-100 rounded d-inline-flex justify-content-center align-items-center flex-column col">
+            <div v-for="(item,index) in overviews" :key="item.id" class="bg-white h-100 rounded d-inline-flex justify-content-center align-items-center flex-column col">
                 <h6><i v-bind:class="item.icon" class="mr-2
                 "></i>{{item.name}}</h6>
-                <h1 class="mt-1" v-bind:class="item.class">{{item.cost}}</h1>
+                <h1 class="mt-1" v-bind:class="item.class">{{overviewData[index]}}</h1>
             </div>
         </div>
         <div class="mt-3 py-4 px-4 bg-white rounded row" style="height: 406px;">
             <h4>Activity</h4>
-                <div class="col-12 bg-dark" style="height: 85%;">
-                    <div id="chart" class="w-100 h-100"></div>
-                </div>
+            <div id="chartdiv" class="w-100 h-100"></div>
         </div>
         <div class="mt-3 row" style="height: 456px;">
             <div id="transcation" class="bg-white rounded mr-3 h-100 d-inline-flex py-4 flex-column col">
@@ -47,26 +45,107 @@
    </div>
 </template>
 <script>
+import 'amcharts3'
+import AmSerial from 'amcharts3/amcharts/serial'
+import 'amcharts3/amcharts/themes/light'
+import 'amcharts3/amcharts/plugins/export/export.css'
+import 'amcharts3/amcharts/plugins/export/export.min.js'
+
 export default {
   name: 'Home',
+  created () {
+    this.$store.dispatch('CHARTDATA_GET')
+    window.AmCharts.makeChart("chartdiv",{
+        type: "serial",// 折線圖
+        theme: "light",// 主題
+        pathToImages: "http://cdn.amcharts.com/lib/3/images/",// 解決svg顯示問題
+        mouseWheelZoomEnabled: true,
+        dataProvider: this.$store.state.chartData,
+        categoryField: "date",// 指定X軸由年欄位決定
+        chartCursor: {
+            "pan": true,
+            "valueLineEnabled": true,
+            "valueLineBalloonEnabled": true,
+            "cursorAlpha":1,
+            "cursorColor":"#258cbb",
+            "limitToGraph":"g1",
+            "valueLineAlpha":0.2,
+            "valueZoomable":true
+        },
+        valueScrollbar:{
+            "oppositeAxis":false,
+            "offset":50,
+            "scrollbarHeight":10
+        },
+        // categoryAxis: {// X軸
+        //     gridPosition: "start"
+        // },
+        // valueAxes: [{
+        //     position: "top",
+        //     title: "統計表標題"
+        // }],
+        // startDuration: 1,// 填充後的柱狀圖動態渲染時間，時間越長動畫效果越慢
+        // rotate: true, //xy軸交換
+        graphs: [{
+            "balloonText": "<i class='fas fa-hand-holding-usd mr-1'></i>[[value]]<br><i class='far fa-calendar-alt mr-1'></i>[[category]]&nbsp;&nbsp;",
+            "bullet": "round",// 點的形狀
+            "title": "Revenue",
+            "valueField": "revenue",
+            "fillAlphas": 0// 填充內容透明度  
+        }, {
+            "balloonText": "<i class='fas fa-th-large mr-1'></i>[[value]]<br><i class='far fa-calendar-alt mr-1'></i>[[category]]&nbsp;&nbsp;",
+            "bullet": "square",
+            "title": "Cost",
+            "valueField": "cost",
+            "fillAlphas": 0
+        }, {
+            "balloonText": "<i class='fas fa-money-bill-alt mr-1'></i>[[value]]<br><i class='far fa-calendar-alt mr-1'></i>[[category]]&nbsp;&nbsp;",
+            "bullet": "triangleDown",
+            "title": "Income",
+            "valueField": "income",
+            "fillAlphas": 0
+        }],
+        export: {
+            "enabled": true// 匯出功能
+        },
+        legend: {
+            useGraphSettings: true// 圖例
+        }
+      }
+    )
+  },
+  computed: {
+    overviewData() {
+        let totalRevenue = 0
+        let totalCost = 0
+        let totalIncome = 0
+        let overviewData = []
+        this.$store.state.chartData.forEach(function(element) {
+            totalRevenue += element.revenue
+            totalCost += element.cost
+            totalIncome += element.income
+        });
+        overviewData.push(totalRevenue)
+        overviewData.push(totalCost)
+        overviewData.push(totalIncome)
+        return overviewData
+    }
+  },
   data () {
     return {
       overviews: [
           {
               name: 'TOTAL_REVENUE',
-              cost: '54,540',
               class: 'text-success',
               icon: 'fas fa-hand-holding-usd'
           },
           {
               name: 'TOTAL_COST',
-              cost: '12,660',
               class: 'text-danger',
               icon: 'fas fa-th-large'
           },
           {
               name: 'TOTAL_INCOME',
-              cost: '41,880',
               class: 'text-info',
               icon: 'fas fa-money-bill-alt'
           }

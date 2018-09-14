@@ -1,5 +1,5 @@
 <template>
-    <div style="overflow-x:hidden;">
+    <div>
         <div class="mb-3 px-3">
             <input name="selectBox" type="checkbox" v-model="checked">
             <div class="btn-group" role="group">
@@ -21,9 +21,9 @@
                         <label class="input-group-text" for="totalPage"><i class="fas fa-list-ul"></i></label>
                     </div>
                     <select v-model="totalPages" class="custom-select" id="totalPage">
-                        <option value="5" selected>5</option>
-                        <option value="10">10</option>
-                        <option v-bind:value="contents.length">All</option>
+                        <router-link :to="{ params: { page: 1 } }" tag="option" value="5" selected>5</router-link>
+                        <router-link :to="{ params: { page: 1 } }" tag="option" value="10">10</router-link>
+                        <router-link :to="{ params: { page: 1 } }" tag="option" v-bind:value="contents.length">All</router-link>
                     </select>
                 </div>   
             </div>
@@ -58,7 +58,7 @@
                                 {{item.status[1]}}
                                 </button>
                                 <div name="dropdown-menu3" class="dropdown-menu" aria-labelledby="statusBtn2">
-                                    <button v-on:click="changeStatus(index2-1,index)" v-if="index2 > 1" v-for="(item,index2) in dropdowns" :key="item.id" class="dropdown-item" v-bind:value="index2-1">{{item}}</button>
+                                    <button v-on:click="changeStatus(index2-1,index)" v-if="index2 > 1 && index2 < 6" v-for="(item,index2) in dropdowns" :key="item.id" class="dropdown-item" v-bind:value="index2-1">{{item}}</button>
                                 </div>
                             </div>
                         </td>
@@ -70,17 +70,19 @@
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center mt-4">
                 <li class="page-item">
-                    <a class="page-link" aria-label="Previous" @click="prevPage">
+                    <router-link :to="{ params: { page: $route.params.page-1 } }" :disabled="$route.params.page == 1" tag="button" class="page-link" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                         <span class="sr-only">Previous</span>
-                    </a>
+                    </router-link>
                 </li>
-                <li class="page-item" v-for="(item,index) in pages" :key="item.id"><a v-bind:class="index == thisPage-1 ? 'active' : ''" class="page-link" @click="changePage(index+1)">{{index+1}}</a></li>
+                <li class="page-item" v-for="(item,index) in pages" :key="item.id">
+                    <router-link :to="{ params: { page: index+1 } }" active-class="active" class="page-link" exact>{{index+1}}</router-link>
+                </li>
                 <li class="page-item">
-                    <a class="page-link" aria-label="Next" @click="nextPage">
+                    <router-link :to="{ params: { page: $route.params.page+1 } }" :disabled="$route.params.page == pages" tag="button" class="page-link" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                         <span class="sr-only">Next</span>
-                    </a>
+                    </router-link>
                 </li>
             </ul>
         </nav>
@@ -103,8 +105,8 @@ export default {
             this.pages = 1
         }else{
             this.pages = Math.ceil(this.filterData.length/this.totalPages)
-            let start = (this.thisPage-1)*this.totalPages
-            let end = this.thisPage*this.totalPages
+            let start = (this.$route.params.page-1)*this.totalPages
+            let end = this.$route.params.page*this.totalPages
             if(end > this.filterData.length){
                 end = this.filterData.length
             }
@@ -136,21 +138,6 @@ export default {
     }
   },
   methods: {
-    changePage(id){
-        this.thisPage = id
-    },
-    prevPage(){
-        let page = this.thisPage
-        if(page - 1 > 0){
-            this.thisPage = page - 1
-        }
-    },
-    nextPage(){
-        let page = this.thisPage
-        if(page + 1 <= this.pages){
-            this.thisPage = page + 1
-        }
-    },
     changeStatus(id,index){
         const btnArray = btnMap.get(id);
         let obj = this.contents[index]
@@ -221,9 +208,6 @@ export default {
     //   this.contents = res.data
     this.contents = datalist
     // })
-    let page = this.thisPage
-    // this.$router.push({ path: `/Orders/${this.thisPage}` })
-    this.$router.push({ name: "Orders", params: { id: this.thisPage } });
   },
   data () {
     return {
@@ -236,7 +220,6 @@ export default {
       showColumn: [true,true,true,true,true,true,true,true,true,true],
       sortable: 'asc',
       totalPages: '5',// 每頁顯示筆數
-      thisPage: 1,// 目前所在頁數
       pages: null// 總共頁數
     }
   }
