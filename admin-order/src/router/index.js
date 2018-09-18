@@ -7,6 +7,7 @@ import Product from '@/components/Product'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history', // 拿掉hash#
   routes: [
     {
       path: '/',

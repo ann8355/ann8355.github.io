@@ -53,7 +53,7 @@ import 'amcharts3/amcharts/plugins/export/export.min.js'
 
 export default {
   name: 'Home',
-  created () {
+  mounted () {
     this.$store.dispatch('CHARTDATA_GET')
     window.AmCharts.makeChart("chartdiv",{
         type: "serial",// 折線圖

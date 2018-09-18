@@ -133,7 +133,7 @@ export default {
         this.$bus.$emit('editModal', obj)// 傳送事件（事件名稱,參數）
     }
   },
-  mounted () {
+  created () {
     this.$store.dispatch('CONTENTS_READ')
 // let datalist = [];
 // for(let i=0 ;i<8;i++){

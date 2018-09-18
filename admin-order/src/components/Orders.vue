@@ -1,5 +1,6 @@
 <template>
     <div>
+        <!-- <hello></hello> -->
         <div class="mb-3 px-3">
             <input name="selectBox" type="checkbox" v-model="checked">
             <div class="btn-group" role="group">
@@ -89,6 +90,7 @@
     </div>
 </template>
 <script>
+// import Hello from '@/components/Hello'
 const btnMap = new Map()
     btnMap.set(1, ['btn-success', 'Paid', '1'])
     btnMap.set(2, ['btn-secondary','Unpaid', '2'])
@@ -97,6 +99,9 @@ const btnMap = new Map()
 
 export default {
   name: 'Orders',
+//   components: {
+//     'hello': Hello
+//   },
   computed: {
     pageData() {
         let pageDatas = []
