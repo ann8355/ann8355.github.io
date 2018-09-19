@@ -86,38 +86,13 @@ export default {
   },
   methods: {
     deleteItem(name){
-        let dataArray = []
-        dataArray = this.$store.state.contents.slice(0)// 複製元素到新的陣列
-        dataArray =  dataArray.map(function(item, index, array){
-            var obj = {}  
-            obj = JSON.parse(JSON.stringify(item)) 
-            return obj 
-        })
-        dataArray.forEach(function(element,index){
-            if(element.productName == name){
-              dataArray.splice(index, 1)
-            }
-        })
-        this.$store.dispatch('CONTENT_DELETE',dataArray)
+        this.$store.commit('deleteItem', name)
+        this.$store.dispatch('CONTENT_DELETE',this.$store.state.contents)
     },
     changeStatus(id,index){
         const btnArray = btnMap.get(id);
-        let obj = JSON.parse(JSON.stringify(this.tableData[index]))
-        obj.status = btnArray
-        let dataArray = []
-        dataArray = this.$store.state.contents.slice(0)// 複製元素到新的陣列
-        dataArray =  dataArray.map(function(item, index, array){
-            var obj = {}  
-            obj = JSON.parse(JSON.stringify(item)) 
-            return obj 
-        })
-        dataArray.find(function(item, index, array){
-            if(item.productName == obj.productName){
-              dataArray.splice(index, 1, obj)
-            }
-        })
-        this.$store.dispatch('CONTENT_UPDATE',dataArray)
-        // this.tableData.splice(index, 1, obj)
+        this.$store.commit('updateItem', {item: this.tableData[index], status: btnArray})
+        this.$store.dispatch('CONTENT_UPDATE',this.$store.state.contents)
     },
     filterStatus(id){
        if(id == '1'){
@@ -129,8 +104,7 @@ export default {
        }
     },
     editModal(index){
-        let obj = this.tableData[index]
-        this.$bus.$emit('editModal', obj)// 傳送事件（事件名稱,參數）
+        this.$bus.$emit('editModal', this.tableData[index])// 傳送事件（事件名稱,參數）
     }
   },
   created () {

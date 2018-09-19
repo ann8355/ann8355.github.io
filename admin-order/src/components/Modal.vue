@@ -79,24 +79,8 @@ export default {
   name: 'Modal',
   created () {
     this.$bus.$on('editModal', obj => {// 接收事件
-      let array = []
-      array =  obj.specificates.slice(0)// 複製元素到新的陣列
-      array =  array.map(function(item, index, array){
-        var obj = {}  
-        obj = JSON.parse(JSON.stringify(item)) 
-        return obj 
-      })
-      let element = {
-        productName: obj.productName,
-        proDiscript: obj.proDiscript,
-        original: obj.original,
-        discounts: obj.discounts,
-        imgSrc: obj.imgSrc,
-        specificates: array,
-        status: obj.status
-      }
-      this.$store.commit('setObj', element)
-      this.content = JSON.parse(JSON.stringify(this.$store.state.obj))
+      this.$store.commit('setObj', obj)
+      this.content = JSON.parse(JSON.stringify(this.$store.state.obj))// ?
       this.action = 'update'
     })
     this.content = JSON.parse(JSON.stringify(this.$store.state.obj))
@@ -149,33 +133,22 @@ export default {
     save(name,contentObj) {// 為何無法直接得到this.content的值（但在tempelate可以得到content.屬性值或JSON.stringify(content)？
       let content = JSON.parse(contentObj)
       let id;
+      let status;
       if(name == 'saveDraft'){
         id = this.$refs.saveDraft
-        content.status = ['btn-secondary','Unpublished','2']
+        status = ['btn-secondary','Unpublished','2']
       }else if(name == 'publish'){
         id = this.$refs.publish
-        content.status = ['btn-success', 'Published','1']
+        status = ['btn-success', 'Published','1']
       }
       id.removeAttribute("data-dismiss")
-
-      let dataArray = []
-      dataArray = this.$store.state.contents.slice(0)// 複製元素到新的陣列
-      dataArray =  dataArray.map(function(item, index, array){
-        var obj = {}  
-        obj = JSON.parse(JSON.stringify(item)) 
-        return obj 
-      })
       if (this.$refs.productForm.checkValidity()) {
         if(this.action == 'update'){
-          dataArray.find(function(item, index, array){
-            if(item.productName == content.productName){
-              dataArray.splice(index, 1, content)
-            }
-          })
-          this.$store.dispatch('CONTENT_UPDATE',dataArray)//myJson的做法,參數傳全部資料的array,而不是更新的物件
+          this.$store.commit('updateItem', {item: content, status: status})
+          this.$store.dispatch('CONTENT_UPDATE',this.$store.state.contents)//myJson的做法,參數傳全部資料的array,而不是更新的物件
         }else{
-          dataArray.unshift(content) //為何新增時,畫面不會即時更新？
-          this.$store.dispatch('CONTENT_CREATE',dataArray)//myJson的做法,參數傳全部資料的array,而不是更新的物件
+          this.$store.commit('createItem', {item: content, status: status})
+          this.$store.dispatch('CONTENT_CREATE',this.$store.state.contents)//myJson的做法,參數傳全部資料的array,而不是更新的物件
         }
         console.log(this.file)
         id.setAttribute("data-dismiss", "modal")
