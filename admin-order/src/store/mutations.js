@@ -5,9 +5,9 @@ const mutations = {
   setContents (state, data) {
     state.contents = data
   },
-  setObj (state, obj) {
-    state.obj = obj
-  },
+  // setObj (state, obj) {
+  //   state.obj = obj
+  // },
   deleteItem (state, obj) {
     state.contents.forEach(function (element, index) {
       if (element.productName === obj) {

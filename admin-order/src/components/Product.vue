@@ -71,7 +71,8 @@ export default {
         if(this.filterOption == '3' || this.filterOption == '4'){
             const status = btnMap.get(parseInt(this.filterOption)-2)
             dataArray = dataArray.filter(function(item, index, array){
-                return JSON.stringify(item.status) == JSON.stringify(status) // 為何要轉成字串才相等？ 
+                // return item.status.toString() == status.toString()
+                return JSON.stringify(item.status) == JSON.stringify(status) // 必須將陣列轉換成字串(Array是物件，==或===操作符只能比較兩個物件是否是同一個物件引用)
             })
              
         }

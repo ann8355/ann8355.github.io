@@ -77,13 +77,14 @@
 <script>
 export default {
   name: 'Modal',
+  strict: true,
   created () {
     this.$bus.$on('editModal', obj => {// 接收事件
-      this.$store.commit('setObj', obj)
-      this.content = JSON.parse(JSON.stringify(this.$store.state.obj))// ?
+      // this.$store.commit('setObj', obj)
+      this.content = JSON.parse(JSON.stringify(obj))
       this.action = 'update'
     })
-    this.content = JSON.parse(JSON.stringify(this.$store.state.obj))
+    // this.content = JSON.parse(JSON.stringify(this.$store.state.obj))
   },
   computed: {
     discount: {
@@ -131,6 +132,7 @@ export default {
       ]
     },
     save(name,contentObj) {// 為何無法直接得到this.content的值（但在tempelate可以得到content.屬性值或JSON.stringify(content)？
+      console.log(this.content)
       let content = JSON.parse(contentObj)
       let id;
       let status;
@@ -179,7 +181,26 @@ export default {
       file: [],
       action: '',
       size: ['','S','M','L'],
-      content: null
+      content: {
+        productName: '',
+        proDiscript: '',
+        original: null,
+        discounts: null,
+        imgSrc: [],
+        specificates: [
+          {
+            sizeSelected: '',
+            color: '',
+            inventory: null
+          },
+          {
+            sizeSelected: '',
+            color: '',
+            inventory: null
+          }
+        ],
+        status: null
+      }
     }
   }
 }

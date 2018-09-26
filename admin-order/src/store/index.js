@@ -8,7 +8,6 @@ import state from './rootState'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
-  strict: true,
   // getters,
   state,
   actions,
