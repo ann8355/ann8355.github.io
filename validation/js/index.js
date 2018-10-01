@@ -38,23 +38,22 @@ $(document).on('click', '#profile div', function(event){
   delete fileArray[parseInt($(this).attr("data-index"))];
 });
 function changePage(){
-  $("#form1,#form2,#form3,#form4,#form5").css("height","0");  
+  TweenMax.killAll();// 刪掉所有正在執行的TweenMax動畫
+  $("#form1,#form2,#form3,#form4,#form5").css("height","0"); 
+  $("#progressbar i:gt("+(count-1)+")").attr("class","fa fa-circle-o"); 
+  $("#progressbar li:gt("+(count-1)+")").removeClass("active");
+  $("#progressbar i").eq(count-1).attr("class","fa fa-dot-circle-o");
+  if(count > 1){
+    $("#progressbar li").eq(count-1).addClass("active"); 
+    $("#progressbar i").eq(count-2).attr("class","fa fa-check-circle");
+  }
   for(var i=1; i<6; i++){
     if(count == i){
-      TweenMax.to("#form"+i.toString(), 1, {height:"75vh", ease: Power2.easeOut});
-      // $("#form"+i.toString()).css("height","100%");  
+      TweenMax.to("#form"+i.toString(), 1.5, {height:"500px", ease: Power2.easeOut});
     }
   }
 }
 $(document).on('click', '[type="button"]', function(event){
-  // $("#form"+count.toString()).animate({"height":"0"},500); 
-  // $("#progressbar i").eq(count-1).attr("class","fa fa-check-circle");
-  // // $("#progressbar hr").eq(count-1).css("background-color","#0275D8");
-  // count++;
-  // $("#progressbar li").eq(count-1).addClass("active");
-  // $("#progressbar i").eq(count-1).attr("class","fa fa-dot-circle-o");
-  // $("#form"+count.toString()).css("height","100%"); 
-  // // $("#progressbar").append('<li><i class="fa-dot-circle-o"></i></li>');
   if(count == 4){
     // submit至後端
     console.log("送出成功!");

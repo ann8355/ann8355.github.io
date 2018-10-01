@@ -125,9 +125,9 @@ form span {
   font-size: 14px;
 }
 
-.form-control, [type="submit"] {
+.form-control, [type="button"] {
   display: inline-block !important;
-  /* width: 95%; */
+  width: 99%;
 }
 
 .col, .col-12 {
@@ -202,6 +202,12 @@ input:invalid:invalid ~ span::after {
 
 #form3 form {
   width: 463px;
+}
+
+@media(max-width: 1000px){
+  .form-control, [type="button"] {
+    width: 95%;
+  }
 }
 
 @media (max-width: 768px) {

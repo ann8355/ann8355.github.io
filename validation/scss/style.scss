@@ -126,9 +126,9 @@ form{
     font-size: $small;
   }
 }
-.form-control,[type="submit"]{
-  display: inline-block!important;
-  // width: 95%;
+.form-control, [type="button"] {
+  display: inline-block !important;
+  width: 99%;
 }
 .col,.col-12{
   margin-bottom: 16px;
@@ -196,6 +196,11 @@ input:invalid{
 }
 #form3 form{
   width: 463px;
+}
+@media(max-width: 1000px){
+  .form-control, [type="button"] {
+    width: 95%;
+  }
 }
 @media(max-width: 768px){
   #phoneBlock,#nameBlock,#yearBlock,#cvvBlock{
