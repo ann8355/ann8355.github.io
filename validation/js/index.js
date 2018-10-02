@@ -193,5 +193,4 @@ window.onpopstate = function() {
 $(function(){
   location.hash = count;
   changePage();
-  // $("#form1").css("height","100%");
 });
