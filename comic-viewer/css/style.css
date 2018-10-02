@@ -1,0 +1,364 @@
+@charset "UTF-8";
+.modal-dialog {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-content {
+  width: 80vw;
+}
+
+#main .homephoto, #photoblock #box3, #photoblock #box4 {
+  background-position: center top;
+  background-size: cover;
+}
+
+.dark-logo, .light-logo {
+  font-style: italic;
+  font-weight: 800;
+  font-size: 36px;
+}
+
+.dark-logo {
+  color: #b31e53;
+}
+
+.light-logo {
+  color: #4ac4a1;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 36px;
+}
+
+.title2 {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.title3 {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.subtitle {
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.lable {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.light-bg {
+  background-color: #4ac4a1;
+}
+
+.dark-bg {
+  background-color: #b31e53;
+}
+
+.light-body {
+  background-color: #e6e6e6;
+}
+
+.dark-body {
+  background-color: black;
+}
+
+header {
+  height: 74px;
+}
+
+i {
+  font-family: fontawesome;
+}
+
+section:first-child i {
+  margin-right: 8px;
+  cursor: pointer;
+}
+section:first-child i:hover {
+  color: #b31e53;
+}
+
+body {
+  font-family: "Roboto", "Microsoft JhengHei", "微軟正黑體", sans-serif;
+}
+
+#main {
+  height: 438px;
+}
+#main .homephoto {
+  min-width: 292px;
+  border: 4px solid black;
+}
+#main .content {
+  min-width: 292px;
+  padding: 0;
+  position: relative;
+}
+#main .content .viewBtn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.homeTitle {
+  background-color: black;
+  height: 52px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+#homeitem {
+  border: 4px solid black;
+}
+#homeitem h5 {
+  margin: 0;
+}
+
+.ad {
+  height: 120px;
+  background-image: url("https://hexschool.github.io/THE_F2E_Design/week5-comic%20viewer/assets/ad-1.png");
+  background-size: cover;
+  background-position: center center;
+}
+
+#lightStatus {
+  width: 48px;
+  height: 24px;
+  border: 2px solid black;
+  margin-right: 8px;
+}
+#lightStatus .lightbox {
+  width: 50%;
+  height: 100%;
+  background-color: orange;
+  display: inline-block;
+}
+
+#photoblock {
+  width: 85%;
+  position: relative;
+  background-color: white;
+}
+#photoblock #box3 {
+  -webkit-clip-path: polygon(0 0, 50% 0, 100% 100%, 0% 100%);
+  clip-path: polygon(0 0, 50% 0, 100% 100%, 0% 100%);
+  height: 280px;
+  width: 63%;
+}
+#photoblock #box4 {
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 100%);
+  height: 280px;
+  width: 63%;
+  position: absolute;
+  left: 37%;
+}
+
+.two-block {
+  height: 280px;
+  width: 48%;
+}
+
+.block {
+  height: 280px;
+  width: 100%;
+}
+
+.rotate {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.prev, .next, #scrollBox ul li, #prev, #next {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 10%;
+  font-weight: bold;
+  font-size: 36px;
+  transition: 0.6s ease;
+}
+.prev:hover, .next:hover {
+  padding: 3.2%;
+}
+
+.prev {
+  left: -10%;
+  border-radius: 3px 0 0 3px;
+}
+
+.next {
+  right: -10%;
+  border-radius: 0 3px 3px 0;
+  flex-direction: row-reverse;
+}
+
+.pageHover, #scrollBox ul li:hover {
+  cursor: pointer;
+  background-color: #b3b3b3 !important;
+  -webkit-filter: none !important;
+          filter: none !important;
+  border: 3px solid black;
+}
+
+#scrollBox {
+  background-color: white;
+  width: 85%;
+  overflow-x: auto;
+  white-space: nowrap;
+  align-items: center;
+  display: flex;
+}
+#scrollBox ul {
+  border-top: 2px solid #b3b3b3;
+  padding: 0px 60px;
+  min-width: 160vw;
+  margin: 0;
+  display: inline-flex;
+}
+#scrollBox ul li:last-child {
+  margin-right: 0;
+}
+#scrollBox ul li {
+  min-width: 80px;
+  height: 100px;
+  -webkit-filter: blur(1px);
+          filter: blur(1px);
+  background-color: #cccccc;
+  margin-right: 20px;
+  color: white;
+  font-size: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#prev, #next {
+  width: 60px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  font-size: 24px;
+  color: #cccccc;
+  cursor: pointer;
+  position: absolute;
+}
+
+#next {
+  right: 10%;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  border: 2px solid black;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4d4d4d;
+}
+
+::-webkit-scrollbar-button {
+  background-color: black;
+}
+
+::-webkit-scrollbar-button:vertical:decrement {
+  background-image: url("https://www.iconsdb.com/icons/preview/white/arrow-155-xxl.png");
+  background-position: center center;
+  background-size: contain;
+}
+
+::-webkit-scrollbar-button:vertical:increment {
+  background-image: url("https://www.iconsdb.com/icons/preview/white/arrow-216-xxl.png");
+  background-position: center center;
+  background-size: contain;
+}
+
+::-webkit-scrollbar-button:horizontal:decrement {
+  background-image: url("https://www.iconsdb.com/icons/preview/white/arrow-102-xxl.png");
+  background-position: center center;
+  background-size: contain;
+}
+
+::-webkit-scrollbar-button:horizontal:increment {
+  background-image: url("https://www.iconsdb.com/icons/preview/white/arrow-37-xxl.png");
+  background-position: center center;
+  background-size: contain;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: black;
+}
+
+@media (max-width: 870px) {
+  #scrollBox ul {
+    min-width: 200vw;
+  }
+}
+@media (max-width: 800px) {
+  #main {
+    flex-direction: column;
+    height: 838px;
+  }
+}
+@media (max-width: 650px) {
+  #scrollBox ul {
+    min-width: 260vw;
+  }
+
+  #viewtop {
+    flex-direction: column;
+  }
+  #viewtop #lightmode {
+    margin-top: 32px;
+    margin-left: 0 !important;
+  }
+
+  #homeTitle {
+    width: 40% !important;
+  }
+}
+@media (max-width: 490px) {
+  #scrollBox ul {
+    min-width: 320vw;
+  }
+
+  #homeTitle {
+    width: 50% !important;
+  }
+
+  #main {
+    height: 1000px;
+  }
+}
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  font-size: 14px;
+}

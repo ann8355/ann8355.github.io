@@ -1,0 +1,339 @@
+$dark-theme:#b31e53;
+$light-theme:#4ac4a1;
+$black:black;
+$dark-bg:darken($black,10%);
+$light-bg:lighten($black,90%);
+$big-font:36px;
+$medium-font:24px;
+$medium2-font:20px;
+$regular-font:16px;
+$small-font:14px;
+$status-icon-m:8px;
+
+.modal-dialog{
+  display: flex;
+  justify-content: center;
+}
+.modal-content{
+  width: 80vw;
+}
+%background{
+  background-position: center top;
+  background-size: cover;
+}
+%logo{
+  font-style: italic;
+  font-weight: 800;
+  font-size: $big-font;
+}
+.dark-logo{
+  @extend %logo;
+  color: $dark-theme;
+}
+.light-logo{
+  @extend %logo;
+  color: $light-theme;
+}
+.title{
+  font-weight: 700;
+  font-size: $big-font;
+}
+.title2{
+  font-weight: 700;
+  font-size: $medium-font;
+}
+.title3{
+  font-weight: 600;
+  font-size: $medium2-font;
+}
+.subtitle{
+  font-weight: 800;
+  font-size: $regular-font;
+}
+.lable{
+  font-weight: 700;
+  font-size: $small-font;
+}
+.light-bg{
+  background-color: $light-theme;
+}
+.dark-bg{
+  background-color: $dark-theme;
+}
+.light-body{
+  background-color: $light-bg;
+}
+.dark-body{
+  background-color: $dark-bg;
+}
+header{
+  height: 74px;
+}
+i{
+  font-family: fontawesome;
+}
+section:first-child i{
+  margin-right: $status-icon-m;
+  cursor:pointer;
+  &:hover{
+    color: $dark-theme;
+  }
+}
+body{
+  font-family: 'Roboto','Microsoft JhengHei', '微軟正黑體',sans-serif ;
+}
+#main{
+  height: 438px;
+  .homephoto{
+    @extend %background;
+    min-width: 292px;
+    border: 4px solid $black;
+  }
+  .content{
+    min-width: 292px;
+    padding: 0;
+    position: relative;
+    .viewBtn{
+      position:absolute;
+      bottom:0;
+      right: 0;
+    }
+  }
+}
+.homeTitle{
+  background-color: $black;
+  height: 52px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+#homeitem{
+  border: 4px solid $black;
+  h5{
+    margin: 0;
+  }
+}
+.ad{
+  height: 120px;
+  background-image: url("https://hexschool.github.io/THE_F2E_Design/week5-comic%20viewer/assets/ad-1.png");
+  background-size: cover; 
+  background-position: center center;
+}
+#lightStatus{
+  width: 48px;
+  height: 24px;
+  border: 2px solid $black;
+  margin-right: $status-icon-m;
+  .lightbox{
+    width: 50%;
+    height: 100%;
+    background-color: orange;
+    display: inline-block;
+    //float: right;
+  }
+}
+#photoblock{
+  width: 85%;
+  position: relative;
+  background-color: white;
+  #box3{
+    @extend %background;
+    -webkit-clip-path: polygon(0 0, 50% 0, 100% 100%, 0% 100%);
+    clip-path: polygon(0 0, 50% 0, 100% 100%, 0% 100%);
+    height: 280px;
+    width: 63%;
+  }
+  #box4{
+    @extend %background;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 100%);
+clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 100%);    
+    height: 280px;
+    width: 63%;
+    position: absolute;
+    left: 37%;
+  }
+}
+.two-block{
+    height: 280px;
+    width: 48%;
+}
+.block{
+    height: 280px;//140px
+    width: 100%;
+    //margin-bottom: 12px;
+}
+.rotate{
+  transform:rotateY(180deg);
+}
+%user-select{
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.prev,.next {
+  @extend %user-select;
+  cursor: pointer;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 10%;
+  font-weight: bold;
+  font-size: $big-font;
+  transition: 0.6s ease;
+  &:hover{
+    padding: 3.2%;
+  }
+}
+.prev{
+  left: -10%;
+  border-radius: 3px 0 0 3px;
+}
+.next {
+  right: -10%;
+  border-radius: 0 3px 3px 0;
+  flex-direction: row-reverse;
+}
+.pageHover{
+  cursor:pointer;
+  background-color: lighten($black,70%)!important;
+  filter:none!important;
+  border: 3px solid $black;
+}
+#scrollBox{
+  background-color: white;
+  width: 85%;
+  overflow-x: auto;//要指定x或y才能顯示得出客製的scroll bar
+  white-space:nowrap;
+  align-items: center;
+  display: flex;
+  ul{
+    border-top: 2px solid lighten($black,70%);
+    padding: 0px 60px;
+    min-width:160vw;
+    margin: 0;
+    display: inline-flex;
+    li:last-child{
+      margin-right: 0;
+    }
+    li{  
+      @extend %user-select;
+      min-width: 80px;
+      height: 100px;
+      filter:blur(1px);
+      background-color: lighten($black,80%);
+      margin-right: 20px;
+      color: white;
+      font-size: $big-font;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &:hover{
+        @extend .pageHover;
+      }
+    }
+  }
+}
+#prev,#next{
+  @extend %user-select;
+  width: 60px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  font-size: $medium-font;
+  color: lighten($black,80%);
+  cursor: pointer;
+  position: absolute;
+}
+#next{
+  right: 10%;
+}
+::-webkit-scrollbar {
+		  width: 12px;//垂直軸
+      height: 12px;//水平軸
+	} 
+::-webkit-scrollbar-track {//滑轨背景颜色
+		  background-color: transparent;
+      border: 2px solid $black;
+	} 
+::-webkit-scrollbar-thumb {//滑块颜色
+		  background-color: lighten($black,30%);
+} 
+::-webkit-scrollbar-button {//两头的监听按钮颜色
+		  background-color: $black;
+} 
+::-webkit-scrollbar-button:vertical:decrement{
+	background-image: url("https://www.iconsdb.com/icons/preview/white/arrow-155-xxl.png") ;
+	background-position: center center;
+  background-size: contain;
+}
+::-webkit-scrollbar-button:vertical:increment{
+	background-image: url("https://www.iconsdb.com/icons/preview/white/arrow-216-xxl.png") ;
+	background-position: center center;
+  background-size: contain;
+}
+::-webkit-scrollbar-button:horizontal:decrement{
+	background-image: url("https://www.iconsdb.com/icons/preview/white/arrow-102-xxl.png") ;
+	background-position: center center;
+  background-size: contain;
+}
+::-webkit-scrollbar-button:horizontal:increment{
+	background-image: url("https://www.iconsdb.com/icons/preview/white/arrow-37-xxl.png") ;
+	background-position: center center;
+  background-size: contain;
+}
+::-webkit-scrollbar-corner {//相交处尖角的颜色
+		  background-color: $black;
+} 
+
+
+@media(max-width: 870px){
+  #scrollBox ul{
+    min-width: 200vw;
+  }
+}
+@media(max-width: 800px){
+  #main{
+    flex-direction: column;
+    height: 838px;
+  }
+}
+@media(max-width: 650px){
+  #scrollBox ul{
+    min-width: 260vw;
+  }
+  #viewtop{
+    flex-direction: column;
+    #lightmode{
+      margin-top: 32px;
+      margin-left: 0!important;
+    }    
+  }
+  #homeTitle{
+    width: 40%!important;
+  }
+}
+@media(max-width: 490px){
+  #scrollBox ul{
+    min-width: 320vw;
+  }
+  #homeTitle{
+    width: 50%!important;
+  }
+  #main{
+    height: 1000px;
+  }
+}
+footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  font-size: $small-font;
+}
+
