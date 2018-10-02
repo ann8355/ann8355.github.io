@@ -4,9 +4,14 @@
   overflow: hidden;
 }
 
+#form5 h4,#form5 #smile,#form5 #direct{
+  opacity: 0;
+}
+
 body {
   font-family: 'Roboto','Open Sans', sans-serif,FontAwesome;
   padding-bottom: 41px;
+  background-image: linear-gradient(to left, rgba(115, 63, 182, 0.637), rgba(120, 253, 186, 0.856));
 }
 
 .active i {
@@ -179,6 +184,17 @@ input:invalid:invalid ~ span::before {
   margin-left: 14px;
   white-space: pre;
 }
+.spec:invalid:invalid ~ span::before{
+  position: relative;
+  left: unset;
+  top: unset;
+}
+.spec:invalid:invalid + i {
+  bottom: 25%;
+}
+.spec:invalid:invalid ~ span::after {
+  left: 0;
+}
 input:invalid:invalid ~ span::after {
   content: "";
   top: 10%;
@@ -215,7 +231,6 @@ input:invalid:invalid ~ span::after {
     flex: 0 0 100%;
     max-width: 100%;
   }
-
   .w-100 input {
     width: 97%;
   }

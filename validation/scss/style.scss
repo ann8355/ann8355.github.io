@@ -9,9 +9,13 @@ $small:14px;
   height: 0;
   overflow: hidden;
 }
+#form5 h4,#form5 #smile,#form5 #direct{
+  opacity: 0;
+}
 body{
   font-family: 'Roboto','Open Sans', sans-serif,FontAwesome;
   padding-bottom: 41px;
+  background-image: linear-gradient(to left, rgba(115, 63, 182, 0.637), rgba(120, 253, 186, 0.856));
 }
 .active{
   i{

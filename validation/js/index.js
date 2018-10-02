@@ -39,35 +39,57 @@ $(document).on('click', '#profile div', function(event){
 });
 function changePage(){
   TweenMax.killAll();// 刪掉所有正在執行的TweenMax動畫
+  TweenMax.set("#progressbar i", {scale: 1}); // 並還原回原本的狀態(避免上下頁未執行完動畫的bug)
   $("#form1,#form2,#form3,#form4,#form5").css("height","0"); 
   $("#progressbar i:gt("+(count-1)+")").attr("class","fa fa-circle-o"); 
   $("#progressbar li:gt("+(count-1)+")").removeClass("active");
   $("#progressbar i").eq(count-1).attr("class","fa fa-dot-circle-o");
   if(count > 1){
-    $("#progressbar li").eq(count-1).addClass("active"); 
-    $("#progressbar i").eq(count-2).attr("class","fa fa-check-circle");
+    TweenMax.to("#progressbar i:eq("+(count-2)+")", 0.6, {scaleX:"2",scaleY:"2",ease: Bounce.easeOut,
+    onComplete: function() {
+      $("#progressbar i").eq(count-2).attr("class","fa fa-check-circle");
+      $("#progressbar li").eq(count-1).addClass("active"); 
+      TweenMax.to("#progressbar i:eq("+(count-2)+")", 0.6, {scaleX:"1",scaleY:"1"});
+    }});
   }
   for(var i=1; i<6; i++){
-    if(count == i){
-      TweenMax.to("#form"+i.toString(), 1.5, {height:"500px", ease: Power2.easeOut});
+    if(count == 5){
+      $("#form5").css("height","400px"); 
+      TweenMax.to("#form5 h1", 2.8, {text:"Congratulations",delay:0.5,
+      onComplete: function() {
+        var number = {seconds: 5};
+        TweenMax.to("#form5 h4,#smile,#direct", 0.8, {opacity:1});
+        var tl = new TimelineMax({repeat:5});
+        tl.to("#smile", 0.6, {y: -50, ease: Power4.easeOut});
+        tl.to("#smile", 0.4, {y: 0, ease: SteppedEase.config(12)});
+        TweenMax.to(number, 5, {seconds: 0,
+          ease: Power0.easeNone,
+          onUpdate: function() {
+            $("#direct span").html(Math.ceil(number.seconds));
+          },
+          onComplete: function() {
+            //導回起始頁並清空資料
+            count = 1;
+            location.reload();
+            // $("#profile").html("");
+            // $("form input").val("");
+          }
+        });        
+      }});
+    }else if(count == i){
+      TweenMax.to("#form"+i.toString(), 1.5, {height:"650px", ease: Power2.easeOut,delay:1});
     }
   }
 }
 $(document).on('click', '[type="button"]', function(event){
   if(count == 4){
     // submit至後端
+    // $('form').submit();
     console.log("送出成功!");
   }
   count++;
   location.hash = count;
   changePage();
-});
-$(document).on('click', '#done', function(event){
-  event.preventDefault();//type=submit
-  event.stopPropagation();//type=submit
-  // customValidity($(this).parent().find("input"));
-  //ajax傳送至後端
-  // $('form').submit();
 });
 $(document).on('click', '#brand', function(event){
   if($(this).hasClass("fa-cc-visa")){

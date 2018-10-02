@@ -164,19 +164,19 @@
   <div class="form-row">
     <div class="col" id="cvvBlock">
       <label for="cvv">CVV</label>
-      <input type="number" class="form-control required" id="cvv" placeholder="123">
+      <input type="number" class="form-control required spec" id="cvv" placeholder="123">
       <i style="display:none;" class="fa fa-warning fa-lg"></i>
       <span data-tooltip="NOT EQUAL 3 DIGITAL" data-require="required">
     </div>
     <div class="col">
       <label for="expiremonth">Expire Date</label>
-      <input type="number" min="1" max="12" class="form-control required" id="expiremonth" placeholder="MM">
+      <input type="number" min="1" max="12" class="form-control required spec" id="expiremonth" placeholder="MM">
       <i style="display:none;" class="fa fa-warning fa-lg"></i>
       <span data-tooltip="OUT OF RANGE" data-require="required">
     </div>
     <div class="col">
       <label for="expireday">&nbsp;</label>
-      <input type="number" min="1" max="31" class="form-control required" id="expireday" placeholder="DD">
+      <input type="number" min="1" max="31" class="form-control required spec" id="expireday" placeholder="DD">
       <i style="display:none;" class="fa fa-warning fa-lg"></i>
       <span data-tooltip="OUT OF RANGE" data-require="required">
      </div>
@@ -185,16 +185,17 @@
 </form>
 </div>
 <div id="form5" class="container d-flex align-items-center flex-column">
-<h1>Congratulations</h1>
+<h1>&hearts;&hearts;&hearts;&hearts;&hearts;</h1>
 <h4>Now you’re one of us! </h4>
 <div id="smile">&#9787;</div>
-<h5 id="direct">Redirected to homepage after 5 seconds…</h5>
+<h5 id="direct">Redirected to homepage after <span>5</span> seconds…</h5>
 </div>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js'></script>
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'></script>
 <script src='https://cdn.jsdelivr.net/npm/jquery-twzipcode@1.7.14/jquery.twzipcode.min.js'></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/plugins/TextPlugin.min.js"></script>
 <script  src="js/index.js"></script>
 
 </body>
