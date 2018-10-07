@@ -160,6 +160,9 @@ input{
     @include abpos(16*$i - 8+vw,50+random(10)*10+px);
     transform: rotate(random(10) - 2 +deg);
     animation: upDown 3+0.5*$i+s infinite alternate;
+    &:hover{
+      animation-play-state: paused;
+    }
     .ball,.ball:after,.ball:before{
       background: linear-gradient(nth($ballColor,$i));
     }

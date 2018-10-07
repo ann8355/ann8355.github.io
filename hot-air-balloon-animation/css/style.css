@@ -183,7 +183,9 @@ input {
   background-color: #9F8060;
   box-shadow: inset -4px -5px rgba(0, 0, 0, 0.1);
 }
-
+[class^='balloon']:hover{
+  animation-play-state: paused;
+}
 .balloon1 {
   position: absolute;
   left: 8vw;
