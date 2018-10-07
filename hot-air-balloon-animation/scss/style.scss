@@ -1,0 +1,340 @@
+*{
+  position: relative;
+}
+$colorBackground: #2C2F36;
+$red: #701010,#E75858,#FF8080;
+$orange: #FF8000,#FF9F40,#FFBF80;
+$pink: #BF0060,#E7589F,#EF8FBF;
+$green: #008000,#40BF40,#8FEF8F;
+$purple: #400080,#6000BF,#BF8FEF;
+$blue: #1D2B49,#1A45A0,#91cdff,#fff;
+$sun: #ffdd38;
+$cloud: #fff, #d3d3d3;
+$ballColor: ($purple,$red,$green,$pink,$orange);
+$lineColor: (#BF8FEF,#FF8080,#40BF40,#EF8FBF,#FF9F40);
+
+@mixin size($w,$h:$w,$bdrs:0){
+  width: $w;
+  height: $h;
+  border-radius: $bdrs;
+}
+@mixin abpos($l:initial,$t:initial,$b:initial){
+  position: absolute;
+  left: $l;
+  top: $t;
+  bottom: $b;
+}
+@mixin textCustom($background,$color:transparent,$width:1px){
+  background: $background;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-color: $color;
+  -webkit-text-stroke-width: $width;
+}
+@mixin zAnimation($size){
+  0%{
+    font-size: 1em;
+  }
+  100%{
+    font-size: $size;
+  }
+}
+@mixin roundRadius($tl:initial,$br:initial,$tr:initial,$bl:initial){
+  border-top-left-radius: $tl;
+  border-bottom-right-radius: $br;
+  border-top-right-radius: $tr;
+  border-bottom-left-radius: $bl;
+}
+@mixin ballColor($position:100%){
+  // background: $color;
+  background-size: 100% 300%;
+  background-position: 0 $position;
+}
+  
+html,body{
+  @include size(100%);
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $colorBackground;
+  color: white;
+}
+h1{
+  @include textCustom(url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHLHe5eD4_vBjpFApYkyyfcAEuqeh1QpiU9k5KHamXaf_7PaM3Ew"));
+}
+h1,.moon,.sun,.scene,.allstars,[class^='mountain'],[class^='cloudgroup'],.ball{
+  transition: 2s;
+}
+.remind{
+  opacity: 0.2;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+input{
+  display: none;
+}
+//中間的主要場景
+.scene{
+  @include size(90vw,80vh,15px);
+  overflow: hidden;
+  background: linear-gradient($blue);
+  background-size: 100% 300%;
+  box-shadow: 0px 0px 40px rgba(white,0.3);
+  cursor: pointer;
+  display: flex;
+}
+//左側上放的文字
+.lefttopText{
+  margin-left: 30px;
+  margin-top: 30px;
+  h1{
+    letter-spacing: 2px;
+    margin-top: 0;
+  }
+  h2{
+    margin-top: 0.5em;
+    color: silver;
+    display: flex;
+    @include abpos(200px,0);
+    transform: rotate(-15deg);
+    .z2{
+      animation: changeZ2 2s 1.5s infinite;
+    }
+    .z3{
+      animation: changeZ3 2s 1.5s infinite;
+    }
+  }
+}
+@keyframes changeZ2{
+  @include zAnimation(1.5em);
+}
+@keyframes changeZ3{
+  @include zAnimation(2em);
+}
+//熱氣球
+%ballType{
+  overflow: hidden;
+  box-shadow: 0px 0px 30px rgba(black,0.6);
+}
+%predo{
+  content: '';
+  display: block;
+  transform: rotate(315deg);
+}
+[class^='balloon']{
+  @include size(10em,15em);
+  .ball{
+    @include size(10em,10em,150%);
+    @include ballColor(50%);
+    @include roundRadius(425%,425%,220%,425%);//tl,br,tr,bl
+    @extend %ballType;
+    transform: rotate(135deg);
+    &:after{
+      @include ballColor(70%);
+      @include size(15em,2em,50%);
+      @include abpos(-20%,initial,45%);
+      @extend %predo;
+    }
+    &:before{
+      @include ballColor(65%);
+      @include size(15em,6.5em,50%);
+      @include abpos(-23%,initial,20%);
+      @extend %predo;
+    }
+  }
+  .line{
+    @include size(15%,9%);
+    @include abpos(43%,initial,2.8em);
+    transform: rotate(136deg);
+  }
+  .bag{
+    @include size(40%,17%,5px);
+    @include abpos(30.5%,initial,0);
+    background-color: #9F8060;
+    box-shadow: inset -4px -5px rgba(black,0.1);
+  }
+}
+@for $i from 1 through 5{
+  .balloon#{$i}{
+    @include abpos(16*$i - 8+vw,50+random(10)*10+px);
+    transform: rotate(random(10) - 2 +deg);
+    animation: upDown 3+0.5*$i+s infinite alternate;
+    .ball,.ball:after,.ball:before{
+      background: linear-gradient(nth($ballColor,$i));
+    }
+    .line{
+      border: 2px ridge nth($lineColor,$i);
+    }
+  }
+}
+@keyframes upDown{
+  100%{
+    transform: translateY(100px);
+  }
+}
+//山
+@for $i from 1 through 5{
+  .mountain#{$i}{
+    $height: $i*50 + 150;
+    $width: $height - 50+px;
+    @include size($width,$height+px,50%);
+    @include abpos(initial,initial,-200px);
+    box-shadow: inset -8px 5px rgba(black,0.1);
+  }
+}
+.mountain4{ 
+  left: 350px;
+  background-color: #487848;
+}
+.mountain3{ 
+  left: 600px;
+  background-color: #206040;
+}
+.mountain2{ 
+  left: 160px;
+  height: 380px;
+  background-color: #305040;
+}
+.mountain5{
+  right: 0;
+  width: 45%;
+  background-color: #206020;
+}
+.mountain1{
+  bottom: -20%;
+  background-color: #182818;
+}
+//所有星星
+.allstars{
+  //外層容器撐滿整個框框
+  @include size(100%);
+  @include abpos(0,0);
+  //以star開頭的為星星
+  [class^='star']{
+    @include size(3px,3px,50%);
+    background-color: white;
+    animation: falling 2s infinite;
+  }
+  @for $i from 1 through 30{
+    .star#{$i}{
+      $posX: random(100)*1%;
+      $posY: random(80)*-1% + 50%;
+      @include abpos($posX,$posY);
+      animation-delay: $i* -0.1s;
+    }
+  }
+}
+//星星從原本位置偏移落下的動畫，從右上到左下
+@keyframes falling{
+  0%,100%{
+    opacity: 0; 
+  }
+  0%{
+    transform: translate(100px,0px);
+  }
+  70%{
+    opacity: 1;
+  }
+  100%{
+    transform: translate(0px,200px);
+  }
+}
+//白天
+.dayText{
+  display: none;
+}
+//設定太陽跟月亮的共用尺寸/位置
+%sunMoon{
+  @include size(50px,50px,50%);
+  @include abpos(315px,40px);
+}
+.sun{
+  @extend %sunMoon;
+  box-shadow: 0px 0px 30px rgba(#FFBA00,0.7);
+  top: 400px;
+  opacity: 0;
+  font-size: 69px;
+  line-height: 50px;
+  color: $sun;
+  @include textCustom(-webkit-linear-gradient(top,#FFBA00 0,yellow 50%,#FFBA00 100%),#FFBA00,2px);
+}
+.moon{
+  @extend %sunMoon;
+  box-shadow: inset 0px 0px rgba(#fff,0.9);
+  animation: moonAppear 2s both;
+}
+//月亮出現的動畫
+@keyframes moonAppear{
+  100%{
+    box-shadow: inset 10px -10px rgba(#fff,0.9);
+  }
+}
+//雲
+.cloudgroup1{
+  @include abpos(320px,30px);
+  @include size(200px,100px);
+}
+.cloudgroup2{
+  @include abpos(520px,90px);
+  @include size(130px,60px);
+}
+.cloudgroup3{
+  @include abpos(600px,60px);
+  @include size(100px,50px);
+}
+  .cloudgroupa,.cloudgroupb,.cloudgroupc{
+    @include abpos(initial,initial,0);
+    background: linear-gradient($cloud);
+    filter: brightness(50%);
+  }
+  .cloudgroupa{
+    @include size(45%,65%,0%);
+    @include roundRadius(150%,50%,initial,25%);//tl,br,tr,bl
+  }
+  .cloudgroupb{
+    margin-left: 25%;
+    @include size(52%,100%,0%);
+    @include roundRadius(80%,initial,150%);//tl,br,tr,bl
+  }
+  .cloudgroupc{
+    margin-left: 64%;
+    @include size(35%,75%,50%);
+    @include roundRadius(50%,25%,150%);//tl,br,tr,bl
+  }
+//切換白天夜晚
+input:checked+.scene{
+  background-position: 0 100%;
+  .nightText{
+    display: none;
+  }
+  .dayText{
+    display: block;
+  }
+  .allstars{
+    opacity: 0;
+  }
+  [class^='cloudgroup']{
+    filter: brightness(100%);
+  }
+  h1{
+    @include textCustom(-webkit-linear-gradient(top,white 0,red 100%),red);
+    color: red;
+  }
+  .moon{
+    top: -40px;
+    opacity: 0;
+  }
+  .sun{
+    top: 40px;
+    opacity: 1;
+  }
+  [class^='mountain']{
+    filter: brightness(200%);
+  }
+  .ball{
+    box-shadow: 0px 0px 30px rgba(black,0.3);
+    filter: brightness(120%);
+  }
+}
+  
