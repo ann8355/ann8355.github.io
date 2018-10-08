@@ -662,8 +662,8 @@ input {
 }
 
 .sun, .moon {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   position: absolute;
   left: 315px;
@@ -672,10 +672,10 @@ input {
 }
 
 .sun {
-  box-shadow: 0px 0px 30px rgba(255, 186, 0, 0.7);
+  box-shadow: 0px 0px 30px rgba(#FFBA00,0.3);
   top: 400px;
   opacity: 0;
-  font-size: 69px;
+  font-size: 75px;
   line-height: 50px;
   color: #ffdd38;
   background: -webkit-linear-gradient(top, #FFBA00 0, yellow 50%, #FFBA00 100%);
