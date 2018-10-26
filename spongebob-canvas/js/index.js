@@ -135,102 +135,97 @@ function update(){
     }
 }
 function draw(){
-   //清空背景  
-  var img = new Image()  
-  img.onload = function(){
+	var img = new Image()  
+	img.onload = function(){
     ctx.fillStyle = sceneColor
-    ctx.fillRect(0,0,ww,wh)  
+    ctx.fillRect(0,0,ww,wh)  //清空背景  
     ctx.globalCompositeOperation = 'multiply'
-		ctx.drawImage(img,0,0,ww,wh)
+    ctx.drawImage(img,0,0,ww,wh)
     ctx.globalCompositeOperation ="source-over"
-	}  
-  img.src = 'https://backgroundcheckall.com/wp-content/uploads/2017/12/spongebob-ocean-background-4.jpg'
-  // ctx.fillStyle = sceneColor
-  // ctx.fillRect(0,0,ww,wh)  
-  //-------------------------
-  //   在這裡繪製
-  //文字 
-  let lineheight = 45
-  let x = ww*0.75
-  let y = wh*0.85
-  ctx.font = "32pt hoge,impact"
-  ctx.fillStyle = textColor
-  ctx.fillText("SpongeBob",x,y)//SpongeBob by CHEN PEI-AN
-  ctx.fillText("by",x+130,y+lineheight)
-  ctx.fillText("CHEN PEI-AN",x+50,y+lineheight*2.2)
-  ctx.beginPath()
-  //身體波浪
-  let degTime = time/20
-  for(var i=0;i<bobWidth;i++){
-    let deg = i*freq+degTime
-    ctx.lineTo(i+start.x,amp*Math.cos(deg)+start.y)
-  }
-   for(var i=0;i<bobHeight;i++){
-    let deg = i*freq+degTime    
-    ctx.lineTo(-amp*Math.cos(deg)+start.x+bobWidth ,i+start.y)
-  }
-  for(var i=0;i<bobWidth;i++){
-    let deg = i*freq+degTime
-    ctx.lineTo((start.x+bobWidth)-i,amp*Math.cos(deg)+start.y+bobHeight)
-  }
-   for(var i=0;i<bobHeight;i++){
-    let deg = i*freq+degTime  
-    ctx.lineTo(-amp*Math.cos(deg)+start.x ,(start.y+bobHeight)-i)
-  }
-  ctx.fillStyle = bobColor
-  ctx.fill()
-  //斑點
-  var blobs = [{x:6,y:10,r:bobWidth/19},{x:11,y:5,r:bobWidth/32},{x:1.2,y:11,r:bobWidth/23},{x:5,y:1.15,r:bobWidth/12},{x:20,y:1.6,r:bobWidth/17},{x:1.3,y:1.5,r:bobWidth/11},{x:1.4,y:1.25,r:bobWidth/26}]
-  for(var i=0; i<blobs.length; i++){
-    ctx.circle(new Vec2(start.x+bobWidth/blobs[i].x+i*5,start.y+bobHeight/blobs[i].y+i*5),blobs[i].r,blobColor,blobColor,1)
-  }
-  //嘴巴
-  var eyeStart = new Vec2(start.x+bobWidth/3,start.y+bobHeight/3)
-  let white_r = bobWidth/6;
-  let mouthSize = white_r*2.2
-  ctx.ParamEllipse(new Vec2(eyeStart.x+white_r,eyeStart.y+bobHeight/10),mouthSize,mouthSize*move.mouth,bgColor,mouthColor)
-  ctx.ParamEllipse(new Vec2(eyeStart.x+white_r,eyeStart.y+bobHeight/10),mouthSize,mouthSize/2,bgColor,bobColor)
-  //眉毛
-  let eyebrow_w = bobWidth/48
-  let eyebrow_h = bobHeight/18
-  var eyebrows = [{x:3,y:8},{x:3.8,y:7.5},{x:2.5,y:7},{x:1.54,y:8},{x:1.4,y:7.5},{x:1.7,y:7}]
-  for(var i=0; i<eyebrows.length; i++){
-    if(move.eye != 0){
-      move.eyeBrowPos = start.y+bobHeight/eyebrows[i].y
+     //文字 
+    let lineheight = 45
+    let x = ww*0.75
+    let y = wh*0.85
+    ctx.font = "32pt hoge,impact"
+    ctx.fillStyle = textColor
+    ctx.fillText("SpongeBob",x,y)//SpongeBob by CHEN PEI-AN
+    ctx.fillText("by",x+130,y+lineheight)
+    ctx.fillText("CHEN PEI-AN",x+50,y+lineheight*2.2)
+    ctx.beginPath()
+    //身體波浪
+    let degTime = time/20
+    for(var i=0;i<bobWidth;i++){
+      let deg = i*freq+degTime
+      ctx.lineTo(i+start.x,amp*Math.cos(deg)+start.y)
     }
-    ctx.rect(new Vec2(start.x+bobWidth/eyebrows[i].x,move.eyeBrowPos),eyebrow_w,eyebrow_h,bgColor)
-  } 
-  //眼睛(黃色) 閉眼
-  ctx.ParamEllipse(new Vec2(eyeStart.x,eyeStart.y),white_r*0.9,white_r*0.9,bgColor,bobColor)
-  ctx.ParamEllipse(new Vec2(eyeStart.x+white_r*2,eyeStart.y),white_r*0.9,white_r*0.9,bgColor,bobColor)
-  //眼睛(白色)
-  ctx.circle(new Vec2(eyeStart.x,eyeStart.y),move.eye,eyeColor,bgColor,5)
-  ctx.circle(new Vec2(eyeStart.x+white_r*2,eyeStart.y),move.eye,eyeColor,bgColor,5) 
-  //眼睛(藍色)
-  let blue_r = move.eye/3;
-  ctx.circle(new Vec2(eyeStart.x+blue_r*move.leftEye,eyeStart.y),blue_r,eyeballColor,bgColor,3)
-  ctx.circle(new Vec2(eyeStart.x+white_r*2-blue_r*move.rightEye,eyeStart.y),blue_r,eyeballColor,bgColor,3)
-  //眼睛(黑色)
-  let black_r = blue_r/2;
-  ctx.circle(new Vec2(eyeStart.x+blue_r*move.leftEye,eyeStart.y),black_r,bgColor,bgColor,1)
-  ctx.circle(new Vec2(eyeStart.x+white_r*2-blue_r*move.rightEye,eyeStart.y),black_r,bgColor,bgColor,1)
-  //鼻子
-  let noseSize = bobWidth/15;
-  ctx.circle(new Vec2(eyeStart.x+white_r,eyeStart.y+bobHeight/9),noseSize,bobColor,bgColor,4,Math.PI*0.9,Math.PI*2.4)
-  //牙齒
-  let teethSize = blue_r*1.2
-  ctx.rect(new Vec2(eyeStart.x+white_r*1.2,eyeStart.y+bobHeight/3.7),teethSize,teethSize,eyeColor)
-  ctx.rect(new Vec2(eyeStart.x+white_r*0.5,eyeStart.y+bobHeight/3.7),teethSize,teethSize,eyeColor)
-  //腮紅(邊框)
-  let blushSize = bobWidth/13; 
-  ctx.circle(new Vec2(eyeStart.x-white_r*1.1,eyeStart.y+bobHeight/9),blushSize,bobColor,blushColor,4,Math.PI*0.6,Math.PI*2.2)
-  ctx.circle(new Vec2(eyeStart.x+white_r*3.1,eyeStart.y+bobHeight/9),blushSize,bobColor,blushColor,4,Math.PI*0.8,Math.PI*2.4)
-  //腮紅(圓圈)
-  let blushCircle = blushSize/8;
-  var array = [{x:0.9,y:11},{x:1.1,y:8},{x:1.3,y:11},{x:-3.3,y:11},{x:-2.9,y:11},{x:-3.1,y:8}]
-  for(var i=0; i<array.length; i++){
-    ctx.circle(new Vec2(eyeStart.x-white_r*array[i].x,eyeStart.y+bobHeight/array[i].y),blushCircle,blushCC,blushCC,1)//1.1,9
-}
+     for(var i=0;i<bobHeight;i++){
+      let deg = i*freq+degTime    
+      ctx.lineTo(-amp*Math.cos(deg)+start.x+bobWidth ,i+start.y)
+    }
+    for(var i=0;i<bobWidth;i++){
+      let deg = i*freq+degTime
+      ctx.lineTo((start.x+bobWidth)-i,amp*Math.cos(deg)+start.y+bobHeight)
+    }
+     for(var i=0;i<bobHeight;i++){
+      let deg = i*freq+degTime  
+      ctx.lineTo(-amp*Math.cos(deg)+start.x ,(start.y+bobHeight)-i)
+    }
+    ctx.fillStyle = bobColor
+    ctx.fill()
+    //斑點
+    var blobs = [{x:6,y:10,r:bobWidth/19},{x:11,y:5,r:bobWidth/32},{x:1.2,y:11,r:bobWidth/23},{x:5,y:1.15,r:bobWidth/12},{x:20,y:1.6,r:bobWidth/17},{x:1.3,y:1.5,r:bobWidth/11},{x:1.4,y:1.25,r:bobWidth/26}]
+    for(var i=0; i<blobs.length; i++){
+      ctx.circle(new Vec2(start.x+bobWidth/blobs[i].x+i*5,start.y+bobHeight/blobs[i].y+i*5),blobs[i].r,blobColor,blobColor,1)
+    }
+    //嘴巴
+    var eyeStart = new Vec2(start.x+bobWidth/3,start.y+bobHeight/3)
+    let white_r = bobWidth/6;
+    let mouthSize = white_r*2.2
+    ctx.ParamEllipse(new Vec2(eyeStart.x+white_r,eyeStart.y+bobHeight/10),mouthSize,mouthSize*move.mouth,bgColor,mouthColor)
+    ctx.ParamEllipse(new Vec2(eyeStart.x+white_r,eyeStart.y+bobHeight/10),mouthSize,mouthSize/2,bgColor,bobColor)
+    //眉毛
+    let eyebrow_w = bobWidth/48
+    let eyebrow_h = bobHeight/18
+    var eyebrows = [{x:3,y:8},{x:3.8,y:7.5},{x:2.5,y:7},{x:1.54,y:8},{x:1.4,y:7.5},{x:1.7,y:7}]
+    for(var i=0; i<eyebrows.length; i++){
+      if(move.eye != 0){
+        move.eyeBrowPos = start.y+bobHeight/eyebrows[i].y
+      }
+      ctx.rect(new Vec2(start.x+bobWidth/eyebrows[i].x,move.eyeBrowPos),eyebrow_w,eyebrow_h,bgColor)
+    } 
+    //眼睛(黃色) 閉眼
+    ctx.ParamEllipse(new Vec2(eyeStart.x,eyeStart.y),white_r*0.9,white_r*0.9,bgColor,bobColor)
+    ctx.ParamEllipse(new Vec2(eyeStart.x+white_r*2,eyeStart.y),white_r*0.9,white_r*0.9,bgColor,bobColor)
+    //眼睛(白色)
+    ctx.circle(new Vec2(eyeStart.x,eyeStart.y),move.eye,eyeColor,bgColor,5)
+    ctx.circle(new Vec2(eyeStart.x+white_r*2,eyeStart.y),move.eye,eyeColor,bgColor,5) 
+    //眼睛(藍色)
+    let blue_r = move.eye/3;
+    ctx.circle(new Vec2(eyeStart.x+blue_r*move.leftEye,eyeStart.y),blue_r,eyeballColor,bgColor,3)
+    ctx.circle(new Vec2(eyeStart.x+white_r*2-blue_r*move.rightEye,eyeStart.y),blue_r,eyeballColor,bgColor,3)
+    //眼睛(黑色)
+    let black_r = blue_r/2;
+    ctx.circle(new Vec2(eyeStart.x+blue_r*move.leftEye,eyeStart.y),black_r,bgColor,bgColor,1)
+    ctx.circle(new Vec2(eyeStart.x+white_r*2-blue_r*move.rightEye,eyeStart.y),black_r,bgColor,bgColor,1)
+    //鼻子
+    let noseSize = bobWidth/15;
+    ctx.circle(new Vec2(eyeStart.x+white_r,eyeStart.y+bobHeight/9),noseSize,bobColor,bgColor,4,Math.PI*0.9,Math.PI*2.4)
+    //牙齒
+    let teethSize = blue_r*1.2
+    ctx.rect(new Vec2(eyeStart.x+white_r*1.2,eyeStart.y+bobHeight/3.7),teethSize,teethSize,eyeColor)
+    ctx.rect(new Vec2(eyeStart.x+white_r*0.5,eyeStart.y+bobHeight/3.7),teethSize,teethSize,eyeColor)
+    //腮紅(邊框)
+    let blushSize = bobWidth/13; 
+    ctx.circle(new Vec2(eyeStart.x-white_r*1.1,eyeStart.y+bobHeight/9),blushSize,bobColor,blushColor,4,Math.PI*0.6,Math.PI*2.2)
+    ctx.circle(new Vec2(eyeStart.x+white_r*3.1,eyeStart.y+bobHeight/9),blushSize,bobColor,blushColor,4,Math.PI*0.8,Math.PI*2.4)
+    //腮紅(圓圈)
+    let blushCircle = blushSize/8;
+    var array = [{x:0.9,y:11},{x:1.1,y:8},{x:1.3,y:11},{x:-3.3,y:11},{x:-2.9,y:11},{x:-3.1,y:8}]
+    for(var i=0; i<array.length; i++){
+      ctx.circle(new Vec2(eyeStart.x-white_r*array[i].x,eyeStart.y+bobHeight/array[i].y),blushCircle,blushCC,blushCC,1)//1.1,9
+    }
+  }  
+	img.src = 'https://backgroundcheckall.com/wp-content/uploads/2017/12/spongebob-ocean-background-4.jpg' 
   requestAnimationFrame(draw)
 }
 function loaded(){
