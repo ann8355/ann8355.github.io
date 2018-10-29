@@ -156,7 +156,7 @@ $("#moon").click(function(event) {
   $("#logo,.modal-title").removeClass("light-logo").addClass("dark-logo");
   $(".modal-body").css({"color":"white","background-color":"rgba(0,0,0,0.9)"});
   $("#lightStatus").css("border-color","white");
-  $(".lightbox").css("float","left");
+  $(".lightbox").css("margin-left","0%");
   var dark = $("#logo").css("color");
   $(".modal-body a,#prev,#next").hover(function() {
     $(this).css("background-color",dark);
@@ -173,7 +173,7 @@ $("#sun").click(function(event) {
   $("#logo,.modal-title").removeClass("dark-logo").addClass("light-logo");
   $(".modal-body").css({"color":"black","background-color":"rgba(0,0,0,0.1)"});
   $("#lightStatus").css("border-color","black");
-  $(".lightbox").css("float","right");
+  $(".lightbox").css("margin-left","50%");
   var dark = $("#logo").css("color");
   $(".modal-body a,#prev,#next").hover(function() {
     $(this).css("background-color",dark);
