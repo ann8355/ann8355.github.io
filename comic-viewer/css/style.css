@@ -1,4 +1,18 @@
 @charset "UTF-8";
+
+.loading{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+}
+
+.modal-body{
+  transition: 1s;
+}
+
 .modal-dialog {
   display: flex;
   justify-content: center;
@@ -226,11 +240,12 @@ body {
   white-space: nowrap;
   align-items: center;
   display: flex;
+  overflow-y: hidden;
 }
 #scrollBox ul {
   border-top: 2px solid #b3b3b3;
   padding: 0px 60px;
-  min-width: 160vw;
+  min-width: calc(100% + 805px);
   margin: 0;
   display: inline-flex;
 }
@@ -286,39 +301,37 @@ body {
   background-color: black;
 }
 
-::-webkit-scrollbar-button:vertical:decrement {
-  background-image: url("https://www.iconsdb.com/icons/preview/white/arrow-155-xxl.png");
+::-webkit-scrollbar-button:vertical:start:decrement {
+  background-image: url("../../custom-skillTree/img/arrow-155-xxl.png");
   background-position: center center;
-  background-size: contain;
+  background-size: cover;
+  height: 10px;
 }
 
-::-webkit-scrollbar-button:vertical:increment {
-  background-image: url("https://www.iconsdb.com/icons/preview/white/arrow-216-xxl.png");
+::-webkit-scrollbar-button:vertical:end:increment {
+  background-image: url("../../custom-skillTree/img/arrow-216-xxl.png");
   background-position: center center;
-  background-size: contain;
+  background-size: cover;
+  height: 10px;
 }
 
-::-webkit-scrollbar-button:horizontal:decrement {
-  background-image: url("https://www.iconsdb.com/icons/preview/white/arrow-102-xxl.png");
+::-webkit-scrollbar-button:horizontal:start:decrement {
+  background-image: url("../../custom-skillTree/img/arrow-102-xxl.png");
   background-position: center center;
-  background-size: contain;
+  background-size: cover;
 }
 
-::-webkit-scrollbar-button:horizontal:increment {
-  background-image: url("https://www.iconsdb.com/icons/preview/white/arrow-37-xxl.png");
+::-webkit-scrollbar-button:horizontal:end:increment {
+  background-image: url("../../custom-skillTree/img/arrow-37-xxl.png");
   background-position: center center;
-  background-size: contain;
+  background-size: cover;
+  border-radius: 0 0 1em 0;
 }
 
 ::-webkit-scrollbar-corner {
   background-color: black;
 }
 
-@media (max-width: 870px) {
-  #scrollBox ul {
-    min-width: 200vw;
-  }
-}
 @media (max-width: 800px) {
   #main {
     flex-direction: column;
@@ -326,10 +339,6 @@ body {
   }
 }
 @media (max-width: 650px) {
-  #scrollBox ul {
-    min-width: 260vw;
-  }
-
   #viewtop {
     flex-direction: column;
   }
@@ -343,10 +352,6 @@ body {
   }
 }
 @media (max-width: 490px) {
-  #scrollBox ul {
-    min-width: 320vw;
-  }
-
   #homeTitle {
     width: 50% !important;
   }

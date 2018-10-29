@@ -10,6 +10,17 @@ $regular-font:16px;
 $small-font:14px;
 $status-icon-m:8px;
 
+.loading{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+}
+.modal-body{
+  transition: 1s;
+}
 .modal-dialog{
   display: flex;
   justify-content: center;
@@ -210,10 +221,11 @@ clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 100%);
   white-space:nowrap;
   align-items: center;
   display: flex;
+  overflow-y: hidden;
   ul{
     border-top: 2px solid lighten($black,70%);
     padding: 0px 60px;
-    min-width:160vw;
+    min-width: calc(100% + 805px);
     margin: 0;
     display: inline-flex;
     li:last-child{
@@ -291,12 +303,6 @@ clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 100%);
 		  background-color: $black;
 } 
 
-
-@media(max-width: 870px){
-  #scrollBox ul{
-    min-width: 200vw;
-  }
-}
 @media(max-width: 800px){
   #main{
     flex-direction: column;
@@ -304,9 +310,6 @@ clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 100%);
   }
 }
 @media(max-width: 650px){
-  #scrollBox ul{
-    min-width: 260vw;
-  }
   #viewtop{
     flex-direction: column;
     #lightmode{
@@ -319,9 +322,6 @@ clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 100%);
   }
 }
 @media(max-width: 490px){
-  #scrollBox ul{
-    min-width: 320vw;
-  }
   #homeTitle{
     width: 50%!important;
   }

@@ -1,172 +1,159 @@
 <!DOCTYPE html>
 <html lang="en" >
-
-<head>
-  <meta charset="UTF-8">
-  <title>comic viewer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" >
-  
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css'>
-
-      <link rel="stylesheet" href="css/style.css">
-
-  
-</head>
-
-<body>
-
-  <header class="dark-bg d-flex align-items-center">
-  <div class="container d-flex justify-content-center">
-    <div id="logo" class="light-logo">Comicomic</div>
-  </div>
-</header>
-<article id="home" class="container w-75">
-  <div class="ad mt-4"></div>
-  <section id="main" class="d-flex my-4"> 
-    <div id="homephoto" class="col homephoto"></div>
-    <div id="content" class="col content d-flex flex-column bg-light">
-      <div id="name" class="title homeTitle"></div> 
-      <div class="my-3 mx-3">
-        <div>
-          <h5>Author :<span id="author" class="subtitle ml-3"></span></h5>                  
+  <head>
+    <meta charset="UTF-8">
+    <title>comic viewer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="css/style.css"> 
+  </head>
+  <body>
+    <header class="dark-bg d-flex align-items-center">
+    <div class="container d-flex justify-content-center">
+      <div id="logo" class="light-logo">Comicomic</div>
+    </div>
+    </header>
+    <article id="home" class="container w-75" style="position: relative;">
+      <div class="wrapper">
+        <div class="ad mt-4"></div>
+        <section id="main" class="d-flex my-4"> 
+          <div id="homephoto" class="col homephoto"></div>
+          <div id="content" class="col content d-flex flex-column bg-light">
+            <div id="name" class="title homeTitle"></div> 
+            <div class="my-3 mx-3">
+              <div>
+                <h5>Author :<span id="author" class="subtitle ml-3"></span></h5>                  
+              </div>
+              <div>
+                <h5>Status :<span id="status" class="subtitle ml-3"></span></h5>                  
+              </div>
+              <div>
+                <h5>Rate :
+                  <span id="rate" class="ml-3">
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                  </span>
+                </h5>                  
+              </div>
+            </div>
+            <div class="my-1 mx-3">
+              <h5>Summary</h5>
+              <p id="summary" style="text-indent:1em;"></p>
+            </div>
+            <div class="viewBtn">
+              <button id="viewBtn" type="button" class="btn btn-outline-secondary btn-lg" data-toggle="modal" data-target="#exampleModalLong">View</button>
+            </div>      
+          </div>
+        </section>
+        <div class="ad"></div> 
+        <section class="my-4">
+          <div id="homeTitle" class="title2 homeTitle w-25">All Series</div>
+          <div id="homeitem">
+            <h5><a href="#" class="list-group-item list-group-item-action">Pusheen<span class="ml-4 badge badge-danger">Hot</span></a></h5>
+            <h5><a href="#" class="list-group-item list-group-item-action">Disney</a></h5>
+            <h5><a href="#" class="list-group-item list-group-item-action">Marvel<span class="ml-4 badge badge-success">New</span></a></h5>
+          </div>
+        </section>
+        <div class="ad"></div> 
+      </div>
+    </article>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header dark-bg d-flex align-items-center text-center">
+          <h5 class="modal-title light-logo w-100" id="modalTitle"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <div>
-          <h5>Status :<span id="status" class="subtitle ml-3"></span></h5>                  
+        <div class="modal-body">
+          <article class="wrapper container d-flex flex-column align-items-center position-relative">
+    <section id="viewtop" class="my-4 d-inline-flex align-items-center">
+      <div class="title3 form-row">
+        <span>My Series</span>
+        <div class="col mr-3">
+          <select class="ml-4 form-control form-control-sm" id="productSelect">
+            <option value="www.pusheen.com">Pusheen</option>
+            <option value="disneyanimation.tumblr.com">Disney</option>
+            <option value="imagethecomicbookgeek.tumblr.com">Marvel</option>
+          </select>
         </div>
-        <div>
-          <h5>Rate :
-            <span id="rate" class="ml-3">
-              <i class="fa fa-star-o"></i>
-              <i class="fa fa-star-o"></i>
-              <i class="fa fa-star-o"></i>
-              <i class="fa fa-star-o"></i>
-              <i class="fa fa-star-o"></i>
-            </span>
-          </h5>                  
+        <div class="col">
+          <select class="form-control form-control-sm" id="pageSelect">
+            <option value="1">Page 01</option>
+            <option value="2">Page 02</option>
+            <option value="3">Page 03</option>
+            <option value="4">Page 04</option>
+            <option value="5">Page 05</option>
+            <option value="6">Page 06</option>
+            <option value="7">Page 07</option>
+            <option value="8">Page 08</option>
+            <option value="9">Page 09</option>
+            <option value="10">Page 10</option>
+          </select>
         </div>
       </div>
-      <div class="my-1 mx-3">
-        <h5>Summary</h5>
-        <p id="summary" style="text-indent:1em;"></p>
+      <div id="lightmode" class="ml-4 col d-flex align-items-center">
+        <i id="bg-minus" class="fa fa-minus-circle"></i>
+        <i id="moon" class="fa fa-moon-o fa-lg"></i>
+        <span id="lightStatus">
+          <span class="lightbox"></span>
+        </span>
+        <i id="sun" class="fa fa-sun-o fa-lg"></i>
+        <i id="bg-plus" class="fa fa-plus-circle"></i>
       </div>
-      <div class="viewBtn">
-        <button id="viewBtn" type="button" class="btn btn-outline-secondary btn-lg" data-toggle="modal" data-target="#exampleModalLong">View</button>
-      </div>      
+    </section>
+    <section id="photoblock">
+            <a class="prev" onclick="minusPage()">&#10094;</a>
+            <a class="next" onclick="plusPage()">&#10095;</a>
+            <div id="trapezoidal">
+              <div id="box3"></div>
+              <div id="box4"></div> 
+            </div>
+            <div id="photobox">
+              <div id="box1"></div>
+              <div id="box2"></div>
+            </div>
+    </section>
+    <div id="scrollBox"> 
+            <div id="prev" onclick="minusPage()"><a class="prev-scroll">&#10094;</a></div>
+            <div id="next" class="order-1" onclick="plusPage()"><a class="next-scroll">&#10095;</a></div>
+            <ul class="py-4">
+              <li class="pageHover">1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+              <li>6</li>
+              <li>7</li>
+              <li>8</li>
+              <li>9</li>
+              <li>10</li>
+            </ul>
     </div>
-  </section>
-  <div class="ad"></div> 
-  <section class="my-4">
-    <div id="homeTitle" class="title2 homeTitle w-25">All Series</div>
-    <div id="homeitem">
-      <h5><a href="#" class="list-group-item list-group-item-action">Pusheen<span class="ml-4 badge badge-danger">Hot</span></a></h5>
-      <h5><a href="#" class="list-group-item list-group-item-action">Disney</a></h5>
-      <h5><a href="#" class="list-group-item list-group-item-action">Marvel<span class="ml-4 badge badge-success">New</span></a></h5>
-    </div>
-  </section>
-  <div class="ad"></div> 
-</article>
-<!-- Modal -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header dark-bg d-flex align-items-center text-center">
-        <h5 class="modal-title light-logo w-100" id="modalTitle"></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <article class="container d-flex flex-column align-items-center position-relative">
-  <section id="viewtop" class="my-4 d-inline-flex align-items-center">
-    <div class="title3 form-row">
-      <span>My Series</span>
-      <div class="col mr-3">
-        <select class="ml-4 form-control form-control-sm" id="productSelect">
-          <option value="www.pusheen.com">Pusheen</option>
-          <option value="disneyanimation.tumblr.com">Disney</option>
-          <option value="imagethecomicbookgeek.tumblr.com">Marvel</option>
-        </select>
-      </div>
-      <div class="col">
-        <select class="form-control form-control-sm" id="pageSelect">
-          <option value="1">Page 01</option>
-          <option value="2">Page 02</option>
-          <option value="3">Page 03</option>
-          <option value="4">Page 04</option>
-          <option value="5">Page 05</option>
-          <option value="6">Page 06</option>
-          <option value="7">Page 07</option>
-          <option value="8">Page 08</option>
-          <option value="9">Page 09</option>
-          <option value="10">Page 10</option>
-        </select>
+  <div class="ad my-4" style="width: 85%;"></div> 
+  </article> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
-    <div id="lightmode" class="ml-4 col d-flex align-items-center">
-      <i id="bg-minus" class="fa fa-minus-circle"></i>
-      <i id="moon" class="fa fa-moon-o fa-lg"></i>
-      <span id="lightStatus">
-        <span class="lightbox"></span>
-      </span>
-      <i id="sun" class="fa fa-sun-o fa-lg"></i>
-      <i id="bg-plus" class="fa fa-plus-circle"></i>
     </div>
-  </section>
-  <section id="photoblock">
-     <a class="prev" onclick="minusPage()">&#10094;</a>
-     <a class="next" onclick="plusPage()">&#10095;</a>
-    <div id="trapezoidal">
-      <div id="box3"></div>
-      <div id="box4"></div> 
-    </div>
-    <div id="photobox">
-      <div id="box1"></div>
-      <div id="box2"></div>
-    </div>
-  </section>
-<div id="scrollBox"> 
-  <div id="prev" onclick="minusPage()"><a class="prev-scroll">&#10094;</a></div>
-  <div id="next" class="order-1" onclick="plusPage()"><a class="next-scroll">&#10095;</a></div>
-  <ul class="py-4">
-    <li class="pageHover">1</li>
-    <li>2</li>
-    <li>3</li>
-    <li>4</li>
-    <li>5</li>
-    <li>6</li>
-    <li>7</li>
-    <li>8</li>
-    <li>9</li>
-    <li>10</li>
-  </ul>
-</div>
-<div class="ad my-4" style="width: 85%;"></div> 
-</article> 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
- 
-<footer class="light-bg mt-5">
-  <div>版權 © 1994–2018 CHEN PEI-AN. 版權所有.</div>
-</footer>
-  <script src='https://code.jquery.com/jquery-3.2.1.slim.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js'></script>
-<script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
+    <footer class="light-bg mt-5">
+      <div>版權 © 1994–2018 CHEN PEI-AN. 版權所有.</div>
+    </footer>
 
-  
-
+    <script src='https://code.jquery.com/jquery-3.2.1.slim.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
     <script  src="js/index.js"></script>
-
-
-
-
-</body>
-
+  </body>
 </html>

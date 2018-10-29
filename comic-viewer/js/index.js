@@ -1,5 +1,6 @@
 var classMap = new Map();
 var countAd = 1;
+var finished = false;//圖片是否載入完成
 var photoArray_block=[];
 var series=[{
 "name":"Pusheen",
@@ -28,8 +29,17 @@ var series=[{
 }];
 
 function insertPhoto(num){
+    var count = num*4;
     for(var i=(num*4);i<(num*4)+4;i++){
+      var img = new Image();
+      img.onload = function(){
+        count++;
+        if(count == (num*4)+4){
+          isFinish(".modal-body");
+        }
+      }
       $("#box"+(i-((num*4)-1)).toString()).css("background-image","url("+photoArray_block[i]+")");
+      img.src = photoArray_block[i];
     }
 }
 function loadPhoto(blog){
@@ -55,7 +65,7 @@ function loadPhoto(blog){
           photoArray_block.push(photoArray[x]);
         }
       }
-      insertPhoto(0);
+      generateClass("1");
     },
     error: function (xhr, textStatus, errorThrown) {
       console.error(errorThrown);
@@ -64,14 +74,27 @@ function loadPhoto(blog){
 }
 setInterval(function changeAd(){
   if(countAd < 4){
-    var ad = "https://hexschool.github.io/THE_F2E_Design/week5-comic%20viewer/assets/ad-"+countAd.toString()+".png";
-    $('.ad').css("background-image","url("+ad+")");
-    countAd += 1;
+    var img = new Image();
+    img.onload = function(){
+      $('.ad').css("background-image","url("+img.src+")");
+      countAd += 1;
+      finished = true;
+    }
+    img.src = "https://hexschool.github.io/THE_F2E_Design/week5-comic%20viewer/assets/ad-"+countAd.toString()+".png";
   }else{
     countAd = 1;
   }
 } , 3000 );
+function isFinish(ele){
+  if(finished == true){
+    $(ele+" .wrapper").css("opacity","1");
+    $(ele).find(".loading").remove();
+  }else{
+    setTimeout("isFinish('" + ele + "')",500);
+  }
+}
 $("#homeitem h5").click(function(){
+  $("#home .wrapper").css("opacity","0").before('<div class="loading"><img src="img/loading.gif"></div>');
    var obj = series[$(this).index()];
    blog = obj.blog;
    loadPhoto(blog);
@@ -79,7 +102,12 @@ $("#homeitem h5").click(function(){
    $("#author").text(obj.author);
    $("#summary").text(obj.summary);
    $("#status").text(obj.status);
-   $("#homephoto").css("background-image","url("+obj.img+")");
+   var img = new Image();
+    img.onload = function(){
+      $("#homephoto").css("background-image","url("+img.src+")");
+      isFinish("#home");
+    }
+    img.src = obj.img;
    $("#rate i").attr("class","fa fa-star-o");
    $("#rate i:lt("+(obj.rate).toString()+")").attr("class","fa fa-star");
 }); 
@@ -104,7 +132,9 @@ function minusPage(){
   }
 }
 $("#pageSelect").change(function() {
-  generateClass($("#pageSelect option:selected").val());
+  var page = $("#pageSelect option:selected").val();
+  $('#scrollBox').scrollLeft(page*100 -100 );
+  generateClass(page);
 });
 $("#productSelect").change(function() {
    $('#scrollBox').scrollLeft(0); 
@@ -116,7 +146,9 @@ $("#productSelect").change(function() {
 $("#scrollBox").scroll(function() {
   var location = $('#scrollBox').scrollLeft();
   $('#scrollBox li').removeClass("pageHover").css("filter","blur(1px)");
-  $('#scrollBox li').eq(Math.ceil((location/100))).addClass("pageHover").css("filter","none");
+  var page = Math.ceil((location/100));
+  $('#scrollBox li').eq(page).addClass("pageHover").css("filter","none");
+  generateClass(page+1);
 });
 $("#moon").click(function(event) {
   $("header,.modal-header").removeClass("dark-bg").addClass("light-bg");
@@ -172,6 +204,8 @@ $("#bg-plus").click(function(event) {
   }
 });
 function generateClass(val){
+  $('#pageSelect option').attr("selected",false).filter('[value="'+val.toString()+'"]').attr("selected",true);
+  $(".modal-body .wrapper").css("opacity","0").before('<div class="loading"><img src="img/loading.gif"></div>');
   insertPhoto(val-1);
   var classarray = classMap.get(val.toString());
   for (x in classarray){
@@ -191,7 +225,6 @@ $(function(){
   classMap.set("8",["#photoblock_d-flex flex-column-reverse","#trapezoidal_mb-4 d-flex","#photobox_my-4 d-flex justify-content-between","#box1_two-block","#box2_two-block"]);
   classMap.set("9",["#photoblock_d-flex flex-column-reverse","#trapezoidal_mb-4 d-flex rotate","#photobox_my-4","#box1_block","#box2_d-none"]);
   classMap.set("10",["#photoblock_","#trapezoidal_my-4 d-flex","#photobox_mb-4","#box1_block","#box2_d-none"]);
-  generateClass("1");
   $("#homeitem h5:nth-child(1)").click();
   $("#sun").click();
 });
