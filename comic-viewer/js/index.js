@@ -114,27 +114,14 @@ $("#homeitem h5").click(function(){
 function plusPage(){
   var location = $('#scrollBox').scrollLeft();
   $('#scrollBox').scrollLeft(location+100); 
-  var num = Math.ceil((location/100))+1;
-  if(num<10){//頁數預設為10
-    $('#scrollBox li').removeClass("pageHover");
-    $('#scrollBox li').eq(num).addClass("pageHover");
-    generateClass((num+1));
-  }
 }
 function minusPage(){
   var location = $('#scrollBox').scrollLeft();
   $('#scrollBox').scrollLeft(location-100); 
-  var num = Math.ceil((location/100))-1;
-  if(num >= 0){//頁數預設為10
-    $('#scrollBox li').removeClass("pageHover");
-    $('#scrollBox li').eq(num).addClass("pageHover");
-    generateClass((num+1));
-  }
 }
 $("#pageSelect").change(function() {
   var page = $("#pageSelect option:selected").val();
   $('#scrollBox').scrollLeft(page*100 -100 );
-  generateClass(page);
 });
 $("#productSelect").change(function() {
    $('#scrollBox').scrollLeft(0); 
@@ -203,8 +190,16 @@ $("#bg-plus").click(function(event) {
     $("#sun").click();
   }
 });
+$(document).on("click","#scrollBox li",function(){
+  $('#scrollBox li').removeClass("pageHover").css("filter","blur(1px)");
+  $(this).addClass("pageHover").css("filter","none");
+  var page = $(this).index() + 1;
+  $('#scrollBox').scrollLeft(page*100 -100 );
+});
 function generateClass(val){
-  $('#pageSelect option').attr("selected",false).filter('[value="'+val.toString()+'"]').attr("selected",true);
+  $('#pageSelect > option').filter(function() {
+    return $(this).val() == val.toString();
+  }).prop('selected', true);
   $(".modal-body .wrapper").css("opacity","0").before('<div class="loading"><img src="img/loading.gif"></div>');
   insertPhoto(val-1);
   var classarray = classMap.get(val.toString());
