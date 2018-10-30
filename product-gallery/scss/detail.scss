@@ -1,0 +1,172 @@
+@import "compass/css3";
+$green-color:#50E3C2;
+$white-color:#FFFFFF;
+$black-color:#000000;
+$full-size:100%;
+$font-size:16px;
+
+@function size($size, $proportion:1){
+  @return $full-size * $proportion;
+}
+@function fontSize($font-size, $font:1){
+  @return $font-size * $font;
+}
+@function degree($multiple:1){
+  @return 90 * $multiple+deg;
+}
+
+%background{
+  background-size: cover;
+  background-position: center center;
+}
+%center{
+  justify-self: center;
+  align-self: center;
+}
+.container{
+  display: grid;
+/*   width: 1024px; */
+/*   height: 2064px; */
+  padding: 32px;
+  grid-template-columns:repeat(8,1fr);
+  grid-template-rows:repeat(20,1fr);
+  font-family: 'Roboto','Microsoft JhengHei', '微軟正黑體',sans-serif ;
+}
+%divArea{
+  background-color: $green-color;
+  z-index: -100;
+  width: size($full-size,2/3);
+}
+.divArea-1{
+  grid-area:2/1/5/4;
+  height: size($full-size,2/3);
+  @extend %divArea;
+  @extend %center;
+}
+.divArea-2{
+  grid-area:-7/-4/-5/-1;
+  height: size($full-size);
+  @extend %divArea;
+  @extend %center;
+}
+.top-img{
+  grid-area:3/2/7/-2;
+  background-image:url('https://images.unsplash.com/photo-1513827379601-9dba5099a3f9');
+  @extend %background;
+}
+.center-img{
+  grid-area:-8/2/-5/5;
+  background-image:url('https://images.unsplash.com/photo-1513827379601-9dba5099a3f9');
+  @extend %background;
+}
+.bottom-img{
+  grid-area:-6/4/-2/-2;
+  background-image:url('https://images.unsplash.com/photo-1513827379601-9dba5099a3f9');
+  @extend %background;
+}
+.title2{
+  font-size: fontSize($font-size,3);
+}
+.italic{
+  font-style: italic;
+  margin: 0;
+  white-space:nowrap;
+}
+.header{
+  grid-area:1/1/2/4;
+  display: flex;
+  @extend %center;
+  div{
+    width: 131px;
+    height: 27px;
+    background-color: $black-color;
+    align-self:center;
+    display: flex;
+    justify-content: center;
+    h5{
+      color: $white-color;
+      margin: 0;
+      align-self:center;
+    }
+  }
+}
+i{
+  margin-right: 12px;
+}
+.bold{
+  font-weight: 1000;
+  white-space:nowrap;
+}
+.end{
+  justify-self: end;
+  align-self: end;
+}
+.rightTop{
+  grid-area:2/-4/3/-2;
+  position: relative;
+}
+.leftBottom{
+  grid-area:7/2/8/3;
+  position: relative;
+}
+.trans-90{
+  transform: rotate(degree(1));
+}
+.trans-180{
+  transform: rotate(degree(2)); 
+}
+.trans-270{
+  transform: rotate(degree(3));
+}
+.pos-left{
+  position: absolute;
+  left: size($full-size,-1/2);
+  top: size($full-size,-1/2);
+}
+.f-l{
+  float: left;
+}
+.pos-right{
+  position: absolute;
+  left: size($full-size,1/2);
+  top: size($full-size,2);
+}
+%div{
+  border: 20px solid $green-color;
+  z-index: -100;
+  height: size($full-size,2/3);
+  width: size($full-size,0.8);
+}
+.div1{
+  grid-area:5/4/8/-1;
+  @extend %div;
+  @extend %center;
+}
+.div2{
+  grid-area:-7/1/-4/-4;
+  @extend %div;
+  @extend %center;
+}
+.content{
+  grid-area:9/3/13/-2;
+  position: relative;
+}
+.content .italic{
+  position: absolute;
+  top: 100px;
+  left: -200px;
+}
+h2{
+  margin: 0;
+}
+%pattern{
+  background-image:url('https://hexschool.github.io/THE_F2E_Design/week4-product%20gallery/assets/pattern%20unit.png');
+  background-repeat: repeat-x;
+}
+.pattern1{
+  grid-area:-3/2/-1/5;
+  height: size($full-size,1/2);
+  width: size($full-size,2/3);
+  @extend %pattern;
+  @extend %center;
+}

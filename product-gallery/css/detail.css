@@ -1,0 +1,172 @@
+@charset "UTF-8";
+.top-img, .center-img, .bottom-img {
+  background-size: cover;
+  background-position: center center;
+}
+
+.divArea-1, .divArea-2, .header, .div1, .div2, .pattern1 {
+  justify-self: center;
+  align-self: center;
+}
+
+.container {
+  display: grid;
+  /*   width: 1024px; */
+  /*   height: 2064px; */
+  padding: 32px;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+  font-family: "Roboto", "Microsoft JhengHei", "微軟正黑體", sans-serif;
+}
+
+.divArea-1, .divArea-2 {
+  background-color: #50E3C2;
+  z-index: -100;
+  width: 66.66667%;
+}
+
+.divArea-1 {
+  grid-area: 2/1/5/4;
+  height: 66.66667%;
+}
+
+.divArea-2 {
+  grid-area: -7/-4/-5/-1;
+  height: 100%;
+}
+
+.top-img {
+  grid-area: 3/2/7/-2;
+  background-image: url("https://images.unsplash.com/photo-1513827379601-9dba5099a3f9");
+}
+
+.center-img {
+  grid-area: -8/2/-5/5;
+  background-image: url("https://images.unsplash.com/photo-1513827379601-9dba5099a3f9");
+}
+
+.bottom-img {
+  grid-area: -6/4/-2/-2;
+  background-image: url("https://images.unsplash.com/photo-1513827379601-9dba5099a3f9");
+}
+
+.title2 {
+  font-size: 48px;
+}
+
+.italic {
+  font-style: italic;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.header {
+  grid-area: 1/1/2/4;
+  display: flex;
+}
+.header div {
+  width: 131px;
+  height: 27px;
+  background-color: #000000;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+}
+.header div h5 {
+  color: #FFFFFF;
+  margin: 0;
+  align-self: center;
+}
+
+i {
+  margin-right: 12px;
+}
+
+.bold {
+  font-weight: 1000;
+  white-space: nowrap;
+}
+
+.end {
+  justify-self: end;
+  align-self: end;
+}
+
+.rightTop {
+  grid-area: 2/-4/3/-2;
+  position: relative;
+}
+
+.leftBottom {
+  grid-area: 7/2/8/3;
+  position: relative;
+}
+
+.trans-90 {
+  transform: rotate(90deg);
+}
+
+.trans-180 {
+  transform: rotate(180deg);
+}
+
+.trans-270 {
+  transform: rotate(270deg);
+}
+
+.pos-left {
+  position: absolute;
+  left: -50%;
+  top: -50%;
+}
+
+.f-l {
+  float: left;
+}
+
+.pos-right {
+  position: absolute;
+  left: 50%;
+  top: 200%;
+}
+
+.div1, .div2 {
+  border: 20px solid #50E3C2;
+  z-index: -100;
+  height: 66.66667%;
+  width: 80%;
+}
+
+.div1 {
+  grid-area: 5/4/8/-1;
+}
+
+.div2 {
+  grid-area: -7/1/-4/-4;
+}
+
+.content {
+  grid-area: 9/3/13/-2;
+  position: relative;
+}
+
+.content .italic {
+  position: absolute;
+  top: 100px;
+  left: -200px;
+}
+
+h2 {
+  margin: 0;
+}
+
+.pattern1 {
+  background-image: url("https://hexschool.github.io/THE_F2E_Design/week4-product%20gallery/assets/pattern%20unit.png");
+  background-repeat: repeat-x;
+}
+
+.pattern1 {
+  grid-area: -3/2/-1/5;
+  height: 50%;
+  width: 66.66667%;
+}
