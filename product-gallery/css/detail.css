@@ -8,7 +8,19 @@
   justify-self: center;
   align-self: center;
 }
-
+.fa-arrow-left:hover{
+  color: gray;
+  transition: 0.8s;
+  animation: move 0.8s infinite alternate both;
+}
+@keyframes move{
+  0%{
+    transform: translateX(0px);
+  }
+  100%{
+    transform: translateX(-10px);
+  }
+}
 .container {
   display: grid;
   /*   width: 1024px; */
