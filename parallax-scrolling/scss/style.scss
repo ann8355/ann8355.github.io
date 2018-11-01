@@ -11,7 +11,7 @@ $paragraph:20px;
 }
 %rotate_2{
   animation-iteration-count: infinite;//無限循環
-  animation-duration:2s;
+  animation-duration:3s;
   animation-timing-function: linear;
   animation-delay:8400ms;
 }
@@ -39,6 +39,20 @@ $paragraph:20px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+%button{
+  height: 56px;
+  width: 90%;
+  margin-bottom: 16px;
+  border: 2px solid #FFFFFF;
+  border-radius: 30.5px;
+  background-color: transparent;
+  cursor:pointer;
+  font-size: $paragraph;
+  color: white;
+}
+*{
+  transition: all 0.5s linear;
 }
 body{
   font-family: sans-serif;
@@ -113,7 +127,7 @@ body{
   position: absolute;
   top:100%;
   animation-name: move_top;
-  animation-duration: 1s;
+  animation-duration: 4s;
   animation-delay:7500ms; 
   animation-fill-mode:forwards;
   div:nth-child(1){
@@ -139,6 +153,17 @@ body{
   left: -40vw;
   animation-name: leftBlock_move;
   background-color: #FF3C82;
+  .square_2{
+    background-color: white!important;
+    margin-left: 30vw!important;
+  }
+  .triangle_2{
+    background-color: #0027C8!important;
+    margin-left: 25vw!important;
+  }
+  .circle_2{
+    margin-left: 20vw!important;
+  }
 }
 .rightBlock{
   overflow: hidden;
@@ -149,15 +174,15 @@ body{
   animation-delay:7000ms; 
   animation-fill-mode:forwards;
   .square_2{
-    height: 13vh;
-    width: 10vw;
+    height: 80px;
+    width: 80px;
     background-color: #FF3C82;
     margin-top: 100px;
     margin-left: 20px;
   }
   .triangle_2{
-    width: 10vw;
-    height: 12vh;
+    width: 120px;
+    height: 110px;
     background-color: white;
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
     margin-top: 25px;
@@ -176,6 +201,10 @@ body{
   @extend %change_background_1;
   animation-delay:6300ms; 
   animation-name: show_content;
+}
+#div_block_23.displayBlock{
+  width: 63vw;
+  height: 120vh;
 }
 .displayBlock{
   width: 60vw;
@@ -200,15 +229,7 @@ body{
     margin-bottom: 40px;
   }
   button{
-    height: 56px;
-    width: 90%;
-    margin-bottom: 16px;
-    border: 2px solid #FFFFFF;
-    border-radius: 30.5px;
-    background-color: transparent;
-    cursor:pointer;
-    font-size: $paragraph;
-    color: white;
+    @extend %button;
     &:hover{
       background-color: white;
       color: #1469FF;
@@ -238,6 +259,16 @@ body{
       @extend %parah;
       color: white;
       z-index: 100;
+    }
+    button{
+      @extend %button;
+      width: 20%!important;
+      margin-top: 32px;
+      z-index: 100;
+      &:hover{
+        background-color: white;
+        color: #1469FF;
+      }
     }
   }
 }

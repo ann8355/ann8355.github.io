@@ -8,8 +8,8 @@
 // });
 function showQes2(){
   $("#div_block_2").fadeOut(function() {
-    $("#div_block_22").css("left","30vw").fadeIn(800);
-    $(".div_block_1 .rightBlock").removeClass("rightDir").addClass("leftDir").css("animation-delay","800ms");
+    $("#div_block_22").css("left","30vw").fadeIn(1000);
+    $(".div_block_1 .rightBlock").removeClass("rightDir").addClass("leftDir").css("animation-delay","1000ms");
   });
 }
 function showQes3(){
@@ -23,7 +23,7 @@ function showQes3(){
 }
 function showQes4(){
   $(".div_block_1,#div_block_23").fadeOut( "slow", function() {
-    $(".div_block_3").show().animate({right: '0'}, {duration: 1000});
+    $(".div_block_3").show().animate({right: '0'}, {duration: 800});
   });
 }
 $(document).on('click', '[name="qry_1"]', function(event){
@@ -60,6 +60,6 @@ $(window).scroll(function(){
     }
   }, 100);
 });
-$(function(){
-  // $("body").animate({opacity: '1'}, {duration: 1000});
+$(document).on("click",".div_block_3 button",function(){
+  location.reload();
 });
