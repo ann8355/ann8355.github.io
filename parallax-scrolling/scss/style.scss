@@ -1,0 +1,382 @@
+$title:64px;
+$subtitle:36px;
+$subtitle2:24px;
+$paragraph:20px;
+
+%rotate_1{
+  animation-delay:0s, 4200ms; 
+  animation-duration: 2s,200ms;
+  animation-iteration-count: 2,1;
+  animation-timing-function: linear,linear;//速度一樣
+}
+%rotate_2{
+  animation-iteration-count: infinite;//無限循環
+  animation-duration:2s;
+  animation-timing-function: linear;
+  animation-delay:8400ms;
+}
+%change_background_1{
+  animation-duration: 1500ms;
+  animation-delay:4800ms; 
+  animation-timing-function: ease-in;
+  animation-fill-mode:forwards;//当动画完成后，保持最后一个属性值
+}
+%white_text{
+  color: white;
+  white-space: nowrap;
+  position: absolute;
+}
+%parah{
+  font-size: $subtitle2;
+  line-height: 36px;
+  margin-top: 0.8em;
+}
+%blockSize_1{
+  width: 539px;
+  height: 534px;
+}
+%center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body{
+  font-family: sans-serif;
+  background-color: #1469FF;
+  height: 120vh;
+  overflow-x: hidden;
+}
+.title{
+  font-size: $title;
+  font-weight: 700;
+}
+.div_1{
+  @extend %center;
+  background-color: #1469FF;
+  height: 100vh;
+  .div_block_1{
+    @extend %blockSize_1;
+    position: relative;
+    @extend %center;
+    .square{
+      width: 80%;
+      height: 80%;
+      background-color: black;
+      position: absolute;
+      @extend %rotate_1;
+      animation-name: anticlockwise_rotation,increase;
+    }
+    .circle{
+      border-radius:100%;
+      background-color: #0027C8;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      @extend %rotate_1;
+      animation-name: clockwise_rotation,increase;
+      animation-delay:0s, 4400ms;
+    }
+    #star{
+      position: absolute;
+      width: 365px;
+      height: 313px;
+      top: 70px;
+      @extend %rotate_1;
+      animation-name: clockwise_rotation,increase;
+      animation-delay:0s, 4600ms; 
+      animation-fill-mode:both,forwards;
+      .triangle{
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        background-color: #FF3C82;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        @extend %change_background_1;
+        animation-name: change_color;
+      }
+    }
+    h1{
+      bottom: 50%;
+      @extend %white_text;
+      @extend %change_background_1;
+      animation-name: change_opacity;
+    }
+    p{
+      @extend %white_text;
+      @extend %parah;
+      @extend %change_background_1;
+      animation-name: change_opacity;
+    }
+  }
+}
+.right_animate{
+  position: absolute;
+  top:100%;
+  animation-name: move_top;
+  animation-duration: 1s;
+  animation-delay:7500ms; 
+  animation-fill-mode:forwards;
+  div:nth-child(1){
+    animation-name: clockwise_rotation;
+    @extend %rotate_2;
+  }
+  div:nth-child(2){
+    animation-name: anticlockwise_rotation;
+    @extend %rotate_2;
+  }
+  div:nth-child(3){
+    animation-name: move_oblique;
+    @extend %rotate_2;
+    // animation-duration:4s;
+  }
+}
+.rightDir{
+  right: -40vw;
+  animation-name: rightBlock_move;
+  background-color: #0027C8;
+}
+.leftDir{
+  left: -40vw;
+  animation-name: leftBlock_move;
+  background-color: #FF3C82;
+}
+.rightBlock{
+  overflow: hidden;
+  width: 40vw;
+  height: 100vh;
+  position: absolute;
+  animation-duration: 500ms;
+  animation-delay:7000ms; 
+  animation-fill-mode:forwards;
+  .square_2{
+    height: 13vh;
+    width: 10vw;
+    background-color: #FF3C82;
+    margin-top: 100px;
+    margin-left: 20px;
+  }
+  .triangle_2{
+    width: 10vw;
+    height: 12vh;
+    background-color: white;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    margin-top: 25px;
+    margin-left: 110px;
+  }
+  .circle_2{
+    width: 402px;
+    height: 402px;
+    background-color: black;
+    border-radius: 402px;
+    margin-top: 30px;
+    margin-left: 15px;
+  }
+}
+.changeBackground{
+  @extend %change_background_1;
+  animation-delay:6300ms; 
+  animation-name: show_content;
+}
+.displayBlock{
+  width: 60vw;
+  height: 90vh;
+  padding: 10vh 50px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  h1{
+    color: #FF3C82;
+  }
+  h2{
+    margin-top: 10px;
+    font-size: $subtitle;
+    color: white;
+    line-height: 48px;
+  }
+  p{
+    margin-top: 16px;
+    color: #0027C8;
+    @extend %parah;
+    margin-bottom: 40px;
+  }
+  button{
+    height: 56px;
+    width: 90%;
+    margin-bottom: 16px;
+    border: 2px solid #FFFFFF;
+    border-radius: 30.5px;
+    background-color: transparent;
+    cursor:pointer;
+    font-size: $paragraph;
+    color: white;
+    &:hover{
+      background-color: white;
+      color: #1469FF;
+    }
+  }
+}
+.div_block_3{
+  display: none;
+  overflow: hidden;
+  background-color: #1469FF;
+  position: absolute;
+  right: -100%;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  .content{
+    height: 100%;
+    width: 100%;
+    @extend %center;
+    display: flex!important;
+    flex-direction: column;
+    h1{
+      color: white;
+      z-index: 100;
+    }
+    p{
+      @extend %parah;
+      color: white;
+      z-index: 100;
+    }
+  }
+}
+.background{
+   position: absolute;
+   animation-iteration-count: infinite;//無限循環
+   animation-duration:1500ms;
+   animation-timing-function: linear;
+   animation-name: move_rightCorner;
+   div{
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      position: absolute;
+      opacity: 0.7;   
+    }
+    div:nth-child(1){
+      width: 50vw;
+      height: 100vh;
+      background-color: #0027C8;
+      transform: rotate(-74deg);
+      margin-left: -20vw;
+      margin-top: 20vh;
+    }
+    div:nth-child(2){
+      width: 40vw;
+      height: 200px;
+      background-color: black;
+      margin-left: 30vw;
+      margin-top: 60vh;
+    }
+    div:nth-child(3){
+      width: 297px;
+      height: 281px;
+      background-color:  #0027C8;
+      margin-left: 50vw;
+      margin-top: 10vh;
+      transform: rotate(156deg);
+    }
+    div:nth-child(4){
+      width: 137px;
+      height: 146px;
+      background-color:  black;
+      margin-left: 80vw;
+      margin-top: 50vh;
+      transform: rotate(70deg);
+    }
+    div:nth-child(5){
+      width: 118px;
+      height: 102px;
+      background-color:  white;
+      margin-left: 90vw;
+      margin-top: 20vh;
+    }
+}
+@keyframes clockwise_rotation{
+  100%{
+    transform: rotate(360deg);
+  }
+}
+@keyframes anticlockwise_rotation{
+  0%{
+    transform: rotate(360deg);
+  }
+  25%{
+    transform: rotate(270deg);
+  }
+  50%{
+    transform: rotate(180deg);
+  }
+  75%{
+    transform: rotate(90deg);
+  }
+  100%{
+    transform: rotate(0deg);
+  }
+}
+@keyframes increase{
+  100%{
+    transform: scale(2,1.8);
+    height: 100vh;
+    width: 100vw; 
+  }
+}
+@keyframes change_color{
+  0%{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    height: 100vh;
+    width: 100vw;
+  }
+  100%{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    height: 100vh;
+    width: 100vw;
+    background-color: #1469FF;
+    top: 0;
+  }
+}
+@keyframes change_opacity{
+  100%{
+    opacity: 0;
+  }
+}
+@keyframes show_content{
+  100%{
+    opacity: 1;
+  }
+}
+@keyframes rightBlock_move{
+  0%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 1;
+    right: 0;
+  }
+}
+@keyframes leftBlock_move{
+  0%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 1;
+    left: 0;
+  }
+}
+@keyframes move_top{
+  100%{
+    top: 0%;
+  }
+}
+@keyframes move_oblique{
+  50%{
+    transform: translate(20px, 120px);
+  }
+  100%{
+    transform: none;
+  }
+}
+@keyframes move_rightCorner{
+  100%{
+    transform: translate(100vw,-100vh);
+  }
+}
