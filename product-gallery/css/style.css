@@ -6,10 +6,25 @@
   grid-template-rows:repeat(20,1fr);
   font-family: 'Roboto','Microsoft JhengHei', '微軟正黑體',sans-serif ;
 }
+.progress{
+  display: flex;
+  margin: 0px;
+  padding: 0px;
+  transform: translateY(200%);
+  border: 3px solid #000;
+}
+.progress ol{
+  transition: 0.1s;
+  border-right: 1px solid gray;
+  width: 20px;
+  padding: 0px;
+  height: 15px;
+}
 .loading{
   height: 100%;
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: absolute;
@@ -22,6 +37,7 @@
   opacity: 0;
   cursor: pointer;
   background-blend-mode:overlay;
+  /* transform: scale(0.9); */
 }
 *{
   transition: all 0.8s linear;

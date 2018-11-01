@@ -1,4 +1,13 @@
 var count = "";
+var id;
+var timeline = new TimelineMax();
+var timeline2 = new TimelineMax();
+var property = {
+    opacity: 1,
+    // scaleX:"1",
+    // scaleY:"1",
+    // transformOrigin: "50% 50%"
+};
 function closeWin(path,name,e) {
     var number = $(e).find("span").text();
     localStorage.setItem("id",parseInt(number));
@@ -27,18 +36,35 @@ class Temp {
       $(".top-img").css("background-image","url("+this.img1+")");
       $(".center-img").css("background-image","url("+this.img2+")");
       $(".bottom-img").css("background-image","url("+this.img3+")");
+      TweenMax.to($(".container"),1,{
+        opacity: 1
+      });
+      timeline2.from($(".top-img"),0.5,{
+        scaleX:"0.8",
+        scaleY:"0.8",
+        transformOrigin: "50% 50%"
+      },1).from($(".rightTop div:eq(0)"),0.5,{
+        x:"50px"
+      },"+=0.5").from($(".rightTop div:eq(1)"),0.5,{
+        y:"50px"
+      }).from($(".content"),0.5,{
+        x:"100px"
+      },"+=0.5").from($(".center-img"),0.5,{
+        scaleX:"0.7",
+        scaleY:"0.7",
+        transformOrigin: "50% 50%"
+      },"+=0.5").from($(".bottom-img"),0.5,{
+        scaleX:"0.9",
+        scaleY:"0.9",
+        transformOrigin: "50% 50%"
+      },"+=0.5");
     }
   }
-  var timeline = new TimelineMax();
   function isFinish(){
     if(count.indexOf("1") > -1 && count.indexOf("2") > -1 && count.indexOf("3") > -1 && 
         count.indexOf("4") > -1 && count.indexOf("5") > -1 && count.indexOf("6") > -1 && count.indexOf("7") > -1){
       $(".loading").remove();
-      timeline.to(".img-1",0.5,{
-        opacity: 1,
-      }).to(".img-2",0.5,{
-        opacity: 1,
-      },1);
+      timeline.to(".img-1",0.5,property).to(".img-2",0.5,property,1);
     }else{
       setTimeout("isFinish()",500);
     }
@@ -47,26 +73,25 @@ class Temp {
     let currentY = window.scrollY //目前滾動位置
     let pageHeight = $("html").height()- window.innerHeight //頁面高度
     let progressValue = currentY/pageHeight //0~1
-    if(progressValue > 0.4){
-        timeline.play();
-        timeline.to(".img-3",0.5,{opacity: 1,},0.5);
-        timeline.to(".img-4",0.5,{opacity: 1,},1);
-        timeline.pause();
-    }
-    if(progressValue > 0.6){
-        timeline.play();
-        timeline.to(".img-5,.image-rotate",0.5,{opacity: 1,},0.5);
-        timeline.pause();
-    }
-    if(progressValue > 0.8){
-        timeline.play();
-        timeline.to(".img-6",0.5,{opacity: 1,},1);
-        timeline.to(".img-7",0.5,{opacity: 1,},1.5);
-        timeline.pause();
+    if(id != undefined && id != "NaN"){
+        timeline2.progress(progressValue);
+    }else{
+        if(progressValue > 0.35){
+            var timeline3 = new TimelineMax();
+            timeline3.to(".img-3",0.5,property).to(".img-4",0.5,property,"+=0.5");
+        }
+        if(progressValue > 0.55){
+            var timeline4 = new TimelineMax();
+            timeline4.to(".img-5,.image-rotate",0.5,property,"+=0.5");
+        }
+        if(progressValue > 0.75){
+            var timeline5 = new TimelineMax();
+            timeline5.to(".img-6",0.5,property,"+=0.5").to(".img-7",0.5,property,"+=0.5");
+        }
     }
   });
 $( function() {
-    var id = localStorage.getItem("id");
+    id = localStorage.getItem("id");
     var percentage = 0;
     $.getJSON('mock/detailData.json',function(json){
         if(id != undefined && id != "NaN"){
@@ -75,7 +100,18 @@ $( function() {
             temp.loadData();
             localStorage.setItem("id","NaN");
         }else{
-            $(".container").append('<div class="loading"><img width="300" height="300" src="img/gif-transparent-loading-4.gif"></div>');
+            $(".container").append(`<div class="loading">
+                                        <ul class="progress">
+                                            <ol></ol>
+                                            <ol></ol>
+                                            <ol></ol>
+                                            <ol></ol>
+                                            <ol></ol>
+                                            <ol></ol>
+                                            <ol></ol>
+                                        </ul>
+                                        <img width="300" height="300" src="img/gif-transparent-loading-4.gif">
+                                    </div>`);
             $.each(json, function( index, value ) {
                 var img = new Image();
                 img.onload = function(){
@@ -89,17 +125,12 @@ $( function() {
                         });   
                     }                
                     count += index+1;
-                    percentage += 14;
-                    if(percentage == 98){
-                        console.log(100+"%")
-                    }else{
-                        console.log(percentage+"%")
-                    }
+                    percentage++;
+                    $(".progress ol").eq(percentage-1).css("background-color","black");
                     isFinish();
                 }
                 img.src = this.img1;   
             });
         }
     });
-    console.log(id)
 });
