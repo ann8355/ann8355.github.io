@@ -33,6 +33,16 @@ $(document).on('click', '.fstChoiceRemove', function(event){
   var index = categoryArray.indexOf(value);
   categoryArray.splice(index, 1); 
 });
+//點擊資料區塊會放大展開
+$(document).on('click', 'article', function(event){
+  if($(this).find(".imgDiv").css("width") == "440px"){
+    $(this).find(".content").css({width:'calc(100% - 220px)',height:'220px'});
+    $(this).find(".imgDiv").css({width:'220px',height:'220px'});
+  }else{
+    $(this).find(".content").css({width:'calc(100% - 440px)',height:'550px'});
+    $(this).find(".imgDiv").css({width:'440px',height:'550px'});
+  }
+});
 //超過的多行文字以...取代
 function overFlowText(description,len,selector){
     if(description.length>len){// 超過50個字以"..."取代
