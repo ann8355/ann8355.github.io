@@ -5,6 +5,7 @@ var search = "";
 var categoryMap = new Map();
 var dataArray = [];//搜尋結果的資料陣列
 var num = 10;//一頁幾筆資料
+var windowArray = [];//儲存map的infowindow
 
 function loadJsonTOption(url,selector,option){
   $.getJSON(
@@ -55,7 +56,7 @@ function creatTag(data){
   if(data != null && data != undefined && data != ""){
    var width = (categoryMap.get(data).length+2).toString() +"em";
    var css = "width:"+width;
-   return  `<div class='tag' style=${css}>${categoryMap.get(data)}</div>`;    
+   return  `<span class='tag' style=${css}>${categoryMap.get(data)}</span>`;    
   }else{
     return "";
   }
@@ -143,14 +144,18 @@ $.ajax({
         $("#section2").html("");
         console.log('Total results found: ' + data.result.records.length);
         if(data.result.records.length == 0){
-           var result = `<div class="title">Showing <p class="headColor">0</p> results</div>`;
+           var result = `<div class="title">Showing <p class="headColor">0</p> results
+                          <button id="mapBtn" title="map"><i class="fa fa-map-o"></i></button>
+                         </div>`;
           //導回首頁(查全部資料)
           $('#homeBtn').click();	
           alert("No results !");
         }else{
+          console.log(data.result.records);
           dataArray = data.result.records;
-          var result = `<div class="title">Showing <p class="headColor">${data.result.records.length}</p> results</div>
-<div id="results"></div>`;
+          var result = `<div class="title">Showing <p class="headColor">${data.result.records.length}</p> results
+                          <button id="mapBtn" title="map"><i class="fa fa-map-o"></i></button>
+                        </div><div id="results"></div>`;
           $("#section2").append(result);
           creatPage(data.result.records);//產生分頁
           // $.each(data.result.records, function(i,item){
@@ -210,8 +215,73 @@ function keypressInBox(e) {
     $('#fastSearchBtn').click();
   }
 }
+function funAddListener(marker,secretMessage){
+  var infowindow = new google.maps.InfoWindow({
+    content: secretMessage
+  });
+  windowArray.push(infowindow);
+	marker.addListener('click', function() {
+    windowArray.forEach(function(item){
+      item.close();
+    });
+    infowindow.open(marker.get('map'), marker);	
+  }); 
+  // marker.addListener('mouseover', function() {
+  //   infowindow.open(marker.get('map'), marker);
+  // });
+  // marker.addListener('mouseout', function() {
+  //   infowindow.close();
+  // });	
+}
+function initMap(){
+  windowArray.length = 0;
+  var mapProp = {
+    center: new google.maps.LatLng(22.967733, 120.467093),
+    zoom: 9.3,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  var map = new google.maps.Map(document.getElementById("map"), mapProp);
+  //載入marker
+  for(var i=0 ; i < dataArray.length ; i++){
+    var obj = dataArray[i];
+    var marker = new google.maps.Marker({
+      position: {lat: Number(obj.Py), lng: Number(obj.Px)},
+      map: map,
+  //         			 animation: google.maps.Animation.DROP,
+      icon: 'img/'+ obj.Class1 +'.png',
+  //                   shape: shape,
+      title: obj.Name
+    });
+    var message = `<div class="infowindow">
+                    <img src="${obj.Picture1}" alt="${obj.Name}" class="infoImg">
+                    <div class="info">
+                      <h2>${obj.Name}</h2>${creatTag(obj.Class1)}
+                      <div class="detailInfo"><i class="fa fa-home fa-lg"></i>${obj.Add}</div>
+                      <div class="detailInfo"><i class="fa fa-calendar fa-lg"></i>${obj.Opentime}${isFree(obj.Ticketinfo)}</div>
+                    </div>
+                  </div>`;
+    funAddListener(marker, message);
+  }   
+}	
+//關閉地圖
+$(document).on('click', '.close', function(event){
+  $("#modal").css("animation","move 1s 1.2s 1 reverse both");
+  setTimeout(()=>{
+    $(".loading").remove();
+  },600);
+});
+//打開地圖
+$(document).on('click', '#mapBtn', function(event){
+  $(".wrap").before(`<div class="loading">
+                      <div id="modal">
+                        <h1 id="modal-header">Kaohsiung Attractions Map<button type="button" class="close">&times;</button></h1>
+                        <div id="map"></div>
+                      </div>
+                    </div>`);
+  initMap();
+});
 $( function() {
-  loadJsonTOption("https://codepen.io/peian/pen/qKmBGm.js",$(".multipleSelect"),"multiple");
-  loadJsonTOption("https://codepen.io/peian/pen/LryYaL.js",$(".singleSelect"),"single");
+  loadJsonTOption("mock/type.json",$(".multipleSelect"),"multiple");
+  loadJsonTOption("mock/location.json",$(".singleSelect"),"single");
   getApiResponse("");//查全部資料
 });
