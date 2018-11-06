@@ -3,7 +3,8 @@ var categoryArray = new Array();
 var place = "";
 var search = "";
 var categoryMap = new Map();
-var dataArray = [];//搜尋結果的資料陣列
+var dataArray = [];//搜尋結果的資料陣列（篩選後）
+var totalArray = [];//搜尋結果的資料陣列
 var num = 10;//一頁幾筆資料
 var windowArray = [];//儲存map的infowindow
 
@@ -116,7 +117,9 @@ function getPageData(pageNum){//取得第幾頁的資料
     $('button[name="pageBtn"]').eq(pageNum-1).addClass("pageChange");
     $("#results").html("");
     for (var step = pageNum*num-num; step < pageNum*num; step++) {
-      $("#results").append(loadArticleTemp(dataArray[step]));
+      if(step < dataArray.length){
+        $("#results").append(loadArticleTemp(dataArray[step]));
+      }
     }
   }
 }
@@ -130,55 +133,74 @@ function creatPage(array){//產生分頁
   $('.pageArea div').append('<button id="pageEnd" class="pageBtn subtitle"> <i class="fa fa-angle-double-right" style="padding-left:8px;"></i></button>');
   getPageData(1);//初始狀態為第一頁
 }
+function loadData(array){
+  dataArray = array;
+  var result = `<div class="title">Showing <p class="headColor">${dataArray.length}</p> results
+                  <button id="mapBtn" title="map"><i class="fa fa-map-o"></i></button>
+                </div><div id="results"></div>`;
+  $("#section2").html("").append(result);
+  if(dataArray.length == 0){
+    //導回首頁(查全部資料)
+    $('#homeBtn').click();	
+    alert("No results !");
+  }else{             
+    creatPage(dataArray);//產生分頁
+  }   
+}
 function getApiResponse(text){
-  var limit= num; //10
-  var  q= text;
-  var url='https://data.kcg.gov.tw/api/action/datastore_search?resource_id=92290ee5-6e61-456f-80c0-249eae2fcc97'
-//  +"&limit="+limit
-  +"&q="+q;
-// var url='https://data.kcg.gov.tw/api/action/datastore_search?resource_id=92290ee5-6e61-456f-80c0-249eae2fcc97&q=大樹區'
-$.ajax({
-    url: url,
-    dataType: 'json',
-    success: function(data) {
-        $("#section2").html("");
-        console.log('Total results found: ' + data.result.records.length);
-        if(data.result.records.length == 0){
-           var result = `<div class="title">Showing <p class="headColor">0</p> results
-                          <button id="mapBtn" title="map"><i class="fa fa-map-o"></i></button>
-                         </div>`;
-          //導回首頁(查全部資料)
-          $('#homeBtn').click();	
-          alert("No results !");
-        }else{
-          console.log(data.result.records);
-          dataArray = data.result.records;
-          var result = `<div class="title">Showing <p class="headColor">${data.result.records.length}</p> results
-                          <button id="mapBtn" title="map"><i class="fa fa-map-o"></i></button>
-                        </div><div id="results"></div>`;
-          $("#section2").append(result);
-          creatPage(data.result.records);//產生分頁
-          // $.each(data.result.records, function(i,item){
-          //   $("#results").append(loadArticleTemp(item));
-          // });
-        }      
-    }
-});
+  if(text != ""){
+    var rs = totalArray.filter(function(item, index, array){
+      var zone = true;
+      var type = true;
+      var key = true;
+      if(text.location != ""){
+        zone = item.Zone == text.location;
+      }
+      if(text.type.length != 0){
+        type = (text.type.indexOf(item.Class1) > -1) || (text.type.indexOf(item.Class2) > -1);
+      }
+      if(text.search != ""){
+        key = (item.Name.indexOf(text.search) > -1) || (item.Zone.indexOf(text.search) > -1) || (item.Ticketinfo.indexOf(text.search) > -1);
+      }
+      return zone && type && key;
+    });
+    console.log(rs)
+    loadData(rs);
+  }else{
+    var limit= num; //10
+    var  q= text;
+    var url='https://data.kcg.gov.tw/api/action/datastore_search?resource_id=92290ee5-6e61-456f-80c0-249eae2fcc97'
+  //  +"&limit="+limit
+    +"&q="+q;
+    $.ajax({
+        url: url,
+        dataType: 'json',
+        success: function(data) {
+            $("#section2").html("");
+            totalArray = data.result.records;
+            loadData(data.result.records);
+        }
+    });
+  }
 }
 function getFilterVal(){
-  var text = "";
-  search = $(".search input").val();
-  $.each(categoryArray, function(i,item){
-    text += item +",";
-  });
-  if(place != ""){
-    text += place +",";
+  // var text = "";
+  // search = $(".search input").val();
+  // $.each(categoryArray, function(i,item){
+  //   text += item +",";
+  // });
+  // if(place != ""){
+  //   text += place +",";
+  // }
+  // if(search != ""){
+  //   text += search +",";
+  // }
+  // text = text.substring(0, text.length-1); 
+  var text = {
+    type :categoryArray,
+    location :place,
+    search :$(".search input").val()
   }
-  if(search != ""){
-    text += search +",";
-  }
-  text = text.substring(0, text.length-1); 
-  console.log(text);
   return text;
 }
 $('#fastSearchBtn').click(function(event) {
@@ -256,7 +278,7 @@ function initMap(){
                     <img src="${obj.Picture1}" alt="${obj.Name}" class="infoImg">
                     <div class="info">
                       <h2>${obj.Name}</h2>${creatTag(obj.Class1)}
-                      <div class="detailInfo"><i class="fa fa-home fa-lg"></i>${obj.Add}</div>
+                      <div class="detailInfo"><i class="fa fa-home fa-lg"></i>${obj.Add}<a href="https://www.google.com/maps/place/${obj.Add}"> (點此規劃路徑)</a></div>
                       <div class="detailInfo"><i class="fa fa-calendar fa-lg"></i>${obj.Opentime}${isFree(obj.Ticketinfo)}</div>
                     </div>
                   </div>`;

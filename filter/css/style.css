@@ -240,6 +240,7 @@ header :-ms-input-placeholder{ /* Internet Explorer 10+ */
 article{
   display:flex;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 article:hover{
   box-shadow: 5px 6px 19px #989898; 
