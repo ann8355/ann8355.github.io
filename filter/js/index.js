@@ -103,7 +103,7 @@ function loadArticleTemp(item){
         <h2 style="margin:12px 0px;" class="headColor">${item.Name}</h2>
         <p style="text-indent:2em;margin:0;">${overFlowText(item.Name,item.Description,length,$(".content p"))}</p>
         <h4 style="margin:8px 0px;">
-          <i class="fa fa-map-marker fa-lg"></i>${item.Zone}
+          <i class="fa fa-location-arrow fa-lg"></i>${item.Zone}
           ${creatTag(item.Class1)}${creatTag(item.Class2)}
         </h4>
         <div class="detailInfo"><i class="fa fa-phone fa-lg"></i>${item.Tel}</div>      
@@ -170,7 +170,7 @@ function creatPage(array){//產生分頁
 function loadData(array){
   dataArray = array;
   var result = `<div class="title">Showing <p class="headColor">${dataArray.length}</p> results
-                  <button id="mapBtn" title="map"><i class="fa fa-map-o"></i></button>
+                  <button id="mapBtn" title="map"><i class="fa fa-map-marker"></i></button>
                 </div><div id="results"></div>`;
   $("#section2").html("").append(result);
   if(dataArray.length == 0){
