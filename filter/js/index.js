@@ -1,8 +1,8 @@
-//$('#section2 p.headColor').html('幾筆結果')
 var categoryArray = new Array();
 var place = "";
 var search = "";
 var categoryMap = new Map();
+var storeMap = new Map();//儲存被省略的...資料
 var dataArray = [];//搜尋結果的資料陣列（篩選後）
 var totalArray = [];//搜尋結果的資料陣列
 var num = 10;//一頁幾筆資料
@@ -33,35 +33,45 @@ $(document).on('click', '.fstChoiceRemove', function(event){
   var index = categoryArray.indexOf(value);
   categoryArray.splice(index, 1); 
 });
+//超過的多行文字以...取代
+function overFlowText(name,description,len,selector){
+    var rs;
+    if(description.length>len){// 超過50個字以"..."取代
+      var text = `${description.substring(0,len-1)}.....`;
+      rs = text;
+    }else{
+      rs = description;
+    }
+    var obj = {
+      shortData: null,
+      totalData: null
+    };
+    var shortArray = [];
+    var totalArray = [];
+    if(storeMap.get(name) != null){
+      obj = storeMap.get(name);
+      shortArray = obj.shortData;
+      totalArray = obj.totalData;
+    }
+    shortArray.push(rs);
+    totalArray.push(description);
+    obj.shortData = shortArray;
+    obj.totalData = totalArray;
+    storeMap.set(name,obj);
+    return rs;
+}
 //點擊資料區塊會放大展開
 $(document).on('click', 'article', function(event){
-  if($(this).find(".imgDiv").css("width") == "440px"){
-    $(this).find(".content").css({width:'calc(100% - 220px)',height:'220px'});
-    $(this).find(".imgDiv").css({width:'220px',height:'220px'});
+  var obj = storeMap.get($(this).find("h2").text());
+  if($(this).find(".imgDiv").hasClass("resize")){
+    $(this).find(".content,.imgDiv").removeClass("resize");
+    $(this).find(".content p").text(obj.shortData[0]);
+    $(this).find(".content .fa-calendar").next().text(obj.shortData[1]);
   }else{
-    $(this).find(".content").css({width:'calc(100% - 440px)',height:'550px'});
-    $(this).find(".imgDiv").css({width:'440px',height:'550px'});
+    $(this).find(".content,.imgDiv").addClass("resize");
+    $(this).find(".content p").text(obj.totalData[0]);
+    $(this).find(".content .fa-calendar").next().text(obj.totalData[1]);
   }
-});
-//超過的多行文字以...取代
-function overFlowText(description,len,selector){
-    if(description.length>len){// 超過50個字以"..."取代
-      selector.after("<input type='hidden' value='"+selector.text()+"'>");
-      var text = `${description.substring(0,len-1)}
-      <button style='color:black;padding:0;' title='詳細內容'>.....</button>
-      <input type='hidden' value='${description}'>`;
-      return text;
-    }else{
-      return description;
-    }
-}
-$(document).on('click', '.content p button', function(event){
-  $(this).parent().parent().css("overflow","auto");
-  $(this).parent().html($(this).next().val());
-});
-$(document).on('click', '.content .detailInfo button', function(event){
-  $(this).parent().parent().parent().css("overflow","auto");
-  $(this).parent().html($(this).next().val());
 });
 function creatTag(data){
   if(data != null && data != undefined && data != ""){
@@ -80,19 +90,25 @@ function isFree(data){
   }
 }
 function loadArticleTemp(item){
+  var length;
+  if($('button[name="plus"]').css("display") != "none"){//為手機的螢幕寬
+    length = 26;
+  }else{
+    length = 74;
+  }
     var temp = 
     `<article>
       <div class="imgDiv" style="background-image:url(${item.Picture1});"></div>
       <div class="content">
         <h2 style="margin:12px 0px;" class="headColor">${item.Name}</h2>
-        <p style="text-indent:2em;margin:0;">${overFlowText(item.Description,49,$(".content p"))}</p>
+        <p style="text-indent:2em;margin:0;">${overFlowText(item.Name,item.Description,length,$(".content p"))}</p>
         <h4 style="margin:8px 0px;">
           <i class="fa fa-map-marker fa-lg"></i>${item.Zone}
           ${creatTag(item.Class1)}${creatTag(item.Class2)}
         </h4>
         <div class="detailInfo"><i class="fa fa-phone fa-lg"></i>${item.Tel}</div>      
-        <div class="detailInfo"><i class="fa fa-home fa-lg"></i>${overFlowText(item.Add,25,$(".detailInfo").eq(1))}</div>
-        <div class="detailInfo"><i class="fa fa-calendar fa-lg"></i>  <span>${overFlowText(item.Opentime+isFree(item.Ticketinfo),28,$(".detailInfo").eq(2))}</span></div>
+        <div class="detailInfo"><i class="fa fa-home fa-lg"></i>${item.Add}</div>
+        <div class="detailInfo"><i class="fa fa-calendar fa-lg"></i>  <span>${overFlowText(item.Name,item.Opentime+isFree(item.Ticketinfo),46,$(".detailInfo").eq(2))}</span></div>
       </div>
     </article>`;
   return temp;

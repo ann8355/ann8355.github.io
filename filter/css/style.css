@@ -147,7 +147,7 @@ section{
 .sectionBox{
   flex: none;
   width: 70%;
-  padding-bottom: 20px;
+  /* padding-bottom: 20px; */
 }
 #section2{
   width: 65%;
@@ -177,9 +177,6 @@ section{
 #date{
 /*   height: 187px; */
   border-bottom: 2px solid #D7D7D7 ;
-}
-#categories{
-/*   height: 300px; */
 }
 input{
   border-style: none;
@@ -237,10 +234,15 @@ header :-ms-input-placeholder{ /* Internet Explorer 10+ */
   background-size: cover;
   background-position: center center;
 }
+.imgDiv.resize{
+  min-width: 440px;
+  height: 550px;
+}
 article{
   display:flex;
   margin-bottom: 20px;
   cursor: pointer;
+  overflow: hidden;
 }
 article:hover{
   box-shadow: 5px 6px 19px #989898; 
@@ -255,6 +257,10 @@ article:hover{
   flex:none; 
 /*   overflow: auto; */
   box-sizing: border-box;
+}
+.content.resize{
+  width: calc(100% - 440px);
+  height: 550px;
 }
 img{
 	display:block;
@@ -296,6 +302,7 @@ button{
 }
 .tag{
   height: 24px;
+  line-height: 24px;
   color: #FFFFFF;
   background-color: #b299e6;
   text-align: center;
@@ -314,7 +321,7 @@ button{
   position: absolute;
   bottom: 45px;
   display: flex;
-/*   white-space: nowrap; */
+  /* white-space: nowrap; */
 }
 .pageBtn{
   flex: none;
@@ -331,15 +338,20 @@ button{
 button[name="plus"], button[name="minus"]{
   display: none;
 }
+@media(max-width: 1250px){
+  .imgDiv.resize,.content.resize{
+    height: 650px;
+  }
+}
 @media(max-width: 1024px){
   article{
     flex-direction:column;
   }
-  .imgDiv{
+  .imgDiv,.imgDiv.resize{
     width: 100%;
     height: 280px;
   }
-  .content{
+  .content,.content.resize{
     width: 100%;
     height: auto;
   }
@@ -369,7 +381,10 @@ button[name="plus"], button[name="minus"]{
   }
   .infoImg{
     width: 95px;
-    height: 110px;
+    height: 110px;background-size: cover;
+  }
+  .imgDiv.resize{
+    background-position: -80px;
   }
   .infowindow h2{
     margin: 0 0 5px 0;
@@ -401,6 +416,11 @@ button[name="plus"], button[name="minus"]{
   }
   .pageArea{
     width: 100%;   
+    padding-left: 1em;
+    box-sizing: border-box;
+  }
+  .title{
+    font-size: 20px;
   }
   button[name="plus"], button[name="minus"]{
     display: inline-block;
