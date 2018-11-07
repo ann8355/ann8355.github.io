@@ -77,6 +77,7 @@
   height: calc(97% - 70px);
 }
 #mapBtn{
+  text-align: center;
   width: 40px;
   height: 35px;
   border: 1.5px solid #9013FE;
@@ -324,7 +325,7 @@ button{
   /* white-space: nowrap; */
 }
 .pageBtn{
-  flex: none;
+  text-align: center;
   height: 42px;
   width: 42px;
   border: 1px solid #e0d6f5 ;
@@ -392,11 +393,17 @@ button[name="plus"], button[name="minus"]{
   .infowindow{
     font-size: 12px;
   }
-  .info .tag{
-    opacity: 0;
-  }
 }
 @media(max-width: 435px){/* mobile */ 
+  .address{
+    display: none;
+  }
+  .info h2{
+    font-size: 1.2em;
+  }
+  .info .tag{
+    display: none;
+  }
   .search{
     width: 80%;
     margin-top: 5px;
@@ -431,6 +438,20 @@ button[name="plus"], button[name="minus"]{
   }
   #fromDate,#toDate,.fstElement{
     display: none;
+  }
+  #modal{
+    width: 100vw;
+    height: 100vh;
+    transform: translateY(0%);
+    padding: 0em;
+  }
+  #modal-header{
+    font-size: 1.6em;
+  }
+}
+@media(max-width: 370px){
+  #modal-header{
+    font-size: 1.2em;
   }
 }
 @media(min-width: 440px){

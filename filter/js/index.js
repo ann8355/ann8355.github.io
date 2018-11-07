@@ -312,7 +312,8 @@ function initMap(){
                     <img src="${obj.Picture1}" alt="${obj.Name}" class="infoImg">
                     <div class="info">
                       <h2>${obj.Name}</h2>${creatTag(obj.Class1)}
-                      <div class="detailInfo"><i class="fa fa-home fa-lg"></i>${obj.Add}<a href="https://www.google.com/maps/place/${obj.Add}"> (點此規劃路徑)</a></div>
+                      <div class="detailInfo address"><i class="fa fa-home fa-lg"></i>${obj.Add}</div>
+                      <span class="direct"><a href="https://www.google.com/maps/place/${obj.Add}"> (點此規劃路徑)</a></span>
                       <div class="detailInfo"><i class="fa fa-calendar fa-lg"></i>${obj.Opentime}${isFree(obj.Ticketinfo)}</div>
                     </div>
                   </div>`;
