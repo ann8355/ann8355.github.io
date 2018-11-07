@@ -115,13 +115,21 @@ function loadArticleTemp(item){
 }
 $(document).on('click', 'button[name="plus"]', function(event){
   $(this).attr("name","minus");
-  $(this).parent().next().hide();
+  if($(this).parent().text().trim() == "Date"){
+    $("#fromDate,#toDate").hide();
+  }else{
+    $(this).parent().next().hide();
+  }
   $(this).parent().parent().css("padding-bottom",0);
   $(this).find('i').removeClass('fa-plus').addClass('fa-minus');
 });
 $(document).on('click', 'button[name="minus"]', function(event){
   $(this).attr("name","plus");
-  $(this).parent().next().show();
+  if($(this).parent().text().trim() == "Date"){
+    $("#fromDate,#toDate").show();
+  }else{
+    $(this).parent().next().show();
+  }
   $(this).parent().parent().css("padding-bottom",20);
   $(this).find('i').removeClass('fa-minus').addClass('fa-plus');
 });

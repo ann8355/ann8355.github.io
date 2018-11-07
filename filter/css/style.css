@@ -147,7 +147,7 @@ section{
 .sectionBox{
   flex: none;
   width: 70%;
-  /* padding-bottom: 20px; */
+  padding-bottom: 20px;
 }
 #section2{
   width: 65%;
@@ -414,6 +414,9 @@ button[name="plus"], button[name="minus"]{
   #section2{
     width: 80%;
   }
+  .sectionBox{
+    padding-bottom: initial;
+  }
   .pageArea{
     width: 100%;   
     padding-left: 1em;
@@ -425,5 +428,16 @@ button[name="plus"], button[name="minus"]{
   button[name="plus"], button[name="minus"]{
     display: inline-block;
     float: right;
+  }
+  #fromDate,#toDate,.fstElement{
+    display: none;
+  }
+}
+@media(min-width: 440px){
+  #fromDate,#toDate,.fstElement{
+    display: block!important;
+  }
+  .sectionBox{
+    padding-bottom: 20px!important;
   }
 }
