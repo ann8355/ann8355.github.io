@@ -379,6 +379,7 @@ body {
   }
   #scrollBox ul{
     padding: 15px 30px!important;
+    min-width: calc(100% + 530px);
   }
   #prev, #next {
     width: 30px;

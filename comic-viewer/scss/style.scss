@@ -348,6 +348,7 @@ clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 100%);
   }
   #scrollBox ul{
     padding: 15px 30px!important;
+    min-width: calc(100% + 530px);
   }
   #prev, #next {
     width: 30px;
