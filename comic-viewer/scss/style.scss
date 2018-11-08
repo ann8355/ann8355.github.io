@@ -341,14 +341,12 @@ clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 100%);
     margin: 1.5em;
   }
   #scrollBox ul li {
-    min-width: 50px;
     height: 60px;
     margin-right: 10px;
     font-size: 1.8em;
   }
   #scrollBox ul{
     padding: 15px 30px!important;
-    min-width: calc(100% + 530px);
   }
   #prev, #next {
     width: 30px;
