@@ -22,7 +22,7 @@
   width: 80vw;
 }
 
-#main .homephoto, #photoblock #box3, #photoblock #box4 {
+#main .homephoto, #photoblock #box3, #photoblock #box4,#photobox div {
   background-position: center top;
   background-size: cover;
 }
@@ -106,11 +106,11 @@ body {
   height: 438px;
 }
 #main .homephoto {
-  min-width: 292px;
+  min-width: auto;
   border: 4px solid black;
 }
 #main .content {
-  min-width: 292px;
+  min-width: auto;
   padding: 0;
   position: relative;
 }
@@ -345,7 +345,7 @@ body {
   }
   #viewtop #lightmode {
     margin-top: 32px;
-    margin-left: 0 !important;
+    margin-left: 50% !important;
   }
 
   #homeTitle {
@@ -353,10 +353,39 @@ body {
   }
 }
 @media (max-width: 490px) {
+  .container{
+    width: 95%!important;
+  }
+  .modal-content {
+    width: 100vw;
+  }
+  .modal-body{
+    padding: initial;
+  }
+  .modal-body .container{
+    padding: 0;
+  }
+  #viewtop{
+    margin: 0.8rem auto!important;
+  }
+  #viewtop #lightmode {
+    margin: 1.5em;
+  }
+  #scrollBox ul li {
+    min-width: 50px;
+    height: 60px;
+    margin-right: 10px;
+    font-size: 1.8em;
+  }
+  #scrollBox ul{
+    padding: 15px 30px!important;
+  }
+  #prev, #next {
+    width: 30px;
+  }
   #homeTitle {
     width: 50% !important;
   }
-
   #main {
     height: 1000px;
   }
