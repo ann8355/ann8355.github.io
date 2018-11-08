@@ -212,8 +212,10 @@ function getApiResponse(text){
         success: function(data) {
             $("#section2").html("");
             totalArray = data.result.records;
-            alert(totalArray)
             loadData(data.result.records);
+        },
+        error: function(data) {
+          alert(data)
         }
     });
   }
