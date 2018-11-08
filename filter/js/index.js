@@ -214,8 +214,8 @@ function getApiResponse(text){
             totalArray = data.result.records;
             loadData(data.result.records);
         },
-        error: function(data) {
-          alert(data)
+        error: function(data,error) {
+          alert("錯誤訊息"+JSON.stringify(data)+"和"+error)
         }
     });
   }
