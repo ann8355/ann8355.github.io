@@ -180,19 +180,23 @@ function loadData(array){
     alert("No results !");
   }else{             
     creatPage(dataArray);//產生分頁
-    dataArray.forEach(function(item){
-      var img = new Image();
-      img.onload = function(){
-        count++;
-      }
-      img.src = item.Picture1;
-    });
+    // dataArray.forEach(function(item){
+    //   var img = new Image();
+    //   img.onload = function(){
+    //     count++;
+    //   }
+    //   img.src = item.Picture1;
+    // });
   }   
 }
-setInterval(function changeAd(){
-  $(".progress").text(count+"%");
-  // if()
-} , 100 );
+//loading倒數
+// var timer = setInterval(function changeAd(){
+//   $(".progress").text("Loading..."+count+"%");
+//   if(count == 100){
+//     $(".progress").remove();
+//     clearInterval(timer);
+//   }
+// } , 100 );
 function getApiResponse(text){
   if(text != ""){
     var rs = totalArray.filter(function(item, index, array){
