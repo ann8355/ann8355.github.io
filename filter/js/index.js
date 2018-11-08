@@ -209,13 +209,15 @@ function getApiResponse(text){
     $.ajax({
         url: url,
         dataType: 'json',
+        crossDomain: true,
+        type: "GET",
         success: function(data) {
             $("#section2").html("");
             totalArray = data.result.records;
             loadData(data.result.records);
         },
-        error: function(data,error) {
-          alert("錯誤訊息"+JSON.stringify(data)+"和"+error)
+        error: function(jqXHR, textStatus, errorThrown) {
+          alert("錯誤訊息"+JSON.stringify(jqXHR)+"和"+textStatus+"和"+errorThrown+"和"+url)
         }
     });
   }
