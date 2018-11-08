@@ -7,6 +7,7 @@ var dataArray = [];//搜尋結果的資料陣列（篩選後）
 var totalArray = [];//搜尋結果的資料陣列
 var num = 10;//一頁幾筆資料
 var windowArray = [];//儲存map的infowindow
+var count = 0;//目前loading進度%
 
 function loadJsonTOption(url,selector,option){
   $.getJSON(
@@ -179,8 +180,19 @@ function loadData(array){
     alert("No results !");
   }else{             
     creatPage(dataArray);//產生分頁
+    dataArray.forEach(function(item){
+      var img = new Image();
+      img.onload = function(){
+        count++;
+      }
+      img.src = item.Picture1;
+    });
   }   
 }
+setInterval(function changeAd(){
+  $(".progress").text(count+"%");
+  // if()
+} , 100 );
 function getApiResponse(text){
   if(text != ""){
     var rs = totalArray.filter(function(item, index, array){
@@ -198,7 +210,6 @@ function getApiResponse(text){
       }
       return zone && type && key;
     });
-    console.log(rs)
     loadData(rs);
   }else{
     var limit= num; //10
@@ -209,12 +220,12 @@ function getApiResponse(text){
     $.ajax({
         url: url,
         dataType: 'json',
-        async: true,
-        cache: true,
-        contentType : false,
-        processData : false,
-        tradition : true,
-        crossDomain: true,
+        // async: true,
+        // cache: true,
+        // contentType : false,
+        // processData : false,
+        // tradition : true,
+        // crossDomain: true,
         type: "POST",
         success: function(data) {
             $("#section2").html("");
@@ -347,8 +358,16 @@ $(document).on('click', '#mapBtn', function(event){
                     </div>`);
   initMap();
 });
+$(window).scroll(function(){
+  if($(this).scrollTop() > $(this).height()){
+    $(".top").show();
+  }else{
+    $(".top").hide();
+  }
+});
 $( function() {
   loadJsonTOption("mock/type.json",$(".multipleSelect"),"multiple");
   loadJsonTOption("mock/location.json",$(".singleSelect"),"single");
   getApiResponse("");//查全部資料
+  $(".top").hide();
 });
