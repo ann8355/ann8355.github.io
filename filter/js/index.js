@@ -201,24 +201,6 @@ function getApiResponse(text){
     console.log(rs)
     loadData(rs);
   }else{
-  //   var data = {
-  //     resource_id: '92290ee5-6e61-456f-80c0-249eae2fcc97', // the resource id
-  //     // limit: num, //10
-  //     q: text // 查詢條件
-  //   };
-  // $.ajax({
-  //     url: 'http://data.kcg.gov.tw/api/action/datastore_search',
-  //     data: data,
-  //     dataType: 'jsonp',
-  //     success: function(data) {
-  //       $("#section2").html("");
-  //       totalArray = data.result.records;
-  //       loadData(data.result.records);
-  //   },
-  //   error: function(jqXHR, textStatus, errorThrown) {
-  //     alert("錯誤訊息"+JSON.stringify(jqXHR))
-  //   }
-  // });
     var limit= num; //10
     var  q= text;
     var url='https://data.kcg.gov.tw/api/action/datastore_search?resource_id=92290ee5-6e61-456f-80c0-249eae2fcc97'
@@ -227,6 +209,11 @@ function getApiResponse(text){
     $.ajax({
         url: url,
         dataType: 'json',
+        async: true,
+        cache: true,
+        contentType : false,
+        processData : false,
+        tradition : true,
         crossDomain: true,
         type: "POST",
         success: function(data) {
@@ -235,7 +222,7 @@ function getApiResponse(text){
             loadData(data.result.records);
         },
         error: function(jqXHR, textStatus, errorThrown) {
-          alert("錯誤訊息"+JSON.stringify(jqXHR)+"和"+textStatus+"和"+errorThrown+"和"+url)
+          alert("錯誤訊息: "+JSON.stringify(jqXHR))
         }
     });
   }
