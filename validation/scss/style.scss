@@ -261,4 +261,18 @@ input:invalid{
   body{
     background-size: 150% 100%;
   }
+  #profile{
+    flex-direction: column;
+    div{
+      max-width: 100%;
+    }
+  }
+  input:invalid:invalid ~ span::before {
+    right: 0;
+    top: -300%;
+    left: initial;
+  }
+  input:invalid:invalid ~ span::after {
+    display: none;
+  }
 }
