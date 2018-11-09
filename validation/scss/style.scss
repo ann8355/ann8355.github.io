@@ -229,14 +229,36 @@ input:invalid{
     width: 380px;
   }
 }
-@media(max-width: 435px){
-  h1{
+@media (max-width: 435px) {/* mobile */ 
+  h1 {
     font-size: 30px;
   }
-  #form3 form{
+  h4{
+    font-size: 1.2rem;
+  }
+  #progressbar li:not(:last-child) {
+    width: 25%;
+  }
+  #photo{
+    i{
+      margin-right: 0.2em;
+      font-size: 3em;
+    }
+    h5{
+      font-size: 1.1em;
+      margin-bottom: 0;
+    }
+    h6{
+      font-size: 0.8em;
+    }
+  }
+  #form3 form {
     width: 280px;
   }
-  #direct{
-    font-size: 16px;
+  #direct {
+    font-size: 0.8rem;
+  }
+  body{
+    background-size: 150% 100%;
   }
 }

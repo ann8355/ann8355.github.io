@@ -77,7 +77,7 @@ function changePage(){
         });        
       }});
     }else if(count == i){
-      TweenMax.to("#form"+i.toString(), 1.5, {height:"650px", ease: Power2.easeOut,delay:1});
+      TweenMax.to("#form"+i.toString(), 1.5, {height:"auto", ease: Power2.easeOut,delay:1});
     }
   }
 }
@@ -157,10 +157,9 @@ $('#file').change(function(event) {
         image.onload=function(){//要在 image.src = 之前cached
           var width = image.width;
           var height = image.height;
-          if(width >800 || height>800){
+          if(width >1500 || height>1500){//超過大小
             $("#warnpic").removeClass("d-none");
             $("#warnpic span").text(name).append("<p>IS OVER THE MAXIMUM SIZE</p>");
-            // $("#warnpic span").text("ONE FILE IS OVER THE MAXIMUM SIZE");
           }else{
             fileArray.push(file);
             $("#profile").append('<div class="col-4 mr-3 mb-4" data-index='+index+' style="background-image:url('+fileContent+');"></div>');

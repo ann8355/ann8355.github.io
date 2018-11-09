@@ -97,7 +97,7 @@ body {
 #photo {
   height: 140px;
   border: 2px solid #000;
-  color: #9B9B9B;
+  color: rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
 #photo i {
@@ -251,16 +251,34 @@ input:invalid:invalid ~ span::after {
     width: 380px;
   }
 }
-@media (max-width: 435px) {
+@media (max-width: 435px) {/* mobile */ 
   h1 {
     font-size: 30px;
   }
-
+  h4{
+    font-size: 1.2rem;
+  }
+  #progressbar li:not(:last-child) {
+    width: 25%;
+  }
+  #photo i {
+    margin-right: 0.2em;
+    font-size: 3em;
+  }
+  #photo h5 {
+    font-size: 1.1em;
+    margin-bottom: 0;
+  }
+  #photo h6 {
+    font-size: 0.8em;
+  }
   #form3 form {
     width: 280px;
   }
-
   #direct {
-    font-size: 16px;
+    font-size: 0.8rem;
+  }
+  body{
+    background-size: 150% 100%;
   }
 }
