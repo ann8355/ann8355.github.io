@@ -1,17 +1,27 @@
 .bg{
   height: 100vh;
   width: 100vw;
-  background-image: url("../martin-shreder-349256-unsplash.jpg");
+  background-image: url("../img/homeBg.jpg");
   background-position: 0 0;
   background-size: cover;
   filter: opacity(80%);
   background-blend-mode:overlay;
   position: relative;
   transition: 1s;
-  opacity: 0;
+  /* opacity: 0; */
+}
+#about{
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100vw;
+  padding: 15vh 10vw;
+  background-image: url("../img/patternBg.jpg");
+  background-size: cover;
+  background-blend-mode:overlay;
+  background-color: #D2DBE0;
 }
 .code{
-  background-image: url("../markus-spiske-518966-unsplash.jpg");
+  background-image: url("../img/homeCode.jpg");
   position: absolute;
   width: 65vw;
   height: 100vh;
@@ -44,8 +54,8 @@
 }
 .bgTxt img{
   opacity: 0;
-  transform: translateY(-2em);
-  width: 350px;
+  transform: translate(5em,-2em);
+  width: 250px;
 }
 .bgTxt span{
   animation: blink 1.3s infinite both;
@@ -65,9 +75,16 @@
   padding: 0.3em;
   border-radius: 0.2em;
 } */
-a{
+a,header i{
   text-decoration: none;
   color: rgba(255, 255, 255, 0.6);
+}
+.title{
+  font-size: 2rem;
+  font-weight: bold;
+}
+.subTitle{
+  font-size: 1.6rem;
 }
 header{
   top: 0;
@@ -76,11 +93,17 @@ header{
   width: 100vw;
   opacity: 0;
 }
+header i{
+  display: none;
+  cursor: pointer;
+}
+header i:hover{
+  color: #fff;
+}
 header ul{
   padding-right: 4em;
   display: flex;
   justify-content: flex-end;
-  font-size: 1.6rem;
   margin: 0;
 }
 header ul ol,header ul ol a{
@@ -96,11 +119,12 @@ header ul ol:hover a,header ul ol a:focus,.active{
 body,button{
   font-family: 'VT323', monospace,"微軟正黑體";
   background-color: #D2DBE0;
+  overflow-x: hidden;
 }
 #arrow{
   position: absolute;
   right: 50%;
-  transform: rotate(180deg);
+  width: 40px;
   cursor: pointer;
   opacity: 0;
   animation: move 1.5s 0.3s infinite both;
@@ -111,5 +135,46 @@ body,button{
   }
   100%{
     bottom: 0;
+  }
+}
+
+@media(max-width: 435px){/* mobile */ 
+  .code{
+    height: 55vh;
+    width: 100vw;
+    -webkit-clip-path: polygon(0 0, 100% 35%, 100% 100%, 0% 100%);
+    clip-path: polygon(0 0, 100% 35%, 100% 100%, 0% 100%);
+  }
+  .bgTxt{
+    font-size: 2rem;
+    height: 300px;
+    top: 50%!important;
+    padding-left: 1rem;
+  }
+  .bgTxt img{
+    width: 150px;
+  }
+  #arrow{
+    width: 20px;
+  }
+  header{
+    padding: 1em 1em;
+  }
+  header i{
+    display: block;
+  }
+  header ul{
+    display: none;
+  }
+  .bgTxt h5,.bgTxt h6{
+    white-space: nowrap;
+  }
+}
+@media(max-width: 350px){
+  .bgTxt{
+    font-size: 1.5rem;
+  }
+  .bgTxt img{
+    width: 120px;
   }
 }
