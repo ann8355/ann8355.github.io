@@ -32,7 +32,7 @@ $( function() {
     //     backgroundColor: "rgba(68, 44, 46, 0.7)",
     //     ease: Power0.easeOut
     // }),"effect").addLabel("end").to($(".bg"),0.1,{
-    //     filter: "opacity(80%) blur(2px)"
+    //     filter: "opacity(80%) blur(1px)"
     // }).addLabel("replay").add(timeline2,"end");
     
     timeline.to($(".bg"),1,{
@@ -49,7 +49,7 @@ $( function() {
         backgroundColor: "rgba(68, 44, 46, 0.7)",
         ease: Power0.easeOut
     }),"effect").addLabel("end").to($(".bg"),0.1,{
-        filter: "opacity(80%) blur(2px)"
+        filter: "opacity(80%) blur(1px)"
     }).addLabel("replay").add(timeline2,"end");
     $('header ol:nth-child(1) a').addClass("active");
 });

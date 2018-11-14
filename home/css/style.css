@@ -8,7 +8,7 @@
   background-blend-mode:overlay;
   position: relative;
   transition: 1s;
-  /* opacity: 0; */
+  opacity: 0;
 }
 #about{
   box-sizing: border-box;
@@ -26,11 +26,11 @@
   width: 65vw;
   height: 100vh;
   background-size: contain;
-  filter: blur(2px) opacity(25%);
+  filter: blur(1px) opacity(25%);
   bottom: 0;
   display: none;
   background-blend-mode:overlay;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.6);
   -webkit-clip-path: polygon(35% 0, 100% 0, 100% 100%, 0% 100%);
   clip-path: polygon(35% 0, 100% 0, 100% 100%, 0% 100%);
 }
@@ -48,6 +48,7 @@
 .bgTxt h6,.bgTxt h5,.bgTxt h1{
   margin: 0rem;
   line-height: 1.3em;
+  white-space: nowrap;
 }
 .bgTxt h6{
   transform: translateY(-4em);
@@ -87,6 +88,7 @@ a,header i{
   font-size: 1.6rem;
 }
 header{
+  box-sizing: border-box;
   top: 0;
   background-color: rgba(35, 47, 52, 0.8);
   position: absolute;
@@ -165,9 +167,6 @@ body,button{
   }
   header ul{
     display: none;
-  }
-  .bgTxt h5,.bgTxt h6{
-    white-space: nowrap;
   }
 }
 @media(max-width: 350px){
