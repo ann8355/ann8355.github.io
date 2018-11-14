@@ -1,5 +1,6 @@
 var timeline = new TimelineMax();
 var timeline2 = new TimelineMax();
+var menuTl = new TimelineMax();
 
 $(document).on('click', 'header ol:nth-child(1)', function(event){
     timeline.seek("replay");
@@ -7,7 +8,18 @@ $(document).on('click', 'header ol:nth-child(1)', function(event){
 $(document).on('click', 'header ol a', function(event){
     $("header ol a").removeClass("active");
 });
+$(document).on('click', '#menuBar', function(event){
+    menuTl.play();
+});
+$(document).on('click', '.close', function(event){
+    menuTl.reverse();
+});
 $( function() {
+    menuTl.to($("#menu"),0.5,{
+        top: 0
+    });
+    menuTl.pause();
+    
     timeline2.add(TweenMax.to(".bgTxt h1", 2, {text:"CHEN PEI-AN", delay:0.5}))
     .to($(".bgTxt"),0.5,{top: "20%"},"+=0.6")
     .add(TweenMax.to(".bgTxt h5", 3, {text:"< Front-End Developer/>"})).addLabel("detail")
@@ -34,7 +46,7 @@ $( function() {
         display: "block",
         ease: Power1.easeOut
     },"+=1").add(TweenMax.to($(".bg"),1,{
-        backgroundColor: "rgba(68, 44, 46, 0.7)",
+        backgroundColor: "rgba(68, 44, 46, 0.6)",
         ease: Power0.easeOut
     }),"effect").addLabel("end").to($(".bg"),0.1,{
         filter: "opacity(80%) blur(1px)"
