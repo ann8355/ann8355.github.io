@@ -18,31 +18,19 @@ $( function() {
     .to($(".bgTxt img"),1.5,{opacity: 1,ease: RoughEase.ease.config({ template:  Power0.easeNone, strength: 1, points: 20, taper: "none", randomize:  true, clamp: false})})
     .to($("header,#arrow"),0.5,{opacity: 1});
 
-    // timeline.to($(".bg"),1,{
-    //     opacity: 1,
-    //     ease: Power0.easeOut
-    // }).to($(".bg"),0.7,{
-    //     backgroundPosition: "-25vw 0",
-    //     ease: Power1.easeOut
-    // },"+=0.5").addLabel("effect").to($(".code"),1,{
-    //     right: 0,
-    //     display: "block",
-    //     ease: Power1.easeOut
-    // },"+=1").add(TweenMax.to($(".bg"),1,{
-    //     backgroundColor: "rgba(68, 44, 46, 0.7)",
-    //     ease: Power0.easeOut
-    // }),"effect").addLabel("end").to($(".bg"),0.1,{
-    //     filter: "opacity(80%) blur(1px)"
-    // }).addLabel("replay").add(timeline2,"end");
-    
+    var bp = "-25vw 0";
+    console.log($(".code").css("height"))
+    if($(".bgTxt").css("height") == "300px"){//mobile size
+        bp = "-135vw 0";
+    }
     timeline.to($(".bg"),1,{
         opacity: 1,
         ease: Power0.easeOut
     }).to($(".bg"),0.7,{
-        backgroundPosition: "-135vw 0",
+        backgroundPosition: bp,
         ease: Power1.easeOut
     },"+=0.5").addLabel("effect").to($(".code"),1,{
-        bottom: 0,
+        right: 0,
         display: "block",
         ease: Power1.easeOut
     },"+=1").add(TweenMax.to($(".bg"),1,{
@@ -51,5 +39,4 @@ $( function() {
     }),"effect").addLabel("end").to($(".bg"),0.1,{
         filter: "opacity(80%) blur(1px)"
     }).addLabel("replay").add(timeline2,"end");
-    $('header ol:nth-child(1) a').addClass("active");
 });

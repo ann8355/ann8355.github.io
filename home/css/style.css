@@ -19,13 +19,24 @@
   background-size: cover;
   background-blend-mode:overlay;
   background-color: #D2DBE0;
+  display: flex;
+}
+#about article{
+  width: 65vw;
+}
+#myPhoto{
+  background-image: url("../img/my.PNG");
+  width: 30vw;
+  margin-right: 50px;
+  background-size: 150%;
+  background-position: center center;
 }
 .code{
   background-image: url("../img/homeCode.jpg");
   position: absolute;
   width: 65vw;
   height: 100vh;
-  background-size: contain;
+  background-size: 100%;
   filter: blur(1px) opacity(25%);
   bottom: 0;
   display: none;
@@ -96,7 +107,7 @@ header{
   opacity: 0;
 }
 header i{
-  display: none;
+  display: none!important;
   cursor: pointer;
 }
 header i:hover{
@@ -163,10 +174,25 @@ body,button{
     padding: 1em 1em;
   }
   header i{
-    display: block;
+    display: block!important;
   }
   header ul{
     display: none;
+  }
+  #about{
+    flex-direction: column;
+    padding: 2em;
+    align-items: center;
+  }
+  #about article{
+    width: 80vw;
+    height: 55vh;
+  }
+  #myPhoto{
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin-right: 0;
   }
 }
 @media(max-width: 350px){
