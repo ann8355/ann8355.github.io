@@ -18,7 +18,7 @@
   top: -100vh;
   z-index: 20;
 }
-header *,#menu *,button{
+header *,#menu *,button,i{
   transition: 0.5s;
 }
 .close{
@@ -80,6 +80,8 @@ header *,#menu *,button{
   overflow: hidden;
   border-radius: 50%;
   cursor: pointer;
+  transform: scale(1.3,1.3);
+  margin-left: 0.5rem;
 }
 #about button{
   border: 1px solid #232F34;
@@ -92,13 +94,16 @@ header *,#menu *,button{
   box-shadow: 2px 2px 2px transparent;
   opacity: 0.6;
 }
+#about span i:hover{
+  transform: scale(1.8,1.8);
+}
 #myPhoto{
   position: absolute;
   width: 25vw;
   height: 60vh;
   transform: translate(12.5vw, 20vh);
   z-index: 50;
-  background-image: url("../img/my.PNG");
+  background-image: url("../img/myPhoto.jpg");
   background-size: 150%;
   background-position: center center;
   background-repeat: no-repeat;
@@ -177,7 +182,7 @@ body,button{
 .bgTxt img{
   opacity: 0;
   transform: translate(5em,-2em);
-  width: 250px;
+  width: 150px;
 }
 .bgTxt span{
   animation: blink 1.3s infinite both;
@@ -254,7 +259,28 @@ header ul ol:hover a,header ul ol a:focus,.active{
     bottom: 0;
   }
 }
-
+@media(max-width: 1000px){
+  header ul ol, header ul ol a {
+    padding: 1em 0.5em;
+  }
+}
+@media(max-width: 736px){
+  header ul ol, header ul ol a {
+    padding: 1em 0.3em;
+  }
+  header ul{
+    padding-right: 2em;
+  }
+  header{
+    padding: 1em 1em;
+  }
+  header i{
+    display: block!important;
+  }
+  header ul{
+    display: none;
+  }
+}
 @media(max-width: 435px){/* mobile */ 
   .code{
     height: 55vh;
@@ -269,21 +295,33 @@ header ul ol:hover a,header ul ol a:focus,.active{
     padding-left: 1rem;
   }
   .bgTxt img{
-    width: 150px;
+    width: 85px;
   }
   #arrow{
     width: 20px;
   }
-  header{
-    padding: 1em 1em;
+  .title{
+    font-size: 1.4rem;
   }
-  header i{
-    display: block!important;
+  .subTitle,#about button{
+    font-size: 0.8rem;
   }
-  header ul{
-    display: none;
+  #about article{
+    width: 100vw;
+    height: 80vh;
+    margin: 20vh 0 0 0;
+    padding: 15vh 5vw 15vh 5vw;
   }
-  #about{
+  #about span.title{
+    top: 16vh;
+  }
+  #about span {
+    top: 18vh;
+  }
+  #about p {
+    margin-top: 4.5em;
+  }
+  /* #about{
     flex-direction: column;
     padding: 2em;
     align-items: center;
@@ -291,11 +329,12 @@ header ul ol:hover a,header ul ol a:focus,.active{
   #about article{
     width: 80vw;
     height: 55vh;
-  }
+  } */
   #myPhoto{
     border-radius: 50%;
-    width: 200px;
-    height: 200px;
+    width: 50vw;
+    height: 50vw;
+    transform: translate(50%, -50%);
     margin-right: 0;
   }
 }
@@ -304,6 +343,7 @@ header ul ol:hover a,header ul ol a:focus,.active{
     font-size: 1.5rem;
   }
   .bgTxt img{
-    width: 120px;
+    width: 70px;
   }
+  
 }
