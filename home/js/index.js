@@ -1,7 +1,7 @@
 var timeline = new TimelineMax();
 var timeline2 = new TimelineMax({
 	onComplete: function(){
-        $("#about").show();
+        // $("#about").show();
         // $("body").css("overflow-y","auto");
     }
 });
@@ -9,7 +9,10 @@ var menuTl = new TimelineMax();
 var scrollTl = new TimelineMax();
 
 function checkScroll(selector,timelineMax){
-    var height = $("header").height();
+    var height = $("header").outerHeight();
+    if($(".bgTxt").css("height") == "300px"){//mobile size
+        height = height*3;
+    }
     if ($(window).scrollTop()+height > $("#"+selector).offset().top) {
         $("header ol a,#menu ol a").removeClass("active");
         $("header a[name='"+selector+"'],#menu a[name='"+selector+"']").addClass("active");
@@ -17,8 +20,9 @@ function checkScroll(selector,timelineMax){
     }
 }
 window.addEventListener("scroll",(evt)=>{
-    checkScroll("home",timeline2);
+    // checkScroll("home",timeline2);
     checkScroll("about",scrollTl);
+    checkScroll("skill",scrollTl);
 
 });
 $(document).on('click', 'header ol a,#menu ol a', function(event){
@@ -26,9 +30,9 @@ $(document).on('click', 'header ol a,#menu ol a', function(event){
     $(this).addClass("active");
     var name = $(this).attr("name");
     switch(name){
-        // case "home":
-        //     timeline.seek("home");
-        // break;
+        case "home":
+            timeline.seek("home");
+        break;
         case "about":
             scrollTl.restart();
         break;
@@ -42,7 +46,7 @@ $(document).on('click', '.close', function(event){
     menuTl.reverse();
 });
 $( function() {
-    $("#about").hide();
+    // $("#about").hide();
     $("header a[name='home'],#menu a[name='home']").addClass("active");
 
     scrollTl.to($("#about span.title"),1.5,{
