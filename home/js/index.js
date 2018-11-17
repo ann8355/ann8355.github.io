@@ -13,22 +13,26 @@ function checkScroll(selector,timelineMax){
     if($(".bgTxt").css("height") == "300px"){//mobile size
         height = height*3;
     }
-    if ($(window).scrollTop()+height > $("#"+selector).offset().top) {
+    if ($(window).scrollTop()+height >= $("#"+selector).offset().top) {
         $("header ol a,#menu ol a").removeClass("active");
         $("header a[name='"+selector+"'],#menu a[name='"+selector+"']").addClass("active");
         timelineMax.play();
     }
 }
 window.addEventListener("scroll",(evt)=>{
-    // checkScroll("home",timeline2);
+    checkScroll("home",timeline2);
     checkScroll("about",scrollTl);
     checkScroll("skill",scrollTl);
 
 });
 $(document).on('click', 'header ol a,#menu ol a', function(event){
-    $("header ol a,#menu ol a").removeClass("active");
-    $(this).addClass("active");
+    $(".close").click();
     var name = $(this).attr("name");
+    var height = $("header").outerHeight();
+    if($(".bgTxt").css("height") == "300px"){//mobile size
+        height = height*3;
+    }
+    $("HTML, BODY").animate({ scrollTop: $("#"+name).offset().top - height+1}, 500);
     switch(name){
         case "home":
             timeline.seek("home");
@@ -38,6 +42,9 @@ $(document).on('click', 'header ol a,#menu ol a', function(event){
         break;
         // default:
     }
+});
+$(document).on('click', '#arrow', function(event){
+    $("header a[name='about'],#menu a[name='about']").click();
 });
 $(document).on('click', '#menuBar', function(event){
     menuTl.play();
