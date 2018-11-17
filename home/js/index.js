@@ -1,12 +1,39 @@
 var timeline = new TimelineMax();
-var timeline2 = new TimelineMax();
-var menuTl = new TimelineMax();
-
-$(document).on('click', 'header ol:nth-child(1)', function(event){
-    timeline.seek("replay");
+var timeline2 = new TimelineMax({
+	onComplete: function(){
+        $("#about").show();
+        // $("body").css("overflow-y","auto");
+    }
 });
-$(document).on('click', 'header ol a', function(event){
-    $("header ol a").removeClass("active");
+var menuTl = new TimelineMax();
+var scrollTl = new TimelineMax();
+
+function checkScroll(selector,timelineMax){
+    var height = $("header").height();
+    if ($(window).scrollTop()+height > $("#"+selector).offset().top) {
+        $("header ol a,#menu ol a").removeClass("active");
+        $("header a[name='"+selector+"'],#menu a[name='"+selector+"']").addClass("active");
+        timelineMax.play();
+    }
+}
+window.addEventListener("scroll",(evt)=>{
+    checkScroll("home",timeline2);
+    checkScroll("about",scrollTl);
+
+});
+$(document).on('click', 'header ol a,#menu ol a', function(event){
+    $("header ol a,#menu ol a").removeClass("active");
+    $(this).addClass("active");
+    var name = $(this).attr("name");
+    switch(name){
+        // case "home":
+        //     timeline.seek("home");
+        // break;
+        case "about":
+            scrollTl.restart();
+        break;
+        // default:
+    }
 });
 $(document).on('click', '#menuBar', function(event){
     menuTl.play();
@@ -15,11 +42,24 @@ $(document).on('click', '.close', function(event){
     menuTl.reverse();
 });
 $( function() {
+    $("#about").hide();
+    $("header a[name='home'],#menu a[name='home']").addClass("active");
+
+    scrollTl.to($("#about span.title"),1.5,{
+        width: "7.5em"
+    },0.5).from($("#myPhoto,#about span i"),0.7,{
+        opacity: 0,
+    }).from($("#about p,#about button"),1.5,{
+        opacity: 0,
+        transform: "translateY(20px)",
+        ease: Power0.easeOut
+    });
+    scrollTl.pause();
     menuTl.to($("#menu"),0.5,{
         top: 0
     });
     menuTl.pause();
-    
+
     timeline2.add(TweenMax.to(".bgTxt h1", 2, {text:"CHEN PEI-AN", delay:0.5}))
     .to($(".bgTxt"),0.5,{top: "20%"},"+=0.6")
     .add(TweenMax.to(".bgTxt h5", 3, {text:"< Front-End Developer/>"})).addLabel("detail")
@@ -31,7 +71,6 @@ $( function() {
     .to($("header,#arrow"),0.5,{opacity: 1});
 
     var bp = "-25vw 0";
-    console.log($(".code").css("height"))
     if($(".bgTxt").css("height") == "300px"){//mobile size
         bp = "-135vw 0";
     }
@@ -50,5 +89,5 @@ $( function() {
         ease: Power0.easeOut
     }),"effect").addLabel("end").to($(".bg"),0.1,{
         filter: "opacity(80%) blur(1px)"
-    }).addLabel("replay").add(timeline2,"end");
+    }).addLabel("home").add(timeline2,"end");
 });
