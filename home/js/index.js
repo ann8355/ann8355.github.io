@@ -8,30 +8,40 @@ var timeline2 = new TimelineMax({
 var menuTl = new TimelineMax();
 var scrollTl = new TimelineMax();
 
+$(document).on('click', '#box span', function(event){
+    var n = 10;
+    var angle = 360/n;
+    var count = $(this).text();
+    var current = count*angle;
+    var circleTl = new TimelineMax();   
+    circleTl.to($("#box"),1,{
+        transform: "rotate("+(90-current)+"deg)",
+        ease: Power0.easeOut
+    });
+});
 function checkScroll(selector,timelineMax){
     var height = $("header").outerHeight();
-    if($(".bgTxt").css("height") == "300px"){//mobile size
-        height = height*3;
-    }
     if ($(window).scrollTop()+height >= $("#"+selector).offset().top) {
         $("header ol a,#menu ol a").removeClass("active");
         $("header a[name='"+selector+"'],#menu a[name='"+selector+"']").addClass("active");
-        timelineMax.play();
+        if(selector == "skill"){
+            var c = new Circle(10,"box","500px");
+            c.create();
+        }else{
+            timelineMax.play();
+        }
     }
 }
 window.addEventListener("scroll",(evt)=>{
     checkScroll("home",timeline2);
     checkScroll("about",scrollTl);
-    checkScroll("skill",scrollTl);
+    checkScroll("skill");
 
 });
 $(document).on('click', 'header ol a,#menu ol a', function(event){
     $(".close").click();
     var name = $(this).attr("name");
     var height = $("header").outerHeight();
-    if($(".bgTxt").css("height") == "300px"){//mobile size
-        height = height*3;
-    }
     $("HTML, BODY").animate({ scrollTop: $("#"+name).offset().top - height+1}, 500);
     switch(name){
         case "home":
