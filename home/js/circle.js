@@ -1,6 +1,6 @@
 class Circle { //類別名稱
-    constructor(n,s,w){ //建構子
-      this.count = n  
+    constructor(d,s,w){ //建構子
+      this.data = d
       this.selector = s
       this.width = w
     }
@@ -14,9 +14,11 @@ class Circle { //類別名稱
         });
         var oBox=document.getElementById(this.selector);
         var R=document.getElementById(this.selector).offsetWidth/2;
-        var N=this.count;
+        var N=this.data.length;
         for(var i=0; i<N; i++){
-            $("#"+this.selector).append(`<span>${i+1}</span>`);
+            $("#"+this.selector).append(`<span id=${i+1} style="background-image: 
+            url(img/${this.data[i].name}.png);transform: scale(${this.data[i].scale});" 
+            title=${this.data[i].name}></span>`);
         }
         var aSpan=oBox.children;
         for(var i=0; i<aSpan.length; i++){
@@ -47,9 +49,6 @@ class Circle { //類別名稱
             }
         },30);
     }
-    //正下方點座標
-    // console.log(R+Math.sin(Math.PI)*R)
-    // console.log(R-Math.cos(Math.PI)*R)
 }
   
   

@@ -7,15 +7,26 @@ var timeline2 = new TimelineMax({
 });
 var menuTl = new TimelineMax();
 var scrollTl = new TimelineMax();
+var skillData = [];
 
+function loadSkillData(){
+    $.getJSON("mock/skillData.json", function(data) {
+        skillData = data;
+        console.log(skillData)
+    });
+}
 $(document).on('click', '#box span', function(event){
-    var n = 10;
+    var n = skillData.length;
     var angle = 360/n;
-    var count = $(this).text();
+    var count = $(this).attr("id");
     var current = count*angle;
-    var circleTl = new TimelineMax();   
+    var circleTl = new TimelineMax();
+    var rotatePos = 90;
+    if($(".bgTxt").css("height") == "300px"){//mobile size
+        rotatePos = 180;
+    }
     circleTl.to($("#box"),1,{
-        transform: "rotate("+(90-current)+"deg)",
+        rotation: rotatePos - current,
         ease: Power0.easeOut
     });
 });
@@ -25,7 +36,7 @@ function checkScroll(selector,timelineMax){
         $("header ol a,#menu ol a").removeClass("active");
         $("header a[name='"+selector+"'],#menu a[name='"+selector+"']").addClass("active");
         if(selector == "skill"){
-            var c = new Circle(10,"box","500px");
+            var c = new Circle(skillData,"box","500px");
             c.create();
         }else{
             timelineMax.play();
@@ -63,6 +74,7 @@ $(document).on('click', '.close', function(event){
     menuTl.reverse();
 });
 $( function() {
+    loadSkillData();
     // $("#about").hide();
     $("header a[name='home'],#menu a[name='home']").addClass("active");
 
