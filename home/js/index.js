@@ -20,14 +20,22 @@ $(document).on('click', '#box span', function(event){
     var angle = 360/n;
     var count = $(this).attr("id");
     var current = count*angle;
-    var circleTl = new TimelineMax();
+    var data = skillData[count-1];
+    var circleTl = new TimelineMax({onComplete: function(){
+        $("#skill h2").text(data.name);
+        // $("#skill article").text(data.description);
+    }});
     var rotatePos = 110;
     if($(".bgTxt").css("height") == "300px"){//mobile size
         rotatePos = 180;
     }
     $("#box span").css("filter","none");
     $(this).css("filter","sepia(1)");
-    circleTl.to($("#box"),1,{
+    circleTl.set($(this),{
+        scale: data.scale
+    }).set($("#box span,#box span:hover"),{
+        rotation: -(rotatePos - current)
+    }).to($("#box"),1,{
         rotation: rotatePos - current,
         ease: Power0.easeOut
     });

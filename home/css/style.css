@@ -23,7 +23,8 @@
 #box span:hover{
   border-radius:50%;
   background-color: #D0DBE1;
-  transform: scale(3)!important;
+  width: 80px;
+  height: 80px;
   z-index: 10;
 }
 #box span{ 
@@ -91,10 +92,14 @@ header *,#menu *,button,i{
   overflow: hidden;
 }
 #skillBlock{
-  width: 48%;
+  width: 45%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+#skill h2{
+  color: #F9AA33;
+  text-shadow: 3px 3px 3px rgba(35, 47, 52, 0.7);
 }
 #skill{
   box-sizing: border-box;
@@ -102,9 +107,11 @@ header *,#menu *,button,i{
   background-color: #fff;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 #skill .detail{
-  width: 30%;
+  width: 40%;
+  padding-left: 5%;
   flex-direction: column;
   display: flex;
   justify-content: center;
@@ -303,7 +310,17 @@ header ul ol:hover a,header .active{
     bottom: 0;
   }
 }
-@media(max-width: 1000px){
+@media(max-width: 1100px){
+  #skill{
+    padding: 0;
+  }
+  #skill .detail{
+    padding-left: 10%;
+  }
+  #box{
+    width: 400px!important;
+    height: 400px!important;
+  }
   /* #about .subTitle,#about button{
     font-size: 1.3rem;
   } */
@@ -311,7 +328,11 @@ header ul ol:hover a,header .active{
     padding: 15vh 2.5vw 15vh 15vw!important;
   } */
 }
-@media(max-width: 736px){
+@media(max-width: 768px){
+  #box{
+    width: 350px!important;
+    height: 350px!important;
+  }
   /* #about .subTitle,#about button{
     font-size: 1.3rem;
   } */
@@ -330,8 +351,11 @@ header ul ol:hover a,header .active{
 }
 @media(max-width: 435px){/* mobile */ 
   #box{
-    width: 200px!important;
-    height: 200px!important;
+    width: 300px!important;
+    height: 300px!important;
+  }
+  #skill{
+    flex-direction: column;
   }
   .center{
     width: 15vw;

@@ -10,7 +10,8 @@ class Circle { //類別名稱
             top:$(window).height/2,
             left:$(window).width/2,
             width: this.width,
-            height: this.width
+            height: this.width,
+            transform: "rotate(0deg)"
         });
         var oBox=document.getElementById(this.selector);
         var R=document.getElementById(this.selector).offsetWidth/2;
@@ -46,8 +47,9 @@ class Circle { //類別名稱
             obj.a=cur; //更新角度
             if(n==count){
                 clearInterval(obj.timer);
+                $("#5").click();
             }
-        },30);
+        },60);
     }
 }
   
