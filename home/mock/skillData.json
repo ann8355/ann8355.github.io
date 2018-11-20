@@ -1,82 +1,80 @@
 [
     {
-        "name": "Git",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae laudantium quas suscipit numquam maxime quaerat saepe autem adipisci natus repellendus, quidem ipsa. Eius, error odit. Qui commodi ratione repudiandae ab illo provident deserunt itaque voluptas architecto at? Cupiditate dolorum quod, obcaecati ut incidunt ullam quos illo vel beatae laborum voluptas!",
-        "scale": "1"
-    },
-    {
-        "name": "SVN",
+        "name": "MSSQL",
         "description": "",
-        "scale": "1"
-    },
-    {
-        "name": "HTML5",
-        "description": "",
-        "scale": "1"
-    },
-    {
-        "name": "CSS3",
-        "description": "",
-        "scale": "1"
+        "scale": "1.2"
     },
     {
         "name": "Scss",
         "description": "",
-        "scale": "1"
-    },
-    {
-        "name": "JavaScript",
-        "description": "",
-        "scale": "1"
-    },
-    {
-        "name": "jQuery",
-        "description": "",
-        "scale": "1" 
-    },
-    {
-        "name": "TweenMax",
-        "description": "",
-        "scale": "1" 
-    },
-    {
-        "name": "Vue",
-        "description": "",
-        "scale": "1" 
-    },
-    {
-        "name": "React",
-        "description": "",
-        "scale": "1" 
-    },
-    {
-        "name": "Boostrap4",
-        "description": "",
-        "scale": "1"
-    },
-    {
-        "name": "RWD",
-        "description": "",
-        "scale": "1" 
-    },
-    {
-        "name": "Java",
-        "description": "",
-        "scale": "1" 
-    },
-    {
-        "name": "PostgreSQL",
-        "description": "",
-        "scale": "1"
-    },
-    {
-        "name": "MSSQL",
-        "description": "",
-        "scale": "1"
+        "scale": "2.1"
     },
     {
         "name": "Oracle",
         "description": "",
-        "scale": "1"
+        "scale": "1.2"
+    },
+    {
+        "name": "Boostrap4",
+        "description": "",
+        "scale": "2.4"
+    },
+    {
+        "name": "TweenMax",
+        "description": "",
+        "scale": "1.8"
+    },
+    {
+        "name": "HTML5",
+        "description": "",
+        "scale": "2.4"
+    },  
+    {
+        "name": "React",
+        "description": "",
+        "scale": "1.5"
+    },
+    {
+        "name": "RWD",
+        "description": "",
+        "scale": "2.1"
+    },
+    {
+        "name": "PostgreSQL",
+        "description": "",
+        "scale": "1.2"
+    },
+    {
+        "name": "JavaScript",
+        "description": "",
+        "scale": "2.1"
+    },
+    {
+        "name": "Vue",
+        "description": "",
+        "scale": "1.5"
+    },
+    {
+        "name": "jQuery",
+        "description": "",
+        "scale": "2.4"
+    },
+    {
+        "name": "Java",
+        "description": "",
+        "scale": "1.8"
+    },{
+        "name": "SVN",
+        "description": "",
+        "scale": "2.1"
+    },
+    {
+        "name": "Git",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae laudantium quas suscipit numquam maxime quaerat saepe autem adipisci natus repellendus, quidem ipsa. Eius, error odit. Qui commodi ratione repudiandae ab illo provident deserunt itaque voluptas architecto at? Cupiditate dolorum quod, obcaecati ut incidunt ullam quos illo vel beatae laborum voluptas!",
+        "scale": "1.8"
+    },{
+        "name": "CSS3",
+        "description": "",
+        "scale": "2.4"
     }
 ]

@@ -17,8 +17,8 @@ class Circle { //類別名稱
         var N=this.data.length;
         for(var i=0; i<N; i++){
             $("#"+this.selector).append(`<span id=${i+1} style="background-image: 
-            url(img/${this.data[i].name}.png);transform: scale(${this.data[i].scale});" 
-            title=${this.data[i].name}></span>`);
+            url(img/${this.data[i].name}.png);transform: scale(${this.data[i].scale});
+            "title=${this.data[i].name}></span>`);
         }
         var aSpan=oBox.children;
         for(var i=0; i<aSpan.length; i++){
