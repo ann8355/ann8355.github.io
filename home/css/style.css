@@ -59,6 +59,7 @@
   position: fixed;
   top: -100vh;
   z-index: 30;
+  display: none;
 }
 header *,#menu *,button,i{
   transition: 0.5s;
@@ -114,6 +115,7 @@ header *,#menu *,button,i{
   padding-left: 5%;
   flex-direction: column;
   display: flex;
+  align-items: center;
   justify-content: center;
 }
 #experience,#work{
@@ -351,11 +353,25 @@ header ul ol:hover a,header .active{
 }
 @media(max-width: 435px){/* mobile */ 
   #box{
-    width: 300px!important;
-    height: 300px!important;
+    width: 280px!important;
+    height: 280px!important;
+  }
+  #box span{ 
+    width: 30px;
+    height: 30px;
   }
   #skill{
     flex-direction: column;
+  }
+  #skillBlock{
+    margin: 35% auto;
+  }
+  #skill h2{
+    margin: 0.3em auto;
+  }
+  #skill .detail{
+    width: 90%;
+    padding-left: 0;
   }
   .center{
     width: 15vw;

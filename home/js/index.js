@@ -23,7 +23,7 @@ $(document).on('click', '#box span', function(event){
     var data = skillData[count-1];
     var circleTl = new TimelineMax({onComplete: function(){
         $("#skill h2").text(data.name);
-        // $("#skill article").text(data.description);
+        $("#skill article").text(data.description);
     }});
     var rotatePos = 110;
     if($(".bgTxt").css("height") == "300px"){//mobile size
@@ -99,7 +99,8 @@ $( function() {
     });
     scrollTl.pause();
     menuTl.to($("#menu"),0.5,{
-        top: 0
+        top: 0,
+        display: "block"
     });
     menuTl.pause();
 
