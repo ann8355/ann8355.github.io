@@ -100,7 +100,7 @@ header *,#menu *,button,i{
 }
 #skill h2{
   color: #F9AA33;
-  text-shadow: 3px 3px 3px rgba(35, 47, 52, 0.7);
+  text-shadow: 3px 3px 3px rgba(35, 47, 52, 0.3);
 }
 #skill{
   box-sizing: border-box;
