@@ -27,7 +27,7 @@ $(document).on('click', '#box span', function(event){
     }});
     var rotatePos = 110;
     if($(".bgTxt").css("height") == "300px"){//mobile size
-        rotatePos = 180;
+        rotatePos = 200;
     }
     $("#box span").css("filter","none");
     $(this).css("filter","sepia(1)");

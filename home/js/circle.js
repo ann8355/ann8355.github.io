@@ -47,7 +47,11 @@ class Circle { //類別名稱
             obj.a=cur; //更新角度
             if(n==count){
                 clearInterval(obj.timer);
-                $("#5").click();
+                if($(".bgTxt").css("height") == "300px"){//mobile size
+                    $("#9").click();
+                }else{
+                    $("#5").click();
+                }
             }
         },60);
     }

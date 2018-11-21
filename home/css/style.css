@@ -23,8 +23,8 @@
 #box span:hover{
   border-radius:50%;
   background-color: #D0DBE1;
-  width: 80px;
-  height: 80px;
+  width: 75px;
+  height: 75px;
   z-index: 10;
 }
 #box span{ 
@@ -351,12 +351,12 @@ header ul ol:hover a,header .active{
     display: none;
   }
 }
-@media(max-width: 435px){/* mobile */ 
+@media(max-width: 435px){/* mobile */
   #box{
     width: 280px!important;
     height: 280px!important;
   }
-  #box span{ 
+  #box span,#box span:hover{ 
     width: 30px;
     height: 30px;
   }
@@ -364,10 +364,7 @@ header ul ol:hover a,header .active{
     flex-direction: column;
   }
   #skillBlock{
-    margin: 35% auto;
-  }
-  #skill h2{
-    margin: 0.3em auto;
+    margin: 40% auto;
   }
   #skill .detail{
     width: 90%;
@@ -398,7 +395,7 @@ header ul ol:hover a,header .active{
   .title{
     font-size: 1.4rem;
   }
-  #about .subTitle,#about button{
+  .subTitle,button{
     font-size: 0.8rem;
   }
   #about article{
