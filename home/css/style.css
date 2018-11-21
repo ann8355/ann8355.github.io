@@ -367,6 +367,7 @@ header ul ol:hover a,header .active{
     margin: 40% auto;
   }
   #skill .detail{
+    height: 30%;
     width: 90%;
     padding-left: 0;
   }
