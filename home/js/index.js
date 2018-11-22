@@ -6,7 +6,8 @@ var timeline2 = new TimelineMax({
     }
 });
 var menuTl = new TimelineMax();
-var scrollTl = new TimelineMax();
+var aboutTl = new TimelineMax();
+var workTl = new TimelineMax();
 var skillData = [];
 
 function loadSkillData(){
@@ -22,7 +23,7 @@ $(document).on('click', '#box span', function(event){
     var current = count*angle;
     var data = skillData[count-1];
     var circleTl = new TimelineMax({onComplete: function(){
-        $("#skill h2").text(data.name);
+        $("#skill .detailTitle").text(data.name);
         $("#skill article").text(data.description);
     }});
     var rotatePos = 110;
@@ -55,7 +56,7 @@ function checkScroll(selector,timelineMax){
 }
 window.addEventListener("scroll",(evt)=>{
     checkScroll("home",timeline2);
-    checkScroll("about",scrollTl);
+    checkScroll("about",aboutTl);
     checkScroll("skill");
 
 });
@@ -69,7 +70,7 @@ $(document).on('click', 'header ol a,#menu ol a', function(event){
             timeline.seek("home");
         break;
         case "about":
-            scrollTl.restart();
+            aboutTl.restart();
         break;
         // default:
     }
@@ -88,8 +89,8 @@ $( function() {
     // $("#about").hide();
     $("header a[name='home'],#menu a[name='home']").addClass("active");
 
-    scrollTl.to($("#about span.title"),1.5,{
-        width: "7.5em"
+    aboutTl.from($("#about span.title"),1.5,{
+        width: 0
     },0.5).from($("#myPhoto,#about span i"),0.7,{
         opacity: 0,
     }).from($("#about p,#about button"),1.5,{
@@ -97,7 +98,10 @@ $( function() {
         transform: "translateY(20px)",
         ease: Power0.easeOut
     });
-    scrollTl.pause();
+    aboutTl.pause();
+    workTl.from($("#work .title"),1.5,{
+        width: 0
+    },0.5);
     menuTl.to($("#menu"),0.5,{
         top: 0,
         display: "block"
