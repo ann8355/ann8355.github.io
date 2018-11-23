@@ -1,3 +1,37 @@
+#experience ul{
+  list-style: none;
+  padding-left: 0;
+  transform: translate(50%,10%);
+}
+#experience li{
+  margin-top: 10px;
+  /* width: 400px; */
+  height: 150px;
+  /* border-top: 2px solid #fff; */
+  border-left: 4px solid #fff;
+  position: relative;
+}
+#experience li i{
+  text-align: center;
+  line-height: 1.8em;
+  font-weight: 900;
+  font-style: normal;
+  position: absolute;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: #fff;
+  transform: translate(-50%,-50%);
+}
+#experience li:nth-child(odd) div{
+  transform: translateX(-140%);
+}
+#experience ul div{
+  width: 300px;
+  background-color: #fff;
+  height: 100%;
+  transform: translateX(40%);
+}
 .center{
   width: 100px;
   height: 100px;
@@ -87,11 +121,6 @@ header *,#menu *,button,i{
 #menu .subTitle ol:last-child{
   border-bottom: 1px solid transparent;
 }
-#about,#skill,#experience,#work{
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-}
 #skillBlock{
   width: 45%;
   display: flex;
@@ -101,14 +130,15 @@ header *,#menu *,button,i{
 .detailTitle{
   color: #F9AA33;
 }
-#skill,#work{
+#skill,#work,#experience{
   box-sizing: border-box;
-  padding: 10vh 5vw;
+  padding: 5vh 5vw;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 #skill{
+  height: 100vh;
   background-color: #fff;
 }
 #experience,#work{
@@ -123,6 +153,7 @@ header *,#menu *,button,i{
 }
 #experience{
   background-color: #232F34;
+  flex-direction: column;
 }
 #about article{
   width: 75vw;
@@ -175,7 +206,7 @@ header *,#menu *,button,i{
   background-repeat: no-repeat;
 }
 body,button{
-  font-family: monospace,"微軟正黑體";
+  font-family: monospace,"微軟正黑體",'Font Awesome\ 5 Free';
   background-color: #232F34;
   overflow-x: hidden;
 }
@@ -296,7 +327,7 @@ header ul ol:hover a,header .active{
   left: 0;
   top: 6.5vh;
 }
-#work .title,#about span.title{
+#work .title,#about span.title,#experience .title{
   width: 7.5em;
   overflow: hidden;
   white-space: nowrap;
@@ -361,7 +392,7 @@ header ul ol:hover a,header .active{
 }
 #work button{
   border: 1px solid #3449559a;
-  padding: 0.5em 0.35em;
+  padding: 0.5em 0.30em;
   color: #3449559a;
 }
 #projects{

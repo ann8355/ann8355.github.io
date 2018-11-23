@@ -7,6 +7,7 @@ var timeline2 = new TimelineMax({
 });
 var menuTl = new TimelineMax();
 var aboutTl = new TimelineMax();
+var experienceTl = new TimelineMax();
 var workTl = new TimelineMax();
 var skillData = [];
 
@@ -14,6 +15,12 @@ function loadSkillData(){
     $.getJSON("mock/skillData.json", function(data) {
         skillData = data;
         console.log(skillData)
+    });
+}
+function loadWorkData(){
+    $.getJSON("mock/workData.json", function(data) {
+        
+        console.log(data)
     });
 }
 $(document).on('click', '#box span', function(event){
@@ -58,6 +65,8 @@ window.addEventListener("scroll",(evt)=>{
     checkScroll("home",timeline2);
     checkScroll("about",aboutTl);
     checkScroll("skill");
+    checkScroll("experience",experienceTl);
+    checkScroll("work",workTl);
 
 });
 $(document).on('click', 'header ol a,#menu ol a', function(event){
@@ -86,6 +95,7 @@ $(document).on('click', '.close', function(event){
 });
 $( function() {
     loadSkillData();
+    loadWorkData();
     // $("#about").hide();
     $("header a[name='home'],#menu a[name='home']").addClass("active");
 
@@ -102,6 +112,18 @@ $( function() {
     workTl.from($("#work .title"),1.5,{
         width: 0
     },0.5);
+    workTl.pause();
+    // experienceTl.from($("#experience .title"),1.5,{
+    //     width: 0
+    // });
+    // for(var i=0; i<3; i++){
+    //     experienceTl.from($("#experience li i:nth-child("+(i+1)+")"),1.5,{
+    //         opacity:0,
+    //     }).from($("#experience li:nth-child("+(i+1)+")"),1.5,{
+    //         height: 0,
+    //     });
+    // }
+    experienceTl.pause();
     menuTl.to($("#menu"),0.5,{
         top: 0,
         display: "block"
