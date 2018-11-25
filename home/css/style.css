@@ -1,14 +1,14 @@
+#experience h2{
+  padding-left: 2em;
+}
 #experience ul{
   list-style: none;
   padding-left: 0;
-  transform: translate(50%,10%);
+  transform: translateX(50%);
+  margin-top: 0;
 }
 #experience li{
-  margin-top: 10px;
-  /* width: 400px; */
-  height: 150px;
-  /* border-top: 2px solid #fff; */
-  border-left: 4px solid #fff;
+  border-left: 4px solid #F9AA33;
   position: relative;
 }
 #experience li i{
@@ -18,19 +18,19 @@
   font-style: normal;
   position: absolute;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   background-color: #fff;
-  transform: translate(-50%,-50%);
+  color: #fff;
+  transform: translate(-55%,-90%);
 }
 #experience li:nth-child(odd) div{
-  transform: translateX(-140%);
+  transform: translateX(-128%);
 }
 #experience ul div{
-  width: 300px;
+  width: 30vw;
   background-color: #fff;
-  height: 100%;
-  transform: translateX(40%);
+  transform: translateX(28%);
 }
 .center{
   width: 100px;
@@ -95,7 +95,7 @@
   z-index: 30;
   display: none;
 }
-header *,#menu *,button,i{
+header *,#menu *,button,i,#experience *{
   transition: 0.5s;
 }
 .close{
@@ -138,7 +138,7 @@ header *,#menu *,button,i{
   align-items: center;
 }
 #skill{
-  height: 100vh;
+  height: 700px;
   background-color: #fff;
 }
 #experience,#work{
@@ -158,9 +158,8 @@ header *,#menu *,button,i{
 #about article{
   width: 75vw;
   background-color: #F9AA33;
-  height: 100vh;
   margin-left: 25vw;
-  padding: 15vh 5vw 15vh 17.5vw;
+  padding: 25vh 5vw 25vh 17.5vw;
   box-sizing: border-box;
   position: relative;
 }
@@ -180,7 +179,6 @@ header *,#menu *,button,i{
   margin-left: 0.5rem;
 }
 #about button{
-  position: absolute;
   border: 1px solid #232F34;
   padding: 0.6em;
   font-size: 1.2em;
@@ -196,7 +194,7 @@ header *,#menu *,button,i{
 }
 #myPhoto{
   position: absolute;
-  height: 60vh;
+  height: 55%;
   width: 25vw;
   transform: translate(12.5vw, 20vh);
   z-index: 10;
@@ -304,8 +302,11 @@ header ul{
   margin: 0;
   font-weight: 500;
 }
-header ul ol,header ul ol a{
+header ul ol{
   padding: 1em 1vw;
+}
+header ul ol a{
+  padding: 0.86em 1vw;
 }
 header ul ol:hover a,header .active{
   color: #fff;
@@ -340,52 +341,69 @@ header ul ol:hover a,header .active{
   align-items: center;
   justify-content: center;
 }
+#work .card{
+  width: 40vw;
+  display: flex;
+  position: relative;
+  margin-bottom: 2em;
+}
+#experience .card:hover{
+  background-color: #F9AA33!important;
+}
+#work .card:hover{
+  transform: translateY(-10px)!important;
+  box-shadow: 5px 10px 30px rgba(35, 47, 52, 0.8);
+}
+#work .card:nth-child(odd){
+  margin-right: 3em;
+}
 .card{
   background-color: #fff;
-  width: 40vw;
-  height: 300px;
-  display: flex;
   padding: 1em;
   border: 1px solid #D0DBE1;
-  box-shadow: 5px 5px 12px #D0DBE1;
-  position: relative;
+  box-shadow: 5px 5px 15px rgba(35, 47, 52, 0.8);
 }
 #work .card img{
   width: 50%;
-  margin-right: 1.8em;
+  height: 260px;
+  margin-right: 1.5em;
 }
-#work .card div{
-  display: flex;
-  flex-direction: column;
+.workBlock{
   box-sizing: border-box;
   line-height: 1.7em;
+}
+.tagBlock{
+  display: flex;
+  flex-wrap: wrap;
 }
 #projects .tag{
   background-color: #F9AA33;
   color: #fff;
-  /* font-size: 1rem; */
   padding: 0 0.3em;
   margin: 0 0.3em 0.3em 0;
   border-radius: 5px;
 }
 #work h3{
   color: #344955;
-  /* background-color: #4A6572;
-  padding: 0.5em;
-  text-align: center; */
+  margin: 0 0 0.8em 0;
+  border-bottom: 1px solid #232F34;
+  padding-bottom: 0.5em;
 }
 .info{
   float: right;
   cursor: pointer;
 }
+.info:hover{
+  color: #232F34!important;
+}
 .info:hover:after{
-  content: '內文';
+  content: attr(data-content);
   display: block;
   box-sizing: border-box;
   padding: 1em;
   background-color: #fff;
-  width: 20vw;
-  height: 330px;
+  width: 50%;
+  height: 100%;
   position: absolute;
   top: 0;
   right: 50%;
@@ -394,27 +412,25 @@ header ul ol:hover a,header .active{
   border: 1px solid #3449559a;
   padding: 0.5em 0.30em;
   color: #3449559a;
+  margin-bottom: 0.8em;
+}
+#work button:hover{
+  background-color: #344955!important;
+  color: #fff;
+}
+#work button:hover i{
+  background-color: transparent;
+  color: #fff;
 }
 #projects{
-  width: 100%;
-  height: 100%;
-  margin-top: 3em;
-}
-#projects a{
-  text-decoration-line: underline;
-  color: #3449559a;
-  cursor: pointer;
-}
-#projects a:hover,#projects a:focus{
-  color: #4A6572;
+  margin-top: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 #projects i{
   margin-right: 0.5em;
   color:#3449559a;
-}
-.card .detailTitle{
-  border-bottom: 1px solid #232F34;
-  padding-bottom: 0.5em;
 }
 @keyframes move{
   0%{
@@ -464,6 +480,18 @@ header ul ol:hover a,header .active{
   }
 }
 @media(max-width: 435px){/* mobile */
+  #work .card{
+    width: 90%;
+  }
+  #work .card:nth-child(odd){
+    margin-right: 0;
+  }
+  #work .card img{
+    height: 220px;
+  }
+  #work button{
+    width: 100%;
+  }
   #box{
     width: 280px!important;
     height: 280px!important;

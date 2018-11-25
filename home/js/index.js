@@ -17,10 +17,61 @@ function loadSkillData(){
         console.log(skillData)
     });
 }
+function loadExperienceData(){
+    $.getJSON("mock/experienceData.json", function(array) {
+        experienceLength = array.length;
+        array.forEach(function(ele){
+            var block = `<li>
+                            <i></i>
+                            <h2 class="detailTitle">${ele.year}</h2>
+                            <div class="card subTitle">${ele.description}</div>
+                        </li>`;
+            $("#experience ul").append(block);
+        });
+        $("#experience ul li:nth-child(2) i").css("backgroundColor","rgb(99, 165, 132)").addClass("fa-trophy fa-2x");
+        $("#experience ul li:nth-child(3) i").css("backgroundColor","rgb(97, 113, 202)").addClass("fa-graduation-cap fa-2x");;
+        $("#experience ul li:nth-child(4) i").css("backgroundColor","#c75a5a").addClass("fa-briefcase fa-2x");;
+        $("#experience ul li:nth-child(2) i,#experience ul li:nth-child(3) i,#experience ul li:nth-child(4) i").css({width:"55px",height:"55px"});
+        experienceTl.from($("#experience .title"),1.5,{
+            width: 0
+        },0.5).staggerFrom($("#experience li"),1.5,{
+            height: 0,
+            display: "none"
+        },2);
+        experienceTl.pause();
+    });
+}
+function loadTag(obj){
+    var tag = "";
+    obj.forEach(function(element) {
+        tag += `<span class="tag">${element}</span>`;
+    });
+    return tag;
+}
 function loadWorkData(){
-    $.getJSON("mock/workData.json", function(data) {
-        
-        console.log(data)
+    $.getJSON("mock/workData.json", function(datas) {
+        datas.forEach(function(data){
+            var temp = `<div class="card">
+                    <img src="img/${data.name}.jpeg" alt=${data.name}>
+                    <div class="subTitle workBlock">
+                    <h3>${data.name}<i class="fa fa-info-circle info" data-content=${data.description}></i></h3>
+                    <div>
+                        <button onclick="window.open('${data.url}');"><i class="fas fa-link"></i>作品連結</button>
+                        <button onclick="window.open('${data.codeUrl}');"><i class="fa fa-code"></i>程式碼</button>
+                    </div>
+                    <div class="tagBlock">
+                        <i class="fa fa-tags"></i>${loadTag(data.skills)}
+                    </div>
+                  </div>
+                </div>`;
+            $("#projects").append(temp);
+        });
+        workTl.from($("#work .title"),1.5,{
+            width: 0
+        },0.5).staggerFrom($("#work .card"),1,{
+            scale: 0
+        },0.5);
+        workTl.pause();
     });
 }
 $(document).on('click', '#box span', function(event){
@@ -67,7 +118,6 @@ window.addEventListener("scroll",(evt)=>{
     checkScroll("skill");
     checkScroll("experience",experienceTl);
     checkScroll("work",workTl);
-
 });
 $(document).on('click', 'header ol a,#menu ol a', function(event){
     $(".close").click();
@@ -81,7 +131,12 @@ $(document).on('click', 'header ol a,#menu ol a', function(event){
         case "about":
             aboutTl.restart();
         break;
-        // default:
+        case "experience":
+            experienceTl.restart();
+        break;
+        case "work":
+            workTl.restart();
+        break;
     }
 });
 $(document).on('click', '#arrow', function(event){
@@ -95,6 +150,7 @@ $(document).on('click', '.close', function(event){
 });
 $( function() {
     loadSkillData();
+    loadExperienceData();
     loadWorkData();
     // $("#about").hide();
     $("header a[name='home'],#menu a[name='home']").addClass("active");
@@ -109,21 +165,6 @@ $( function() {
         ease: Power0.easeOut
     });
     aboutTl.pause();
-    workTl.from($("#work .title"),1.5,{
-        width: 0
-    },0.5);
-    workTl.pause();
-    // experienceTl.from($("#experience .title"),1.5,{
-    //     width: 0
-    // });
-    // for(var i=0; i<3; i++){
-    //     experienceTl.from($("#experience li i:nth-child("+(i+1)+")"),1.5,{
-    //         opacity:0,
-    //     }).from($("#experience li:nth-child("+(i+1)+")"),1.5,{
-    //         height: 0,
-    //     });
-    // }
-    experienceTl.pause();
     menuTl.to($("#menu"),0.5,{
         top: 0,
         display: "block"
