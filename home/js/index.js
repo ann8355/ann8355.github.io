@@ -137,6 +137,13 @@ $(document).on('click', 'header ol a,#menu ol a', function(event){
         case "work":
             workTl.restart();
         break;
+        case "contact":
+            TweenMax.from($("#contact div"),2,{
+                opacity: 0,
+                delay: 0.5,
+                ease: Power0.easeOut
+            });
+        break;
     }
 });
 $(document).on('click', '#arrow', function(event){

@@ -1,5 +1,6 @@
 #experience h2{
   padding-left: 2em;
+  color: #fff;
 }
 #experience ul{
   list-style: none;
@@ -8,7 +9,8 @@
   margin-top: 0;
 }
 #experience li{
-  border-left: 4px solid #F9AA33;
+  /* border-left: 4px solid #F9AA33; */
+  border-left: 4px solid #fff;
   position: relative;
 }
 #experience li i{
@@ -20,7 +22,8 @@
   border-radius: 50%;
   width: 30px;
   height: 30px;
-  background-color: #fff;
+  background-color: #F9AA33;
+  /* background-color: #fff; */
   color: #fff;
   transform: translate(-55%,-90%);
 }
@@ -130,12 +133,36 @@ header *,#menu *,button,i,#experience *{
 .detailTitle{
   color: #F9AA33;
 }
-#skill,#work,#experience{
+#skill,#work,#experience,#contact{
   box-sizing: border-box;
   padding: 5vh 5vw;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+#contact{
+  flex-direction: column;
+  color: rgba(255, 255, 255, 0.6);
+}
+#contact i{
+  color: #fff;
+}
+#contact a:nth-child(1) i:hover{
+  color: rgb(25, 77, 233);
+}
+#contact a:nth-child(2) i:hover{
+  color: #00C511;
+}
+#contact a:nth-child(3) i:hover{
+  color: #000;
+}
+#contact a:nth-child(4) i:hover{
+  color: #BB2B20;
+}
+#contact div{
+  display: flex;
+  width: 40vw;
+  justify-content: space-evenly;
 }
 #skill{
   height: 700px;
@@ -304,6 +331,7 @@ header ul{
 }
 header ul ol{
   padding: 1em 1vw;
+  cursor: pointer;
 }
 header ul ol a{
   padding: 0.86em 1vw;
@@ -477,6 +505,17 @@ header ul ol:hover a,header .active{
   }
 }
 @media(max-width: 435px){/* mobile */
+  #contact h4{
+    font-size: 0.7em;
+    text-align: center;
+  }
+  #contact span{
+    display: block;
+  }
+  #contact div{
+    width: 80vw;
+    font-size: 0.8em;
+  }
   #work .card{
     width: 90%;
   }
