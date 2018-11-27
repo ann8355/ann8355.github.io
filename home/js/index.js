@@ -1,20 +1,15 @@
 var timeline = new TimelineMax();
-var timeline2 = new TimelineMax({
-	onComplete: function(){
-        // $("#about").show();
-        // $("body").css("overflow-y","auto");
-    }
-});
+var timeline2 = new TimelineMax();
 var menuTl = new TimelineMax();
 var aboutTl = new TimelineMax();
 var experienceTl = new TimelineMax();
 var workTl = new TimelineMax();
+var contactTl = new TimelineMax();
 var skillData = [];
 
 function loadSkillData(){
     $.getJSON("mock/skillData.json", function(data) {
         skillData = data;
-        console.log(skillData)
     });
 }
 function loadExperienceData(){
@@ -34,10 +29,10 @@ function loadExperienceData(){
         $("#experience ul li:nth-child(2) i,#experience ul li:nth-child(3) i,#experience ul li:nth-child(4) i").css({width:"55px",height:"55px"});
         experienceTl.from($("#experience .title"),1.5,{
             width: 0
-        },0.5).staggerFrom($("#experience li"),1.5,{
+        },0.5).staggerFrom($("#experience li"),1.2,{
             height: 0,
             display: "none"
-        },2);
+        },1.3);
         experienceTl.pause();
     });
 }
@@ -101,7 +96,11 @@ $(document).on('click', '#box span', function(event){
 });
 function checkScroll(selector,timelineMax){
     var height = $("header").outerHeight();
-    if ($(window).scrollTop()+height >= $("#"+selector).offset().top) {
+    if($(window).scrollTop()/($(document).outerHeight()- $(window).outerHeight()) == 1){
+        $("header ol a,#menu ol a").removeClass("active");
+        $("header a[name='contact'],#menu a[name='contact']").addClass("active");
+        contactTl.play();
+    }else if ($(window).scrollTop()+height >= $("#"+selector).offset().top) {
         $("header ol a,#menu ol a").removeClass("active");
         $("header a[name='"+selector+"'],#menu a[name='"+selector+"']").addClass("active");
         if(selector == "skill"){
@@ -115,9 +114,17 @@ function checkScroll(selector,timelineMax){
 window.addEventListener("scroll",(evt)=>{
     checkScroll("home",timeline2);
     checkScroll("about",aboutTl);
-    checkScroll("skill");
     checkScroll("experience",experienceTl);
+    checkScroll("skill");
     checkScroll("work",workTl);
+    if($(window).scrollTop() > $("#home").offset().top){
+        $(".top").show();
+    }else{
+        $(".top").hide();
+    }
+});
+$(document).on('click', '.top', function(event){
+    $("HTML, BODY").animate({ scrollTop: 0}, 500);
 });
 $(document).on('click', 'header ol a,#menu ol a', function(event){
     $(".close").click();
@@ -138,11 +145,7 @@ $(document).on('click', 'header ol a,#menu ol a', function(event){
             workTl.restart();
         break;
         case "contact":
-            TweenMax.from($("#contact div"),2,{
-                opacity: 0,
-                delay: 0.5,
-                ease: Power0.easeOut
-            });
+            contactTl.restart();
         break;
     }
 });
@@ -159,19 +162,23 @@ $( function() {
     loadSkillData();
     loadExperienceData();
     loadWorkData();
-    // $("#about").hide();
     $("header a[name='home'],#menu a[name='home']").addClass("active");
 
     aboutTl.from($("#about span.title"),1.5,{
         width: 0
     },0.5).from($("#myPhoto,#about span i"),0.7,{
         opacity: 0,
-    }).from($("#about p,#about button"),1.5,{
+    }).from($("#about p,#about button"),1,{
         opacity: 0,
         transform: "translateY(20px)",
         ease: Power0.easeOut
     });
     aboutTl.pause();
+    contactTl.from($("#contact div"),1.5,{
+        opacity: 0,
+        ease: Power0.easeOut
+    },0.5);
+    contactTl.pause();
     menuTl.to($("#menu"),0.5,{
         top: 0,
         display: "block"
@@ -183,7 +190,7 @@ $( function() {
     .add(TweenMax.to(".bgTxt h5", 3, {text:"< Front-End Developer/>"})).addLabel("detail")
     .to($(".bgTxt h5,.bgTxt h1"),0.5,{transform: "translateY(-13em)"},"+=1")
     .add(TweenMax.to(".bgTxt h6", 5, {
-        text:"> Birthdate: 1994/ 05/ 05<br>> Email: s8900771@gmail.com<br>> Phone: 0952817089<br>> Address: Taipei, Taiwan<span></span>",
+        text:"> Birthdate: 1994/ 05/ 05<br>> Hobbies: music, coding<br>> Email: s8900771@gmail.com<br>> Phone: 0952817089<br>> Address: Taipei, Taiwan<span></span>",
         ease: Power0.easeOut,delay:1.5}),"detail")
     .to($(".bgTxt img"),1.5,{opacity: 1,ease: RoughEase.ease.config({ template:  Power0.easeNone, strength: 1, points: 20, taper: "none", randomize:  true, clamp: false})})
     .to($("header,#arrow"),0.5,{opacity: 1});

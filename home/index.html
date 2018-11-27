@@ -19,15 +19,16 @@
 </head>
 
 <body>
+  <div class="top"></div>
   <div id="menu">
     <button type="button" class="close">&times;</button>
     <ul class="subTitle">
       <ol><a name="home">首頁</a></ol>
       <ol><a name="about" href="#about">關於我</a></ol>
-      <ol><a name="experience" href="#">經歷</a></ol>
-      <ol><a name="skill" href="#">技能</a></ol>
-      <ol><a name="work" href="#">作品集</a></ol>
-      <ol><a name="contact" href="#">聯絡我</a></ol>
+      <ol><a name="experience" href="#experience">經歷</a></ol>
+      <ol><a name="skill" href="#skill">技能</a></ol>
+      <ol><a name="work" href="#work">作品集</a></ol>
+      <ol><a name="contact" href="#contact">聯絡我</a></ol>
     </ul>
   </div>
   <div id="home" class="bg"></div>
@@ -37,19 +38,19 @@
       <ul class="subTitle">
           <ol><a name="home">首頁</a></ol>
           <ol><a name="about" href="#about">關於我</a></ol>
-          <ol><a name="experience" href="#">經歷</a></ol>
-          <ol><a name="skill" href="#">技能</a></ol>
-          <ol><a name="work" href="#">作品集</a></ol>
-          <ol><a name="contact" href="#">聯絡我</a></ol>
+          <ol><a name="experience" href="#experience">經歷</a></ol>
+          <ol><a name="skill" href="#skill">技能</a></ol>       
+          <ol><a name="work" href="#work">作品集</a></ol>
+          <ol><a name="contact" href="#contact">聯絡我</a></ol>
       </ul>
   </header>
   <div class="bgTxt">
     <h1></h1>
     <h5></h5>
     <h6></h6>
-    <img src="img/name.png" alt="">
+    <img src="img/name.png">
   </div>
-  <img id="arrow" src="img/double-arrow-down.gif" alt="">
+  <img id="arrow" src="img/double-arrow-down.gif">
   <section id="about">
     <div id="myPhoto"></div>
     <article>
@@ -63,7 +64,13 @@
       <button>詳細介紹</button>
       <button>下載履歷</button>
     </article> 
-  </section> 
+  </section>
+  <section id="experience">
+    <span class="title">經歷</span>
+        <ul>
+          <li style="height: 60px;"></li>
+        </ul>
+  </section>
   <section id="skill">
     <div id="skillBlock">
       <div id="box"></div>
@@ -73,12 +80,6 @@
       <h2 class="detailTitle"></h2>
       <article></article>
     </div>
-  </section>
-  <section id="experience">
-    <span class="title">經歷</span>
-        <ul>
-          <li style="height: 60px;"></li>
-        </ul>
   </section>
   <section id="work">
     <span class="title">作品集</span>

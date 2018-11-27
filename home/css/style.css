@@ -1,6 +1,5 @@
 #experience h2{
   padding-left: 2em;
-  color: #fff;
 }
 #experience ul{
   list-style: none;
@@ -9,21 +8,19 @@
   margin-top: 0;
 }
 #experience li{
-  /* border-left: 4px solid #F9AA33; */
-  border-left: 4px solid #fff;
+  border-left: 4px solid #F9AA33;
   position: relative;
 }
 #experience li i{
   text-align: center;
   line-height: 1.8em;
-  font-weight: 900;
+  font-weight: 600;
   font-style: normal;
   position: absolute;
   border-radius: 50%;
   width: 30px;
   height: 30px;
-  background-color: #F9AA33;
-  /* background-color: #fff; */
+  background-color: #fff;
   color: #fff;
   transform: translate(-55%,-90%);
 }
@@ -351,6 +348,26 @@ header ul ol:hover a,header .active{
   opacity: 0;
   animation: move 1.5s 0.3s infinite both;
 }
+.top{
+  background-color:#F9AA33;
+  height: 45px;
+  width: 45px;
+  background-image: url('../img/double-arrow-down.gif');
+  background-size: 60%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: fixed;
+  right: 1%;
+  bottom: 3%;
+  border-radius: 50%;
+  z-index: 100;
+  border: 3px groove #F9AA33;
+  transform: rotate(180deg);
+}
+.top:hover{
+  cursor: pointer;
+  animation: move 0.8s 0.1s infinite alternate-reverse both;
+}
 #about span.title{
   position: absolute;
   left: 0;
@@ -505,6 +522,10 @@ header ul ol:hover a,header .active{
   }
 }
 @media(max-width: 435px){/* mobile */
+  .top{
+    width: 20px;
+    height: 20px;
+  }
   #contact h4{
     font-size: 0.7em;
     text-align: center;
@@ -570,7 +591,7 @@ header ul ol:hover a,header .active{
     font-size: 1.4rem;
   }
   .subTitle,button{
-    font-size: 0.8rem;
+    font-size: 0.8rem!important;
   }
   #about article{
     width: 100vw;
@@ -591,7 +612,7 @@ header ul ol:hover a,header .active{
     border-radius: 50%;
     width: 50vw;
     height: 50vw;
-    transform: translate(50%, 25%);
+    transform: translate(50%, -50%);
     margin-right: 0;
   }
 }
