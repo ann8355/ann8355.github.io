@@ -47,12 +47,12 @@ function loadWorkData(){
     $.getJSON("mock/workData.json", function(datas) {
         datas.forEach(function(data){
             var temp = `<div class="card">
-                    <img src="img/${data.name}.jpeg" alt=${data.name}>
+                    <img src="img/${data.url}.PNG" alt=${data.name}>
                     <div class="subTitle workBlock">
                     <h3>${data.name}<i class="fa fa-info-circle info" data-content=${data.description}></i></h3>
                     <div>
-                        <button onclick="window.open('${data.url}');"><i class="fas fa-link"></i>作品連結</button>
-                        <button onclick="window.open('${data.codeUrl}');"><i class="fa fa-code"></i>程式碼</button>
+                        <button onclick="window.open('/${data.url}/index.html');"><i class="fas fa-link"></i>作品連結</button>
+                        <button onclick="window.open('https://github.com/ann8355/ann8355.github.io/tree/master/${data.url}');"><i class="fa fa-code"></i>程式碼</button>
                     </div>
                     <div class="tagBlock">
                         <i class="fa fa-tags"></i>${loadTag(data.skills)}

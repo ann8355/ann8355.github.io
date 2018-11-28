@@ -1,71 +1,61 @@
 [
     {
-        "name": "標題",
-        "url": "https://ann8355.github.io/custom-skillTree/index.html",
-        "codeUrl": "https://github.com/ann8355/ann8355.github.io/tree/master/custom-skillTree",
+        "name": "客製化技能樹",
+        "url": "custom-skillTree",
         "description": "內文",
-        "skills": ["jquery","html","css"]
+        "skills": ["HTML","Scss","jQuery UI","jQuery"]
     },
     {
         "name": "標題",
         "url": "",
-        "codeUrl": "",
         "description": "",
         "skills": [""]
     },
     {
         "name": "標題",
         "url": "",
-        "codeUrl": "",
         "description": "",
         "skills": [""]
     },
     {
         "name": "標題",
         "url": "",
-        "codeUrl": "",
         "description": "",
         "skills": [""]
     },
     {
         "name": "標題",
         "url": "",
-        "codeUrl": "",
         "description": "",
         "skills": [""]
     },
     {
         "name": "標題",
         "url": "",
-        "codeUrl": "",
         "description": "",
         "skills": [""]
     },
     {
         "name": "標題",
         "url": "",
-        "codeUrl": "",
         "description": "",
         "skills": [""]
     },
     {
         "name": "標題",
         "url": "",
-        "codeUrl": "",
         "description": "",
         "skills": [""]
     },
     {
         "name": "標題",
         "url": "",
-        "codeUrl": "",
         "description": "",
         "skills": [""]
     },
     {
         "name": "標題",
         "url": "",
-        "codeUrl": "",
         "description": "",
         "skills": [""]
     }
