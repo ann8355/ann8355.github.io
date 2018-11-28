@@ -18,7 +18,7 @@ function loadExperienceData(){
         array.forEach(function(ele){
             var block = `<li>
                             <i></i>
-                            <h2 class="detailTitle">${ele.year}</h2>
+                            <h2 class="detailTitle subTitle">${ele.year}</h2>
                             <div class="card subTitle">${ele.description}</div>
                         </li>`;
             $("#experience ul").append(block);
