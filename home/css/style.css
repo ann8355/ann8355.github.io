@@ -99,7 +99,7 @@ header *,#menu *,button,i,#experience *{
   transition: 0.5s;
 }
 .close{
-  font-size: 3em;
+  font-size: 3em!important;
   right: 0;
 }
 #menu .subTitle{
@@ -220,7 +220,7 @@ header *,#menu *,button,i,#experience *{
   position: absolute;
   height: 55%;
   width: 25vw;
-  transform: translate(12.5vw, 20vh);
+  transform: translate(12.5vw, 25vh);
   z-index: 10;
   background-image: url("../img/myPhoto.jpg");
   background-size: 150%;
@@ -287,7 +287,7 @@ button{
   cursor: pointer!important;
   outline-style: none;
 }
-header a,header i,.close{
+header a,header i,.close,#menu a{
   text-decoration: none;
   color: rgba(255, 255, 255, 0.6);
 }
@@ -363,6 +363,7 @@ header ul ol:hover a,header .active{
   z-index: 100;
   border: 3px groove #F9AA33;
   transform: rotate(180deg);
+  display: none;
 }
 .top:hover{
   cursor: pointer;
@@ -371,7 +372,7 @@ header ul ol:hover a,header .active{
 #about span.title{
   position: absolute;
   left: 0;
-  top: 6.5vh;
+  top: 8vh;
 }
 #work .title,#about span.title,#experience .title{
   width: 7.5em;
@@ -522,6 +523,9 @@ header ul ol:hover a,header .active{
   }
 }
 @media(max-width: 435px){/* mobile */
+  #experience,#work{
+    background-size: contain;
+  }
   .top{
     width: 20px;
     height: 20px;
@@ -590,14 +594,16 @@ header ul ol:hover a,header .active{
   .title{
     font-size: 1.4rem;
   }
-  .subTitle,button{
+  .subTitle:not(#menulist),button{
     font-size: 0.8rem!important;
+  }
+  #about{
+    padding-top: 20vh;
   }
   #about article{
     width: 100vw;
-    height: 80vh;
-    margin: 20vh 0 0 0;
     padding: 15vh 5vw 15vh 5vw;
+    margin-left: 0;
   }
   #about span.title{
     top: 16vh;
