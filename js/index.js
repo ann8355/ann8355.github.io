@@ -51,7 +51,9 @@ function loadWorkData(){
                     <div class="subTitle workBlock">
                     <h3>${data.name}<i class="fa fa-info-circle info" data-content=${data.description}></i></h3>
                     <div>
-                        <button onclick="window.open('/${data.url}/index.html');"><i class="fas fa-link"></i>作品連結</button>
+                        <button onclick="window.open('${data.url == `admin-order`? `/${data.url}/dists/index.html`:`/${data.url}/index.html`}');">
+                            <i class="fas fa-link"></i>作品連結
+                        </button>
                         <button onclick="window.open('https://github.com/ann8355/ann8355.github.io/tree/master/${data.url}');"><i class="fa fa-code"></i>程式碼</button>
                     </div>
                     <div class="tagBlock">
