@@ -96,10 +96,10 @@ $(document).on('click', '#box span', function(event){
 });
 function checkScroll(selector,timelineMax){
     var height = $("header").outerHeight();
-    if($(window).scrollTop()/($(document).outerHeight()- $(window).outerHeight()) == 1){
+    if($(window).scrollTop()+height > ($(document).outerHeight()- $(window).outerHeight())){
         $("header ol a,#menu ol a").removeClass("active");
         $("header a[name='contact'],#menu a[name='contact']").addClass("active");
-        contactTl.play();
+        contactTl.restart();
     }else if ($(window).scrollTop()+height >= $("#"+selector).offset().top) {
         $("header ol a,#menu ol a").removeClass("active");
         $("header a[name='"+selector+"'],#menu a[name='"+selector+"']").addClass("active");
@@ -144,9 +144,6 @@ $(document).on('click', 'header ol a,#menu ol a', function(event){
         case "work":
             workTl.restart();
         break;
-        case "contact":
-            contactTl.restart();
-        break;
     }
 });
 $(document).on('click', '#arrow', function(event){
@@ -177,7 +174,7 @@ $( function() {
     contactTl.from($("#contact div"),1.5,{
         opacity: 0,
         ease: Power0.easeOut
-    },0.5);
+    },0.2);
     contactTl.pause();
     menuTl.to($("#menu"),0.5,{
         top: 0,
