@@ -76,7 +76,7 @@ input{
 }
 //中間的主要場景
 .scene{
-  @include size(90vw,80vh,15px);
+  @include size(90vw,500px,15px);
   overflow: hidden;
   background: linear-gradient($blue);
   background-size: 100% 300%;
