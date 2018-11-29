@@ -1,0 +1,196 @@
+$face: white;
+$scene: pink; 
+$bowknot: red;
+$eye:black;
+$size-w:800;
+$nose: yellow;
+
+%center{
+  display: flex;
+  justify-content: center;
+}
+%pre{
+  content: '';
+  display: block;
+}
+@mixin preObj($color:transparent){
+  @extend %pre;
+  background-color: $color;
+}
+@mixin size($w,$h:$w,$bdrs:0){
+  width: $w;
+  height: $h;
+  border-radius: $bdrs;
+}
+@mixin roundRadius($tl:initial,$br:initial,$tr:initial,$bl:initial){
+  border-top-left-radius: $tl;
+  border-bottom-right-radius: $br;
+  border-top-right-radius: $tr;
+  border-bottom-left-radius: $bl;
+}
+@mixin abpos($l:initial,$t:initial,$b:initial,$r:initial){
+  position: absolute;
+  left: $l;
+  top: $t;
+  bottom: $b;
+  right: $r;
+}
+//蝴蝶結大小
+%bowknot{
+  @include size(50%,110%);
+  @include roundRadius(70% 85%,60% 44%,60% 85%,60% 44%); 
+  opacity: 0.9;
+}
+%pre-bowknot{
+  @include preObj($bowknot);
+  @include size(35%,40%,50%);
+  filter: brightness(70%);
+  position: relative;
+  z-index: -1;
+}
+//眼睛大小
+%eye{
+  background-color: $eye;
+  @include size(13%,100%,50%);
+}
+//鬍鬚群組
+%moustaches{
+  @include size(20%,30%);
+  bottom: 10%;
+}
+
+[class^='hello-kitty'] {
+  position: absolute;
+}
+[class^='hello-kitty-bowknot-']{
+  background-color: $bowknot;
+  transition: 3s;
+}
+[class*='moustache']{
+  background-color: $eye;
+}
+body{
+  position: relative;
+  @extend %center;
+  background-color: $scene;
+}
+.hello-kitty-wrap{
+  transform: rotate(0deg);
+  $width: $size-w;
+  @include size($width+px,$width*0.71+px);
+  @extend %center;
+  align-items: center;
+  // border: 1px solid #000;
+  .hello-kitty-face{
+    box-shadow: inset -8px -12px rgba(black,0.06),
+      30px 30px 30px rgba(255,0,0,0.08);
+    @include size(72.94%,77.64%);
+    @include roundRadius(44% 52%,32% 44%,44% 52%,32% 44%);
+    background-color: $face;
+    &:before{
+      position: relative;
+      z-index: -1;
+      box-shadow: 0px 0px 20px 20px rgba(255,0,0,0.06);
+      @include preObj($face);
+      transform: rotate(23deg);
+      @include size(25%,36%);
+      @include roundRadius(138px 100px,initial,initial,334px 310px);
+    }
+    &:after{
+      position: relative;
+      z-index: -1;
+      box-shadow: 0px 0px 20px 20px rgba(255,0,0,0.06);
+      @include preObj($face);
+      @include size(25%,36%);
+      transform: rotate(-21deg);
+      @include abpos(initial,0,initial,0);
+      @include roundRadius(220px 170px,334px 310px,138px 100px,initial);
+    }
+  }
+  .kitty-eyes{
+    @include size(60%,13.5%);
+    margin: 18% auto 0px auto;
+    position: relative;
+    .hello-kitty-left-eye{
+      @extend %eye;
+    }
+    .hello-kitty-right-eye{
+      @extend %eye;
+      right: 0;
+    }
+  }
+  .kitty-nose{
+    background-color: $nose;
+    @include size(10%,8%,50%);
+    margin: 0 auto;
+  }
+  [class*='moustache1']{
+    @include size(100%,11%,40% 50%);
+  }
+  [class*='moustache2']{
+    @include size(80%,9%,50%);
+  }
+  [class*='moustache3']{
+    @include size(90%,10%,45% 50%);
+  }
+  .hello-kitty-left-moustachs{
+    left: -10%;
+    @extend %moustaches;
+    .hello-kitty-left-moustache1{
+      transform: rotate(7deg);
+    }
+    .hello-kitty-left-moustache2{
+      transform: rotate(-10deg);
+      margin: 50% 0px 0px 20%;
+    }
+    .hello-kitty-left-moustache3{
+      transform: rotate(-20deg);
+      margin: 100% 0px 0px 25%;
+    }
+  }
+  .hello-kitty-right-moustachs{
+    right: -10%;
+    @extend %moustaches;
+    .hello-kitty-right-moustache1{
+      transform: rotate(-7deg);
+    }
+    .hello-kitty-right-moustache2{
+      transform: rotate(10deg);
+      margin: 50% 0px 0px 0px;
+    }
+    .hello-kitty-right-moustache3{
+      transform: rotate(20deg);
+      margin: 100% 0px 0px -13%;
+    }
+  }
+  .hello-kitty-bowknot{
+    @include abpos(initial,8%,initial,-6%);
+    @include size(55%,30%);
+    transform: rotate(23deg);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    .hello-kitty-bowknot-center{      
+      @include size(30%,70%,50%); 
+      right: 30%; 
+      &:before{
+        @extend %pre-bowknot;
+        transform: translate(-55%, 80%);
+      }
+      &:after{
+        @extend %pre-bowknot;
+        transform: translate(250%, -20%);
+      }
+    }
+    .hello-kitty-bowknot-left{
+      @extend %bowknot; 
+      transform: rotate(100deg);
+    }
+    .hello-kitty-bowknot-right{
+      @extend %bowknot;
+      transform: rotate(-100deg);
+      left: 60%;
+      box-shadow: inset 10px -12px rgba(black,0.3);
+    }
+  }
+}

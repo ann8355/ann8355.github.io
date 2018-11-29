@@ -1,0 +1,223 @@
+body, .hello-kitty-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.hello-kitty-wrap .hello-kitty-bowknot .hello-kitty-bowknot-center:before, .hello-kitty-wrap .hello-kitty-bowknot .hello-kitty-bowknot-center:after, .hello-kitty-wrap .hello-kitty-face:before, .hello-kitty-wrap .hello-kitty-face:after {
+  content: '';
+  display: block;
+}
+
+.hello-kitty-wrap .hello-kitty-bowknot .hello-kitty-bowknot-left, .hello-kitty-wrap .hello-kitty-bowknot .hello-kitty-bowknot-right {
+  width: 50%;
+  height: 110%;
+  border-radius: 0;
+  border-top-left-radius: 70% 85%;
+  border-bottom-right-radius: 60% 44%;
+  border-top-right-radius: 60% 85%;
+  border-bottom-left-radius: 60% 44%;
+  opacity: 0.9;
+}
+
+.hello-kitty-wrap .hello-kitty-bowknot .hello-kitty-bowknot-center:before, .hello-kitty-wrap .hello-kitty-bowknot .hello-kitty-bowknot-center:after {
+  background-color: red;
+  width: 35%;
+  height: 40%;
+  border-radius: 50%;
+  -webkit-filter: brightness(70%);
+          filter: brightness(70%);
+  position: relative;
+  z-index: -1;
+}
+
+.hello-kitty-wrap .kitty-eyes .hello-kitty-left-eye, .hello-kitty-wrap .kitty-eyes .hello-kitty-right-eye {
+  background-color: black;
+  width: 13%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.hello-kitty-wrap .hello-kitty-left-moustachs, .hello-kitty-wrap .hello-kitty-right-moustachs {
+  width: 20%;
+  height: 30%;
+  border-radius: 0;
+  bottom: 10%;
+}
+
+[class^='hello-kitty'] {
+  position: absolute;
+}
+
+[class^='hello-kitty-bowknot-'] {
+  background-color: red;
+  transition: 3s;
+}
+
+[class*='moustache'] {
+  background-color: black;
+}
+
+body {
+  position: relative;
+  background-color: pink;
+}
+
+.hello-kitty-wrap {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+  width: 800px;
+  height: 568px;
+  border-radius: 0;
+  align-items: center;
+}
+.hello-kitty-wrap .hello-kitty-face {
+  box-shadow: inset -8px -12px rgba(0, 0, 0, 0.06), 30px 30px 30px rgba(255, 0, 0, 0.08);
+  width: 72.94%;
+  height: 77.64%;
+  border-radius: 0;
+  border-top-left-radius: 44% 52%;
+  border-bottom-right-radius: 32% 44%;
+  border-top-right-radius: 44% 52%;
+  border-bottom-left-radius: 32% 44%;
+  background-color: white;
+}
+.hello-kitty-wrap .hello-kitty-face:before {
+  position: relative;
+  z-index: -1;
+  box-shadow: 0px 0px 20px 20px rgba(255, 0, 0, 0.06);
+  background-color: white;
+  -webkit-transform: rotate(23deg);
+          transform: rotate(23deg);
+  width: 25%;
+  height: 36%;
+  border-radius: 0;
+  border-top-left-radius: 138px 100px;
+  border-bottom-right-radius: initial;
+  border-top-right-radius: initial;
+  border-bottom-left-radius: 334px 310px;
+}
+.hello-kitty-wrap .hello-kitty-face:after {
+  position: relative;
+  z-index: -1;
+  box-shadow: 0px 0px 20px 20px rgba(255, 0, 0, 0.06);
+  background-color: white;
+  width: 25%;
+  height: 36%;
+  border-radius: 0;
+  -webkit-transform: rotate(-21deg);
+          transform: rotate(-21deg);
+  position: absolute;
+  left: initial;
+  top: 0;
+  bottom: initial;
+  right: 0;
+  border-top-left-radius: 220px 170px;
+  border-bottom-right-radius: 334px 310px;
+  border-top-right-radius: 138px 100px;
+  border-bottom-left-radius: initial;
+}
+.hello-kitty-wrap .kitty-eyes {
+  width: 60%;
+  height: 13.5%;
+  border-radius: 0;
+  margin: 18% auto 0px auto;
+  position: relative;
+}
+.hello-kitty-wrap .kitty-eyes .hello-kitty-right-eye {
+  right: 0;
+}
+.hello-kitty-wrap .kitty-nose {
+  background-color: yellow;
+  width: 10%;
+  height: 8%;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+.hello-kitty-wrap [class*='moustache1'] {
+  width: 100%;
+  height: 11%;
+  border-radius: 40% 50%;
+}
+.hello-kitty-wrap [class*='moustache2'] {
+  width: 80%;
+  height: 9%;
+  border-radius: 50%;
+}
+.hello-kitty-wrap [class*='moustache3'] {
+  width: 90%;
+  height: 10%;
+  border-radius: 45% 50%;
+}
+.hello-kitty-wrap .hello-kitty-left-moustachs {
+  left: -10%;
+}
+.hello-kitty-wrap .hello-kitty-left-moustachs .hello-kitty-left-moustache1 {
+  -webkit-transform: rotate(7deg);
+          transform: rotate(7deg);
+}
+.hello-kitty-wrap .hello-kitty-left-moustachs .hello-kitty-left-moustache2 {
+  -webkit-transform: rotate(-10deg);
+          transform: rotate(-10deg);
+  margin: 50% 0px 0px 20%;
+}
+.hello-kitty-wrap .hello-kitty-left-moustachs .hello-kitty-left-moustache3 {
+  -webkit-transform: rotate(-20deg);
+          transform: rotate(-20deg);
+  margin: 100% 0px 0px 25%;
+}
+.hello-kitty-wrap .hello-kitty-right-moustachs {
+  right: -10%;
+}
+.hello-kitty-wrap .hello-kitty-right-moustachs .hello-kitty-right-moustache1 {
+  -webkit-transform: rotate(-7deg);
+          transform: rotate(-7deg);
+}
+.hello-kitty-wrap .hello-kitty-right-moustachs .hello-kitty-right-moustache2 {
+  -webkit-transform: rotate(10deg);
+          transform: rotate(10deg);
+  margin: 50% 0px 0px 0px;
+}
+.hello-kitty-wrap .hello-kitty-right-moustachs .hello-kitty-right-moustache3 {
+  -webkit-transform: rotate(20deg);
+          transform: rotate(20deg);
+  margin: 100% 0px 0px -13%;
+}
+.hello-kitty-wrap .hello-kitty-bowknot {
+  position: absolute;
+  left: initial;
+  top: 8%;
+  bottom: initial;
+  right: -6%;
+  width: 55%;
+  height: 30%;
+  border-radius: 0;
+  -webkit-transform: rotate(23deg);
+          transform: rotate(23deg);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+}
+.hello-kitty-wrap .hello-kitty-bowknot .hello-kitty-bowknot-center {
+  width: 30%;
+  height: 70%;
+  border-radius: 50%;
+  right: 30%;
+}
+.hello-kitty-wrap .hello-kitty-bowknot .hello-kitty-bowknot-center:before {
+  -webkit-transform: translate(-55%, 80%);
+          transform: translate(-55%, 80%);
+}
+.hello-kitty-wrap .hello-kitty-bowknot .hello-kitty-bowknot-center:after {
+  -webkit-transform: translate(250%, -20%);
+          transform: translate(250%, -20%);
+}
+.hello-kitty-wrap .hello-kitty-bowknot .hello-kitty-bowknot-left {
+  -webkit-transform: rotate(100deg);
+          transform: rotate(100deg);
+}
+.hello-kitty-wrap .hello-kitty-bowknot .hello-kitty-bowknot-right {
+  -webkit-transform: rotate(-100deg);
+          transform: rotate(-100deg);
+  left: 60%;
+  box-shadow: inset 10px -12px rgba(0, 0, 0, 0.3);
+}

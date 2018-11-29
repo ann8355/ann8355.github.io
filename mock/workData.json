@@ -42,21 +42,27 @@
         "skills": ["Grid Layout","TimelineMax","jQuery","Scss"]
     },
     {
-        "name": "標題",
+        "name": "海綿寶寶動畫",
         "url": "spongebob-canvas",
-        "description": "",
-        "skills": [""]
+        "description": "內文",
+        "skills": ["Canvas","JavaScript","TweenMax"]
     },
     {
-        "name": "標題",
+        "name": "視差滾動問卷",
         "url": "parallax-scrolling",
-        "description": "",
-        "skills": [""]
+        "description": "內文",
+        "skills": ["CSS Animation","Scss","jQuery"]
     },
     {
         "name": "客製表單驗證",
         "url": "validation",
         "description": "內文",
         "skills": ["TweenMax","HTML","RWD","Bootstrap4","Scss","jQuery"]
+    },
+    {
+        "name": "Hello Kitty",
+        "url": "hello-kitty-animation",
+        "description": "內文",
+        "skills": ["Pug","Scss","TimelineMax"]
     }
 ]
