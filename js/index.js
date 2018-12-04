@@ -49,7 +49,8 @@ function loadWorkData(){
             var temp = `<div class="card">
                     <img src="img/${data.url}.PNG" alt=${data.name}>
                     <div class="subTitle workBlock">
-                    <h3>${data.name}<i class="fa fa-info-circle info" data-content=${data.description}></i></h3>
+                    <i class="fa fa-info-circle info" data-content=${data.description}></i>
+                    <h3>${data.name}</h3>
                     <div>
                         <button onclick="window.open('${data.url == `admin-order`? `/${data.url}/dists/index.html`:`/${data.url}/index.html`}');">
                             <i class="fas fa-link"></i>作品連結

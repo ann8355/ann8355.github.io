@@ -2,7 +2,7 @@
     {
         "name": "客製化技能樹",
         "url": "custom-skillTree",
-        "description": "內文",
+        "description": "這是一個能自行選取技能圖示和類別的工具，還能匯出成jpeg圖檔以提醒自己的學習進度。另外，在操作過程中遇到問題可點擊Help鈕查看說明，試試完成每個技能看有何小驚喜吧！",
         "skills": ["HTML","Scss","jQuery UI","jQuery"]
     },
     {
@@ -44,7 +44,7 @@
     {
         "name": "海綿寶寶動畫",
         "url": "spongebob-canvas",
-        "description": "內文",
+        "description": "挑戰使用Canvas技術繪製生動的海綿寶寶，請點擊海綿寶寶看看會有什麼反應吧！",
         "skills": ["Canvas","JavaScript","TweenMax"]
     },
     {
@@ -62,7 +62,7 @@
     {
         "name": "Hello Kitty",
         "url": "hello-kitty-animation",
-        "description": "內文",
+        "description": "挑戰使用純css的方式繪製自己最喜愛的卡通人物。",
         "skills": ["Pug","Scss","TimelineMax"]
     }
 ]

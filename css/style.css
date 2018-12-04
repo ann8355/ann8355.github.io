@@ -188,7 +188,7 @@ header *,#menu *,button,i,#experience *{
   box-sizing: border-box;
   position: relative;
 }
-#about p,#skill article,.bgTxt h6,.bgTxt h5,.bgTxt h1{
+#about p,#skill article,.bgTxt h6,.bgTxt h5,.bgTxt h1,.info:hover:after{
   line-height: 1.3em;
 }
 #about span{
