@@ -1,32 +1,32 @@
 [
     {
         "name": "MSSQL",
-        "description": "熟悉資料庫操作、使用及SQL語法",
+        "description": "熟悉資料庫操作、使用及SQL語法。",
         "scale": "1.2"
     },
     {
         "name": "Scss",
-        "description": "",
+        "description": "會運用Scss管理CSS樣式，降低CSS的重複性。",
         "scale": "2.1"
     },
     {
         "name": "Oracle",
-        "description": "熟悉資料庫操作、使用及SQL語法",
+        "description": "熟悉資料庫操作、使用及SQL語法。",
         "scale": "1.2"
     },
     {
-        "name": "Boostrap4",
-        "description": "",
+        "name": "Bootstrap4",
+        "description": "熟悉Bootstrap的特色功能、掌握其元件使用並套用至專案上加速開發，且能根據需求加以改造Bootstrap樣式，變換成自己的風格。",
         "scale": "2.4"
     },
     {
         "name": "TweenMax",
-        "description": "我是陳姵安我是陳姵安我是陳姵安我是陳姵安我是陳姵安我是陳姵安我是陳姵安我是陳姵安我是陳姵安我是陳姵安我是陳姵安我是陳姵安我是陳姵安我是陳姵安我是陳姵安我是陳姵安我是陳姵安我是陳姵安",
+        "description": "熟悉TweenMax、TimelineMax動畫庫的用法，來建立動畫效果，加強視覺體驗。",
         "scale": "1.8"
     },
     {
         "name": "HTML5",
-        "description": "我是陳姵安我是陳姵安我是陳姵安我是陳姵安我是陳姵安我是陳姵安我是陳姵安我是陳姵安我是陳姵安我是陳姵安我是陳姵安我是陳姵安我是陳姵安我是陳姵安我是陳姵安我是陳姵安我是陳姵安我是陳姵安",
+        "description": "熟悉HTML標籤元素及其屬性應用。",
         "scale": "2.4"
     },  
     {
@@ -36,45 +36,45 @@
     },
     {
         "name": "RWD",
-        "description": "",
+        "description": "熟悉RWD的設計模式，給予使用者最佳瀏覽體驗。",
         "scale": "2.1"
     },
     {
         "name": "PostgreSQL",
-        "description": "熟悉資料庫操作、使用及SQL語法",
+        "description": "熟悉資料庫操作、使用及SQL語法。",
         "scale": "1.2"
     },
     {
         "name": "JavaScript",
-        "description": "",
+        "description": "會使用原生JavaScript做邏輯處理與運算，並了解其特性及ES6新語法。",
         "scale": "2.1"
     },
     {
         "name": "Vue",
-        "description": "瞭解Vue及Vuex，且會使用Vue-cli 2開發專案",
+        "description": "瞭解Vue及Vuex，且會使用Vue-cli 2開發專案。",
         "scale": "1.5"
     },
     {
         "name": "jQuery",
-        "description": "",
+        "description": "熟悉jQuery操控DOM元素與修改元素樣式、產生互動效果，並依需求適時引入第三方函式庫再加以擴充。",
         "scale": "2.4"
     },
     {
         "name": "Java",
-        "description": "具有Spring MVC及Hibernate框架開發使用經驗，並熟悉物件導向設計、Java語言，及使用RMI對遠端物件做溝通",
+        "description": "具有Spring MVC及Hibernate框架開發使用經驗，並熟悉物件導向設計、Java語言，及使用RMI對遠端物件做溝通。",
         "scale": "1.8"
     },{
         "name": "SVN",
-        "description": "會使用搭配Eclipse的SVN版本控管工具，及了解如何解決版本衝突問題",
+        "description": "會使用搭配Eclipse的SVN版本控管工具，及了解如何解決版本衝突問題。",
         "scale": "2.1"
     },
     {
         "name": "Git",
-        "description": "",
+        "description": "熟悉Git操作，並能在Github上建立自己的專案。",
         "scale": "1.8"
     },{
         "name": "CSS3",
-        "description": "",
+        "description": "熟悉CSS3屬性，能解決跑版和跨瀏覽器差異問題，且能根據視覺設計需求完成CSS切版。",
         "scale": "2.4"
     }
 ]
