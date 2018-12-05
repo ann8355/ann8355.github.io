@@ -8,7 +8,7 @@
     {
         "name": "訂單管理系統",
         "url": "admin-order",
-        "description": "內文",
+        "description": "模擬女裝電商網站的後台管理系統，此系統具有營收和成本統計的圖表，和自製篩選、分頁、搜尋、變動欄位等功能的訂單表格，還能更動產品列表資料並上傳其圖片及資訊。",
         "skills": ["Bootstrap4","Vue","Vuex","amCharts"]
     },
     {
@@ -20,25 +20,25 @@
     {
         "name": "卡通圖片閱讀器",
         "url": "comic-viewer",
-        "description": "內文",
+        "description": "提供胖吉貓、迪士尼和漫威系列三種主題可選，及太陽月亮造型按鈕以切換日夜間瀏覽模式、隨興調整明暗度，該閱讀器資料皆是透過TumblrAPI來抓取部落格文章裡的圖片。",
         "skills": ["Tumblr API","RWD","Bootstrap4","Scss","jQuery"]
     },
     {
         "name": "熱氣球動畫",
         "url": "hot-air-balloon-animation",
-        "description": "內文",
+        "description": "繪製五種顏色的熱氣球隨著風微微的擺動，晚上有著星星襯托，切換至白天，月亮落下太陽升起，以不同景物呈現。",
         "skills": ["Pug","Scss","CSS Animation"]
     },
     {
         "name": "高雄旅遊景點",
         "url": "filter",
-        "description": "內文",
+        "description": "運用高雄市政府的OpenAPI資料來做高雄旅遊景點網站，提供關鍵字、地區、景點種類等條件搜尋景點，及Google地圖服務呈現每個景點的位置，讓尋找景點更加便利！",
         "skills": ["Google Maps API","CSS","RWD","jQuery","ES6"]
     },
     {
         "name": "產品列表",
         "url": "product-gallery",
-        "description": "內文",
+        "description": "運用CSSGrid網格系統的排版方式，呈現具雜誌風格的產品列表，並加點動畫增加瀏覽的視覺體驗，點擊圖片則可進入產品內頁、瀏覽其詳細資訊。",
         "skills": ["Grid Layout","TimelineMax","jQuery","Scss"]
     },
     {
@@ -50,13 +50,13 @@
     {
         "name": "視差滾動問卷",
         "url": "parallax-scrolling",
-        "description": "內文",
+        "description": "一份滾動式問卷，可利用點選答項或滾動畫面進入下一題目，最後作答完畢可再重新執行動畫，再次體驗視差滾動效果。",
         "skills": ["CSS Animation","Scss","jQuery"]
     },
     {
         "name": "客製表單驗證",
         "url": "validation",
-        "description": "內文",
+        "description": "自訂表單驗證的錯誤警示訊息及樣式，以及大量運用HTML5的內建屬性，加上正規表示法檢核表單欄位。一共有四關內容等你來填寫~",
         "skills": ["TweenMax","HTML","RWD","Bootstrap4","Scss","jQuery"]
     },
     {

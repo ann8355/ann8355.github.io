@@ -451,6 +451,7 @@ header ul ol:hover a,header .active{
   position: absolute;
   top: 0;
   right: 50%;
+  font-family: "微軟正黑體";
 }
 #work button{
   border: 1px solid #3449559a;
