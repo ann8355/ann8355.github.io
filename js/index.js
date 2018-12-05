@@ -17,16 +17,12 @@ function loadExperienceData(){
         experienceLength = array.length;
         array.forEach(function(ele){
             var block = `<li>
-                            <i></i>
+                            <i class="${ele.iconClass}" style="background-color:${ele.color};"></i>
                             <h2 class="detailTitle subTitle">${ele.year}</h2>
                             <div class="card subTitle">${ele.description}</div>
                         </li>`;
             $("#experience ul").append(block);
         });
-        $("#experience ul li:nth-child(2) i").css("backgroundColor","rgb(99, 165, 132)").addClass("fa-trophy fa-2x");
-        $("#experience ul li:nth-child(3) i").css("backgroundColor","rgb(97, 113, 202)").addClass("fa-graduation-cap fa-2x");;
-        $("#experience ul li:nth-child(4) i").css("backgroundColor","#c75a5a").addClass("fa-briefcase fa-2x");;
-        $("#experience ul li:nth-child(2) i,#experience ul li:nth-child(3) i,#experience ul li:nth-child(4) i").css({width:"55px",height:"55px"});
         experienceTl.from($("#experience .title"),1.5,{
             width: 0
         },0.5).staggerFrom($("#experience li"),1.2,{

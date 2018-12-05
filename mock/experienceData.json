@@ -1,33 +1,31 @@
 [   {
-        "year": "2015",
-        "description": "考取多益775分"
+        "year": "2015/03/25",
+        "description": "取得TOEIC多益測驗成績775分(<a href='https://drive.google.com/open?id=1ZoT4dRfLlQjf0YVu4OSCLEWQgsMu0RKg' target='_blank' title='多益成績單'>附件</a>)",
+        "iconClass": "fa-trophy fa-2x bigCircle",
+        "color": "rgb(99, 165, 132)"
     },
     {
-        "year": "2016",
-        "description": "輔仁大學畢業"
+        "year": "2015/09/16 ~ 2016/06/15",
+        "description": "參與數學系與資拓宏宇合開之「資訊系統開發實務課程」，學習資料庫、Java、jQuery、CSS、HTML及軟體工程概論，建立基礎知識(<a href='https://drive.google.com/open?id=1pmegohFE07tkexJlSprKAdCrXOBN2pyv' target='_blank' title='課程結業證書'>附件</a>)",
+        "iconClass": "fas fa-book fa-2x bigCircle",
+        "color": "#c75a5a"
     },
     {
-        "year": "2017",
-        "description": "在資拓宏宇工作"
+        "year": "2016/06",
+        "description": "於輔仁大學統計資訊學系畢業(<a href='https://drive.google.com/open?id=1EgXSGx5cLqhP5pQ9DCjjQ8VpB5bcN6ci' target='_blank' title='畢業證書'>附件</a>)",
+        "iconClass": "fa-graduation-cap fa-2x bigCircle",
+        "color": "rgb(97, 113, 202)"
+    },
+    {
+        "year": "2016/07",
+        "description": "開始在「資拓宏宇國際股份有限公司」工作",
+        "iconClass": "fa-briefcase fa-2x bigCircle",
+        "color": "#b35900"
     },
     {
         "year": "2018/1",
-        "description": "做xxx專案做xxx專案做xxx專案做xxx專案做xxx專案做xxx專案做xxx專案做xxx專案做xxx專案做xxx專案做xxx專案做xxx專案做xxx專案"
-    },
-    {
-        "year": "2018/5",
-        "description": ""
-    },
-    {
-        "year": "2018/8",
-        "description": ""
-    },
-    {
-        "year": "2018/10",
-        "description": ""
-    },
-    {
-        "year": "2018/12",
-        "description": ""
+        "description": "做xxx專案做xxx專案做xxx專案做xxx專案做xxx專案做xxx專案做xxx專案做xxx專案做xxx專案做xxx專案做xxx專案做xxx專案做xxx專案",
+        "iconClass": "",
+        "color": ""
     }
 ]

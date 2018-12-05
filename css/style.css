@@ -24,6 +24,10 @@
   color: #fff;
   transform: translate(-55%,-90%);
 }
+.bigCircle{
+  width: 55px!important;
+  height: 55px!important;
+}
 #experience li:nth-child(odd) div{
   transform: translateX(-128%);
 }
