@@ -25,13 +25,21 @@
   color: #fff;
   transform: translate(-55%,-38%);
 }
-#experience li:nth-child(odd) div{
+#experience li:nth-child(odd) .card{
   transform: translateX(-128%);
 }
-#experience ul div{
+#experience ul .card{
   width: 30vw;
   background-color: #fff;
   transform: translateX(28%);
+}
+#experience ul .card div:before{
+  content: "\f00c";
+  font-weight: 600;
+  margin-right: 0.5em;
+}
+#experience ul .card div{
+  margin-bottom: 0.3em;
 }
 .center{
   width: 100px;
