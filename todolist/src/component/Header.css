@@ -1,0 +1,34 @@
+.header{
+    background-color: #4A90E2;
+    position: fixed;
+    width: 100%;
+  }
+.header ul{
+    padding: 0;
+    margin: 0;
+    text-align:center;
+}
+.header li{
+    line-height:70px;
+    width: 30vw;  
+    list-style-type:none;  
+    display: inline-block;
+    
+}
+.header a{
+    color: #00408B ;
+    font-size:24px;
+}
+.header a:hover{
+    color: #FFFFFF ;
+}
+.active{
+    border-color: #00408B;
+    border-bottom-style:ridge;
+}
+@media(max-width: 435px){/* mobile */ 
+    .header li{
+        display: block;
+        width: 100vw;
+    }
+}

@@ -1,0 +1,25 @@
+.addBox{
+    background-color: #FFFFFF;
+    margin: 80px 0 24px 0;
+    color: #C8C8C8;
+    padding-left: 32px;
+    line-height: 70px;
+    border-style:solid;
+}
+::-webkit-input-placeholder,.addBox a { /* WebKit browsers */ 
+    color: #C8C8C8; 
+} 
+:-moz-placeholder ,.addBox a{ /* Mozilla Firefox 4 to 18 */ 
+    color: #C8C8C8; 
+} 
+::-moz-placeholder,.addBox a { /* Mozilla Firefox 19+ */ 
+    color: #C8C8C8; 
+} 
+:-ms-input-placeholder,.addBox a { /* Internet Explorer 10+ */ 
+    color: #C8C8C8; 
+}
+@media(max-width: 435px){/* mobile */
+    .addBox{
+        margin-top: 220px;
+    }
+}
