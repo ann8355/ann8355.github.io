@@ -16,6 +16,8 @@ ReactDOM.render(
         <div className="content">
             <div className="container">
                 <AddBox />
+                <div className="draggable">
+                </div>
             </div>
         </div>
     </div>
