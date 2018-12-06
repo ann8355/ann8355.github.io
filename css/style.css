@@ -1,5 +1,6 @@
-#experience h2{
+#experience h3{
   padding-left: 2em;
+  margin: 0.5em 0;
 }
 #experience ul{
   list-style: none;
@@ -13,20 +14,16 @@
 }
 #experience li i{
   text-align: center;
-  line-height: 1.8em;
+  line-height: 1.5em;
   font-weight: 600;
   font-style: normal;
   position: absolute;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 1.5em;
+  height: 1.5em;
   background-color: #fff;
   color: #fff;
-  transform: translate(-55%,-90%);
-}
-.bigCircle{
-  width: 55px!important;
-  height: 55px!important;
+  transform: translate(-55%,-38%);
 }
 #experience li:nth-child(odd) div{
   transform: translateX(-128%);
@@ -529,6 +526,9 @@ header ul ol:hover a,header .active{
   }
 }
 @media(max-width: 435px){/* mobile */
+  #experience ul span{
+    display: block;
+  }
   #experience,#work{
     background-size: contain;
   }
