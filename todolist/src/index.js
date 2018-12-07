@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Header from './component/Header';
 import AddBox from './component/AddBox';
+import Box from './component/Box';
 import registerServiceWorker from './registerServiceWorker';
 // import rootReducer from './reducers';
 // import { provider } from 'react-redux';
@@ -18,6 +19,7 @@ ReactDOM.render(
                 <AddBox />
                 <div className="draggable">
                 </div>
+                <Box />
             </div>
         </div>
     </div>

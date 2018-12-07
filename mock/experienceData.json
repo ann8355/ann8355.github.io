@@ -36,13 +36,13 @@
         "color": ""
     },
     {
-        "year": "",
-        "description": "<div>開發webservice</div><div>優化資料篩選功能，並加入模糊查詢</div>",
+        "year": "強化商品分析案",
+        "description": "<div>跨域API開發</div><div>稅務系統篩選設計、優化功能，並加入模糊查詢</div>",
         "iconClass": "",
         "color": ""
     },
     {
-        "year": "經濟部",
+        "year": "經濟部主題式開<span>放資料服務網站</span>",
         "description": "<div>針對現行網站進行改版</div><div>符合無障礙網頁開發規範</div><div>與視覺設計師溝通合作，開發網頁前後台之前端功能與權限管理驗證</div><div>前後端分離，透過RESTful API串接資料</div>",
         "iconClass": "",
         "color": ""

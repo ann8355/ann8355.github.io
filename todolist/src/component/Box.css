@@ -1,0 +1,185 @@
+
+ /* .writeSpan{
+     position: relative;
+     line-height: 92px;
+     height: 65px;
+ }
+.writeBox{
+    margin-bottom: 8px;
+    padding-left: 72px;
+    background-color: #F2F2F2;
+    height: 102px;
+    padding-right: 33px;
+    cursor: move;
+    display: none;
+}
+.writeBox:hover{
+    background-color: #FFF2DC;
+} 
+.editing, .writeBox i[name="pencil"]:hover, .writeBox i[name="delete"]:hover, #addFile:hover{
+    color: #4A90E2;
+} */
+.subTitle{
+    font-size:20px;
+}
+.editBox{
+    margin-bottom: 24px;
+    /* display:none; */
+    cursor: move;
+}
+.editBox:hover{
+    background-color: #FFF2DC;
+}
+.editBox.open{
+    cursor: default;
+}
+.editBox.open:hover,.editBox{
+    background-color: #F2F2F2;
+}
+#cancel:hover, #save:hover, #star, #addFile, i[name="pencil"], i[name="delete"]{
+    cursor: pointer;
+}
+#title, #body{
+    padding-left: 72px;
+    padding-right: 34px;
+}
+.editBox.open #body,.editBox.open #footer{
+    display: block;
+}
+#body,#footer{
+    display: none;
+}
+/* title */
+.customCheckBox{
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    background: #FFFFFF; 
+    border-radius: 3px;
+    width: 24px;
+    height: 24px;
+    margin-right: 16px; 
+    position: relative;
+    top: 8px;
+}
+.customCheckBox:checked{
+    background: #4A90E2;
+}
+ .customCheckBox:checked+label:before{
+    content: '';
+    width: 4px;
+    height: 10px;
+    transform: rotate(45deg);
+    border: solid #FFFFFF;
+    border-width: 0 2px 2px 0;
+    position: absolute;
+    left: 12px;
+    top: 37px;
+}
+.customCheckBox:checked ~ input[type="text"]{
+    text-decoration: line-through;
+}
+.littleIcon{
+    font-family: FontAwesome;
+    color:#757575;
+    display: inline-block;
+}
+.not-allowed {
+    cursor: not-allowed;
+}
+#title{
+    height: 76px;
+    box-sizing: border-box;
+    line-height: 76px;
+    padding-left: 120px;
+    margin-bottom: 5px;
+}
+.editBox.open #title{
+    border-bottom: 3px solid #C8C8C8;
+}
+.icon{
+    margin-right: 15px;
+}
+#star:hover::before, .starCheck:checked ~ #star::before{
+    content:"\f005";
+    color: #F5A623;
+}
+.starCheck{
+    display: none;
+    position: absolute !important;
+}
+/* body */
+#body p{
+    display: inline-block;
+    margin: 12px;
+}
+#date, #time{
+    width: 162px;
+    height: 35px;
+}
+#comment{
+    width: 445px;
+    height: 120px;
+}
+.writeArea{
+    background-color: #FFFFFF;
+    font-size: 16px;
+    padding: 5px 12px;
+}
+textarea {
+    border: none;
+    overflow: auto;
+    outline: none;
+    resize: none;   
+}
+.gray{
+    color: #C8C8C8;
+}
+.writeItem{
+    margin: 0 0 15px 50px;
+    position: relative;
+    white-space:nowrap;/*不換行*/
+}
+.fileSpan{
+    width: 410px;
+    display: inline-block;
+    margin-right: 5px;
+}
+.fileInfo{
+    font-size: 16px;
+    margin-right: 5px;
+}
+.fileInfo div[name='filetime']::before{
+    content:"uploaded ";
+}
+.writeItem input[type='file']{
+    position: absolute;
+    display: none;
+}
+/* footer */
+#footer{
+    height: 60px;
+    font-size: 24px;
+    text-align: center;
+    line-height: 60px;
+}
+.footBottom{
+    width: 310px;
+    float: left;
+}
+.footBottom:hover{
+    filter: grayscale(0.5);
+}
+#cancel{
+    background-color: #FFFFFF;
+    color: #D0021B;
+    border-bottom-left-radius: 10px; 
+}
+#save{
+    background-color: #4A90E2;
+    color: #FFFFFF ;
+    border-bottom-right-radius: 10px; 
+}
