@@ -16,9 +16,7 @@
 .writeBox:hover{
     background-color: #FFF2DC;
 } 
-.editing, .writeBox i[name="pencil"]:hover, .writeBox i[name="delete"]:hover, #addFile:hover{
-    color: #4A90E2;
-} */
+ */
 .subTitle{
     font-size:20px;
 }
@@ -36,12 +34,11 @@
 .editBox.open:hover,.editBox{
     background-color: #F2F2F2;
 }
-#cancel:hover, #save:hover, #star, #addFile, i[name="pencil"], i[name="delete"]{
+#cancel:hover, #save:hover, #star{
     cursor: pointer;
 }
 #title, #body{
-    padding-left: 72px;
-    padding-right: 34px;
+    padding: 0 5vw;
 }
 .editBox.open #body,.editBox.open #footer{
     display: block;
@@ -50,6 +47,10 @@
     display: none;
 }
 /* title */
+input.bold{
+    width: 42vw;
+    margin: 0 12px;
+}
 .customCheckBox{
     cursor: pointer;
     -webkit-appearance: none;
@@ -61,7 +62,6 @@
     border-radius: 3px;
     width: 24px;
     height: 24px;
-    margin-right: 16px; 
     position: relative;
     top: 8px;
 }
@@ -72,12 +72,10 @@
     content: '';
     width: 4px;
     height: 10px;
-    transform: rotate(45deg);
+    transform: rotate(45deg) translate(5px,35px);
     border: solid #FFFFFF;
     border-width: 0 2px 2px 0;
     position: absolute;
-    left: 12px;
-    top: 37px;
 }
 .customCheckBox:checked ~ input[type="text"]{
     text-decoration: line-through;
@@ -87,15 +85,23 @@
     color:#757575;
     display: inline-block;
 }
-.not-allowed {
+.editBox.open .not-allowed {
     cursor: not-allowed;
 }
+.editBox.open .littleIcon{
+    display: none;
+}
+.editBox.open .editing,.editing:hover,.not-allowed:hover, #addFile:hover{
+    color: #4A90E2;
+    cursor: pointer;
+}
 #title{
-    height: 76px;
+    padding-top: 10px;
+    height: 100px;
     box-sizing: border-box;
     line-height: 76px;
-    padding-left: 120px;
     margin-bottom: 5px;
+    white-space: nowrap;
 }
 .editBox.open #title{
     border-bottom: 3px solid #C8C8C8;
@@ -103,12 +109,12 @@
 .icon{
     margin-right: 15px;
 }
-#star:hover::before, .starCheck:checked ~ #star::before{
+/* .starCheck:checked + .icon:before,.starCheck + .icon:hover:before{
     content:"\f005";
     color: #F5A623;
-}
+} */
 .starCheck{
-    display: none;
+    /* display: none; */
     position: absolute !important;
 }
 /* body */
@@ -117,11 +123,11 @@
     margin: 12px;
 }
 #date, #time{
-    width: 162px;
+    width: 25vw;
     height: 35px;
 }
 #comment{
-    width: 445px;
+    width: 51.5vw;
     height: 120px;
 }
 .writeArea{
@@ -139,12 +145,12 @@ textarea {
     color: #C8C8C8;
 }
 .writeItem{
-    margin: 0 0 15px 50px;
+    margin: 0 0 15px 30px;
     position: relative;
     white-space:nowrap;/*不換行*/
 }
 .fileSpan{
-    width: 410px;
+    width: 51.5vw;
     display: inline-block;
     margin-right: 5px;
 }
@@ -167,7 +173,7 @@ textarea {
     line-height: 60px;
 }
 .footBottom{
-    width: 310px;
+    width: 50%;
     float: left;
 }
 .footBottom:hover{
@@ -182,4 +188,28 @@ textarea {
     background-color: #4A90E2;
     color: #FFFFFF ;
     border-bottom-right-radius: 10px; 
+}
+@media(max-width: 675px){
+    input.bold{
+        width: 35vw;
+        margin: 0 5px;
+    }
+    #title label .fa-2x,.editing,.not-allowed{
+        font-size: 1.7em;
+        margin-right: 8px;
+    } 
+}
+@media(max-width: 440px){
+    #title label .fa-2x,.editing,.not-allowed,.addBox .fa-2x{
+        font-size: 1.2em;
+    }
+    .subTitle,#title input,.addBox input,.footBottom{
+        font-size: 16px;
+    }
+    .gray{
+        font-size: 2em;
+    }
+    .littleIcon{
+        font-size: 12px;
+    }
 }

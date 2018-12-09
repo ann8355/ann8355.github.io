@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './Box.css';
+
 
 class Box extends Component {
   render() {
@@ -8,15 +10,19 @@ class Box extends Component {
         <div id="title">
           <input className="customCheckBox" type="checkbox"/><label></label>
           <input className="bold" name="taskName" type="text" placeholder="Type Something Here..."/>
-          <input className="starCheck" type="checkbox"/>
-          <label id="star" className="fa fa-star-o fa-2x icon" htmlFor="star"></label>
-          <i id="pencil" className="fa fa-pencil fa-2x editing icon"></i>
-          <i className="fa fa-trash fa-2x icon not-allowed"></i>
-          <div></div>
+          <input id="starCheck" className="starCheck" type="checkbox"/>
+          <label htmlFor="starCheck"><FontAwesomeIcon icon={['far', 'star']} size="2x" className="icon"/></label>
+          <FontAwesomeIcon icon="pencil-alt" size="2x" className="editing icon"/>
+          <FontAwesomeIcon icon="trash" size="2x" className="not-allowed"/>
+          <div style={{transform: "translate(50px,-50px)"}}>
+            <FontAwesomeIcon icon={['far', 'calendar-alt']} className="littleIcon icon"/>
+            <FontAwesomeIcon icon={['far', 'folder-open']} className="littleIcon icon"/>
+            <FontAwesomeIcon icon={['far', 'comment-dots']} className="littleIcon icon"/>
+          </div>
         </div>
         <div id="body">
           <div className="bold subTitle">
-            <i className="fa fa-calendar"></i>
+            <FontAwesomeIcon icon={['far', 'calendar-alt']}/>
             <p>Deadline</p>
           </div>
           <div className="writeItem">
@@ -24,17 +30,17 @@ class Box extends Component {
             <input className="writeArea" id="time" name="time" type="text" placeholder="hh:mm"/>   
           </div>
           <div id="fileTitle" className="bold subTitle">
-            <i className="fa fa-folder-open-o"></i>
+            <FontAwesomeIcon icon={['far', 'folder-open']}/>
             <p>File</p>
           </div>      
           <div id="dialog-message" title="Add File" className="writeItem">
             <div name="fileArea">
               <input type="file"/>
             </div>
-            <i id="addFile" className="fa fa-plus-square fa-3x gray"></i>
+            <FontAwesomeIcon id="addFile" icon="plus-square" size="3x" className="gray"/>
           </div>
           <div className="bold subTitle">
-            <i className="fa fa-commenting-o"></i>
+            <FontAwesomeIcon icon={['far', 'comment-dots']}/>
             <p>Comment</p>
           </div>
           <div className="writeItem">
@@ -43,11 +49,11 @@ class Box extends Component {
         </div>
         <div id="footer">
           <div id="cancel" className="footBottom">
-            <i className="fa fa-close fa-lg"></i>
+            <FontAwesomeIcon icon="times" size="lg" className="icon"/>
             Cancel
           </div>      
           <div id="save" className="footBottom">
-            <i className="fa fa-plus fa-lg"></i>
+            <FontAwesomeIcon icon="plus" size="lg" className="icon"/>
             Add Task
           </div>  
         </div>

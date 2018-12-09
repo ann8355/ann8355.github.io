@@ -2,6 +2,7 @@
     background-color: #4A90E2;
     position: fixed;
     width: 100%;
+    z-index: 10;
   }
 .header ul{
     padding: 0;
