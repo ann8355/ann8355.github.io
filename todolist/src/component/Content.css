@@ -1,0 +1,35 @@
+.bold{
+    font-weight: 600;
+}
+.content .container{
+    /* max-width: 620px; */
+    width: 80vw;
+    margin: 0 auto;
+    padding-top: 24px;
+}
+input{
+    border-style: none;
+    outline-style:none;
+    font-size: 24px;
+    background-color:transparent; 
+}
+.addBox, .writeBox, .editBox{
+    border-radius: 10px; 
+    -webkit-border-radius: 10px; 
+    -moz-border-radius: 10px;
+}
+.dragPlace{
+    height: 102px;
+    border-radius: 10px; 
+    -webkit-border-radius: 10px; 
+    -moz-border-radius: 10px;
+    width: 620px;
+    border-style:dashed;
+    border-color:#FFF2DC;
+    border-width:3px;
+}
+.countTask{
+    font-size: 24px;
+    display: inline-block;
+    padding-left: 8px;
+}

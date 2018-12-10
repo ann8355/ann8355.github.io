@@ -3,12 +3,20 @@ import './AddBox.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class AddBox extends Component {
+  addTask = () => {
+    this.props.taskChange({
+      "id": "",
+      "name": "",
+      "date": "",
+      "time": "",
+      "file": "",
+      "comment": ""
+    })
+  }
   render() {
     return (
       <div className="addBox">
-        <a href="#">
-          <FontAwesomeIcon icon="plus" size="2x" className="icon"/>
-        </a>
+        <FontAwesomeIcon icon="plus" size="2x" className="icon" onClick={this.addTask}/>
         <input name="taskName" type="text" placeholder="Add Task"/>
       </div>
     );

@@ -15,16 +15,16 @@
 .editBox.open:hover,.editBox{
     background-color: #F2F2F2;
 }
-#cancel:hover, #save:hover, #star{
+[name='cancel']:hover, [name='save']:hover,.addBox .fa-2x{
     cursor: pointer;
 }
-#title, #body{
+[name='title'], [name='body']{
     padding: 0 5vw;
 }
-.editBox.open #body,.editBox.open #footer{
+.editBox.open [name='body'],.editBox.open [name='footer']{
     display: block;
 }
-#body,#footer{
+[name='body'],[name='footer']{
     display: none;
 }
 /* title */
@@ -49,7 +49,7 @@ input.bold{
 .customCheckBox:checked{
     background: #4A90E2;
 }
- .customCheckBox:checked+label:before{
+.customCheckBox:checked+label:before{
     content: '';
     width: 4px;
     height: 10px;
@@ -69,18 +69,15 @@ input.bold{
 .editBox.open .not-allowed {
     cursor: not-allowed;
 }
-.editBox.open .littleIcon{
-    display: none;
-}
-.editing,.not-allowed,#addFile,.starCheck+label{
+.editing,.not-allowed,.gray,.starCheck+label{
     cursor: pointer;
     position: relative;
     z-index: 5;
 }
-.editBox.open .editing,.editing:hover,.not-allowed:hover, #addFile:hover{
+.editBox.open .editing,.editing:hover,.not-allowed:hover, .gray:hover,.addBox .fa-2x:hover{
     color: #4A90E2;
 }
-#title{
+[name='title']{
     padding-top: 10px;
     height: 100px;
     box-sizing: border-box;
@@ -88,7 +85,7 @@ input.bold{
     margin-bottom: 5px;
     white-space: nowrap;
 }
-.editBox.open #title{
+.editBox.open [name='title']{
     border-bottom: 3px solid #C8C8C8;
 }
 .icon{
@@ -103,15 +100,15 @@ input.bold{
     position: absolute !important;
 }
 /* body */
-#body p{
+[name='body'] p{
     display: inline-block;
     margin: 12px;
 }
-#date, #time{
+input.writeArea{
     width: 25vw;
     height: 35px;
 }
-#comment{
+textarea.writeArea{
     width: 51.5vw;
     height: 120px;
 }
@@ -151,7 +148,7 @@ textarea {
     display: none;
 }
 /* footer */
-#footer{
+[name='footer']{
     height: 60px;
     font-size: 24px;
     text-align: center;
@@ -164,12 +161,12 @@ textarea {
 .footBottom:hover{
     filter: grayscale(0.5);
 }
-#cancel{
+[name='cancel']{
     background-color: #FFFFFF;
     color: #D0021B;
     border-bottom-left-radius: 10px; 
 }
-#save{
+[name='save']{
     background-color: #4A90E2;
     color: #FFFFFF ;
     border-bottom-right-radius: 10px; 
@@ -179,16 +176,16 @@ textarea {
         width: 35vw;
         margin: 0 5px;
     }
-    #title label .fa-2x,.editing,.not-allowed{
+    [name='title'] label .fa-2x,.editing,.not-allowed{
         font-size: 1.7em;
         margin-right: 8px;
     } 
 }
 @media(max-width: 440px){
-    #title label .fa-2x,.editing,.not-allowed,.addBox .fa-2x{
+    [name='title'] label .fa-2x,.editing,.not-allowed,.addBox .fa-2x{
         font-size: 1.2em;
     }
-    .subTitle,#title input,.addBox input,.footBottom{
+    .subTitle,[name='title'] input,.addBox input,.footBottom{
         font-size: 16px;
     }
     .gray{
