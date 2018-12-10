@@ -24,6 +24,7 @@ ReactDOM.render(
                 <div className="draggable">
                 </div>
                 <Box />
+                <Box />
             </div>
         </div>
     </div>

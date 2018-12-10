@@ -1,22 +1,3 @@
-
- /* .writeSpan{
-     position: relative;
-     line-height: 92px;
-     height: 65px;
- }
-.writeBox{
-    margin-bottom: 8px;
-    padding-left: 72px;
-    background-color: #F2F2F2;
-    height: 102px;
-    padding-right: 33px;
-    cursor: move;
-    display: none;
-}
-.writeBox:hover{
-    background-color: #FFF2DC;
-} 
- */
 .subTitle{
     font-size:20px;
 }
@@ -91,9 +72,13 @@ input.bold{
 .editBox.open .littleIcon{
     display: none;
 }
+.editing,.not-allowed,#addFile,.starCheck+label{
+    cursor: pointer;
+    position: relative;
+    z-index: 5;
+}
 .editBox.open .editing,.editing:hover,.not-allowed:hover, #addFile:hover{
     color: #4A90E2;
-    cursor: pointer;
 }
 #title{
     padding-top: 10px;
@@ -109,10 +94,10 @@ input.bold{
 .icon{
     margin-right: 15px;
 }
-/* .starCheck:checked + .icon:before,.starCheck + .icon:hover:before{
+.starCheck:checked + label:before,.starCheck + label:hover:before{
     content:"\f005";
     color: #F5A623;
-} */
+}
 .starCheck{
     /* display: none; */
     position: absolute !important;
