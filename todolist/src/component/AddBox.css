@@ -5,6 +5,7 @@
     padding-left: 32px;
     line-height: 70px;
     border-style:solid;
+    white-space: nowrap;
 }
 ::-webkit-input-placeholder,.addBox a { /* WebKit browsers */ 
     color: #C8C8C8; 

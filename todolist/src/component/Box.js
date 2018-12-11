@@ -22,12 +22,14 @@ class Box extends Component {
     const file = this.refs.file.files[0];
     console.log(file)
     if(file != null){
-      // $(this).before('<div class="fileInfo"><div name="fileinfo"></div><div name="filetime" class="gray"></div></div>');   
-      var kb = file.size/1024;
-      var round = Math.round(kb*100)/100;     
-      // $(".fileInfo").last().find("div[name='fileinfo']").html(file.name+" ("+round+" KB)");//file.type
-      var today=new Date();
-      // $(".fileInfo").last().find("div[name='filetime']").html(today.getFullYear()+ "/" + (today.getMonth()+1) + "/" + today.getDate()+ " " + today.getHours()+ ":" + today.getMinutes());
+      const kb = file.size/1024;
+      const round = Math.round(kb*100)/100;
+      const today=new Date();
+      this.props.task.file.push({
+        "info": file.name+" ("+round+" KB)",//file.type
+        "uploadTime": today.getFullYear()+ "/" + (today.getMonth()+1) + "/" + today.getDate()+ " " + today.getHours()+ ":" + today.getMinutes()+ ":" + today.getSeconds()
+      })
+      this.props.update(this.props.task)
       console.log("Uploading: "+file.name+" ("+round+" KB)");
     }
   }
@@ -43,7 +45,7 @@ class Box extends Component {
           <FontAwesomeIcon icon="trash" size="2x" className="not-allowed" onClick={this.deleteTask}/>
           <div style={{transform: "translate(50px,-50px)"}}>
             {this.props.task.date === "" ? null : (<FontAwesomeIcon icon={['far', 'calendar-alt']} className="littleIcon icon"/>)}
-            {this.props.task.file === "" ? null : (<FontAwesomeIcon icon={['far', 'folder-open']} className="littleIcon icon"/>)}
+            {this.props.task.file.length === 0 ? null : (<FontAwesomeIcon icon={['far', 'folder-open']} className="littleIcon icon"/>)}
             {this.props.task.comment === "" ? null : (<FontAwesomeIcon icon={['far', 'comment-dots']} className="littleIcon icon"/>)}
           </div>
         </div>
@@ -61,7 +63,12 @@ class Box extends Component {
             <p>File</p>
           </div>      
           <div title="Add File" className="writeItem">
-            <div name="fileArea">
+            <div name="fileArea" className="fileSpan">
+              {this.props.task.file.map((item,idx,array) => 
+              <div className="fileInfo" key={item.uploadTime}>
+                <div>{item.info}</div>
+                <div name="filetime">{item.uploadTime}</div>
+              </div>)}
               <input type="file" ref="file" onChange={this.loadFile}/>
             </div>
             <FontAwesomeIcon icon="plus-square" size="3x" className="gray" onClick={this.addFile}/>
