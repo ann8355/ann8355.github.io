@@ -33,11 +33,15 @@ class Box extends Component {
       console.log("Uploading: "+file.name+" ("+round+" KB)");
     }
   }
+  completeTask = () => {
+    this.props.task.isComplete = true
+    this.props.update(this.props.task)
+  }
   render() {
     return (
       <div className={`editBox ${this.state.isOpen ? 'open' : ''}`}>
         <div name="title">
-          <input className="customCheckBox" type="checkbox"/><label></label>
+          <input className="customCheckBox" type="checkbox" onClick={this.completeTask}/><label></label>
           <input className="bold" name="taskName" type="text" placeholder="Type Something Here..." defaultValue={this.props.task.name}/>
           <input id={`starCheck${this.props.task.id}`} className="starCheck" type="checkbox"/>
           <label htmlFor={`starCheck${this.props.task.id}`}><FontAwesomeIcon icon={['far', 'star']} size="2x" className="icon"/></label>

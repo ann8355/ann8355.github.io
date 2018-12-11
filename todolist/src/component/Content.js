@@ -17,14 +17,16 @@ class Content extends Component {
             "info": "故障.xls (200 KB)",
             "uploadTime": "2018/12/13 19:11"
             }],
-          "comment": "test123"
+          "comment": "test123",
+          "isComplete": false
         },{
             "id": "2",
             "name": "work2",
             "date": "2018-12-15",
             "time": "17:30",
             "file": [],
-            "comment": "testabc"
+            "comment": "testabc",
+            "isComplete": false
         }
       ]
   }
@@ -53,6 +55,7 @@ class Content extends Component {
     this.setState({
         data: this.state.data
     })
+    console.log(this.state.data)
   }
   render() {
     return (
