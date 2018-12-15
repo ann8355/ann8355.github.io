@@ -12,13 +12,16 @@ class Content extends Component {
           "time": "12:10",
           "file": [{
               "info": "故障通知單 (3).xls (27.5 KB)",
-              "uploadTime": "2018/12/11 13:11"
+              "uploadTime": "2018/12/11 13:11",
+              "img": ""
           },{
             "info": "故障.xls (200 KB)",
-            "uploadTime": "2018/12/13 19:11"
+            "uploadTime": "2018/12/13 19:11",
+            "img": ""
             }],
           "comment": "test123",
-          "isComplete": false
+          "isComplete": false,
+          "isStar": true,
         },{
             "id": "2",
             "name": "work2",
@@ -26,7 +29,8 @@ class Content extends Component {
             "time": "17:30",
             "file": [],
             "comment": "testabc",
-            "isComplete": false
+            "isComplete": false,
+            "isStar": false,
         }
       ]
   }
@@ -36,9 +40,9 @@ class Content extends Component {
         data: this.state.data
     })
   }
-  delTask = (task) => {
+  delTask = (id) => {
     this.state.data.forEach(function (element, index,array) {
-        if (element.id === task) {
+        if (element.id === id) {
             array.splice(index, 1)
         }
     })
@@ -49,21 +53,23 @@ class Content extends Component {
   updateTask = (task) => {
     this.state.data.forEach(function (element, index,array) {
         if (element.id === task.id) {
-            element = task
+            array[index] = task //注意！！不是element = task
         }
     })
     this.setState({
         data: this.state.data
     })
-    console.log(this.state.data)
+  }
+  getCount = () => {
+    const array = this.state.data.filter(item => item.isComplete === false);
+    return array.length;
   }
   render() {
     return (
         <div className="container">
             <AddBox taskChange={this.newTask}/>
-            <div className="draggable"></div>
             {this.state.data.map((item,idx,array) => <Box task={item} key={item.id} delete={this.delTask} update={this.updateTask}/>)}
-            <span className="countTask">{this.state.data.length}</span>
+            <span className="countTask">{this.getCount()}</span>
             <span className="countTask" style={{"paddingLeft":"8px"}}>tasks left</span>
         </div>
     );

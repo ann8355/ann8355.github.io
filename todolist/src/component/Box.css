@@ -3,8 +3,7 @@
 }
 .editBox{
     margin-bottom: 24px;
-    /* display:none; */
-    cursor: move;
+    /* cursor: move; */
 }
 .editBox:hover{
     background-color: #FFF2DC;
@@ -31,6 +30,8 @@
 input.bold{
     width: 42vw;
     margin: 0 12px;
+    position: relative;
+    z-index: 5;
 }
 .customCheckBox{
     cursor: pointer;

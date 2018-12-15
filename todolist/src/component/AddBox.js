@@ -11,7 +11,8 @@ class AddBox extends Component {
       "time": "",
       "file": [],
       "comment": "",
-      "isComplete": false
+      "isComplete": false,
+      "isStar": false,
     })
   }
   render() {
