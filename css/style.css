@@ -211,6 +211,7 @@ header *,#menu *,button,i,#experience *{
   cursor: pointer;
   transform: scale(1.3,1.3);
   margin-left: 0.5rem;
+  color: #232F34;
 }
 #about button{
   border: 1px solid #232F34;
@@ -505,24 +506,15 @@ header ul ol:hover a,header .active{
     width: 400px!important;
     height: 400px!important;
   }
-  /* #about .subTitle,#about button{
-    font-size: 1.3rem;
-  } */
-  /* #about article{
-    padding: 15vh 2.5vw 15vh 15vw!important;
-  } */
+  #myPhoto{
+    transform: translate(50%, 32%);
+  }
 }
 @media(max-width: 768px){
   #box{
     width: 350px!important;
     height: 350px!important;
   }
-  /* #about .subTitle,#about button{
-    font-size: 1.3rem;
-  } */
-  /* #about article{
-    padding: 15vh 2.5vw 15vh 15vw!important;
-  } */
   header{
     padding: 1em 1em;
   }

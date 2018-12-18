@@ -25,25 +25,25 @@
     },
     {
         "year": "台9線蘇花公路<span>交通控制系統</span>",
-        "description": "<div>負責雨量、能見度、風力資料收集、車道管制號誌、速限可變標誌軟體的開發與維護</div><div>根據通訊協定及施工規範，完成對設備的控制與操作畫面</div><div>視覺化呈現收集資料並自動回補缺少的資料、能設定排程時間與下載燈態的優先權</div><div>使用Spring MVC＋Hibernate框架改寫及重構既有系統，提升程式效能與可讀性</div>",
+        "description": "<div>負責雨量、能見度、風力資料收集、車道管制號誌軟體的開發與維護</div><div>根據通訊協定及施工規範，完成對設備的控制與操作畫面</div><div>視覺化呈現收集資料並自動回補缺少的資料、能設定排程時間與下載燈態的優先權</div>",
         "iconClass": "",
         "color": ""
     },
     {
         "year": "台61線西濱快速<span>公路交控系統</span>",
-        "description": "<div>負責交通資料收集、通訊監控、設備監視、設備維護管理軟體的前端開發與維護</div><div>撰寫簡訊信件寄送、報表列印與資料上傳</div><div>使用Highcharts.js繪製統計圖表</div><div>應用Google Maps API呈現路段績效，並以第三方JS插件截圖匯出圖檔</div><div>修改版面配置，設計操作更簡潔順暢的UI</div><div>自製<a href='' target='_blank'>日期共用元件</a></div>",
-        "iconClass": "",
-        "color": ""
-    },
-    {
-        "year": "強化商品分析案",
-        "description": "<div>跨域API開發</div><div>稅務系統篩選設計、優化功能，並加入模糊查詢</div>",
+        "description": "<div>負責速限可變標誌、設備監視、設備維護管理軟體的前端開發與維護</div><div>撰寫簡訊信件寄送、報表列印與資料上傳</div><div>使用Highcharts.js繪製統計圖表</div><div>自製<a href='' target='_blank'>日期共用元件</a></div>",
         "iconClass": "",
         "color": ""
     },
     {
         "year": "經濟部主題式開<span>放資料服務網站</span>",
-        "description": "<div>針對現行網站進行改版</div><div>符合無障礙網頁開發規範</div><div>與視覺設計師溝通合作，開發網頁前後台之前端功能與權限管理驗證</div><div>前後端分離，透過RESTful API串接資料</div>",
+        "description": "<div>針對網站改版並符合無障礙網頁開發規範</div><div>與視覺設計師溝通合作，開發網頁前後台之前端功能與權限管理驗證</div><div>前後端分離，透過RESTful API串接資料</div>",
+        "iconClass": "",
+        "color": ""
+    },
+    {
+        "year": "新北市交通與多<span>元資訊應用平台</span>",
+        "description": "<div>負責交通資料收集、通訊監控軟體前端開發</div><div>使用Spring MVC＋Hibernate框架改寫及重構既有系統，提升程式效能與可讀性</div><div>應用Google Maps API呈現路段績效，並以第三方JS插件截圖匯出圖檔</div><div>修改版面配置，設計操作更簡潔順暢的UI</div>",
         "iconClass": "",
         "color": ""
     }
