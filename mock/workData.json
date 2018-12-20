@@ -12,12 +12,6 @@
         "skills": ["Bootstrap4","Vue","Vuex","amCharts"]
     },
     {
-        "name": "待辦清單",
-        "url": "todolist",
-        "description": "",
-        "skills": [""]
-    },
-    {
         "name": "卡通圖片閱讀器",
         "url": "comic-viewer",
         "description": "提供胖吉貓、迪士尼和漫威系列三種主題可選，及太陽月亮造型按鈕以切換日夜間瀏覽模式、隨興調整明暗度，該閱讀器資料皆是透過TumblrAPI來抓取部落格文章裡的圖片。",
