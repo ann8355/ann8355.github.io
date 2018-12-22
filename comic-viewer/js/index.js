@@ -94,7 +94,6 @@ function isFinish(ele){
   }
 }
 $("#homeitem h5").click(function(){
-  $("#home .wrapper").css("opacity","0").before('<div class="loading"><img src="img/loading.gif"></div>');
    var obj = series[$(this).index()];
    blog = obj.blog;
    loadPhoto(blog);
@@ -210,6 +209,7 @@ function generateClass(val){
   }
 }
 $(function(){
+  $("#home .wrapper").before('<div class="loading"><img src="img/loading.gif"></div>');
   classMap.set("1",["#photoblock_d-flex flex-column-reverse","#trapezoidal_mb-4 d-flex rotate","#photobox_my-4","#box1_block","#box2_d-none"]);
   classMap.set("2",["#photoblock_","#trapezoidal_my-4 d-flex","#photobox_mb-4","#box1_block","#box2_d-none"]);
   classMap.set("3",["#photoblock_","#trapezoidal_my-4 d-flex rotate","#photobox_mb-4","#box1_block","#box2_d-none"]);
