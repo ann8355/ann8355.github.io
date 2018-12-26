@@ -31,12 +31,12 @@
     },
     {
         "year": "台61線西濱快速<span>公路交控系統</span>",
-        "description": "<div>負責速限可變標誌、設備監視、設備維護管理軟體的前端開發與維護</div><div>撰寫簡訊信件寄送、報表列印與資料上傳</div><div>使用Highcharts.js繪製統計圖表</div><div>自製<a href='' target='_blank'>日期共用元件</a></div>",
+        "description": "<div>負責速限可變標誌、設備監視、設備維護管理軟體的前端開發與維護</div><div>撰寫簡訊信件寄送、報表列印與資料上傳</div><div>使用Highcharts.js繪製統計圖表</div><div>自製<a href='https://github.com/ann8355/dateUtil.github.io' target='_blank' title='日期共用元件'>日期共用元件</a></div>",
         "iconClass": "",
         "color": ""
     },
     {
-        "year": "經濟部主題式開<span>放資料服務網站</span>",
+        "year": "<a href='https://tod.moea.gov.tw/' target='_blank' class='detailTitle' title='進入網站'>經濟部主題式開<span>放資料服務網站</a></span>",
         "description": "<div>針對網站改版並符合無障礙網頁開發規範</div><div>與視覺設計師溝通合作，開發網頁前後台之前端功能與權限管理驗證</div><div>前後端分離，透過RESTful API串接資料</div>",
         "iconClass": "",
         "color": ""
