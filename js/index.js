@@ -99,12 +99,14 @@ function checkScroll(selector,timelineMax){
         $("header ol a,#menu ol a").removeClass("active");
         $("header a[name='contact'],#menu a[name='contact']").addClass("active");
         contactTl.restart();
-    }else if ($(window).scrollTop()+height >= $("#"+selector).offset().top) {
+    }else if ($(window).scrollTop()+height >= $("#"+selector).offset().top && 
+    $(window).scrollTop()+height <= $("#"+selector).offset().top+$("#"+selector).outerHeight()) {
         $("header ol a,#menu ol a").removeClass("active");
         $("header a[name='"+selector+"'],#menu a[name='"+selector+"']").addClass("active");
         if(selector == "skill"){
             var c = new Circle(skillData,"box","500px");
             c.create();
+            experienceTl.pause();
         }else{
             timelineMax.play();
         }
@@ -189,7 +191,7 @@ $( function() {
         text:"> Birthdate: 1994/ 05/ 05<br>> Hobbies: music, coding<br>> Email: s8900771@gmail.com<br>> Phone: 0952817089<br>> Address: Taipei, Taiwan<span></span>",
         ease: Power0.easeOut,delay:1.5}),"detail")
     .to($(".bgTxt img"),1.5,{opacity: 1,ease: RoughEase.ease.config({ template:  Power0.easeNone, strength: 1, points: 20, taper: "none", randomize:  true, clamp: false})})
-    .to($("header,#arrow"),0.5,{opacity: 1});
+    .to($("#arrow"),0.5,{opacity: 1});
 
     var bp = "-25vw 0";
     if($(".bgTxt").css("height") == "300px"){//mobile size
@@ -208,7 +210,8 @@ $( function() {
     },"+=1").add(TweenMax.to($(".bg"),1,{
         backgroundColor: "rgba(68, 44, 46, 0.6)",
         ease: Power0.easeOut
-    }),"effect").addLabel("end").to($(".bg"),0.1,{
+    }),"effect").add(TweenMax.to($("header"),0.5,{opacity: 1,delay:1}),"effect")
+    .addLabel("end").to($(".bg"),0.1,{
         filter: "opacity(80%) blur(1px)"
     }).addLabel("home").add(timeline2,"end");
 });
