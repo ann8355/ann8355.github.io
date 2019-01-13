@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 class AddBox extends Component {
   addTask = () => {
     this.props.taskChange({
-      "id": new Date().getMilliseconds(),
+      "id": Date.now(), //取得現在時間的毫秒
       "name": this.refs.newTitle.value,
       "date": "",
       "time": "",

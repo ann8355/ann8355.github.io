@@ -63,7 +63,6 @@ input.bold{
     text-decoration: line-through;
 }
 .littleIcon{
-    font-family: FontAwesome;
     color:#757575;
     display: inline-block;
 }
@@ -92,13 +91,24 @@ input.bold{
 .icon{
     margin-right: 15px;
 }
+@font-face {
+    font-family: "FontAwesome";
+    src: url("http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot");
+    src: url("http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?#iefix") format("embedded-opentype"),
+    url("http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff") format("woff"),
+    url("http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.ttf") format("truetype"),
+    url("http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.svg#FontAwesome") format("svg");
+}
 .starCheck:checked + label:before,.starCheck + label:hover:before{
     content:"\f005";
+    font-size: 2em;
+    font-family: "FontAwesome";
     color: #F5A623;
+    position: absolute;
+    transform: translate(3px,-4px);
 }
 .starCheck{
-    /* display: none; */
-    position: absolute !important;
+    display: none;
 }
 /* body */
 [name='body'] p{
@@ -176,13 +186,16 @@ textarea {
         width: 35vw;
         margin: 0 5px;
     }
-    [name='title'] label .fa-2x,.editing,.not-allowed{
+    [name='title'] label .fa-2x,.editing,.not-allowed,.starCheck:checked + label:before,.starCheck + label:hover:before{
         font-size: 1.7em;
         margin-right: 8px;
-    } 
+    }
+    .starCheck:checked + label:before,.starCheck + label:hover:before{
+        transform: translate(1px,-1px);
+    }
 }
 @media(max-width: 440px){
-    [name='title'] label .fa-2x,.editing,.not-allowed,.addBox .fa-2x{
+    [name='title'] label .fa-2x,.editing,.not-allowed,.addBox .fa-2x,.starCheck:checked + label:before,.starCheck + label:hover:before{
         font-size: 1.2em;
     }
     .subTitle,[name='title'] input,.addBox input,.footBottom{
