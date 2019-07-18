@@ -18,7 +18,7 @@
         "color": "rgb(97, 113, 202)"
     },
     {
-        "year": "2016/07 ~ 至今",
+        "year": "2016/07 ~ 2019/01",
         "description": "擔任「資拓宏宇國際股份有限公司」之軟體工程師",
         "iconClass": "fa-briefcase fa-2x",
         "color": "#b35900"
@@ -44,6 +44,18 @@
     {
         "year": "新北市交通與多<span>元資訊應用平台</span>",
         "description": "<div>負責交通資料收集、通訊監控軟體前端開發</div><div>使用Spring MVC＋Hibernate框架改寫及重構既有系統，提升程式效能與可讀性</div><div>應用Google Maps API呈現路段績效，並以第三方JS插件截圖匯出圖檔</div><div>修改版面配置，設計操作更簡潔順暢的UI</div>",
+        "iconClass": "",
+        "color": ""
+    },
+    {
+        "year": "2019/02 ~ 至今",
+        "description": "擔任「香港商台灣邏輯媒體科技有限公司」之網頁前端工程師",
+        "iconClass": "fa-briefcase fa-2x",
+        "color": "#b35900"
+    },
+    {
+        "year": "<a href='https://beautybee.com/' target='_blank' class='detailTitle' title='進入網站'>BeautyBee<span>美妝穿搭吃喝玩樂購物日常</a></span>",
+        "description": "<div>使用Vue.js、Nuxt.js 開發網站前端</div><div>採用畫面元件驅動開發(CDD)方式，開發及改善產品使用的組件，並導入Storybook (UI 組件環境) 來建構共用元件庫</div><div>維護及優化提升頁面效能</div><div>解決跨平台、跨瀏覽器問題</div><div>實踐CI/CD、敏捷開發流程來完成產品開發</div><div>配合後端工程師串接RESTful API 資料</div><div>與UI/UX 設計師合作切版</div>",
         "iconClass": "",
         "color": ""
     }
