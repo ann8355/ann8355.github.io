@@ -58,7 +58,9 @@ function loadWorkData(){
                     </div>
                   </div>
                 </div>`;
-            $("#projects").append(temp);
+            if (data.description) {
+                $("#projects").append(temp);
+            }
         });
         workTl.from($("#work .title"),1.5,{
             width: 0
