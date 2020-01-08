@@ -11,12 +11,6 @@
         "description": "模擬女裝電商網站的後台管理系統，此系統具有營收和成本統計的圖表，和自製篩選、分頁、搜尋、變動欄位等功能的訂單表格，還能更動產品列表資料並上傳其圖片及資訊。",
         "skills": ["Bootstrap4","Vue","Vuex","amCharts"]
     },
-    // {
-    //     "name": "待辦清單",
-    //     "url": "todolist",
-    //     "description": "",
-    //     "skills": [""]
-    // },
     {
         "name": "卡通圖片閱讀器",
         "url": "comic-viewer",
