@@ -1,0 +1,19 @@
+{
+  "name": "候位系統",
+  "short_name": "候位系統",
+  "icons": [
+    {
+      "src": "./img/logo/YAKINIKULIKE_TAIWAN.jpg",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./img/logo/YAKINIKULIKE_TAIWAN.jpg",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000"
+}
