@@ -23,7 +23,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/",
+  "start_url": "/waiting/",
   "display": "standalone",
   "background_color": "#000000"
 }
