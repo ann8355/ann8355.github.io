@@ -1,5 +1,29 @@
 [
     {
+        "year": "2019/08 ~ 2019/11",
+        "description": "擔任「雲端生活家股份有限公司」之前端工程師",
+        "iconClass": "fa-briefcase fa-2x",
+        "color": "#b35900"
+    },
+    {
+        "year": "餐廳候位系統 - <span><a href='https://ann8355.github.io/waiting/index.html' target='_blank' class='detailTitle' title='進入網站'>手機端</a>、<a href='https://ann8355.github.io/waiting-tablet/index.html' target='_blank' class='detailTitle' title='進入網站'>平板端</a></span>",
+        "description": "<div>設計餐廳候位系統畫面，並使用vue-cli3開發前台手機端，和後台管理平板端</div><div>與後端工程師協作，串接API，及調整前端架構</div>",
+        "iconClass": "",
+        "color": ""
+    },
+    {
+        "year": "<a href='https://github.com/ann8355/survey-service' target='_blank' class='detailTitle' title='進入網站'>問卷調查管理系統</a>",
+        "description": "<div>設計問卷調查管理系統的畫面與操作流程，改善UX體驗</div>",
+        "iconClass": "",
+        "color": ""
+    },
+    {
+        "year": "<a href='https://ann8355.github.io/storybook/index.html' target='_blank' class='detailTitle' title='進入網站'>Storybook工具</a>",
+        "description": "<div>導入Storybook工具，有效構建與管理UI元件，提升開發品質</div>",
+        "iconClass": "",
+        "color": ""
+    },
+    {
         "year": "2019/02 ~ 2019/08",
         "description": "擔任「香港商台灣邏輯媒體科技有限公司」之網頁前端工程師",
         "iconClass": "fa-briefcase fa-2x",
