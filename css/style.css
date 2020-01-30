@@ -622,7 +622,7 @@ header ul ol:hover a,header .active{
     top: 18vh;
   }
   #about p {
-    margin-top: 4.5em;
+    margin-top: 4.5em!important;
   }
   #myPhoto{
     border-radius: 50%;
@@ -640,4 +640,7 @@ header ul ol:hover a,header .active{
     width: 70px;
   }
   
+}
+#experience {
+  min-height: 100vh;
 }
