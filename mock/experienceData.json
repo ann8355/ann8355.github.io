@@ -6,7 +6,7 @@
         "color": "#b35900"
     },
     {
-        "year": "餐廳候位系統 - <span><a href='https://ann8355.github.io/waiting/index.html' target='_blank' class='detailTitle' title='進入網站'>手機端</a>、<a href='https://ann8355.github.io/waiting-tablet/index.html' target='_blank' class='detailTitle' title='進入網站'>平板端</a></span>",
+        "year": "餐廳候位系統 - <span><a href='https://drive.google.com/open?id=1vPsfFCJcJhyLsAauXi-DaPL2xdecrnLk' target='_blank' class='detailTitle' title='進入網站'>手機端</a>、<a href='https://drive.google.com/open?id=1H79t38CxC0hSIPmUu8_IbvTzLNhGZvDe' target='_blank' class='detailTitle' title='進入網站'>平板端</a></span>",
         "description": "<div>設計餐廳候位系統畫面，並使用vue-cli3開發前台手機端，和後台管理平板端</div><div>與後端工程師協作，串接API，及調整前端架構</div>",
         "iconClass": "",
         "color": ""
