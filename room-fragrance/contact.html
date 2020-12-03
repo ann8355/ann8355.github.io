@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <title>聯絡我們</title>
+</head>
+<body>
+    <header class="header fixed-top">
+      <a href="index.html" title="首頁">
+        <img src="img/logo.png" alt="香氛工坊" class="logo">
+      </a>
+      <nav>
+        <ul class="menu">
+          <li><a href="discover.html">探索香氣</a></li>
+          <li><a href="product.html">香氛選物</a></li>
+          <li><a href="activity.html">體驗活動</a></li>
+          <li><a href="share.html">分享交流</a></li>
+          <li class="selected"><a href="contact.html">聯絡我們</a></li>
+        </ul>
+      </nav>
+      <div class="btn-group">
+        <a href="#" title="結帳頁">
+          <i class="fas fa-shopping-cart"></i>
+          <span>0</span>
+        </a>
+        <a href="#" title="會員中心"><i class="fas fa-user"></i></a>
+      </div>
+    </header>
+    <div class="contain wrapper" id="contact">
+        <p>有任何問題 ? 歡迎與我們聯繫 !</p>
+        <form>
+          <div>
+            <label for="title" class="required">問題主旨</label>
+            <input type="text" id="title" placeholder="輸入主旨" autofocus="autofocus" required />
+            <label for="name" class="required">你的名字</label>
+            <input type="text" id="name" placeholder="輸入名字" required />
+            <label for="phone">連絡電話</label>
+            <input type="tel" id="phone" placeholder="0912-345-678" title="請輸入10位手機號碼" pattern="^09\d{2}-?\d{3}-?\d{3}$" maxlength="12" />
+            <label for="mail" class="required">電子郵件</label>
+            <input type="email" id="mail" placeholder="example@email.com" onkeyup="value=value.replace(/[^\a-\z\A-\Z0-9\@\_\-\.]/g,'')" title="請輸入你的信箱" required />
+            <label for="content" class="required">洽詢內容</label>
+            <textarea id="content" cols="30" rows="10" placeholder="輸入問題" required></textarea>
+            <button type="submit" class="btn-action">
+              <i class="fas fa-paper-plane"></i>送出
+            </button>
+          </div>
+        </form>
+        <address id="address">
+          <i class="fas fa-map-pin"></i>
+          <span>地址: 台北市中山區南京東路三段219號5樓</span>
+          <br>
+          <i class="fas fa-phone-alt"></i>
+          <span>電話: 0952817089</span>
+        </address>
+        <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.467687045364!2d121.5410642149881!3d25.052132843718283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abddfb12794f%3A0x4a02f2924e16c362!2zMTA0OTHlj7DljJfluILkuK3lsbHljYDljZfkuqzmnbHot6_kuInmrrUyMTnomZ81!5e0!3m2!1szh-TW!2stw!4v1606330404998!5m2!1szh-TW!2stw" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </div>
+    <footer>
+      <ul class="info">
+        <li>
+          <h4>探索香氣</h4>
+          <div class="space">
+            <a href="discover.html#summary">廚房</a>
+            <a href="discover.html#summary">臥室</a>
+            <a href="discover.html#summary">客廳</a>
+            <a href="discover.html#summary">浴室</a>
+          </div>
+          <div class="space">
+            <a href="discover.html#summary">玄關</a>
+            <a href="discover.html#summary">餐廳</a>
+            <a href="discover.html#summary">辦公室</a>
+            <a href="discover.html#summary">會議室</a>
+          </div>
+        </li>
+        <li>
+          <h4>香氛選物</h4>
+          <a href="product.html">療癒系擴香</a>
+          <a href="product.html">活力系擴香</a>
+          <a href="product.html">提神系擴香</a>
+          <a href="product.html">清新系擴香</a>
+        </li>
+        <li>
+          <h4>體驗活動</h4>
+          <a href="activity.html">課程</a>
+          <a href="activity.html">講座</a>
+          <a href="activity.html">體驗</a>
+          <a href="activity.html">工作坊</a>
+        </li>
+        <li>
+          <h4>分享交流</h4>
+          <a href="share.html">所有評價</a>
+          <a href="share.html">留下心得</a>
+        </li>
+        <li>
+          <h4>聯絡我們</h4>
+          <a href="contact.html#address">交通資訊</a>
+          <a href="contact.html">聯繫方式</a>
+          <a href="#">會員中心</a>
+        </li>
+      </ul>
+      <div class="media">
+        <a href="#" title="Google"><i class="fab fa-google-plus"></i></a>
+        <a href="#" title="Line"><i class="fab fa-line"></i></a>
+        <a href="#" title="Facebook"><i class="fab fa-facebook-square"></i></a>
+      </div>
+      <hr>
+      <span>© 2020 CHEN PEI-AN. All Rights Reserved.</span>
+    </footer>
+    <button type="button" class="fixed" id="gotop">
+      <i class="fas fa-angle-double-up"></i>
+    </button>
+</body>
+<script src="js/index.js"></script>
+</html>
