@@ -90,15 +90,15 @@ h5 {
   -ms-flex-pack: center;
   justify-content: center;
   position: absolute;
-  right: calc((100% - 1200px)/2 - 100px);
+  right: calc((100% - 1200px) / 2 - 100px);
   bottom: 0;
   color: #f6f6f6;
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
-@media screen and (max-width: 1280px){
+@media screen and (max-width: 1280px) {
   .fixed {
-    right: calc((100% - 1200px)/2);
+    right: calc((100% - 1200px) / 2);
   }
 }
 #comment {
@@ -202,7 +202,7 @@ h5 {
   z-index: 10;
 }
 .headerShow {
-  animation: show .3s linear 1 forwards;
+  animation: show 0.3s linear 1 forwards;
 }
 @keyframes show {
   0% {
@@ -1522,7 +1522,7 @@ address i {
   float: right;
   position: -webkit-sticky;
   position: sticky;
-  top: 0;
+  top: 150px;
   margin: 50px 45px 0 0;
   z-index: 1;
 }

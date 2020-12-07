@@ -21,22 +21,40 @@
 //     }
 // ));
 
-document.getElementById('gotop').onclick = () => {
-    document.documentElement.scrollTop = 0;
-};
+// document.getElementById('gotop').onclick = () => {
+//     document.documentElement.scrollTop = 0;
+// };
 // $(document).on('click', '#gotop', function(event){
 //     $("HTML, BODY").animate({ scrollTop: 0}, 500);
 // });
 
-document.addEventListener('scroll', (e) => {
-    if(document.documentElement.scrollTop > window.screen.height) {
-        document.getElementById('gotop').style.position = 'fixed';
-    } else {
-        document.getElementById('gotop').style.position = 'absolute';
+// document.addEventListener('scroll', (e) => {
+//     if(document.documentElement.scrollTop > window.screen.height) {
+//         document.getElementById('gotop').style.position = 'fixed';
+//     } else {
+//         document.getElementById('gotop').style.position = 'absolute';
+//     }
+//     if(document.documentElement.scrollTop > document.querySelector('#index').clientHeight) {
+//         document.querySelector('#index').classList.add('fixed-top', 'headerShow');
+//     } else {
+//         document.querySelector('#index').classList.remove('fixed-top', 'headerShow');
+//     }
+// });
+
+// document.getElementById('submit').onclick = () => {
+//     let form = document.getElementById('contact-form');
+//     if(form.checkValidity()){ //成功
+//         alert('成功送出表單！')
+//         form.submit();
+//     }
+// };
+
+var products = document.getElementById('special').querySelectorAll('li');
+products.forEach(product => {
+    product.addEventListener('click', (e) => {
+        for (var product of products) {
+            product.classList.remove('is-active');
+        }
+        // product.classList.toggle('choose');
     }
-    if(document.documentElement.scrollTop > document.querySelector('#index').clientHeight) {
-        document.querySelector('#index').classList.add('fixed-top', 'headerShow');
-    } else {
-        document.querySelector('#index').classList.remove('fixed-top', 'headerShow');
-    }
-});
+)});
