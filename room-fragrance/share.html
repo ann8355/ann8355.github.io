@@ -9,7 +9,7 @@
     <title>分享交流</title>
 </head>
 <body>
-    <header class="header fixed-top">
+    <header class="header fixed-top" id="index">
       <a href="index.html" title="首頁">
         <img src="img/logo.png" alt="香氛工坊" class="logo">
       </a>
@@ -177,11 +177,17 @@
     </footer>
     <button type="button" class="fixed" id="comment">
       <i class="far fa-comment-dots"></i>
-      <span>我要留言</span>
+      <!-- <span>我要留言</span> -->
     </button>
     <button type="button" class="fixed" id="gotop">
       <i class="fas fa-angle-double-up"></i>
     </button>
 </body>
+<script>
+  let commentBtn = document.getElementById('comment');
+  commentBtn.onclick = function(){
+    alert('請先登入會員');
+  };
+</script>
 <script src="js/index.js"></script>
 </html>

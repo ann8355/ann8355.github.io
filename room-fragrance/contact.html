@@ -9,7 +9,7 @@
     <title>聯絡我們</title>
 </head>
 <body>
-    <header class="header fixed-top">
+    <header class="header fixed-top" id="index">
       <a href="index.html" title="首頁">
         <img src="img/logo.png" alt="香氛工坊" class="logo">
       </a>
@@ -112,6 +112,15 @@
     <button type="button" class="fixed" id="gotop">
       <i class="fas fa-angle-double-up"></i>
     </button>
+    <script>
+        document.getElementById('submit').onclick = () => {
+        let form = document.getElementById('contact-form');
+        if(form.checkValidity()){ //成功
+            alert('成功送出表單！')
+            form.submit();
+        }
+    };
+    </script>
+    <script src="js/index.js"></script>
 </body>
-<script src="js/index.js"></script>
 </html>
